@@ -1,7 +1,6 @@
 # Use std::ssize (C++20) to get a signed size from a container
 
-**Category:** Standard Library — Utilities  
-**Item:** #478  
+**Category:** Standard Library Utilities  
 **Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/iterator/size>  
 

@@ -1,7 +1,6 @@
 # Understand std::move and Why It Does Not Actually Move Anything
 
-**Category:** Move Semantics & Value Categories  
-**Item:** #38  
+**Category:** Move Semantics and Value Categories  
 **Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/utility/move>  
 
@@ -129,6 +128,7 @@ This is a surprisingly common performance bug. The compiler won't warn you - it 
 #include <string>
 #include <vector>
 #include <chrono>
+#include <utility>
 
 class ExpensiveData {
     std::vector<int> buffer_;

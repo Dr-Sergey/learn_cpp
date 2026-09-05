@@ -1,7 +1,6 @@
 # Understand object slicing and how to prevent it
 
 **Category:** Modern OOP Patterns  
-**Item:** #104  
 **Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/language/derived_class>  
 

@@ -1,6 +1,7 @@
 # Implement fuzz testing with libFuzzer or AFL for C++ code
 
-**Category:** Testing in Practice
+**Category:** Testing in Practice  
+**Standard:** Not version-specific  
 
 ---
 

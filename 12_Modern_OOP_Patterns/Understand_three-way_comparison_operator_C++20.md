@@ -1,7 +1,6 @@
 # Understand three-way comparison operator <=> (C++20)
 
 **Category:** Modern OOP Patterns  
-**Item:** #107  
 **Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/language/operator_comparison>  
 

@@ -1,7 +1,6 @@
 # Use std::ranges::zip_transform (C++23) to transform multiple ranges
 
-**Category:** Standard Library - Algorithms  
-**Item:** #466  
+**Category:** Standard Library Algorithms  
 **Standard:** C++23  
 **Reference:** <https://en.cppreference.com/w/cpp/ranges/zip_transform_view>  
 

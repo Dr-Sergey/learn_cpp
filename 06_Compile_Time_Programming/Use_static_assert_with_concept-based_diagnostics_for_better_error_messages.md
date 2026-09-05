@@ -1,6 +1,6 @@
 # Use static_assert with concept-based diagnostics for better error messages
 
-**Category:** Compile-Time Programming  
+**Category:** Compile Time Programming  
 **Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/language/static_assert>  
 

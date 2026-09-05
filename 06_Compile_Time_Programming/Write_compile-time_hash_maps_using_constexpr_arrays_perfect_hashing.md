@@ -1,7 +1,6 @@
 # Write Compile-Time Hash Maps Using `constexpr` Arrays (Perfect Hashing)
 
-**Category:** Compile-Time Programming  
-**Item:** #266  
+**Category:** Compile Time Programming  
 **Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/language/consteval>  
 
@@ -292,6 +291,8 @@ Notice that `build_sorted_methods` uses `std::sort` inside a `consteval` functio
 #include <algorithm>
 #include <string_view>
 #include <optional>
+#include <cstddef>
+#include <string>
 
 // === Sorted constexpr array approach ===
 

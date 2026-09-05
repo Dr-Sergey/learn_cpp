@@ -1,7 +1,6 @@
 # Use std::execution::bulk for parallel loop execution over a sender
 
-**Category:** std::execution & Senders/Receivers  
-**Item:** #528  
+**Category:** Std Execution and Senders Receivers  
 **Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/execution>  
 
@@ -45,6 +44,7 @@ bulk(N, f) execution:
 
 Here's a concrete example - fill a vector with squares in parallel, then sum the results:
 
+<!-- compile: needs third-party library header `stdexec/execution.hpp` -->
 ```cpp
 #include <stdexec/execution.hpp>
 #include <exec/static_thread_pool.hpp>
@@ -141,6 +141,7 @@ Two independent parallel passes, each complete before the next begins, all in on
 
 Let's compare `bulk` directly against the classic parallel STL approach to see why the extra machinery is worth it for async-heavy code:
 
+<!-- compile: needs third-party library header `stdexec/execution.hpp` -->
 ```cpp
 #include <stdexec/execution.hpp>
 #include <exec/static_thread_pool.hpp>

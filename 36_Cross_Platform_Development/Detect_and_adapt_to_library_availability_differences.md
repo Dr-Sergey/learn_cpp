@@ -1,7 +1,7 @@
 # Detect and Adapt to Library Availability Differences
 
-**Category:** Cross-Platform Development  
-**Standard:** C++17 / C++20  
+**Category:** Cross Platform Development  
+**Standard:** C++17, C++20  
 **Reference:** <https://cmake.org/cmake/help/latest/command/find_package.html>  
 
 ---
@@ -116,6 +116,7 @@ The template file uses `#cmakedefine01`, which generates either `1` or `0` - alw
 
 The resulting `config.h` flows into your application code, where you use ordinary `#if` to choose between available implementations. The key benefit is that the selection logic is in one place and driven by actual detection results rather than hardcoded platform assumptions:
 
+<!-- compile: fragment: depends on a header defined elsewhere in the topic -->
 ```cpp
 // main.cpp - Uses generated config
 #include "config.h"

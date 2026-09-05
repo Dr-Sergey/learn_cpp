@@ -1,7 +1,6 @@
 # Use std::execution::when_all to join multiple senders
 
-**Category:** std::execution & Senders/Receivers  
-**Item:** #604  
+**Category:** Std Execution and Senders Receivers  
 **Standard:** C++26  
 **Reference:** <https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2023/p2300r7.html>  
 
@@ -28,6 +27,7 @@ The key properties you need to remember:
 
 This is the bread-and-butter use case. Two tasks run concurrently on a thread pool, and `when_all` waits for both before returning the results. Structured bindings let you unpack the tuple immediately:
 
+<!-- compile: needs third-party library header `stdexec/execution.hpp` -->
 ```cpp
 #include <stdexec/execution.hpp>
 #include <exec/static_thread_pool.hpp>
@@ -79,6 +79,7 @@ Notice that `[A]` and `[B]` will print on different thread IDs - they really do 
 
 When any child fails, `when_all` sends a stop signal to the remaining children and then propagates the error. Crucially, it still waits for all children to acknowledge the cancellation before completing - there are no dangling operations. The diagram after the code makes the priority ordering clear:
 
+<!-- compile: needs third-party library header `stdexec/execution.hpp` -->
 ```cpp
 #include <stdexec/execution.hpp>
 #include <exec/static_thread_pool.hpp>

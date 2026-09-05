@@ -1,7 +1,6 @@
 # Use `std::variant` and `std::visit` for Type-Safe Unions
 
-**Category:** Type System & Deduction  
-**Item:** #22  
+**Category:** Type System and Deduction  
 **Standard:** C++17  
 **Reference:** <https://en.cppreference.com/w/cpp/utility/variant>  
 

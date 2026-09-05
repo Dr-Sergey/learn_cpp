@@ -1,7 +1,7 @@
 # Design allocator-aware containers and types
 
-**Category:** API & Library Design  
-**Standard:** C++17/20  
+**Category:** API and Library Design  
+**Standard:** C++17, C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/named_req/AllocatorAwareContainer>  
 
 ---
@@ -22,6 +22,8 @@ Here is a minimal but complete allocator-aware buffer. The key parts are the `al
 #include <vector>
 #include <string>
 #include <iostream>
+#include <array>
+#include <cstddef>
 
 template<typename T, typename Allocator = std::allocator<T>>
 class SimpleBuffer {

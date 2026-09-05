@@ -1,7 +1,6 @@
 # Use std::ranges::views::transform with a projection to avoid intermediate lambdas
 
-**Category:** Lambda & Functional  
-**Item:** #251  
+**Category:** Lambda and Functional  
 **Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/ranges/transform_view>  
 

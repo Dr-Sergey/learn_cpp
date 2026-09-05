@@ -1,7 +1,7 @@
 # Use memory-mapped files with mmap / MapViewOfFile for zero-copy I/O
 
-**Category:** Networking & I/O  
-**Item:** #727  
+**Category:** Networking and IO  
+**Standard:** Not version-specific  
 **Reference:** <https://man7.org/linux/man-pages/man2/mmap.2.html>  
 
 ---

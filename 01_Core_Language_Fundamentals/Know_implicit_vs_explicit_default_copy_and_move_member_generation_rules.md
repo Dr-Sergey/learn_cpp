@@ -1,7 +1,7 @@
 # Know implicit vs explicit default, copy, and move member generation rules
 
 **Category:** Core Language Fundamentals  
-**Standard:** C++11/17  
+**Standard:** C++11, C++17  
 **Reference:** <https://en.cppreference.com/w/cpp/language/default_constructor>  
 
 ---

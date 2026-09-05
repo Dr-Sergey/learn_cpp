@@ -1,7 +1,6 @@
 # Write SIMD-vectorisable loops and verify auto-vectorisation
 
-**Category:** Performance & CPU Architecture  
-**Item:** #543  
+**Category:** Performance and CPU Architecture  
 **Standard:** C++11  
 **Reference:** <https://llvm.org/docs/Vectorizers.html>  
 

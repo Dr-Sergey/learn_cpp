@@ -1,7 +1,7 @@
-# Use CMakePresets.json for reproducible, shareable build configurations
+# Drive day-to-day builds with CMakePresets.json workflow presets
 
-**Category:** Build Systems & CI  
-**Item:** #659  
+**Category:** Build Systems and CI  
+**Standard:** Not version-specific  
 **Reference:** <https://cmake.org/cmake/help/latest/manual/cmake-presets.7.html>  
 
 ---

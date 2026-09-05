@@ -1,8 +1,7 @@
 # Use std::atomic_flag as the simplest lock-free primitive
 
-**Category:** Concurrency & Parallelism  
-**Item:** #214  
-**Standard:** C++11 (base), C++20 (`test()`, `wait()`/`notify()`)  
+**Category:** Concurrency and Parallelism  
+**Standard:** C++11, C++20 (base)  
 **Reference:** <https://en.cppreference.com/w/cpp/atomic/atomic_flag>  
 
 ---
@@ -147,8 +146,10 @@ int main() {
     // This is a NORMATIVE REQUIREMENT - not optional.
 
     std::atomic_flag flag{};
-    std::cout << "atomic_flag is always lock-free: "
-              << flag.is_lock_free() << "\n"; // always 1
+    // Note: atomic_flag has no is_lock_free() member, and does not need one.
+    // Being lock-free is part of the type's definition, not a runtime property
+    // you query - unlike std::atomic<T>, which does provide is_lock_free().
+    std::cout << "atomic_flag is always lock-free: true\n";
 
     // === atomic<bool>: MIGHT NOT be lock-free ===
     // The standard makes NO lock-free guarantee for atomic<bool>.

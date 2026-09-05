@@ -1,7 +1,7 @@
 # Design Error Hierarchies with Error Domains for Large Codebases
 
 **Category:** Error Handling  
-**Standard:** C++11 / C++17 / C++23 (`std::expected`)  
+**Standard:** C++11, C++17, C++23 (`std::expected`)  
 **Reference:** [cppreference - error_category](https://en.cppreference.com/w/cpp/error/error_category), [cppreference - error_code](https://en.cppreference.com/w/cpp/error/error_code)  
 
 ---

@@ -1,7 +1,7 @@
 # Annotate hot and cold functions with [[gnu::hot]] and [[gnu::cold]]
 
-**Category:** Performance & CPU Architecture  
-**Item:** #546  
+**Category:** Performance and CPU Architecture  
+**Standard:** Not version-specific  
 **Reference:** <https://gcc.gnu.org/onlinedocs/gcc/Common-Function-Attributes.html>  
 
 ---

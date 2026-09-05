@@ -1,7 +1,6 @@
 # Use std::ranges::zip_transform (C++23) for element-wise operations on multiple ranges
 
-**Category:** Standard Library - Algorithms  
-**Item:** #361  
+**Category:** Standard Library Algorithms  
 **Standard:** C++23  
 **Reference:** <https://en.cppreference.com/w/cpp/ranges/zip_transform_view>  
 
@@ -172,6 +171,8 @@ Three-range `zip_transform` is where the advantage over manual indexing really s
 #include <vector>
 #include <ranges>
 #include <cmath>
+#include <functional>
+#include <iterator>
 
 int main() {
     // === Linear combination: a*x + b ===

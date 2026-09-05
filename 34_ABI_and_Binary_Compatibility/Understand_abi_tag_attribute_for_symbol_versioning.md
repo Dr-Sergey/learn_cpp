@@ -1,7 +1,7 @@
 # Understand abi_tag Attribute for Symbol Versioning
 
-**Category:** ABI & Binary Compatibility  
-**Standard:** GCC extension (`[[gnu::abi_tag]]`), de facto standard on Linux  
+**Category:** ABI and Binary Compatibility  
+**Standard:** GCC extension , de facto standard on Linux (`[[gnu::abi_tag]]`)  
 **Reference:** https://gcc.gnu.org/onlinedocs/gcc/C_002b_002b-Attributes.html#index-abi_005ftag-type-attribute  
 
 ---

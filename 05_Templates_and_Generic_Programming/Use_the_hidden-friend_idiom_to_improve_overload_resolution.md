@@ -1,7 +1,7 @@
 # Use the Hidden-Friend Idiom to Improve Overload Resolution
 
-**Category:** Templates & Generic Programming  
-**Item:** #334  
+**Category:** Templates and Generic Programming  
+**Standard:** C++17  
 **Reference:** <https://en.cppreference.com/w/cpp/language/friend>  
 
 ---

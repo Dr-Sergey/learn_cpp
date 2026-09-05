@@ -1,7 +1,6 @@
 # Understand multidimensional subscript operator[] (C++23) - Part 2
 
 **Category:** Core Language Fundamentals  
-**Item:** #779  
 **Standard:** C++23  
 **Reference:** <https://en.cppreference.com/w/cpp/language/operator_member_access>  
 

@@ -63,6 +63,7 @@ cat /sys/devices/system/cpu/isolated
 
 With the cores isolated at the kernel level, you then pin your real-time thread to one of them and optionally set a real-time scheduling policy. The three-step pattern here - pin, set priority, lock pages - is the standard setup recipe for a low-latency thread:
 
+<!-- compile: needs POSIX header `pthread.h` -->
 ```cpp
 #include <pthread.h>
 #include <sched.h>

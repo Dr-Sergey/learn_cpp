@@ -1,6 +1,7 @@
 # Test communication protocols (SPI, I2C, UART) with mock drivers
 
-**Category:** Testing in Practice
+**Category:** Testing in Practice  
+**Standard:** Not version-specific  
 
 ---
 

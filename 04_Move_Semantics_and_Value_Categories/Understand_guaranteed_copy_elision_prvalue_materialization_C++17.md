@@ -1,7 +1,6 @@
 # Understand Guaranteed Copy Elision (prvalue materialization, C++17)
 
-**Category:** Move Semantics & Value Categories  
-**Item:** #40  
+**Category:** Move Semantics and Value Categories  
 **Standard:** C++17  
 **Reference:** <https://en.cppreference.com/w/cpp/language/copy_elision>  
 

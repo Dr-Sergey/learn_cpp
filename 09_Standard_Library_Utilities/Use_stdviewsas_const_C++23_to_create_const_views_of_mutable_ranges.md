@@ -1,7 +1,6 @@
 # Use std::views::as_const (C++23) to create const views of mutable ranges
 
-**Category:** Standard Library - Utilities  
-**Item:** #273  
+**Category:** Standard Library Utilities  
 **Standard:** C++23  
 **Reference:** <https://en.cppreference.com/w/cpp/ranges/as_const_view>  
 

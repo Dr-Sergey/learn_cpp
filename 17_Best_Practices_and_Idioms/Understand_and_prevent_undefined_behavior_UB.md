@@ -1,7 +1,7 @@
 # Understand and prevent undefined behavior (UB)
 
-**Category:** Best Practices & Idioms  
-**Item:** #134  
+**Category:** Best Practices and Idioms  
+**Standard:** Not version-specific  
 **Reference:** <https://en.cppreference.com/w/cpp/language/ub>  
 
 ---

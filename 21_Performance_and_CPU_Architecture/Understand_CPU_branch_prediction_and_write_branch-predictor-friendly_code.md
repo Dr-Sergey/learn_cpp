@@ -1,7 +1,7 @@
 # Understand CPU branch prediction and write branch-predictor-friendly code
 
-**Category:** Performance & CPU Architecture  
-**Item:** #539  
+**Category:** Performance and CPU Architecture  
+**Standard:** Not version-specific  
 **Reference:** <https://en.cppreference.com/w/cpp/language/attributes/likely>  
 
 ---

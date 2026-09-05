@@ -1,7 +1,7 @@
 # Integrate CUDA with Modern C++ for GPU Kernel Development
 
-**Category:** GPU & Heterogeneous Computing  
-**Standard:** C++17/20 with CUDA 12.x  
+**Category:** GPU and Heterogeneous Computing  
+**Standard:** C++17, C++20  
 **Reference:** https://docs.nvidia.com/cuda/cuda-c-programming-guide/  
 
 ---
@@ -33,6 +33,7 @@ The table below shows how far things have come. If you're writing new code today
 
 This example shows two things at once: a proper RAII device buffer that throws on allocation failure (so you can't accidentally use a null pointer), and a templated kernel that uses `if constexpr` to select between operations at compile time rather than branching at runtime. Notice that `constexpr` works inside device code just as you'd expect.
 
+<!-- compile: needs third-party library header `cuda_runtime.h` -->
 ```cpp
 #include <cuda_runtime.h>
 #include <cstdio>
@@ -127,6 +128,7 @@ Because `da`, `db`, and `dc` are stack objects, the device memory is automatical
 
 The performance difference between cold unified memory and prefetched unified memory can be dramatic - often a 10-15x gap. This benchmark makes that concrete. The reason the cold case is slow is that every page fault triggers a CPU-GPU round trip to migrate that page; prefetching batches all migrations before the kernel starts.
 
+<!-- compile: needs third-party library header `cuda_runtime.h` -->
 ```cpp
 #include <cuda_runtime.h>
 #include <cstdio>
@@ -204,6 +206,7 @@ The `cudaMemAdvise(ReadMostly)` hint tells the runtime it can create read-only r
 
 This is the pattern you'll use for production GPU code: pinned host memory plus multiple streams, with each stream handling H2D transfer, kernel, and D2H transfer for its chunk independently. The streams run concurrently, so the GPU's copy engine and compute engine can work at the same time on different chunks.
 
+<!-- compile: needs third-party library header `cuda_runtime.h` -->
 ```cpp
 #include <cuda_runtime.h>
 #include <vector>

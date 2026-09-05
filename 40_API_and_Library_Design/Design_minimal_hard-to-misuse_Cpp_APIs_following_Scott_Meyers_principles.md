@@ -1,6 +1,6 @@
 # Design minimal, hard-to-misuse C++ APIs following Scott Meyers' principles
 
-**Category:** API & Library Design  
+**Category:** API and Library Design  
 **Standard:** C++17  
 **Reference:** <https://www.aristeia.com/Papers/IEEE_Software_JulAug_2004_revised.pdf>  
 

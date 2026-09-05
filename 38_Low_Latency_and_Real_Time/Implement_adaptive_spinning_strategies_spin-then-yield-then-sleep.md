@@ -1,7 +1,7 @@
 # Implement adaptive spinning strategies: spin-then-yield-then-sleep
 
 **Category:** Low Latency and Real Time  
-**Standard:** C++17/20  
+**Standard:** C++17, C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/thread/yield>  
 
 ---

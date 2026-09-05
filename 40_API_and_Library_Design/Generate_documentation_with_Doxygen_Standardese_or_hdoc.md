@@ -1,6 +1,6 @@
 # Generate documentation with Doxygen, Standardese, or hdoc
 
-**Category:** API & Library Design  
+**Category:** API and Library Design  
 **Standard:** C++17  
 **Reference:** <https://www.doxygen.nl/>  
 

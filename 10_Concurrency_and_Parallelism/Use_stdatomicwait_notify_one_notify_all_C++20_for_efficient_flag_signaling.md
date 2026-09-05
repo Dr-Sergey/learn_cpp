@@ -1,7 +1,6 @@
 # Use std::atomic::wait, notify_one, notify_all (C++20) for efficient flag signaling
 
-**Category:** Concurrency & Parallelism  
-**Item:** #372  
+**Category:** Concurrency and Parallelism  
 **Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/atomic/atomic/wait>  
 

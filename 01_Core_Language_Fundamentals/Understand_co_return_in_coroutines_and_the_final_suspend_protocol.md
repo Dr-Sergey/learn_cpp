@@ -1,7 +1,6 @@
 # Understand co_return in coroutines and the final_suspend protocol
 
 **Category:** Core Language Fundamentals  
-**Item:** #201  
 **Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/language/coroutines>  
 

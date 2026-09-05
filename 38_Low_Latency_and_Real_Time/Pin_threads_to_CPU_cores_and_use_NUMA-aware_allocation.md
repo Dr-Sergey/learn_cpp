@@ -1,7 +1,7 @@
 # Pin Threads to CPU Cores and Use NUMA-Aware Allocation
 
-**Category:** Low Latency & Real-Time C++  
-**Standard:** C++17 / C++20 (with POSIX / Win32 extensions)  
+**Category:** Low Latency and Real Time  
+**Standard:** C++17, C++20 (with POSIX / Win32 extensions)  
 **Reference:** [Linux `sched_setaffinity(2)`](https://man7.org/linux/man-pages/man2/sched_setaffinity.2.html), [NUMA API](https://man7.org/linux/man-pages/man3/numa.3.html)  
 
 ---
@@ -232,6 +232,7 @@ The `discover_topology` function queries libnuma to build the full core-to-node 
 
 This benchmark pins the main thread to core 0 (node 0), allocates one buffer on node 0 and another on node 1, then measures how long it takes to touch each. The numbers will show the remote penalty directly. If you've never run this before, the result is usually a genuine surprise:
 
+<!-- compile: needs POSIX header `sched.h` -->
 ```cpp
 #ifdef __linux__
 #include <numa.h>

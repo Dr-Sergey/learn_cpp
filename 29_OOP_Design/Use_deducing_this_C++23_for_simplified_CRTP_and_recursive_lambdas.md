@@ -1,6 +1,7 @@
 # Use deducing this (C++23) for simplified CRTP and recursive lambdas
 
-**Category:** OOP Design
+**Category:** OOP Design  
+**Standard:** C++23  
 
 ---
 

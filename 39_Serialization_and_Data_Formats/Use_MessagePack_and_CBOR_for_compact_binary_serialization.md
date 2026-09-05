@@ -1,6 +1,6 @@
 # Use MessagePack and CBOR for compact binary serialization
 
-**Category:** Serialization & Data Formats  
+**Category:** Serialization and Data Formats  
 **Standard:** C++17  
 **Reference:** <https://msgpack.org/> · <https://cbor.io/>  
 
@@ -29,6 +29,7 @@ Both MessagePack and CBOR compress your data the same way: small integers pack i
 
 If you already use nlohmann/json, you get MessagePack and CBOR support for free - no additional dependencies. The same `json` object serializes to all three formats with a single function call. The hex dump at the end of the example gives you a concrete feel for what the binary actually looks like:
 
+<!-- compile: needs third-party library header `nlohmann/json.hpp` -->
 ```cpp
 #include <nlohmann/json.hpp>
 #include <iostream>
@@ -128,6 +129,7 @@ The streaming example at the end is important for time-series use cases: you can
 
 This benchmark builds a 100-user API response - the kind of payload you might see from a REST endpoint - and compares the three formats:
 
+<!-- compile: needs third-party library header `nlohmann/json.hpp` -->
 ```cpp
 #include <nlohmann/json.hpp>
 #include <iostream>

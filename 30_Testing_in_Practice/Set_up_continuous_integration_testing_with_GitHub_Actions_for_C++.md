@@ -1,6 +1,7 @@
 # Set up continuous integration testing with GitHub Actions for C++
 
-**Category:** Testing in Practice
+**Category:** Testing in Practice  
+**Standard:** Not version-specific  
 
 ---
 

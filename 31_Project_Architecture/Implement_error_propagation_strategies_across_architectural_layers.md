@@ -1,6 +1,7 @@
 # Implement error propagation strategies across architectural layers
 
-**Category:** Project Architecture
+**Category:** Project Architecture  
+**Standard:** Not version-specific  
 
 ---
 

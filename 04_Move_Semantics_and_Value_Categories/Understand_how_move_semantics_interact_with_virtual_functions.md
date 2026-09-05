@@ -1,7 +1,7 @@
 # Understand How Move Semantics Interact with Virtual Functions
 
-**Category:** Move Semantics & Value Categories  
-**Item:** #332  
+**Category:** Move Semantics and Value Categories  
+**Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/language/move_constructor>  
 
 ---

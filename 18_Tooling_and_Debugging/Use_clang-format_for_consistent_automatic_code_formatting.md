@@ -1,7 +1,7 @@
 # Use clang-format for consistent automatic code formatting
 
-**Category:** Tooling & Debugging  
-**Item:** #411  
+**Category:** Tooling and Debugging  
+**Standard:** Not version-specific  
 **Reference:** <https://clang.llvm.org/docs/ClangFormat.html>  
 
 ---
@@ -63,6 +63,7 @@ IncludeCategories:
 
 To see what this actually does, here is a deliberately messy file:
 
+<!-- compile: fragment: depends on a header defined elsewhere in the topic -->
 ```cpp
 #include<iostream>
 #include "myheader.h"
@@ -78,6 +79,7 @@ int main(){Widget w(1,2.0);w.print();}
 
 After running `clang-format -i main.cpp`, the output is consistently structured:
 
+<!-- compile: fragment: depends on a header defined elsewhere in the topic -->
 ```cpp
 #include "myheader.h"
 

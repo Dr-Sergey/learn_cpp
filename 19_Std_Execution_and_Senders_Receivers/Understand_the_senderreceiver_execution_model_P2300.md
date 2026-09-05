@@ -1,7 +1,6 @@
 # Understand the sender/receiver execution model (P2300)
 
-**Category:** std::execution & Senders/Receivers  
-**Item:** #601  
+**Category:** Std Execution and Senders Receivers  
 **Standard:** C++11  
 **Reference:** <https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2023/p2300r7.html>  
 
@@ -66,6 +65,7 @@ Let's walk through each role so the mental model is concrete.
 
 Here is the smallest possible custom sender that shows all three roles in one place. It is deliberately trivial so you can focus on the structure rather than the work:
 
+<!-- compile: needs third-party library header `stdexec/execution.hpp` -->
 ```cpp
 #include <stdexec/execution.hpp>
 #include <iostream>
@@ -106,6 +106,7 @@ int main() {
 
 One of the most useful properties of P2300 is that you can write a computation once and run it anywhere. The computation does not know or care whether it runs on a thread pool, a GPU, or inline. That decision belongs to the scheduler:
 
+<!-- compile: needs third-party library header `stdexec/execution.hpp` -->
 ```cpp
 #include <stdexec/execution.hpp>
 #include <exec/static_thread_pool.hpp>

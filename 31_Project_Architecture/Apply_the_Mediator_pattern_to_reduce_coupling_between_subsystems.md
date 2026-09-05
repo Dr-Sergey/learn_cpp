@@ -1,6 +1,7 @@
 # Apply the Mediator pattern to reduce coupling between subsystems
 
-**Category:** Project Architecture
+**Category:** Project Architecture  
+**Standard:** Not version-specific  
 
 ---
 

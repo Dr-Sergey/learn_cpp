@@ -1,7 +1,7 @@
 # Use Bazel or Buck2 as CMake alternatives for large monorepos
 
-**Category:** Build Systems & CI  
-**Item:** #745  
+**Category:** Build Systems and CI  
+**Standard:** Not version-specific  
 **Reference:** <https://bazel.build>  
 
 ---

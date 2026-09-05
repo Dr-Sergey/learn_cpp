@@ -1,7 +1,7 @@
 # Set up cross-compilation with CMake toolchain files
 
-**Category:** Build Systems & CI  
-**Item:** #564  
+**Category:** Build Systems and CI  
+**Standard:** Not version-specific  
 **Reference:** <https://cmake.org/cmake/help/latest/manual/cmake-toolchains.7.html>  
 
 ---

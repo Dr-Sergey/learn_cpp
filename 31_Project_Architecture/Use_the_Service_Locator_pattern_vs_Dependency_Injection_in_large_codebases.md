@@ -1,6 +1,7 @@
 # Use the Service Locator pattern vs Dependency Injection in large codebases
 
-**Category:** Project Architecture
+**Category:** Project Architecture  
+**Standard:** Not version-specific  
 
 ---
 

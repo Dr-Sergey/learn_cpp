@@ -1,7 +1,7 @@
 # Use non-temporal stores for write-only large buffers to bypass cache
 
-**Category:** Performance & CPU Architecture  
-**Item:** #720  
+**Category:** Performance and CPU Architecture  
+**Standard:** Not version-specific  
 **Reference:** <https://gcc.gnu.org/onlinedocs/gcc/Other-Builtins.html>  
 
 ---

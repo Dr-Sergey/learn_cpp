@@ -1,7 +1,7 @@
 # Understand contract programming and assertion-based design
 
 **Category:** Error Handling  
-**Item:** #380  
+**Standard:** C++26  
 **Reference:** <https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#i-in-and-out-parameters>  
 
 ---

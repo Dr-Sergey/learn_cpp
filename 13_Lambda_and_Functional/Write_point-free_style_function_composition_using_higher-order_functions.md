@@ -1,7 +1,6 @@
 # Write point-free style function composition using higher-order functions
 
-**Category:** Lambda & Functional  
-**Item:** #390  
+**Category:** Lambda and Functional  
 **Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/utility/functional>  
 
@@ -95,6 +94,7 @@ Here the point-free style pays off in readability. A `format_tag` function that 
 #include <string>
 #include <algorithm>
 #include <cctype>
+#include <utility>
 
 template <typename F, typename G>
 auto compose(F f, G g) {

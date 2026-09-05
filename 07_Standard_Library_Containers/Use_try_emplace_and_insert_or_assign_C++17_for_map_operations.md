@@ -1,7 +1,6 @@
 # Use try_emplace and insert_or_assign (C++17) for map operations
 
-**Category:** Standard Library — Containers  
-**Item:** #64  
+**Category:** Standard Library Containers  
 **Standard:** C++17  
 **Reference:** <https://en.cppreference.com/w/cpp/container/map/try_emplace>  
 

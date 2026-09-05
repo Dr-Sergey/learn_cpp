@@ -1,7 +1,6 @@
 # Write testable C++ code by designing for dependency injection
 
-**Category:** Testing & Verification  
-**Item:** #583  
+**Category:** Testing and Verification  
 **Standard:** C++20  
 **Reference:** <https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#Ri-abstract>  
 

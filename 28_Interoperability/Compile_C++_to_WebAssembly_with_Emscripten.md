@@ -1,7 +1,6 @@
 # Compile C++ to WebAssembly with Emscripten
 
 **Category:** Interoperability  
-**Item:** #593  
 **Standard:** C++20  
 **Reference:** <https://emscripten.org/>  
 

@@ -1,7 +1,6 @@
 # Implement property-based testing with RapidCheck
 
-**Category:** Design Patterns — Modern Takes  
-**Item:** #755  
+**Category:** Design Patterns Modern Takes  
 **Standard:** C++17  
 **Reference:** <https://github.com/emil-e/rapidcheck>  
 
@@ -49,6 +48,7 @@ Unit test:                           Property test:
 
 A good property test targets something that is *universally true regardless of input*. Sorting is a great example because it has multiple independent properties you can check separately: idempotency (sorting twice equals sorting once), element preservation (same elements, just reordered), and ordering (the output is actually sorted). Writing these as separate properties makes failures easier to diagnose.
 
+<!-- compile: needs third-party library header `rapidcheck.h` -->
 ```cpp
 #include <rapidcheck.h>
 #include <algorithm>
@@ -102,6 +102,7 @@ Notice that RapidCheck generates `std::vector<int>` directly from the lambda's p
 
 Sometimes you need more control over generated values than `arbitrary<T>()` provides. `rc::gen::inRange(lo, hi)` constrains integers to a valid domain, and `rc::gen::container<C>(gen)` builds a container where every element satisfies a particular generator. You can combine them to express domain-specific constraints precisely.
 
+<!-- compile: needs third-party library header `rapidcheck.h` -->
 ```cpp
 #include <rapidcheck.h>
 #include <vector>
@@ -161,6 +162,7 @@ The `*` before the generator calls dereferences the generator to get a value - t
 
 Shrinking is what separates RapidCheck from a simple fuzzer. When a test fails with some large random input, finding the actual bug in that input can be tedious. RapidCheck addresses this by systematically simplifying the failing input - removing elements, reducing values toward zero, shortening strings - until it finds the smallest input that still triggers the failure. What you get in the failure report is a counterexample you can reason about directly.
 
+<!-- compile: needs third-party library header `rapidcheck.h` -->
 ```cpp
 #include <rapidcheck.h>
 #include <vector>

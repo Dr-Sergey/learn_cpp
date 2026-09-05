@@ -1,7 +1,7 @@
 # Prefer composition over inheritance for code reuse
 
-**Category:** Best Practices & Idioms  
-**Item:** #132  
+**Category:** Best Practices and Idioms  
+**Standard:** Not version-specific  
 **Reference:** <https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#c-inheritance-and-oo>  
 
 ---

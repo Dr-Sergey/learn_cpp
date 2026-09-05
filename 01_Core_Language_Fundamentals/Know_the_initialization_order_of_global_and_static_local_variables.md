@@ -1,7 +1,7 @@
 # Know the initialization order of global and static local variables
 
 **Category:** Core Language Fundamentals  
-**Standard:** C++98/C++11/C++20  
+**Standard:** C++98, C++11, C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/language/initialization>  
 
 ---

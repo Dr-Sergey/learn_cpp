@@ -1,7 +1,6 @@
 # Use static analysis with clang-tidy for modernization and readability checks
 
-**Category:** Tooling & Debugging  
-**Item:** #422  
+**Category:** Tooling and Debugging  
 **Standard:** C++11  
 **Reference:** <https://clang.llvm.org/extra/clang-tidy/checks/list.html>  
 

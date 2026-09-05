@@ -1,7 +1,6 @@
 # Use std::future and std::promise for async result passing
 
-**Category:** Concurrency & Parallelism  
-**Item:** #91  
+**Category:** Concurrency and Parallelism  
 **Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/thread/future>  
 

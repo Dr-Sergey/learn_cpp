@@ -1,7 +1,6 @@
 # Use CMake module dependency scanning for C++20 modules
 
-**Category:** Build Systems & CI  
-**Item:** #567  
+**Category:** Build Systems and CI  
 **Standard:** C++20  
 **Reference:** <https://cmake.org/cmake/help/latest/prop_tgt/CXX_SCAN_FOR_MODULES.html>  
 
@@ -112,6 +111,7 @@ namespace math {
 
 And the consuming file that just says `import math;`:
 
+<!-- compile: fragment: one translation unit of a multi-file module example -->
 ```cpp
 // src/main.cpp
 import math;

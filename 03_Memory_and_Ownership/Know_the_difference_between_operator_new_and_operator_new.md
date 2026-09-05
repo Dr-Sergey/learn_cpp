@@ -1,7 +1,7 @@
 # Know the Difference Between `operator new` and `::operator new`
 
-**Category:** Memory & Ownership  
-**Item:** #445  
+**Category:** Memory and Ownership  
+**Standard:** Not version-specific  
 **Reference:** <https://en.cppreference.com/w/cpp/memory/new/operator_new>  
 
 ---

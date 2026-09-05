@@ -1,7 +1,6 @@
 # Understand trailing return types and when they are required
 
 **Category:** Core Language Fundamentals  
-**Item:** #281  
 **Standard:** C++14  
 **Reference:** <https://en.cppreference.com/w/cpp/language/function>  
 

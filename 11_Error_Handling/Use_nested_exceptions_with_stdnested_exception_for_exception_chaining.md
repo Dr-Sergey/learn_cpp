@@ -1,7 +1,6 @@
 # Use nested exceptions with std::nested_exception for exception chaining
 
 **Category:** Error Handling  
-**Item:** #377  
 **Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/error/nested_exception>  
 

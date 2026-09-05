@@ -1,7 +1,6 @@
 # Use precompiled headers (PCH) strategically before migrating to modules
 
-**Category:** Modules & Build (C++20)  
-**Item:** #398  
+**Category:** Modules and Build Cpp20  
 **Standard:** C++20  
 **Reference:** <https://cmake.org/cmake/help/latest/command/target_precompile_headers.html>  
 

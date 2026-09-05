@@ -1,8 +1,7 @@
 # Understand Class Template Specialization for Traits (Detection Idiom)
 
-**Category:** Templates & Generic Programming  
-**Item:** #175  
-**Standard:** C++17 (`void_t`), C++20 (concepts alternative)  
+**Category:** Templates and Generic Programming  
+**Standard:** C++17, C++20 (`void_t`)  
 **Reference:** <https://en.cppreference.com/w/cpp/types/void_t>  
 
 ---

@@ -1,6 +1,6 @@
 # Use CMake toolchain files and presets for multi-platform builds
 
-**Category:** Cross-Platform Development  
+**Category:** Cross Platform Development  
 **Standard:** C++17  
 **Reference:** <https://cmake.org/cmake/help/latest/manual/cmake-toolchains.7.html>  
 

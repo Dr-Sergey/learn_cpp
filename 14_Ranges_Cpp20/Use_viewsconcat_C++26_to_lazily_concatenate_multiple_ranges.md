@@ -1,7 +1,6 @@
 # Use views::concat (C++26) to lazily concatenate multiple ranges
 
-**Category:** Ranges (C++20)  
-**Item:** #238  
+**Category:** Ranges Cpp20  
 **Standard:** C++26  
 **Reference:** <https://en.cppreference.com/w/cpp/ranges/concat_view>  
 
@@ -72,6 +71,7 @@ Here is the basic usage - three separate vectors, one seamless view over all of 
 #include <iostream>
 #include <ranges>
 #include <vector>
+#include <functional>
 
 int main() {
     std::vector<int> a = {1, 2, 3};

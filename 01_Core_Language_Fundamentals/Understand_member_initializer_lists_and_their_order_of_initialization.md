@@ -1,7 +1,7 @@
 # Understand member initializer lists and their order of initialization
 
 **Category:** Core Language Fundamentals  
-**Item:** #289  
+**Standard:** Not version-specific  
 **Reference:** <https://en.cppreference.com/w/cpp/language/constructor>  
 
 ---

@@ -1,7 +1,6 @@
 # Implement a thread-safe singleton using std::call_once
 
-**Category:** Concurrency & Parallelism  
-**Item:** #298  
+**Category:** Concurrency and Parallelism  
 **Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/thread/call_once>  
 
@@ -75,6 +74,7 @@ The pattern scales naturally to any number of threads. The 10-thread test below 
 #include <iostream>
 #include <vector>
 #include <memory>
+#include <string>
 
 class Logger {
     std::string filename_;

@@ -1,7 +1,7 @@
 # Set up integration testing of C++ code with Python using pybind11
 
-**Category:** Testing & Verification  
-**Item:** #687  
+**Category:** Testing and Verification  
+**Standard:** Not version-specific  
 **Reference:** <https://pybind11.readthedocs.io/>  
 
 ---
@@ -186,6 +186,7 @@ This is Direction A from the overview: the C++ executable itself starts a Python
 
 The `PYBIND11_EMBEDDED_MODULE` macro defines a module that exists only inside the C++ binary - no `.so` file on disk. Python code running inside the embedded interpreter can import it with a regular `import calculator`.
 
+<!-- compile: needs third-party library header `pybind11/embed.h` -->
 ```cpp
 // embedded_test_runner.cpp
 // Runs Python test scripts FROM WITHIN a C++ executable

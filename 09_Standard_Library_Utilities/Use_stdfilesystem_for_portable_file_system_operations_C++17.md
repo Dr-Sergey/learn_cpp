@@ -1,7 +1,6 @@
 # Use std::filesystem for portable file system operations (C++17)
 
-**Category:** Standard Library — Utilities  
-**Item:** #81  
+**Category:** Standard Library Utilities  
 **Standard:** C++17  
 **Reference:** <https://en.cppreference.com/w/cpp/filesystem>  
 

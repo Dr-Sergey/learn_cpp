@@ -1,6 +1,7 @@
 # Use the dependency injection pattern for loosely coupled components
 
-**Category:** Project Architecture
+**Category:** Project Architecture  
+**Standard:** Not version-specific  
 
 ---
 
@@ -35,6 +36,7 @@ The structure here is: define interfaces for each dependency, write a service th
 #include <memory>
 #include <string>
 #include <iostream>
+#include <unordered_map>
 
 // === Interfaces (dependencies) ===
 class ILogger {

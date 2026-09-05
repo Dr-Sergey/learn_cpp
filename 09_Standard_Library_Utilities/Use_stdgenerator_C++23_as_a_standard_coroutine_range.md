@@ -1,7 +1,6 @@
 # Use std::generator (C++23) as a standard coroutine range
 
-**Category:** Standard Library — Utilities  
-**Item:** #184  
+**Category:** Standard Library Utilities  
 **Standard:** C++23  
 **Reference:** <https://en.cppreference.com/w/cpp/coroutine/generator>  
 
@@ -239,6 +238,7 @@ The code below shows the concrete consequence: iterating partway through a gener
 ```cpp
 #include <generator>
 #include <iostream>
+#include <ranges>
 
 std::generator<int> counting() {
     for (int i = 0; ; ++i) co_yield i;

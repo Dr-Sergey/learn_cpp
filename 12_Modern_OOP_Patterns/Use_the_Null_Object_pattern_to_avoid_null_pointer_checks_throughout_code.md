@@ -1,7 +1,6 @@
 # Use the Null Object pattern to avoid null pointer checks throughout code
 
 **Category:** Modern OOP Patterns  
-**Item:** #292  
 **Standard:** C++11  
 **Reference:** <https://en.wikipedia.org/wiki/Null_object_pattern>  
 

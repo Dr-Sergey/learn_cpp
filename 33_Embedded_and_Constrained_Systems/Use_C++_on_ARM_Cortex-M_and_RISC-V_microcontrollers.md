@@ -1,7 +1,7 @@
 # Use C++ on ARM Cortex-M and RISC-V Microcontrollers
 
-**Category:** Embedded & Constrained Systems  
-**Standard:** C++17 / C++20  
+**Category:** Embedded and Constrained Systems  
+**Standard:** C++17, C++20  
 **Reference:** <https://developer.arm.com/documentation/dui0553/latest/>  
 
 ---

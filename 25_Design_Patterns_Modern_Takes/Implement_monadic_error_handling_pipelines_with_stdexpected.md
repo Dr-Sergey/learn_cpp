@@ -1,7 +1,6 @@
 # Implement monadic error handling pipelines with std::expected
 
-**Category:** Design Patterns — Modern Takes  
-**Item:** #573  
+**Category:** Design Patterns Modern Takes  
 **Standard:** C++23  
 **Reference:** <https://en.cppreference.com/w/cpp/utility/expected>  
 

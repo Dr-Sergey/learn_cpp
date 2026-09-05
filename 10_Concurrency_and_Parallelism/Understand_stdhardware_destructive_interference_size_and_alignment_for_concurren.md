@@ -1,7 +1,6 @@
 # Understand std::hardware_destructive_interference_size and alignment for concurrent objects
 
-**Category:** Concurrency & Parallelism  
-**Item:** #245  
+**Category:** Concurrency and Parallelism  
 **Standard:** C++17  
 **Reference:** <https://en.cppreference.com/w/cpp/thread/hardware_destructive_interference_size>  
 

@@ -1,7 +1,7 @@
 # Implement the Decorator pattern using composition and interface forwarding
 
 **Category:** Modern OOP Patterns  
-**Item:** #387  
+**Standard:** Not version-specific  
 **Reference:** <https://en.wikipedia.org/wiki/Decorator_pattern>  
 
 ---

@@ -1,7 +1,6 @@
 # Use std::ranges::fold_left and fold_right (C++23)
 
-**Category:** Standard Library — Algorithms  
-**Item:** #195  
+**Category:** Standard Library Algorithms  
 **Standard:** C++23  
 **Reference:** <https://en.cppreference.com/w/cpp/algorithm/ranges/fold_left>  
 
@@ -166,6 +165,9 @@ The argument order reversal is the reason this trips people up. In `fold_left`, 
 #include <algorithm>
 #include <optional>
 #include <string>
+#include <functional>
+#include <ranges>
+#include <utility>
 
 int main() {
     std::vector<int> nums = {3, 1, 4, 1, 5, 9};

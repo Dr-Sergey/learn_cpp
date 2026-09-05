@@ -1,7 +1,7 @@
 # Implement a high-performance ring buffer for producer-consumer I/O
 
-**Category:** Networking & I/O  
-**Item:** #732  
+**Category:** Networking and IO  
+**Standard:** Not version-specific  
 **Reference:** <https://en.cppreference.com/w/cpp/atomic/atomic>  
 
 ---

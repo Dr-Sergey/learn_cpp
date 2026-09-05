@@ -1,7 +1,6 @@
 # Use named constants instead of magic numbers throughout the codebase
 
-**Category:** Best Practices & Idioms  
-**Item:** #407  
+**Category:** Best Practices and Idioms  
 **Standard:** C++20  
 **Reference:** <https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#Res-magic>  
 

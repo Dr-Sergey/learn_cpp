@@ -1,6 +1,6 @@
 # Understand Conditional `noexcept` and Its Impact on `std::vector` Reallocation
 
-**Category:** Move Semantics & Value Categories  
+**Category:** Move Semantics and Value Categories  
 **Standard:** C++11 and later  
 **Reference:** <https://en.cppreference.com/w/cpp/utility/move_if_noexcept>  
 

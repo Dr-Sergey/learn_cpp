@@ -1,6 +1,7 @@
 # Test concurrent code with ThreadSanitizer and stress testing
 
-**Category:** Testing in Practice
+**Category:** Testing in Practice  
+**Standard:** Not version-specific  
 
 ---
 

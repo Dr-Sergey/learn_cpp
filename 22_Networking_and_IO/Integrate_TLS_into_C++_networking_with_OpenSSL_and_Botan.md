@@ -1,7 +1,7 @@
 # Integrate TLS into C++ Networking with OpenSSL and Botan
 
-**Category:** Networking & I/O  
-**Standard:** C++17/20/23  
+**Category:** Networking and IO  
+**Standard:** C++17, C++20, C++23  
 **Reference:** [OpenSSL Wiki](https://wiki.openssl.org/index.php/SSL/TLS_Client), [Botan TLS](https://botan.randombit.net/handbook/api_ref/tls.html)  
 
 ---
@@ -194,6 +194,7 @@ The integration pattern at the bottom of the snippet is the mental model to hold
 
 With Boost.Asio, TLS is layered on top of a TCP socket using `ssl::stream<tcp::socket>`. The important thing to understand is that the handshake, reads, and writes are all async operations, meaning they interleave with other work in your io_context. The coroutine style makes the sequencing look synchronous even though it is not.
 
+<!-- compile: needs third-party library header `boost/asio.hpp` -->
 ```cpp
 #include <boost/asio.hpp>
 #include <boost/asio/ssl.hpp>

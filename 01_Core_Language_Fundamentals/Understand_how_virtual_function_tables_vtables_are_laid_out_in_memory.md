@@ -1,7 +1,7 @@
 # Understand how virtual function tables (vtables) are laid out in memory
 
 **Category:** Core Language Fundamentals  
-**Item:** #306  
+**Standard:** Not version-specific  
 **Reference:** <https://en.cppreference.com/w/cpp/language/virtual>  
 
 ---

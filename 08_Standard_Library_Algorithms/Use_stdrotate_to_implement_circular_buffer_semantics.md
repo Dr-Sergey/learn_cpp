@@ -1,7 +1,7 @@
 # Use std::rotate to implement circular buffer semantics
 
-**Category:** Standard Library - Algorithms  
-**Item:** #468  
+**Category:** Standard Library Algorithms  
+**Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/algorithm/rotate>  
 
 ---

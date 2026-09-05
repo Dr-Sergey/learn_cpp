@@ -1,7 +1,7 @@
 # Understand branch-free programming techniques for hot paths
 
-**Category:** Performance & CPU Architecture  
-**Item:** #631  
+**Category:** Performance and CPU Architecture  
+**Standard:** Not version-specific  
 **Reference:** <https://en.cppreference.com/w/cpp/language/operator_arithmetic>  
 
 ---
@@ -150,6 +150,7 @@ This is where branchless coding really shines. A classic binary search has a 50%
 #include <algorithm>
 #include <chrono>
 #include <random>
+#include <numeric>
 
 // Standard (branchy) binary search:
 int branchy_lower_bound(const int* arr, int n, int target) {

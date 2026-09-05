@@ -1,7 +1,6 @@
 # Implement the Observer pattern with type-safe signal/slot semantics
 
 **Category:** Modern OOP Patterns  
-**Item:** #383  
 **Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/utility/functional/function>  
 

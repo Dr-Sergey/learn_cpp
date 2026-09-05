@@ -1,7 +1,6 @@
 # Implement a task type with structured concurrency semantics
 
-**Category:** Coroutines (C++20)  
-**Item:** #520  
+**Category:** Coroutines Cpp20  
 **Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/language/coroutines>  
 

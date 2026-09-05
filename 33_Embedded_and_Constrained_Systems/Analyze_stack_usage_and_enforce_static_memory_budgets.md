@@ -1,7 +1,7 @@
 # Analyze Stack Usage and Enforce Static Memory Budgets
 
-**Category:** Embedded & Constrained Systems  
-**Standard:** C++17 / C++20  
+**Category:** Embedded and Constrained Systems  
+**Standard:** C++17, C++20  
 **Reference:** https://gcc.gnu.org/onlinedocs/gccint/Stack-Checking.html  
 
 ---

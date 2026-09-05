@@ -1,7 +1,6 @@
 # Use std::error_code and std::error_category for system error handling
 
 **Category:** Error Handling  
-**Item:** #98  
 **Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/error/error_code>  
 

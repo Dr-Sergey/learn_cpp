@@ -1,7 +1,7 @@
 # Know MSVC ABI and Class Layout with /d1reportSingleClassLayout
 
-**Category:** ABI & Binary Compatibility  
-**Standard:** C++17 / C++20 (MSVC-specific ABI)  
+**Category:** ABI and Binary Compatibility  
+**Standard:** C++17, C++20 (MSVC-specific ABI)  
 **Reference:** https://learn.microsoft.com/en-us/cpp/build/reference/compiler-options-listed-by-category  
 
 ---

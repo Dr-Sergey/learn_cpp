@@ -1,7 +1,6 @@
 # Use the Pimpl idiom to reduce compilation dependencies
 
-**Category:** Best Practices & Idioms  
-**Item:** #128  
+**Category:** Best Practices and Idioms  
 **Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/language/pimpl>  
 
@@ -101,6 +100,7 @@ std::string Widget::name() const { return pImpl_->name; }
 
 **main.cpp:**
 
+<!-- compile: fragment: depends on a header defined elsewhere in the topic -->
 ```cpp
 #include "widget.h"
 #include <iostream>

@@ -1,6 +1,7 @@
 # Use AI for architecture design discussions and trade-off analysis
 
-**Category:** AI-Assisted C++ Development
+**Category:** AI Assisted Development  
+**Standard:** Not version-specific  
 
 ---
 

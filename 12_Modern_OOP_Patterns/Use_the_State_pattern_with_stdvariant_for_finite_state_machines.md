@@ -1,7 +1,6 @@
 # Use the State pattern with std::variant for finite state machines
 
 **Category:** Modern OOP Patterns  
-**Item:** #490  
 **Standard:** C++17  
 **Reference:** <https://en.cppreference.com/w/cpp/utility/variant>  
 

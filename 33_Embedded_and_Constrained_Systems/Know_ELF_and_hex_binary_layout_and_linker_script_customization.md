@@ -1,6 +1,6 @@
 # Know ELF and hex binary layout and linker script customization
 
-**Category:** Embedded & Constrained Systems  
+**Category:** Embedded and Constrained Systems  
 **Standard:** C++17  
 **Reference:** <https://sourceware.org/binutils/docs/ld/Scripts.html>  
 

@@ -1,6 +1,7 @@
 # Know when to make member functions static, const, or free functions
 
-**Category:** OOP Design
+**Category:** OOP Design  
+**Standard:** Not version-specific  
 
 ---
 

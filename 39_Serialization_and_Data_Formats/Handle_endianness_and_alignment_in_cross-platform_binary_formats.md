@@ -1,7 +1,7 @@
 # Handle endianness and alignment in cross-platform binary formats
 
-**Category:** Serialization & Data Formats  
-**Standard:** C++20/23  
+**Category:** Serialization and Data Formats  
+**Standard:** C++20, C++23  
 **Reference:** <https://en.cppreference.com/w/cpp/types/endian>  
 
 ---
@@ -76,6 +76,7 @@ This is the other half of the cross-platform story. Your C++ compiler inserts in
 #include <cstdint>
 #include <iostream>
 #include <cstddef>
+#include <cstring>
 
 // Struct padding differs between compilers and architectures!
 struct Unpacked {

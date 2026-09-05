@@ -1,7 +1,6 @@
 # Use std::this_thread::sync_wait to drive a sender pipeline synchronously
 
-**Category:** std::execution & Senders/Receivers  
-**Item:** #527  
+**Category:** Std Execution and Senders Receivers  
 **Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/execution>  
 
@@ -28,6 +27,7 @@ The return type encodes all three possible completion channels cleanly:
 
 The pipeline in this example runs on a thread pool, but the calling thread (main) blocks at `sync_wait` until the result is ready. Watch the thread IDs - the lambda prints a different ID from the one `main` is running on, which confirms the work really happened elsewhere:
 
+<!-- compile: needs third-party library header `stdexec/execution.hpp` -->
 ```cpp
 #include <stdexec/execution.hpp>
 #include <exec/static_thread_pool.hpp>
@@ -101,6 +101,7 @@ The key insight is that `sync_wait` provides an execution context (a `run_loop`)
 
 This example walks through all three channels in separate blocks so you can see each case in isolation. The final block shows the fully defensive pattern that handles all three outcomes:
 
+<!-- compile: needs third-party library header `stdexec/execution.hpp` -->
 ```cpp
 #include <stdexec/execution.hpp>
 #include <iostream>

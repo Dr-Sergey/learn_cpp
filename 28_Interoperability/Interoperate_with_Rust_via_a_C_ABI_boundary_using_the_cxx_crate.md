@@ -1,7 +1,7 @@
 # Interoperate with Rust via a C ABI boundary using the cxx crate
 
 **Category:** Interoperability  
-**Item:** #695  
+**Standard:** Not version-specific  
 **Reference:** <https://cxx.rs/>  
 
 ---
@@ -114,6 +114,7 @@ The C++ side includes the cxx-generated header and the header for the C++ functi
 void log_message(int32_t level, const rust::String& msg);
 ```
 
+<!-- compile: fragment: depends on a header defined elsewhere in the topic -->
 ```cpp
 // cpp_funcs.cpp
 #include "cpp_funcs.h"

@@ -1,7 +1,7 @@
 # Use Conan 2.0 for C++ package management
 
-**Category:** Build Systems & CI  
-**Item:** #661  
+**Category:** Build Systems and CI  
+**Standard:** Not version-specific  
 **Reference:** <https://docs.conan.io/2/>  
 
 ---

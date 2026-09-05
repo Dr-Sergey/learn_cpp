@@ -1,7 +1,7 @@
 # Understand stack canaries, ASLR, and NX bits as defence-in-depth
 
-**Category:** Safety & Security  
-**Item:** #562  
+**Category:** Safety and Security  
+**Standard:** Not version-specific  
 **Reference:** <https://en.wikipedia.org/wiki/Buffer_overflow_protection>  
 
 ---

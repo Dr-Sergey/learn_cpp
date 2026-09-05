@@ -1,7 +1,7 @@
 # Handle Endianness Detection and Byte Swapping Portably
 
-**Category:** Cross-Platform Development  
-**Standard:** C++20 / C++23  
+**Category:** Cross Platform Development  
+**Standard:** C++20, C++23  
 **Reference:** <https://en.cppreference.com/w/cpp/types/endian>  
 
 ---

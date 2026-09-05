@@ -1,8 +1,7 @@
 # Understand the Difference Between `std::decay` and `std::remove_reference`
 
-**Category:** Type System & Deduction  
-**Item:** #202  
-**Standard:** C++11 (`decay`, `remove_reference`), C++20 (`remove_cvref`)  
+**Category:** Type System and Deduction  
+**Standard:** C++11, C++20 (`decay`, `remove_reference`)  
 **Reference:** <https://en.cppreference.com/w/cpp/types/decay>  
 
 ---

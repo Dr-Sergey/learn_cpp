@@ -1,7 +1,6 @@
 # Understand the Herb Sutter deterministic exceptions proposal and its alternatives
 
 **Category:** Error Handling  
-**Item:** #252  
 **Standard:** C++23  
 **Reference:** <https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/p0709r0.pdf>  
 

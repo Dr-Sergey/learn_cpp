@@ -1,7 +1,6 @@
 # Use `consteval` for Functions That Must Only Run at Compile Time (C++20)
 
-**Category:** Compile-Time Programming  
-**Item:** #54  
+**Category:** Compile Time Programming  
 **Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/language/consteval>  
 
@@ -242,7 +241,10 @@ int main() {
     std::cout << "compile_time_only(7) = " << d << "\n";
 
     // === VALID: consteval calling consteval ===
-    consteval auto doubled_square = [](int n) {
+    // consteval is a function specifier, so it goes on the lambda's call
+    // operator - `consteval auto x = ...` would declare a consteval variable,
+    // which is ill-formed.
+    auto doubled_square = [](int n) consteval {
         return compile_time_only(n) * 2;
     };
     constexpr int e = doubled_square(3);  // OK: 3 -> 10 -> 20

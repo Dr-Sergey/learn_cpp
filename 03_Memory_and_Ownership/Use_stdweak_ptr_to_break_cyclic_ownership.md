@@ -1,7 +1,6 @@
 # Use std::weak_ptr to Break Cyclic Ownership
 
-**Category:** Memory & Ownership  
-**Item:** #442  
+**Category:** Memory and Ownership  
 **Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/memory/weak_ptr>  
 

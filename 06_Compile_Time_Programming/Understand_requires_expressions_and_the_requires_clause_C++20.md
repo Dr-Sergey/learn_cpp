@@ -1,7 +1,6 @@
 # Understand `requires` Expressions and the `requires` Clause (C++20)
 
-**Category:** Compile-Time Programming  
-**Item:** #58  
+**Category:** Compile Time Programming  
 **Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/language/requires>  
 

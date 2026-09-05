@@ -1,6 +1,6 @@
 # Use reflection for automatic debug printing and logging
 
-**Category:** Reflection (C++26)  
+**Category:** Reflection Cpp26  
 **Standard:** C++26  
 **Reference:** <https://wg21.link/P2996>  
 
@@ -35,6 +35,7 @@ With reflection, this becomes automatic.
 
 The `auto_print` function below works for any aggregate type. It uses `template for` to expand over the members at compile time, printing each one's name and value. You never write a single field name yourself.
 
+<!-- compile: needs `meta` (not in the CI standard library yet) -->
 ```cpp
 #include <meta>
 #include <iostream>

@@ -1,6 +1,7 @@
 # Design plugin architectures with dynamic loading and abstract interfaces
 
-**Category:** Project Architecture
+**Category:** Project Architecture  
+**Standard:** Not version-specific  
 
 ---
 

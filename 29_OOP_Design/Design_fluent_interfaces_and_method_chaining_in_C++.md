@@ -1,6 +1,7 @@
 # Design fluent interfaces and method chaining in C++
 
-**Category:** OOP Design
+**Category:** OOP Design  
+**Standard:** Not version-specific  
 
 ---
 

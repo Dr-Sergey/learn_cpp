@@ -1,7 +1,7 @@
 # Use Unified Shared Memory for Simplified GPU Programming
 
-**Category:** GPU & Heterogeneous Computing  
-**Standard:** C++17 / CUDA 12.x / SYCL 2020  
+**Category:** GPU and Heterogeneous Computing  
+**Standard:** C++17, C++20  
 **Reference:** <https://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html#unified-memory-programming>  
 
 ---
@@ -43,6 +43,7 @@ This example wraps managed memory in a `unique_ptr` with a custom deleter so tha
 
 The first run shows the cold cost of page-fault-driven migration. The second run shows what prefetching buys you. The third run introduces `cudaMemAdviseSetReadMostly`, which tells the driver that `x` is read-only from the GPU's perspective - on systems with NVLink, this can cause the driver to replicate the pages on both CPU and GPU, eliminating migration for reads entirely.
 
+<!-- compile: needs third-party library header `cuda_runtime.h` -->
 ```cpp
 #include <cuda_runtime.h>
 #include <cstdio>
@@ -138,6 +139,7 @@ This is the most important performance lesson for USM. The "thrashing" pattern -
 
 The fix is conceptually simple: do all the GPU work first, synchronize once, then do all the CPU work. This means the pages migrate to the GPU, all GPU iterations run without any migration overhead, then the pages migrate to the CPU once for all CPU iterations. One migration instead of twenty.
 
+<!-- compile: needs third-party library header `cuda_runtime.h` -->
 ```cpp
 #include <cuda_runtime.h>
 #include <cstdio>
@@ -212,6 +214,7 @@ SYCL offers the same three allocation strategies as CUDA USM. This example bench
 
 The key insight is that `malloc_shared` cold performance is typically worse than `malloc_device` + explicit copy because the migration happens at page granularity with fault overhead. But `malloc_shared` with prefetching narrows that gap considerably, and it makes your code much simpler.
 
+<!-- compile: needs third-party library header `sycl/sycl.hpp` -->
 ```cpp
 #include <sycl/sycl.hpp>
 #include <iostream>

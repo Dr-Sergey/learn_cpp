@@ -1,7 +1,7 @@
 # Understand Sequencing Rules and Evaluation Order Since C++17
 
 **Category:** Undefined Behavior Deep Dive  
-**Standard:** C++11 / C++14 / C++17 / C++20  
+**Standard:** C++11, C++14, C++17, C++20  
 **Reference:** [cppreference - Order of evaluation](https://en.cppreference.com/w/cpp/language/eval_order)  
 
 ---

@@ -1,7 +1,7 @@
-# Understand C interop: extern C, name mangling, and calling conventions
+# Link C and C++ objects and match calling conventions on Windows
 
 **Category:** Interoperability  
-**Item:** #771  
+**Standard:** Not version-specific  
 **Reference:** <https://en.cppreference.com/w/cpp/language/language_linkage>  
 
 ---

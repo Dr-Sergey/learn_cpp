@@ -1,7 +1,6 @@
 # Use structured logging with key-value pairs instead of printf-style strings
 
-**Category:** Best Practices & Idioms  
-**Item:** #503  
+**Category:** Best Practices and Idioms  
 **Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/utility/format>  
 

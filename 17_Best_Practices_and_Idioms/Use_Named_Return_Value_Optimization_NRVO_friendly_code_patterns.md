@@ -1,7 +1,6 @@
 # Use Named Return Value Optimization (NRVO) friendly code patterns
 
-**Category:** Best Practices & Idioms  
-**Item:** #219  
+**Category:** Best Practices and Idioms  
 **Standard:** C++17  
 **Reference:** <https://en.cppreference.com/w/cpp/language/copy_elision>  
 

@@ -1,7 +1,7 @@
 # Use the Strategy pattern with templates for zero-overhead policy injection
 
-**Category:** Design Patterns - Modern Takes  
-**Item:** #673  
+**Category:** Design Patterns Modern Takes  
+**Standard:** Not version-specific  
 **Reference:** <https://en.wikipedia.org/wiki/Strategy_pattern>  
 
 ---
@@ -137,6 +137,7 @@ The benchmark here shows the concrete performance difference between the two app
 #include <vector>
 #include <algorithm>
 #include <functional>
+#include <numeric>
 
 // Template policy: compiles to inlined code
 struct InlinedCompare {
@@ -218,6 +219,7 @@ This example puts the decision guide in concrete code. Notice that `TemplateVali
 #include <vector>
 #include <string>
 #include <algorithm>
+#include <utility>
 
 // Template policy: inline, compile-time fixed
 template<typename ValidationPolicy>

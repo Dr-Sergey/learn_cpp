@@ -1,7 +1,7 @@
 # Use std::adjacent_find and std::unique for duplicate detection
 
-**Category:** Standard Library - Algorithms  
-**Item:** #246  
+**Category:** Standard Library Algorithms  
+**Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/algorithm/unique>  
 
 ---
@@ -188,6 +188,7 @@ This is the most common mistake with `std::unique` and it is easy to miss becaus
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <set>
 
 int main() {
     // === BUG: unique on unsorted data ===

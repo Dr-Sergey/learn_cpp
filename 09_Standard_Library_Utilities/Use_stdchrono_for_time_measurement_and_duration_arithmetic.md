@@ -1,8 +1,7 @@
 # Use std::chrono for time measurement and duration arithmetic
 
-**Category:** Standard Library — Utilities  
-**Item:** #80  
-**Standard:** C++11 / C++20  
+**Category:** Standard Library Utilities  
+**Standard:** C++11, C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/chrono>  
 
 ---

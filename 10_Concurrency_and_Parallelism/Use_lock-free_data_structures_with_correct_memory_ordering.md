@@ -1,7 +1,6 @@
 # Use lock-free data structures with correct memory ordering
 
-**Category:** Concurrency & Parallelism  
-**Item:** #199  
+**Category:** Concurrency and Parallelism  
 **Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/atomic/memory_order>  
 

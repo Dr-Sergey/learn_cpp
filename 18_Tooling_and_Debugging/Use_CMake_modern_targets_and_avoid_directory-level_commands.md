@@ -1,7 +1,7 @@
 # Use CMake modern targets and avoid directory-level commands
 
-**Category:** Tooling & Debugging  
-**Item:** #146  
+**Category:** Tooling and Debugging  
+**Standard:** Not version-specific  
 **Reference:** <https://cmake.org/cmake/help/latest/>  
 
 ---

@@ -1,7 +1,7 @@
 # Use Ninja Multi-Config for single-configure multi-config builds
 
-**Category:** Build Systems & CI  
-**Item:** #667  
+**Category:** Build Systems and CI  
+**Standard:** Not version-specific  
 **Reference:** <https://cmake.org/cmake/help/latest/generator/Ninja%20Multi-Config.html>  
 
 ---

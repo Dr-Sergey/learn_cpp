@@ -1,7 +1,6 @@
 # Use reflection for compile-time interface checking beyond concepts
 
-**Category:** Reflection (C++26)  
-**Item:** #620  
+**Category:** Reflection Cpp26  
 **Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/language/reflection>  
 
@@ -31,6 +30,7 @@ If the table feels like a lot, the key insight is: concepts check *what you can 
 
 The two helper functions below are the building blocks for structural checking. `has_method` walks the member list and matches by name and return type; `has_field` does the same for data members. Notice that both run entirely at compile time via `consteval`.
 
+<!-- compile: needs `meta` (not in the CI standard library yet) -->
 ```cpp
 // C++26 with P2996 reflection
 #include <meta>
@@ -90,6 +90,7 @@ The `static_assert` calls at the bottom are what make this useful in practice - 
 
 One of the most practical wins from reflection over raw concepts is the quality of error messages. When a concept is not satisfied deep in a template, the error is often a wall of "constraints not satisfied" text. With reflection, you write the error message yourself and it fires exactly where you want it.
 
+<!-- compile: needs `meta` (not in the CI standard library yet) -->
 ```cpp
 #include <meta>
 #include <iostream>
@@ -150,6 +151,7 @@ The reason this matters so much in a real codebase is that the person who writes
 
 Here is a concrete use case that shows why the structural checking approach pays off. A plugin system has a well-defined protocol - every plugin must implement `init`, `shutdown`, `name`, and `version`. With reflection you can enforce this at the point of instantiation, before any runtime registration happens.
 
+<!-- compile: needs `meta` (not in the CI standard library yet) -->
 ```cpp
 #include <meta>
 #include <iostream>

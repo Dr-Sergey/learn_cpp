@@ -1,6 +1,6 @@
 # Understand co_yield Patterns and Lazy Generator Pipelines
 
-**Category:** Coroutines (C++20)  
+**Category:** Coroutines Cpp20  
 **Standard:** C++20  
 **Reference:** [cppreference - co_yield](https://en.cppreference.com/w/cpp/language/co_yield)  
 

@@ -1,7 +1,6 @@
 # Use [[assume(expr)]] (C++23) to communicate assumptions to the optimizer
 
-**Category:** Best Practices & Idioms  
-**Item:** #185  
+**Category:** Best Practices and Idioms  
 **Standard:** C++23  
 **Reference:** <https://en.cppreference.com/w/cpp/language/attributes/assume>  
 

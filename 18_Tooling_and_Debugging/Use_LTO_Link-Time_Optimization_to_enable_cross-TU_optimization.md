@@ -1,7 +1,7 @@
 # Use LTO (Link-Time Optimization) to enable cross-TU optimization
 
-**Category:** Tooling & Debugging  
-**Item:** #507  
+**Category:** Tooling and Debugging  
+**Standard:** Not version-specific  
 **Reference:** <https://llvm.org/docs/LinkTimeOptimization.html>  
 
 ---
@@ -51,6 +51,7 @@ endif()
 
 Here is the example code that demonstrates the benefit. `main.cpp` calls two functions defined in `util.cpp` - without LTO the calls cannot be inlined; with LTO the entire computation collapses to a constant:
 
+<!-- compile: fragment: depends on a header defined elsewhere in the topic -->
 ```cpp
 // util.h
 #pragma once

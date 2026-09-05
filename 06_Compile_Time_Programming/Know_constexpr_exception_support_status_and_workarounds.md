@@ -1,7 +1,7 @@
 # Know constexpr exception support status and workarounds
 
-**Category:** Compile-Time Programming  
-**Standard:** C++20/26  
+**Category:** Compile Time Programming  
+**Standard:** C++20, C++26  
 **Reference:** <https://wg21.link/P3068>  
 
 ---

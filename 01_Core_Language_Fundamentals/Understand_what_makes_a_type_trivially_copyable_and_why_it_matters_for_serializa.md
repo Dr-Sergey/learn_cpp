@@ -1,7 +1,7 @@
 # Understand what makes a type trivially copyable and why it matters for serialization
 
 **Category:** Core Language Fundamentals  
-**Item:** #308  
+**Standard:** Not version-specific  
 **Reference:** <https://en.cppreference.com/w/cpp/named_req/TriviallyCopyable>  
 
 ---

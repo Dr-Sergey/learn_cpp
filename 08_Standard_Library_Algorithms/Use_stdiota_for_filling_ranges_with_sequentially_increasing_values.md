@@ -1,8 +1,7 @@
 # Use std::iota for filling ranges with sequentially increasing values
 
-**Category:** Standard Library — Algorithms  
-**Item:** #356  
-**Standard:** C++11 / C++20 (ranges)  
+**Category:** Standard Library Algorithms  
+**Standard:** C++11, C++20 (ranges)  
 **Reference:** <https://en.cppreference.com/w/cpp/algorithm/iota>  
 
 ---

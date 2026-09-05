@@ -1,7 +1,7 @@
 # Use the Opaque Typedef pattern for domain-driven type safety
 
-**Category:** Design Patterns - Modern Takes  
-**Item:** #574  
+**Category:** Design Patterns Modern Takes  
+**Standard:** Not version-specific  
 **Reference:** <https://www.fluentcpp.com/2016/12/08/strong-types-for-strong-interfaces/>  
 
 ---

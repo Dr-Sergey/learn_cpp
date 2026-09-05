@@ -1,6 +1,7 @@
 # Design logging and telemetry architecture for production C++ systems
 
-**Category:** Project Architecture
+**Category:** Project Architecture  
+**Standard:** Not version-specific  
 
 ---
 

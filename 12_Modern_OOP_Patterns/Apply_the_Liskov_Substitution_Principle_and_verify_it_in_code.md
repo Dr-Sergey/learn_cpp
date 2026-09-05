@@ -1,7 +1,6 @@
 # Apply the Liskov Substitution Principle and verify it in code
 
 **Category:** Modern OOP Patterns  
-**Item:** #385  
 **Standard:** C++20  
 **Reference:** <https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#Rh-copy>  
 

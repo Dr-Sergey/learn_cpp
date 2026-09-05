@@ -1,6 +1,7 @@
 # Design classes with proper const-correctness for member functions and data
 
-**Category:** OOP Design
+**Category:** OOP Design  
+**Standard:** Not version-specific  
 
 ---
 

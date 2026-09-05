@@ -1,6 +1,7 @@
 # Know the difference between standard-layout types and their serialization guarantees
 
 **Category:** Core Language Fundamentals  
+**Standard:** Not version-specific  
 **Reference:** <https://en.cppreference.com/w/cpp/named_req/StandardLayoutType>  
 
 ---

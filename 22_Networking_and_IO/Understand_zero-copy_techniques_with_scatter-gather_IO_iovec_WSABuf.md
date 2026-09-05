@@ -1,7 +1,7 @@
 # Understand zero-copy techniques with scatter-gather I/O (iovec / WSABuf)
 
-**Category:** Networking & I/O  
-**Item:** #730  
+**Category:** Networking and IO  
+**Standard:** Not version-specific  
 **Reference:** <https://man7.org/linux/man-pages/man2/readv.2.html>  
 
 ---

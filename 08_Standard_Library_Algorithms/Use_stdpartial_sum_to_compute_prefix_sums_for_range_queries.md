@@ -1,7 +1,7 @@
 # Use std::partial_sum to compute prefix sums for range queries
 
-**Category:** Standard Library — Algorithms  
-**Item:** #359  
+**Category:** Standard Library Algorithms  
+**Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/algorithm/partial_sum>  
 
 ---

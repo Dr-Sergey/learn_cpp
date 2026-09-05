@@ -1,7 +1,6 @@
 # Use loop vectorization hints and verify SIMD code generation
 
-**Category:** Performance & CPU Architecture  
-**Item:** #626  
+**Category:** Performance and CPU Architecture  
 **Standard:** C++11  
 **Reference:** <https://llvm.org/docs/Vectorizers.html>  
 

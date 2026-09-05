@@ -1,7 +1,7 @@
 # Apply data-oriented design: prefer struct-of-arrays over array-of-structs
 
-**Category:** Best Practices & Idioms  
-**Item:** #410  
+**Category:** Best Practices and Idioms  
+**Standard:** Not version-specific  
 **Reference:** <https://en.cppreference.com/w/cpp/language/performance>  
 
 ---

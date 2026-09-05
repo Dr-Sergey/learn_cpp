@@ -1,7 +1,6 @@
 # Use lambda-based overload sets (the overload pattern)
 
-**Category:** Lambda & Functional  
-**Item:** #194  
+**Category:** Lambda and Functional  
 **Standard:** C++17 (using-pack expansion)  
 **Reference:** <https://en.cppreference.com/w/cpp/utility/variant/visit>  
 

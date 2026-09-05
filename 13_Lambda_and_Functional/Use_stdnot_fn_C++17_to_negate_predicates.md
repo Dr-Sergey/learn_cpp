@@ -1,7 +1,6 @@
 # Use std::not_fn (C++17) to negate predicates
 
-**Category:** Lambda & Functional  
-**Item:** #208  
+**Category:** Lambda and Functional  
 **Standard:** C++17  
 **Reference:** <https://en.cppreference.com/w/cpp/utility/functional/not_fn>  
 

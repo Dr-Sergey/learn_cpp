@@ -1,7 +1,7 @@
 # Write correct exception-safe code using RAII and strong/basic guarantees
 
 **Category:** Error Handling  
-**Item:** #97  
+**Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/language/exceptions>  
 
 ---

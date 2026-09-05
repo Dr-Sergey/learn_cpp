@@ -1,6 +1,6 @@
 # Use `std::forward_like` (C++23) to Propagate Owner Value Category
 
-**Category:** Standard Library — New in C++23/26  
+**Category:** Standard Library New Cpp23 26  
 **Standard:** C++23  
 **Reference:** [cppreference - std::forward_like](https://en.cppreference.com/w/cpp/utility/forward_like)  
 

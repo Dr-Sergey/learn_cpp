@@ -1,6 +1,6 @@
 # Use Intel VTune and AMD uProf for micro-architectural profiling
 
-**Category:** Performance & CPU Architecture  
+**Category:** Performance and CPU Architecture  
 **Standard:** C++17 (tool-agnostic)  
 **Reference:** <https://www.intel.com/content/www/us/en/developer/tools/oneapi/vtune-profiler.html> <https://developer.amd.com/amd-uprof/>  
 

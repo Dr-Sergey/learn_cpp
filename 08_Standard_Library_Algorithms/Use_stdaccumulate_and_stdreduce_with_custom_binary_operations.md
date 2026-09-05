@@ -1,8 +1,7 @@
 # Use std::accumulate and std::reduce with custom binary operations
 
-**Category:** Standard Library - Algorithms  
-**Item:** #73  
-**Standard:** C++11 / C++17  
+**Category:** Standard Library Algorithms  
+**Standard:** C++11, C++17  
 **Reference:** <https://en.cppreference.com/w/cpp/algorithm/accumulate>  
 
 ---

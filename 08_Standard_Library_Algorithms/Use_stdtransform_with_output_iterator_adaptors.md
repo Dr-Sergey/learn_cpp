@@ -1,8 +1,7 @@
 # Use std::transform with output iterator adaptors
 
-**Category:** Standard Library - Algorithms  
-**Item:** #473  
-**Standard:** C++98 / C++11 / C++20  
+**Category:** Standard Library Algorithms  
+**Standard:** C++98, C++11, C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/iterator/back_insert_iterator>  
 
 ---

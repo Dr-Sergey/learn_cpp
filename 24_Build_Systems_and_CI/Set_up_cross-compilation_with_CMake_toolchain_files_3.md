@@ -1,7 +1,7 @@
-# Set up cross-compilation with CMake toolchain files
+# Set up a cross-compilation workflow with CMAKE_FIND_ROOT_PATH modes
 
-**Category:** Build Systems & CI  
-**Item:** #742  
+**Category:** Build Systems and CI  
+**Standard:** Not version-specific  
 **Reference:** <https://cmake.org/cmake/help/latest/manual/cmake-toolchains.7.html>  
 
 ---

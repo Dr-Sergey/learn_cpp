@@ -1,6 +1,7 @@
 # Use CTest and CMake testing infrastructure effectively
 
-**Category:** Testing in Practice
+**Category:** Testing in Practice  
+**Standard:** Not version-specific  
 
 ---
 

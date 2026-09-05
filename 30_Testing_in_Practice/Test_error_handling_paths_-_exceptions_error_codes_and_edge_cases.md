@@ -1,6 +1,7 @@
 # Test error handling paths - exceptions, error codes, and edge cases
 
-**Category:** Testing in Practice
+**Category:** Testing in Practice  
+**Standard:** Not version-specific  
 
 ---
 

@@ -1,7 +1,7 @@
 # Use memory-mapped files with mmap for high-throughput file access
 
-**Category:** Networking & I/O  
-**Item:** #552  
+**Category:** Networking and IO  
+**Standard:** Not version-specific  
 **Reference:** <https://man7.org/linux/man-pages/man2/mmap.2.html>  
 
 ---
@@ -44,6 +44,7 @@ The choice of `mmap` flags controls behavior quite a bit. Here is a quick refere
 
 Notice the `MAP_POPULATE` flag here - it tells the kernel to fault in all pages immediately at mmap time rather than lazily on first access. This trades a predictable up-front cost for eliminating unpredictable page-fault latency later. For a server handling requests, you usually prefer that predictability:
 
+<!-- compile: needs POSIX header `sys/mman.h` -->
 ```cpp
 // Linux/POSIX
 #include <iostream>
@@ -110,6 +111,7 @@ After the mapping is established, both sequential and random access use the same
 
 `madvise()` must be called before you start accessing the data - it is a hint about what you are about to do, not a description of what you already did. Here we compare three hints on a 50 MB file to show how much the kernel's prefetching strategy matters:
 
+<!-- compile: needs POSIX header `sys/mman.h` -->
 ```cpp
 #include <iostream>
 #include <cstring>
@@ -176,6 +178,7 @@ int main() {
 
 This example shows mmap used as a real storage engine, not just a reading tool. The `MmapKVStore` maps a file, writes key-value entries directly into the mapped memory as C structs, and calls `msync()` to flush. When the process restarts and remaps the same file, the data is still there:
 
+<!-- compile: needs POSIX header `sys/mman.h` -->
 ```cpp
 #include <iostream>
 #include <cstring>

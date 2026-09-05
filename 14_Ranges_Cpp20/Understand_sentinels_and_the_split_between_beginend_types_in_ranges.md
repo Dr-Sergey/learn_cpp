@@ -1,7 +1,6 @@
 # Understand sentinels and the split between begin/end types in ranges
 
-**Category:** Ranges (C++20)  
-**Item:** #120  
+**Category:** Ranges Cpp20  
 **Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/ranges>  
 
@@ -108,6 +107,7 @@ Here we're building a proper range type whose `begin()` and `end()` deliberately
 ```cpp
 #include <iostream>
 #include <ranges>
+#include <concepts>
 
 // Custom sentinel: stops at null terminator
 struct NullTermSentinel {

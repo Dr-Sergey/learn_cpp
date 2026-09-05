@@ -1,7 +1,7 @@
 # Use std::next_permutation and prev_permutation for combinatorial enumeration
 
-**Category:** Standard Library — Algorithms  
-**Item:** #357  
+**Category:** Standard Library Algorithms  
+**Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/algorithm/next_permutation>  
 
 ---

@@ -1,7 +1,6 @@
 # Use std::shift_left and std::shift_right (C++20)
 
-**Category:** Standard Library - Algorithms  
-**Item:** #177  
+**Category:** Standard Library Algorithms  
 **Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/algorithm/shift>  
 

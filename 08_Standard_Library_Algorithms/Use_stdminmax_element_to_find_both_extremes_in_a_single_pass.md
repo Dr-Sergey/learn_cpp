@@ -1,7 +1,6 @@
 # Use std::minmax_element to find both extremes in a single pass
 
-**Category:** Standard Library — Algorithms  
-**Item:** #354  
+**Category:** Standard Library Algorithms  
 **Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/algorithm/minmax_element>  
 
@@ -84,6 +83,7 @@ This example uses a counting comparator to measure the actual number of comparis
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <numeric>
 
 // Counting comparator
 struct CountingLess {

@@ -1,6 +1,6 @@
 # Know Named Modules vs Header Units and When to Use Each
 
-**Category:** Modules & Build (C++20)  
+**Category:** Modules and Build Cpp20  
 **Standard:** C++20  
 **Reference:** [cppreference — Modules](https://en.cppreference.com/w/cpp/language/modules)  
 
@@ -59,6 +59,7 @@ In practice, the decision matrix is straightforward: use named modules for code 
 
 This is the single most important semantic difference to internalize. Watch what happens to the macros in each approach.
 
+<!-- compile: fragment: depends on a header defined elsewhere in the topic -->
 ```cpp
 // ---------- config.h (traditional header) ----------
 #pragma once
@@ -187,12 +188,14 @@ target_link_libraries(app PRIVATE core_module)
 
 The consumer can mix both styles freely within the same file, though not all headers work reliably as header units.
 
+<!-- compile: fragment: one translation unit of a multi-file module example -->
 ```cpp
 // src/main.cpp
 import core;                     // named module - CMake handles compilation order
 import <vector>;                 // header unit - requires compiler/build system support
 import <string>;                 // header unit
 #include <iostream>              // still a regular include (not all headers work as HU)
+#include <vector>
 
 int main() {
     std::vector<core::Item> items = core::load_items();

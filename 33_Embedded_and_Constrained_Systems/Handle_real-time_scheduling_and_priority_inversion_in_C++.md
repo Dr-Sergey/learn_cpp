@@ -1,7 +1,7 @@
 # Handle Real-Time Scheduling and Priority Inversion in C++
 
-**Category:** Embedded & Constrained Systems  
-**Standard:** C++17 / C++20  
+**Category:** Embedded and Constrained Systems  
+**Standard:** C++17, C++20  
 **Reference:** https://en.wikipedia.org/wiki/Priority_inversion  
 
 ---

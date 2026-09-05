@@ -1,7 +1,6 @@
 # Implement a concurrent hash map using striped locking
 
-**Category:** Concurrency & Parallelism  
-**Item:** #789  
+**Category:** Concurrency and Parallelism  
 **Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/thread/mutex>  
 
@@ -57,6 +56,8 @@ Here is a complete implementation. Notice that `stripe_index` and `bucket_index`
 #include <optional>
 #include <iostream>
 #include <string>
+#include <array>
+#include <utility>
 
 template<typename K, typename V, typename Hash = std::hash<K>>
 class StripedHashMap {

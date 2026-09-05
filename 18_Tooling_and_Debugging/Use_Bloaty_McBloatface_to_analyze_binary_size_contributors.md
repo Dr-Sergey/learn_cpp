@@ -1,7 +1,7 @@
 # Use Bloaty McBloatface to analyze binary size contributors
 
-**Category:** Tooling & Debugging  
-**Item:** #798  
+**Category:** Tooling and Debugging  
+**Standard:** Not version-specific  
 **Reference:** <https://github.com/google/bloaty>  
 
 ---

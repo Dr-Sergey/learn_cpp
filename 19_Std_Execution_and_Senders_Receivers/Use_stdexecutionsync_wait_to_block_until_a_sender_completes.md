@@ -1,7 +1,6 @@
 # Use std::execution::sync_wait to block until a sender completes
 
-**Category:** std::execution & Senders/Receivers  
-**Item:** #606  
+**Category:** Std Execution and Senders Receivers  
 **Standard:** C++23  
 **Reference:** <https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2023/p2300r7.html>  
 
@@ -27,6 +26,7 @@ Sender pipelines are lazy and composable, but eventually you need to actually ru
 
 Let's start with the simplest case. You build a pipeline, call `sync_wait`, and then pull the result out of the returned optional/tuple. Structured bindings make this feel quite natural:
 
+<!-- compile: needs third-party library header `stdexec/execution.hpp` -->
 ```cpp
 #include <stdexec/execution.hpp>
 #include <iostream>
@@ -109,6 +109,7 @@ The reason the `// BAD:` example deadlocks is that `sync_wait` needs to own an e
 
 This example goes through all three channels. The three `{}` blocks are self-contained so you can see each case cleanly, followed by a practical pattern that handles all of them together:
 
+<!-- compile: needs third-party library header `stdexec/execution.hpp` -->
 ```cpp
 #include <stdexec/execution.hpp>
 #include <iostream>

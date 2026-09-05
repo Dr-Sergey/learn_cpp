@@ -1,6 +1,7 @@
 # Implement mutation testing to evaluate test suite quality
 
-**Category:** Testing in Practice
+**Category:** Testing in Practice  
+**Standard:** Not version-specific  
 
 ---
 

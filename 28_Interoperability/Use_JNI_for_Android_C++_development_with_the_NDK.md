@@ -1,7 +1,7 @@
 # Use JNI for Android C++ development with the NDK
 
 **Category:** Interoperability  
-**Item:** #776  
+**Standard:** Not version-specific  
 **Reference:** <https://developer.android.com/ndk/guides/jni>  
 
 ---

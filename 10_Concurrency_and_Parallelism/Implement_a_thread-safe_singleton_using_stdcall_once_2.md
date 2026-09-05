@@ -1,7 +1,6 @@
 # Implement a thread-safe singleton using std::call_once (Part 2)
 
-**Category:** Concurrency & Parallelism  
-**Item:** #483  
+**Category:** Concurrency and Parallelism  
 **Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/thread/call_once>  
 
@@ -124,6 +123,7 @@ This example uses a real file-backed log to show a resource that genuinely needs
 #include <iostream>
 #include <vector>
 #include <fstream>
+#include <string>
 
 // Global resource: a shared log file
 class SharedLog {

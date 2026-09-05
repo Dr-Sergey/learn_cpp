@@ -1,7 +1,6 @@
 # Implement a task<T> coroutine type from scratch
 
-**Category:** Coroutines (C++20)  
-**Item:** #400  
+**Category:** Coroutines Cpp20  
 **Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/language/coroutines>  
 

@@ -1,7 +1,7 @@
 # Design ABI-Stable C++ Library Interfaces
 
-**Category:** ABI & Binary Compatibility  
-**Standard:** C++11 / C++14 / C++17 / C++20  
+**Category:** ABI and Binary Compatibility  
+**Standard:** C++11, C++14, C++17, C++20  
 **Reference:** https://www.kdab.com/cpp-api-design/  
 
 ---

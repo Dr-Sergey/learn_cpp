@@ -1,7 +1,6 @@
 # Use std::linalg (C++26) for portable linear algebra on mdspan
 
-**Category:** Standard Library — New in C++23/26  
-**Item:** #582  
+**Category:** Standard Library New Cpp23 26  
 **Standard:** C++26  
 **Reference:** <https://en.cppreference.com/w/cpp/numeric/linalg>  
 
@@ -43,6 +42,7 @@ This example computes `y = A * x` for a 2x3 matrix and a length-3 vector. The se
 
 **Answer:**
 
+<!-- compile: needs `linalg` (not in the CI standard library yet) -->
 ```cpp
 #include <linalg>   // C++26
 #include <mdspan>   // C++23
@@ -107,6 +107,7 @@ There is an important distinction between `scaled()` and `scale()` that is easy 
 
 **Answer:**
 
+<!-- compile: needs `linalg` (not in the CI standard library yet) -->
 ```cpp
 #include <linalg>
 #include <mdspan>

@@ -1,7 +1,7 @@
 # Understand ABI stability and binary compatibility concerns
 
-**Category:** Best Practices & Idioms  
-**Item:** #142  
+**Category:** Best Practices and Idioms  
+**Standard:** Not version-specific  
 **Reference:** <https://en.cppreference.com/w/cpp/language/abi_tag>  
 
 ---

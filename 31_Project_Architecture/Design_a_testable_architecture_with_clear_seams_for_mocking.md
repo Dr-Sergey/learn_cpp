@@ -1,6 +1,7 @@
 # Design a testable architecture with clear seams for mocking
 
-**Category:** Project Architecture
+**Category:** Project Architecture  
+**Standard:** Not version-specific  
 
 ---
 

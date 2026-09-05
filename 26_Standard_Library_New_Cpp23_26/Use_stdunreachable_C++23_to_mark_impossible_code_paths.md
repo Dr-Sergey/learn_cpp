@@ -1,6 +1,6 @@
 # Use `std::unreachable()` (C++23) to Mark Impossible Code Paths
 
-**Category:** Standard Library — New in C++23/26  
+**Category:** Standard Library New Cpp23 26  
 **Standard:** C++23  
 **Reference:** [cppreference — std::unreachable](https://en.cppreference.com/w/cpp/utility/unreachable)  
 

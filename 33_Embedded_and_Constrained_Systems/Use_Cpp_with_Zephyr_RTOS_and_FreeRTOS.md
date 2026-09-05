@@ -1,7 +1,7 @@
 # Use C++ with Zephyr RTOS and FreeRTOS
 
-**Category:** Embedded & Constrained Systems  
-**Standard:** C++17/20  
+**Category:** Embedded and Constrained Systems  
+**Standard:** C++17, C++20  
 **Reference:** <https://docs.zephyrproject.org/latest/> · <https://www.freertos.org/>  
 
 ---
@@ -23,6 +23,7 @@ The good news is that all of these have clean solutions. The techniques below sh
 
 FreeRTOS tasks are created with C function pointers. C++ member functions and lambdas cannot be passed directly - a member function has a hidden `this` parameter, and a capturing lambda has no way to decay to a raw function pointer. The solution is the **trampoline pattern**: pass a plain `static` function as the entry point, and smuggle `this` through the `pvParameters` argument.
 
+<!-- compile: needs POSIX header `FreeRTOS.h` -->
 ```cpp
 #include "FreeRTOS.h"
 #include "task.h"

@@ -1,7 +1,7 @@
 # Use io_uring for async I/O with minimal syscall overhead
 
-**Category:** Networking & I/O  
-**Item:** #728  
+**Category:** Networking and IO  
+**Standard:** Not version-specific  
 **Reference:** <https://kernel.dk/io_uring.pdf>  
 
 ---
@@ -42,6 +42,7 @@ The table below compares the four operational modes. The tradeoff is always late
 
 The key insight here is that you fill in all three SQEs before calling `io_uring_submit` once. Compare this with three separate `pread` calls, each of which is a syscall. With io_uring you pay one syscall for the whole batch regardless of how many operations you submit.
 
+<!-- compile: needs POSIX header `liburing.h` -->
 ```cpp
 // Requires: liburing
 // Compile: g++ -std=c++20 -luring batch_submit.cpp
@@ -103,6 +104,7 @@ The `user_data` field on each SQE is how you correlate a completion back to the 
 
 SQPOLL is where io_uring gets genuinely exotic. A kernel thread wakes up and continuously polls the submission ring. You write an SQE into shared memory and the kernel thread picks it up without you ever making a syscall. The tradeoff is that this kernel thread consumes a CPU core, so SQPOLL is only worthwhile at very high I/O rates where the thread stays busy most of the time.
 
+<!-- compile: needs POSIX header `liburing.h` -->
 ```cpp
 #include <iostream>
 #include <cstring>

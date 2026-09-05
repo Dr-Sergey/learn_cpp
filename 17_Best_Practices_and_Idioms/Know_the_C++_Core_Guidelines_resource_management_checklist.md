@@ -1,7 +1,7 @@
 # Know the C++ Core Guidelines' resource management checklist
 
-**Category:** Best Practices & Idioms  
-**Item:** #500  
+**Category:** Best Practices and Idioms  
+**Standard:** Not version-specific  
 **Reference:** <https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#S-resource>  
 
 ---

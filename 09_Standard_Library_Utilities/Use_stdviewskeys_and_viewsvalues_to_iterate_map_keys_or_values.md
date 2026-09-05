@@ -1,7 +1,6 @@
 # Use std::views::keys and views::values to iterate map keys or values
 
-**Category:** Standard Library - Utilities  
-**Item:** #367  
+**Category:** Standard Library Utilities  
 **Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/ranges/keys_view>  
 
@@ -226,6 +225,9 @@ Understanding the equivalence helps you predict how `views::keys` behaves in edg
 #include <iostream>
 #include <string>
 #include <type_traits>
+#include <tuple>
+#include <utility>
+#include <vector>
 
 int main() {
     std::map<std::string, int> m{

@@ -1,7 +1,7 @@
 # Design Interrupt-Safe C++ Patterns for ISR Contexts
 
-**Category:** Embedded & Constrained Systems  
-**Standard:** C++17 / C++20 (`<atomic>`)  
+**Category:** Embedded and Constrained Systems  
+**Standard:** C++17, C++20 (`<atomic>`)  
 **Reference:** https://en.cppreference.com/w/cpp/atomic  
 
 ---

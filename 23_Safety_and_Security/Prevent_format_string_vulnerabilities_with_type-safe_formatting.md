@@ -1,7 +1,6 @@
 # Prevent format string vulnerabilities with type-safe formatting
 
-**Category:** Safety & Security  
-**Item:** #654  
+**Category:** Safety and Security  
 **Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/utility/format>  
 

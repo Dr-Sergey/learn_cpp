@@ -1,8 +1,7 @@
 # Use range adaptors: filter, transform, take, drop, and their composition
 
-**Category:** Ranges (C++20)  
-**Item:** #116  
-**Standard:** C++20 / C++23  
+**Category:** Ranges Cpp20  
+**Standard:** C++20, C++23  
 **Reference:** <https://en.cppreference.com/w/cpp/ranges#Range_adaptors>  
 
 ---

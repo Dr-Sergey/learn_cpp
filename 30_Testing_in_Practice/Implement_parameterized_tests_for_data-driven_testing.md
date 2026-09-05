@@ -1,6 +1,7 @@
 # Implement parameterized tests for data-driven testing
 
-**Category:** Testing in Practice
+**Category:** Testing in Practice  
+**Standard:** Not version-specific  
 
 ---
 

@@ -1,6 +1,7 @@
 # Design RAII wrappers correctly - constructor acquires, destructor releases
 
-**Category:** OOP Design
+**Category:** OOP Design  
+**Standard:** C++11  
 
 ---
 

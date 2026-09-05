@@ -1,6 +1,6 @@
 # Know Build System Challenges with Module Dependency Scanning
 
-**Category:** Modules & Build (C++20)  
+**Category:** Modules and Build Cpp20  
 **Standard:** C++20  
 **Reference:** [P1689R5 — Format for describing dependencies of source files](https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2022/p1689r5.html)  
 

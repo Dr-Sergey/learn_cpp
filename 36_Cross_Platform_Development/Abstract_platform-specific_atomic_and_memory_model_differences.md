@@ -1,7 +1,7 @@
 # Abstract platform-specific atomic and memory model differences
 
-**Category:** Cross-Platform Development  
-**Standard:** C++17/20  
+**Category:** Cross Platform Development  
+**Standard:** C++17, C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/atomic/memory_order>  
 
 ---

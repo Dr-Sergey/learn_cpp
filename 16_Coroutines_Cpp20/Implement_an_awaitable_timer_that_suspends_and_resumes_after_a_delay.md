@@ -1,7 +1,6 @@
 # Implement an awaitable timer that suspends and resumes after a delay
 
-**Category:** Coroutines (C++20)  
-**Item:** #239  
+**Category:** Coroutines Cpp20  
 **Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/language/coroutines>  
 

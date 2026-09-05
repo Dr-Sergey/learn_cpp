@@ -1,7 +1,6 @@
 # Use `std::common_type` to Deduce the Common Type of a Set of Types
 
-**Category:** Templates & Generic Programming  
-**Item:** #234  
+**Category:** Templates and Generic Programming  
 **Standard:** C++11 (improved in C++14/C++23)  
 **Reference:** <https://en.cppreference.com/w/cpp/types/common_type>  
 

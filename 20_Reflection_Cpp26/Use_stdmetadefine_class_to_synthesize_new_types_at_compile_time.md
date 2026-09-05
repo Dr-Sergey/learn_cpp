@@ -1,7 +1,6 @@
 # Use std::meta::define_class to synthesize new types at compile time
 
-**Category:** Reflection (C++26)  
-**Item:** #713  
+**Category:** Reflection Cpp26  
 **Standard:** C++11  
 **Reference:** <https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2024/p2996r5.html>  
 
@@ -31,6 +30,7 @@ This is a fundamentally different capability from everything else in C++. Templa
 
 The `make_point_type` function below is a `consteval` function - it runs entirely at compile time - and its job is to build the description of a new type. `data_member_spec` describes one field, and `define_class` assembles them into a real C++ struct. The `using Point3D = [:make_point_type():]` line then splices the resulting type into the normal type system so you can use it just like any other struct.
 
+<!-- compile: needs `meta` (not in the CI standard library yet) -->
 ```cpp
 // C++26 with P2996 reflection
 #include <meta>
@@ -76,6 +76,7 @@ Once the type is created, it is a fully ordinary C++ struct. You can create inst
 
 This example is closer to a real use case: a network protocol is described as a compile-time list of field names and types, and `make_packet_type` turns that description into a concrete struct. The resulting `Packet` type has exactly the fields the spec calls for, with the correct types and names.
 
+<!-- compile: needs `meta` (not in the CI standard library yet) -->
 ```cpp
 #include <meta>
 #include <iostream>
@@ -138,6 +139,7 @@ The nice part here is that you can then use `nonstatic_data_members_of` on the g
 
 This example is important for understanding exactly what `define_class` adds that did not exist before. The reason this trips people up is that C++ already had `constexpr` computation and template metaprogramming, so it is not immediately obvious what was missing. The key distinction is the difference between computing *values* at compile time and creating *types* at compile time.
 
+<!-- compile: needs `meta` (not in the CI standard library yet) -->
 ```cpp
 #include <meta>
 #include <iostream>

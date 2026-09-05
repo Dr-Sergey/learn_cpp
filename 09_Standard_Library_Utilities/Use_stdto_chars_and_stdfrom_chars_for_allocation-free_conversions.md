@@ -1,7 +1,6 @@
 # Use std::to_chars and std::from_chars for allocation-free conversions
 
-**Category:** Standard Library - Utilities  
-**Item:** #474  
+**Category:** Standard Library Utilities  
 **Standard:** C++17  
 **Reference:** <https://en.cppreference.com/w/cpp/utility/charconv/to_chars>  
 
@@ -92,6 +91,9 @@ This example instruments `operator new` to prove that `to_chars` touches no heap
 #include <string_view>
 #include <iostream>
 #include <cstdlib>
+#include <cstddef>
+#include <string>
+#include <system_error>
 
 // Custom global operator new to detect heap allocations
 static int alloc_count = 0;

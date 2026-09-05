@@ -1,6 +1,7 @@
 # Implement the Entity-Component-System (ECS) pattern for game or simulation engines
 
-**Category:** Project Architecture
+**Category:** Project Architecture  
+**Standard:** Not version-specific  
 
 ---
 

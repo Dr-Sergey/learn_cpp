@@ -1,7 +1,7 @@
-# Set up cross-compilation with CMake toolchain files
+# Invoke a CMake toolchain file and control find_package in cross builds
 
-**Category:** Build Systems & CI  
-**Item:** #660  
+**Category:** Build Systems and CI  
+**Standard:** Not version-specific  
 **Reference:** <https://cmake.org/cmake/help/latest/manual/cmake-toolchains.7.html>  
 
 ---

@@ -1,7 +1,6 @@
 # Understand SFINAE with `enable_if` vs Concepts - Choose Concepts
 
-**Category:** Compile-Time Programming  
-**Item:** #282  
+**Category:** Compile Time Programming  
 **Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/language/constraints>  
 

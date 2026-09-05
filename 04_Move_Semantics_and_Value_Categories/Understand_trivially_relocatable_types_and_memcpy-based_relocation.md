@@ -1,7 +1,7 @@
 # Understand Trivially Relocatable Types and memcpy-Based Relocation
 
-**Category:** Move Semantics & Value Categories  
-**Item:** #449  
+**Category:** Move Semantics and Value Categories  
+**Standard:** Not version-specific  
 **Reference:** <https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2023/p1144r9.html>  
 
 ---

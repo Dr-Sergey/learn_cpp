@@ -1,7 +1,7 @@
 # Choose Between Busy-Spin and Sleep-Based Waiting
 
-**Category:** Low Latency & Real-Time C++  
-**Standard:** C++20 / C++23  
+**Category:** Low Latency and Real Time  
+**Standard:** C++20, C++23  
 **Reference:** [Intel PAUSE instruction](https://www.intel.com/content/www/us/en/docs/intrinsics-guide/), [C++20 atomic wait/notify](https://en.cppreference.com/w/cpp/atomic/atomic/wait)  
 
 ---

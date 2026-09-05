@@ -1,7 +1,7 @@
 # Understand std::destroy_at vs Explicit Destructor Call and Their Guarantees
 
-**Category:** Memory & Ownership  
-**Item:** #290  
+**Category:** Memory and Ownership  
+**Standard:** C++17  
 **Reference:** <https://en.cppreference.com/w/cpp/memory/destroy_at>  
 
 ---

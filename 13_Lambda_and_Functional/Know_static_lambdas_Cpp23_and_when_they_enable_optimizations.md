@@ -1,6 +1,6 @@
 # Know static lambdas (C++23) and when they enable optimizations
 
-**Category:** Lambda & Functional  
+**Category:** Lambda and Functional  
 **Standard:** C++23  
 **Reference:** <https://en.cppreference.com/w/cpp/language/lambda>  
 

@@ -1,7 +1,7 @@
 # Implement zero-copy I/O patterns with scatter-gather (iovec / readv/writev)
 
-**Category:** Networking & I/O  
-**Item:** #641  
+**Category:** Networking and IO  
+**Standard:** Not version-specific  
 **Reference:** <https://man7.org/linux/man-pages/man2/readv.2.html>  
 
 ---
@@ -39,6 +39,7 @@ Scatter-gather writev (1 syscall, zero copy):
 
 This example writes a length-prefixed "protocol message" to a temporary file and then reads it back using `readv` - splitting the 4-byte header and the 12-byte payload into separate buffers in a single syscall. In real networking code, you would call `readv` on the socket FD instead of a file FD, but the mechanics are identical.
 
+<!-- compile: needs POSIX header `unistd.h` -->
 ```cpp
 // Linux/POSIX example
 #include <iostream>
@@ -90,6 +91,7 @@ int main() {
 
 The `send_framed` function here is the workhorse pattern you will use any time you have a fixed-size header and a variable-length payload. It encodes the length header into a stack buffer, builds a two-element `iovec`, and sends both in one `writev` call. The while loop handles partial writes - `writev` on a socket is not guaranteed to write everything at once, so you adjust the `iovec` pointers and lengths and retry.
 
+<!-- compile: needs POSIX header `unistd.h` -->
 ```cpp
 #include <iostream>
 #include <cstring>

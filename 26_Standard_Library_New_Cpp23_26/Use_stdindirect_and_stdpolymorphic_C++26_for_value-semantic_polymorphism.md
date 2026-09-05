@@ -1,7 +1,6 @@
 # Use std::indirect and std::polymorphic (C++26) for value-semantic polymorphism
 
-**Category:** Standard Library — New in C++23/26  
-**Item:** #576  
+**Category:** Standard Library New Cpp23 26  
 **Standard:** C++26  
 **Reference:** <https://en.cppreference.com/w/cpp/memory/indirect>  
 
@@ -44,6 +43,7 @@ This example stores `Circle` and `Rect` objects inside `std::polymorphic<Shape>`
 
 **Answer:**
 
+<!-- compile: needs `indirect` (not in the CI standard library yet) -->
 ```cpp
 // C++26 — requires <indirect> / <polymorphic> support
 #include <indirect>
@@ -108,6 +108,7 @@ You access the stored object through `.value()`, which returns a reference to th
 
 **Answer:**
 
+<!-- compile: needs `indirect` (not in the CI standard library yet) -->
 ```cpp
 #include <indirect>
 #include <iostream>

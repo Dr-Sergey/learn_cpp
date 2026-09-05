@@ -1,7 +1,6 @@
 # Understand structured concurrency with async_scope
 
-**Category:** std::execution & Senders/Receivers  
-**Item:** #709  
+**Category:** Std Execution and Senders Receivers  
 **Standard:** C++11  
 **Reference:** <https://github.com/NVIDIA/stdexec>  
 
@@ -37,6 +36,7 @@ Every sender you pass to `spawn` is tracked. The scope will not let you leave un
 
 The atomic counter here is just a way to verify that all five tasks actually ran. The important thing to watch is the output order - tasks complete in reverse order because each one sleeps for a duration proportional to `(5 - i)`, so child 4 sleeps the least and finishes first:
 
+<!-- compile: needs third-party library header `stdexec/execution.hpp` -->
 ```cpp
 #include <stdexec/execution.hpp>
 #include <exec/static_thread_pool.hpp>
@@ -91,6 +91,7 @@ After `on_empty()` returns, you can access `counter` without any synchronization
 
 A `unique_ptr` is a good illustration here because its destructor is visible in the output. You can see that `~Resource(database)` appears only after both tasks have printed their messages - the scope's `on_empty()` acts as the sequencing fence that makes this deterministic:
 
+<!-- compile: needs third-party library header `stdexec/execution.hpp` -->
 ```cpp
 #include <stdexec/execution.hpp>
 #include <exec/static_thread_pool.hpp>

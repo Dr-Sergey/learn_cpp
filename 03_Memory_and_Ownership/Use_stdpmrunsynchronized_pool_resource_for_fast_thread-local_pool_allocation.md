@@ -1,7 +1,6 @@
 # Use std::pmr::unsynchronized_pool_resource for Fast Thread-Local Pool Allocation
 
-**Category:** Memory & Ownership  
-**Item:** #174  
+**Category:** Memory and Ownership  
 **Standard:** C++17  
 **Reference:** <https://en.cppreference.com/w/cpp/memory/unsynchronized_pool_resource>  
 

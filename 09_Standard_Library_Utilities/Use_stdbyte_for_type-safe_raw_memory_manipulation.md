@@ -1,7 +1,6 @@
 # Use std::byte for type-safe raw memory manipulation
 
-**Category:** Standard Library — Utilities  
-**Item:** #475  
+**Category:** Standard Library Utilities  
 **Standard:** C++17  
 **Reference:** <https://en.cppreference.com/w/cpp/types/byte>  
 

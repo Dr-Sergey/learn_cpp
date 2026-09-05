@@ -1,7 +1,6 @@
 # Use std::bit_cast (C++20) for safe type punning
 
-**Category:** Standard Library — Utilities  
-**Item:** #85  
+**Category:** Standard Library Utilities  
 **Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/numeric/bit_cast>  
 

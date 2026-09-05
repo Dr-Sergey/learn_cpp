@@ -1,6 +1,7 @@
 # Test interrupt service routines (ISR) and real-time constraints
 
-**Category:** Testing in Practice
+**Category:** Testing in Practice  
+**Standard:** C++20  
 
 ---
 

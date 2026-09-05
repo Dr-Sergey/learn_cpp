@@ -1,7 +1,6 @@
 # Understand coroutine-based concurrency vs thread-based concurrency
 
-**Category:** Concurrency & Parallelism  
-**Item:** #287  
+**Category:** Concurrency and Parallelism  
 **Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/language/coroutines>  
 

@@ -1,7 +1,7 @@
 # Enable hardened standard library modes for bounds checking
 
-**Category:** Safety & Security  
-**Item:** #558  
+**Category:** Safety and Security  
+**Standard:** Not version-specific  
 **Reference:** <https://libcxx.llvm.org/Hardening.html>  
 
 ---

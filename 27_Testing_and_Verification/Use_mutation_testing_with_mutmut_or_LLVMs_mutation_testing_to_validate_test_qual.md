@@ -1,7 +1,7 @@
 # Use mutation testing with mutmut or LLVM's mutation testing to validate test quality
 
-**Category:** Testing & Verification  
-**Item:** #765  
+**Category:** Testing and Verification  
+**Standard:** Not version-specific  
 **Reference:** <https://github.com/llvm/llvm-project/tree/main/llvm/lib/FrontendOpenMP>  
 
 ---

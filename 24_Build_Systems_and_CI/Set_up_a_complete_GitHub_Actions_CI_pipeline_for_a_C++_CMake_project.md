@@ -1,7 +1,7 @@
 # Set up a complete GitHub Actions CI pipeline for a C++ CMake project
 
-**Category:** Build Systems & CI  
-**Item:** #663  
+**Category:** Build Systems and CI  
+**Standard:** Not version-specific  
 **Reference:** <https://docs.github.com/en/actions>  
 
 ---

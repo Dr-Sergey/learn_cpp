@@ -1,8 +1,7 @@
 # Understand the Interaction Between `auto` and `initializer_list` Deduction
 
-**Category:** Type System & Deduction  
-**Item:** #242  
-**Standard:** C++11 (original), C++17 (fix)  
+**Category:** Type System and Deduction  
+**Standard:** C++11, C++17 (original)  
 **Reference:** <https://en.cppreference.com/w/cpp/language/template_argument_deduction>  
 
 ---
@@ -251,6 +250,7 @@ Not every feature that surprises you on first encounter is bad. Here is where th
 #include <algorithm>
 #include <numeric>
 #include <string>
+#include <vector>
 
 // Use case 1: Range-for over ad-hoc lists
 void demo_range_for() {

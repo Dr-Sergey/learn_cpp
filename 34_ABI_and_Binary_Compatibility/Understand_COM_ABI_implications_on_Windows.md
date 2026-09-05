@@ -1,7 +1,7 @@
 # Understand COM ABI Implications on Windows
 
-**Category:** ABI & Binary Compatibility  
-**Standard:** COM (Component Object Model) - Windows platform  
+**Category:** ABI and Binary Compatibility  
+**Standard:** COM  - Windows platform (Component Object Model)  
 **Reference:** https://learn.microsoft.com/en-us/windows/win32/com/the-component-object-model  
 
 ---
@@ -193,6 +193,8 @@ When a single object implements multiple COM interfaces, the COM identity rule b
 #include <windows.h>
 #include <cstdio>
 #include <atomic>
+#include <cstring>
+#include <cwchar>
 
 // Interface GUIDs
 // {A1B2C3D4-E5F6-7890-1234-567890ABCDEF}

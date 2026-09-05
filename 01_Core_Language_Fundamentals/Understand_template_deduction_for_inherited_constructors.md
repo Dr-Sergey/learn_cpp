@@ -1,7 +1,7 @@
 # Understand template deduction for inherited constructors
 
 **Category:** Core Language Fundamentals  
-**Item:** #781  
+**Standard:** Not version-specific  
 **Reference:** <https://en.cppreference.com/w/cpp/language/using_declaration>  
 
 ---

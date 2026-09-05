@@ -1,7 +1,6 @@
 # Prefer algorithms with projections over manual key extraction lambdas
 
-**Category:** Best Practices & Idioms  
-**Item:** #258  
+**Category:** Best Practices and Idioms  
 **Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/algorithm/ranges/sort>  
 

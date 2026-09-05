@@ -1,7 +1,7 @@
-# Use CMakePresets.json for reproducible, shareable build configurations
+# Design platform-specific CMakePresets.json configurations
 
-**Category:** Build Systems & CI  
-**Item:** #741  
+**Category:** Build Systems and CI  
+**Standard:** Not version-specific  
 **Reference:** <https://cmake.org/cmake/help/latest/manual/cmake-presets.7.html>  
 
 ---

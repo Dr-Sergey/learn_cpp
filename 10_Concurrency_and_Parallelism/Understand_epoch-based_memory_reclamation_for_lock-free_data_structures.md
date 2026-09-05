@@ -1,6 +1,6 @@
 # Understand Epoch-Based Memory Reclamation for Lock-Free Data Structures
 
-**Category:** Concurrency & Parallelism  
+**Category:** Concurrency and Parallelism  
 **Standard:** C++11 and later (uses `std::atomic`, no dedicated standard library component)  
 **Reference:** [Keir Fraser - Epoch-Based Reclamation (2004)](https://www.cl.cam.ac.uk/techreports/UCAM-CL-TR-579.pdf)  
 
@@ -209,6 +209,7 @@ This is EBR's Achilles' heel, and it is worth understanding deeply. If a thread 
 #include <iostream>
 #include <thread>
 #include <vector>
+#include <array>
 
 struct EBRWithStallDetection {
     static constexpr int MAX_THREADS = 16;

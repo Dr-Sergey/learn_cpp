@@ -1,7 +1,7 @@
 # Use compile_commands.json and Bear for IDE integration
 
-**Category:** Build Systems & CI  
-**Item:** #666  
+**Category:** Build Systems and CI  
+**Standard:** Not version-specific  
 **Reference:** <https://clangd.llvm.org/installation>  
 
 ---

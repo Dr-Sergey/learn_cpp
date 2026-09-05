@@ -1,8 +1,7 @@
 # Use `constexpr` Lambdas as Compile-Time Predicates
 
-**Category:** Compile-Time Programming  
-**Item:** #460  
-**Standard:** C++17 (constexpr lambdas), C++20 (lambda as NTTP)  
+**Category:** Compile Time Programming  
+**Standard:** C++17, C++20 (constexpr lambdas)  
 **Reference:** <https://en.cppreference.com/w/cpp/language/lambda>  
 
 ---

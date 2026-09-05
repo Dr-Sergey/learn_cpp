@@ -1,7 +1,6 @@
 # Use range-based for loops correctly and know their caveats
 
 **Category:** Core Language Fundamentals  
-**Item:** #5  
 **Standard:** C++11  
 **Reference:** <https://github.com/AnthonyCalandra/modern-cpp-features/blob/master/CPP11.md#range-based-for-loops>  
 

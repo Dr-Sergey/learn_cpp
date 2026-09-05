@@ -1,7 +1,7 @@
 # Understand the ABA problem in lock-free programming
 
-**Category:** Concurrency & Parallelism  
-**Item:** #480  
+**Category:** Concurrency and Parallelism  
+**Standard:** Not version-specific  
 **Reference:** <https://en.wikipedia.org/wiki/ABA_problem>  
 
 ---

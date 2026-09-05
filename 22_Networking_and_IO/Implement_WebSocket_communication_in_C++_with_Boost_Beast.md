@@ -1,7 +1,7 @@
 # Implement WebSocket Communication in C++ with Boost.Beast
 
-**Category:** Networking & I/O  
-**Standard:** C++17/20  
+**Category:** Networking and IO  
+**Standard:** C++17, C++20  
 **Reference:** [Boost.Beast WebSocket](https://www.boost.org/doc/libs/release/libs/beast/doc/html/beast/using_websocket.html), [RFC 6455](https://datatracker.ietf.org/doc/html/rfc6455)  
 
 ---
@@ -51,6 +51,7 @@ One subtlety worth knowing up front: Beast automatically handles control frames 
 
 The server manages a `ClientHub` - a thread-safe registry of all currently connected WebSocket streams. When any client sends a message, the hub broadcasts it to everyone. The `handle_session` coroutine runs per connection: it accepts the WebSocket upgrade, registers with the hub, then enters a read loop. When the loop exits (either gracefully via a close frame or via an error), the guard lambda ensures the client is removed from the hub.
 
+<!-- compile: needs third-party library header `boost/beast/core.hpp` -->
 ```cpp
 #include <boost/beast/core.hpp>
 #include <boost/beast/websocket.hpp>
@@ -169,6 +170,7 @@ Note the `guard` lambda in `handle_session`. It calls `hub.leave` when the funct
 
 A robust WebSocket client needs two things beyond the basic connect-and-read loop: keepalive pings to prevent NAT/firewall timeouts, and automatic reconnection with exponential backoff when the connection drops. Beast handles pings for you when you set `keep_alive_pings = true`. The reconnection logic in `run_with_reconnect` is a standard exponential backoff pattern - start at 500ms, double each attempt, cap at 30 seconds.
 
+<!-- compile: needs third-party library header `boost/beast/core.hpp` -->
 ```cpp
 #include <boost/beast/core.hpp>
 #include <boost/beast/websocket.hpp>

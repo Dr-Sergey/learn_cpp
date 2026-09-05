@@ -1,7 +1,7 @@
 # Understand bit fields and their portability constraints
 
 **Category:** Core Language Fundamentals  
-**Item:** #221  
+**Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/language/bit_field>  
 
 ---

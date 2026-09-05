@@ -1,6 +1,7 @@
 # Use aggregate initialization vs constructor initialization wisely
 
-**Category:** OOP Design
+**Category:** OOP Design  
+**Standard:** Not version-specific  
 
 ---
 

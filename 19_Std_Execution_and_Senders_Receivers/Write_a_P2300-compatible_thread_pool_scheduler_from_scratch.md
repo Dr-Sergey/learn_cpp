@@ -1,7 +1,6 @@
 # Write a P2300-compatible thread pool scheduler from scratch
 
-**Category:** std::execution & Senders/Receivers  
-**Item:** #614  
+**Category:** Std Execution and Senders Receivers  
 **Standard:** C++11  
 **Reference:** <https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2023/p2300r7.html>  
 
@@ -43,6 +42,7 @@ Scheduler architecture:
 
 Let's build this bottom-up. First comes a simple thread pool using a mutex-protected queue, then the P2300 glue types that wrap it. Read through the three pieces in order - `thread_pool`, `pool_sender`, and `pool_scheduler` - and notice how each layer only needs to know about the one below it:
 
+<!-- compile: needs third-party library header `stdexec/execution.hpp` -->
 ```cpp
 #include <stdexec/execution.hpp>
 #include <thread>

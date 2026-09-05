@@ -1,7 +1,6 @@
 # Use std::start_lifetime_as (C++23) for Safe Reinterpretation of Byte Arrays
 
-**Category:** Memory & Ownership  
-**Item:** #329  
+**Category:** Memory and Ownership  
 **Standard:** C++23  
 **Reference:** <https://en.cppreference.com/w/cpp/memory/start_lifetime_as>  
 

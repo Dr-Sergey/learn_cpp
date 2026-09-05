@@ -1,7 +1,7 @@
 # Use io_uring from C++ for zero-syscall async I/O on Linux
 
-**Category:** Networking & I/O  
-**Item:** #551  
+**Category:** Networking and IO  
+**Standard:** Not version-specific  
 **Reference:** <https://github.com/axboe/liburing>  
 
 ---
@@ -52,6 +52,7 @@ Compare that to what traditional I/O requires every single time:
 
 Before looking at the code, notice what we're wrapping: `io_uring_queue_init` and `io_uring_queue_exit` are the open/close pair that allocate the shared rings. Those absolutely need RAII treatment - you do not want to forget `queue_exit` on an error path. The `FileDesc` class at the bottom is the same idea applied to plain file descriptors.
 
+<!-- compile: needs POSIX header `liburing.h` -->
 ```cpp
 // Requires: liburing-dev
 // Compile: g++ -std=c++20 -luring raii_uring.cpp

@@ -1,7 +1,7 @@
 # Achieve Deterministic Execution and WCET Analysis
 
-**Category:** Embedded & Constrained Systems  
-**Standard:** C++17/20  
+**Category:** Embedded and Constrained Systems  
+**Standard:** C++17, C++20  
 **Reference:** [AbsInt aiT WCET Analyzer](https://www.absint.com/ait/), [ARM Cortex-M DWT](https://developer.arm.com/documentation/ddi0403/latest/)  
 
 ---

@@ -1,6 +1,7 @@
 # Use access specifiers strategically - public, protected, private semantics
 
-**Category:** OOP Design
+**Category:** OOP Design  
+**Standard:** Not version-specific  
 
 ---
 

@@ -1,7 +1,6 @@
 # Understand `aligned_alloc` and Over-Aligned Types
 
-**Category:** Memory & Ownership  
-**Item:** #265  
+**Category:** Memory and Ownership  
 **Standard:** C++17  
 **Reference:** <https://en.cppreference.com/w/cpp/memory/c/aligned_alloc>  
 

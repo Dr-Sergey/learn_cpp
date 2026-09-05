@@ -1,7 +1,6 @@
 # Use sanitizer-driven testing as part of the CI pipeline
 
-**Category:** Testing & Verification  
-**Item:** #769  
+**Category:** Testing and Verification  
 **Standard:** C++17  
 **Reference:** <https://clang.llvm.org/docs/AddressSanitizer.html>  
 

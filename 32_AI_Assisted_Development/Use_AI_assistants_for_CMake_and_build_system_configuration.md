@@ -1,6 +1,7 @@
 # Use AI assistants for CMake and build system configuration
 
-**Category:** AI-Assisted C++ Development
+**Category:** AI Assisted Development  
+**Standard:** Not version-specific  
 
 ---
 

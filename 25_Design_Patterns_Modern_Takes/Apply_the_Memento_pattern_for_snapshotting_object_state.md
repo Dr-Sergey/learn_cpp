@@ -1,7 +1,7 @@
 # Apply the Memento pattern for snapshotting object state
 
-**Category:** Design Patterns - Modern Takes  
-**Item:** #677  
+**Category:** Design Patterns Modern Takes  
+**Standard:** Not version-specific  
 **Reference:** <https://en.wikipedia.org/wiki/Memento_pattern>  
 
 ---
@@ -45,6 +45,8 @@ The trick here is the `friend class TextEditor` declaration inside `Memento`. Th
 #include <string>
 #include <vector>
 #include <chrono>
+#include <algorithm>
+#include <utility>
 
 class TextEditor {
 public:

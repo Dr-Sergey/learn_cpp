@@ -1,7 +1,7 @@
 # Use `std::is_invocable` and `std::invoke_result` for Callable Trait Introspection
 
-**Category:** Type System & Deduction  
-**Item:** #316  
+**Category:** Type System and Deduction  
+**Standard:** C++17  
 **Reference:** <https://en.cppreference.com/w/cpp/types/is_invocable>  
 
 ---

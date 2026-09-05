@@ -1,7 +1,6 @@
 # Understand cancellation in P2300 via stop tokens and stop callbacks
 
-**Category:** std::execution & Senders/Receivers  
-**Item:** #611  
+**Category:** Std Execution and Senders Receivers  
 **Standard:** C++26  
 **Reference:** <https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2023/p2300r7.html>  
 
@@ -44,6 +43,7 @@ Polling is simpler and is the right choice for CPU-bound work that runs in a loo
 
 This example shows the polling pattern. The compute loop checks the stop token every 1000 iterations - frequent enough to respond promptly, infrequent enough not to waste cycles on the check itself.
 
+<!-- compile: needs third-party library header `stdexec/execution.hpp` -->
 ```cpp
 #include <stdexec/execution.hpp>
 #include <exec/static_thread_pool.hpp>

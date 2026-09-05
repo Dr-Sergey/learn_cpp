@@ -1,7 +1,7 @@
 # Understand TCP Nagle algorithm, delayed ACK, and when to disable them
 
-**Category:** Networking & I/O  
-**Item:** #554  
+**Category:** Networking and IO  
+**Standard:** Not version-specific  
 **Reference:** <https://en.wikipedia.org/wiki/Nagle%27s_algorithm>  
 
 ---
@@ -47,6 +47,7 @@ The table below shows which combinations kill latency and which escape the trap:
 
 The code below shows how to set up the measurement pattern. The key is the two consecutive small writes followed by a read - that is the exact sequence that triggers the deadlock. Notice what happens to the per-request latency depending on whether `TCP_NODELAY` is set:
 
+<!-- compile: needs POSIX header `sys/socket.h` -->
 ```cpp
 // Requires client+server - showing the setup pattern
 #include <iostream>
@@ -159,6 +160,7 @@ Total: 40ms added latency (or 200ms on some OSes!)
 
 If you can't or don't want to disable Nagle (perhaps because you're doing bulk data transfer elsewhere on the same socket), you can still escape the deadlock by making the kernel see your header and payload as a single logical write. `writev`, `MSG_MORE`, and `TCP_CORK` are three ways to do exactly that:
 
+<!-- compile: needs POSIX header `sys/socket.h` -->
 ```cpp
 #include <iostream>
 #include <cstring>

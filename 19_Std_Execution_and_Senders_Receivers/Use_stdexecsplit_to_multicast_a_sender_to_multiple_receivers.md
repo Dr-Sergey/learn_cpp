@@ -1,7 +1,6 @@
 # Use stdexec::split to multicast a sender to multiple receivers
 
-**Category:** std::execution & Senders/Receivers  
-**Item:** #710  
+**Category:** Std Execution and Senders Receivers  
 **Standard:** C++26  
 **Reference:** <https://github.com/NVIDIA/stdexec>  
 
@@ -30,6 +29,7 @@ sender -> one consumer      sender -- split() -+-> consumer A
 
 Here, `heavy_computation` should only execute once even though two independent pipelines consume its result. Calling `split()` after the expensive step is the key:
 
+<!-- compile: needs third-party library header `stdexec/execution.hpp` -->
 ```cpp
 #include <stdexec/execution.hpp>
 #include <exec/static_thread_pool.hpp>
@@ -87,6 +87,7 @@ Notice that the `[expensive]` line prints only once, even though two separate `t
 
 This example makes the single-execution guarantee explicit by counting invocations with an atomic counter. No matter how many consumers you attach, the count stays at 1:
 
+<!-- compile: needs third-party library header `stdexec/execution.hpp` -->
 ```cpp
 #include <stdexec/execution.hpp>
 #include <iostream>

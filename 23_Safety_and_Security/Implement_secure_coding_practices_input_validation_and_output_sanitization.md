@@ -1,7 +1,6 @@
 # Implement secure coding practices: input validation and output sanitization
 
-**Category:** Safety & Security  
-**Item:** #740  
+**Category:** Safety and Security  
 **Standard:** C++20  
 **Reference:** <https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines>  
 

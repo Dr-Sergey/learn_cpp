@@ -6,20 +6,20 @@ This folder digs into one of the most important and most misunderstood corners o
 
 ## Contents
 
-- [Distinguish implementation-defined unspecified and undefined behavior](Distinguish_implementation-defined_unspecified_and_undefined_behavior.md)
-- [Identify common UB in multi-threaded code beyond data races](Identify_common_UB_in_multi-threaded_code_beyond_data_races.md)
+- [Distinguish Implementation-Defined, Unspecified, and Undefined Behavior](Distinguish_implementation-defined_unspecified_and_undefined_behavior.md)
+- [Identify Common UB in Multi-Threaded Code Beyond Data Races](Identify_common_UB_in_multi-threaded_code_beyond_data_races.md)
 - [Know dangling reference UB in range-based for with temporaries](Know_dangling_reference_UB_in_range-based_for_with_temporaries.md)
-- [Know null pointer dereference UB nuances passing vs dereferencing](Know_null_pointer_dereference_UB_nuances_passing_vs_dereferencing.md)
-- [Know the complete catalog of undefined behavior in C++](Know_the_complete_catalog_of_undefined_behavior_in_C++.md)
-- [Know union type-punning rules and C vs C++ differences](Know_union_type-punning_rules_and_C_vs_C++_differences.md)
-- [Master strict aliasing rules with practical examples](Master_strict_aliasing_rules_with_practical_examples.md)
-- [Understand how compilers exploit UB for optimization](Understand_how_compilers_exploit_UB_for_optimization.md)
-- [Understand pointer provenance and stdlaunder](Understand_pointer_provenance_and_stdlaunder.md)
-- [Understand restrict and restrict semantics and UB implications](Understand_restrict_and_restrict_semantics_and_UB_implications.md)
-- [Understand sequencing rules and evaluation order since C++17](Understand_sequencing_rules_and_evaluation_order_since_C++17.md)
+- [Know null pointer dereference UB nuances: passing vs dereferencing](Know_null_pointer_dereference_UB_nuances_passing_vs_dereferencing.md)
+- [Know the Complete Catalog of Undefined Behavior in C++](Know_the_complete_catalog_of_undefined_behavior_in_C++.md)
+- [Know Union Type-Punning Rules and C vs C++ Differences](Know_union_type-punning_rules_and_C_vs_C++_differences.md)
+- [Master Strict Aliasing Rules with Practical Examples](Master_strict_aliasing_rules_with_practical_examples.md)
+- [Understand __restrict semantics and UB implications](Understand_restrict_and_restrict_semantics_and_UB_implications.md)
+- [Understand How Compilers Exploit UB for Optimization](Understand_how_compilers_exploit_UB_for_optimization.md)
+- [Understand Pointer Provenance and std::launder](Understand_pointer_provenance_and_stdlaunder.md)
+- [Understand Sequencing Rules and Evaluation Order Since C++17](Understand_sequencing_rules_and_evaluation_order_since_C++17.md)
 - [Understand signed integer overflow UB and why it enables optimizations](Understand_signed_integer_overflow_UB_and_why_it_enables_optimizations.md)
-- [Use UBSan ASan MSan and static analyzers for UB detection](Use_UBSan_ASan_MSan_and_static_analyzers_for_UB_detection.md)
-- [Use stdbit cast as the safe alternative to reinterpret cast](Use_stdbit_cast_as_the_safe_alternative_to_reinterpret_cast.md)
+- [Use std::bit_cast as the Safe Alternative to reinterpret_cast](Use_stdbit_cast_as_the_safe_alternative_to_reinterpret_cast.md)
+- [Use UBSan, ASan, MSan, and Static Analyzers for UB Detection](Use_UBSan_ASan_MSan_and_static_analyzers_for_UB_detection.md)
 
 ## Notes
 

@@ -1,7 +1,7 @@
 # Develop with -fno-exceptions and -fno-rtti Constraints
 
-**Category:** Embedded & Constrained Systems  
-**Standard:** C++17 / C++23  
+**Category:** Embedded and Constrained Systems  
+**Standard:** C++17, C++23  
 **Reference:** https://itanium-cxx-abi.github.io/cxx-abi/abi-eh.html  
 
 ---

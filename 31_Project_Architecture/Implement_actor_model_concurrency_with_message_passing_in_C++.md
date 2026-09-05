@@ -1,6 +1,7 @@
 # Implement actor model concurrency with message passing in C++
 
-**Category:** Project Architecture
+**Category:** Project Architecture  
+**Standard:** Not version-specific  
 
 ---
 

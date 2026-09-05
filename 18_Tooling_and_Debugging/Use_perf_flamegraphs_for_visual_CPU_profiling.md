@@ -1,7 +1,6 @@
 # Use perf flamegraphs for visual CPU profiling
 
-**Category:** Tooling & Debugging  
-**Item:** #804  
+**Category:** Tooling and Debugging  
 **Standard:** C++23  
 **Reference:** <https://www.brendangregg.com/flamegraphs.html>  
 

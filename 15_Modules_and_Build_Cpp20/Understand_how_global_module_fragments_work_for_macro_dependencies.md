@@ -1,7 +1,6 @@
 # Understand how global module fragments work for macro dependencies
 
-**Category:** Modules & Build (C++20)  
-**Item:** #516  
+**Category:** Modules and Build Cpp20  
 **Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/language/modules>  
 
@@ -132,6 +131,7 @@ public:
 
 Notice that `errno`, `ENOENT`, `EACCES`, and `PATH_SEP` are all used inside the module implementation but never make it out to importers. The consumer only sees the `FileReader`, `FileError`, and `FileResult` types:
 
+<!-- compile: fragment: one translation unit of a multi-file module example -->
 ```cpp
 import file_wrapper;
 #include <iostream>
@@ -200,6 +200,7 @@ Module model:     module source --> BMI (declarations only) --> importer
 
 You can verify this by importing the module and checking whether the macros are visible:
 
+<!-- compile: fragment: one translation unit of a multi-file module example -->
 ```cpp
 import example;
 #include <iostream>

@@ -1,7 +1,7 @@
 # Use memory prefetching with __builtin_prefetch to hide memory latency
 
-**Category:** Performance & CPU Architecture  
-**Item:** #542  
+**Category:** Performance and CPU Architecture  
+**Standard:** Not version-specific  
 **Reference:** <https://gcc.gnu.org/onlinedocs/gcc/Other-Builtins.html>  
 
 ---

@@ -1,7 +1,6 @@
 # Use reflection to implement automatic enum-to-string conversion
 
-**Category:** Reflection (C++26)  
-**Item:** #618  
+**Category:** Reflection Cpp26  
 **Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/language/reflection>  
 
@@ -32,6 +31,7 @@ switch(color) {            template for (auto e : enumerators_of(^E))
 
 This example shows the basic reflection loop over an enum. `enumerators_of` returns the compile-time list, and the `template for` loop runs once per enumerator. Each `e` is a `std::meta::info` value - you call `identifier_of(e)` to get the name as a `string_view`, and `[:e:]` to splice it back into the actual enumerator value.
 
+<!-- compile: needs `meta` (not in the CI standard library yet) -->
 ```cpp
 // C++26 with P2996 reflection
 #include <meta>
@@ -74,6 +74,7 @@ Notice that `enumerators.size()` is available at compile time, and you can call 
 
 Once you understand the basic loop, the `to_string` function is straightforward: iterate the enumerators, check if the current enumerator matches the runtime value, and return the name if it does. The same pattern also works in reverse for `parse_enum`.
 
+<!-- compile: needs `meta` (not in the CI standard library yet) -->
 ```cpp
 #include <meta>
 #include <iostream>
@@ -125,6 +126,7 @@ The comment at the bottom captures the real value. Adding a new `Panic` level to
 
 It is worth understanding why `magic_enum` has limits so you can appreciate how reflection sidesteps them. `magic_enum` works by exploiting the format of `__PRETTY_FUNCTION__` or `__FUNCSIG__` - it instantiates a template for each integer in a range (default -128 to 127) and checks whether the resulting string contains a valid identifier name. That trick is clever, but it means the library literally cannot see enumerators with values outside that range without per-enum configuration. Reflection just asks the compiler for the real list.
 
+<!-- compile: needs `meta` (not in the CI standard library yet) -->
 ```cpp
 #include <meta>
 #include <iostream>

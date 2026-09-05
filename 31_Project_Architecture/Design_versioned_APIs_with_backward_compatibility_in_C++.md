@@ -1,6 +1,7 @@
 # Design versioned APIs with backward compatibility in C++
 
-**Category:** Project Architecture
+**Category:** Project Architecture  
+**Standard:** Not version-specific  
 
 ---
 

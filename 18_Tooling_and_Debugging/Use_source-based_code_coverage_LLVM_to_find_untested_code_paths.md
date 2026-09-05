@@ -1,7 +1,7 @@
 # Use source-based code coverage (LLVM) to find untested code paths
 
-**Category:** Tooling & Debugging  
-**Item:** #419  
+**Category:** Tooling and Debugging  
+**Standard:** Not version-specific  
 **Reference:** <https://clang.llvm.org/docs/SourceBasedCodeCoverage.html>  
 
 ---

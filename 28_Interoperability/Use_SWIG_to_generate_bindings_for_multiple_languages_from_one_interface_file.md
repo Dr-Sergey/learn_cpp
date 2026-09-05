@@ -1,7 +1,7 @@
 # Use SWIG to generate bindings for multiple languages from one interface file
 
 **Category:** Interoperability  
-**Item:** #699  
+**Standard:** Not version-specific  
 **Reference:** <https://www.swig.org/>  
 
 ---

@@ -1,6 +1,7 @@
 # Know how to design classes for testability with dependency injection
 
-**Category:** OOP Design
+**Category:** OOP Design  
+**Standard:** Not version-specific  
 
 ---
 
@@ -57,6 +58,8 @@ The "before" version below is a pattern you'll recognize from legacy codebases: 
 #include <memory>
 #include <cassert>
 #include <iostream>
+#include <optional>
+#include <utility>
 
 // === BEFORE: Untestable - hard-coded dependency ===
 /*

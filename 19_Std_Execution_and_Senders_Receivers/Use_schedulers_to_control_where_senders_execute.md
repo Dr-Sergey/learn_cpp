@@ -1,7 +1,6 @@
 # Use schedulers to control where senders execute
 
-**Category:** std::execution & Senders/Receivers  
-**Item:** #605  
+**Category:** Std Execution and Senders Receivers  
 **Standard:** C++11  
 **Reference:** <https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2023/p2300r7.html>  
 
@@ -27,6 +26,7 @@ Here is the core API:
 
 `continues_on` is useful when you want to begin work on the current thread and then hand off to a different context. The pipeline below starts on the calling thread, prints the thread ID, then transfers to the thread pool and prints again. The result value flows through the transfer unchanged:
 
+<!-- compile: needs third-party library header `stdexec/execution.hpp` -->
 ```cpp
 #include <stdexec/execution.hpp>
 #include <exec/static_thread_pool.hpp>
@@ -67,6 +67,7 @@ The thread IDs show exactly where each `then` ran. Everything before `continues_
 
 `schedule(sched)` is the most direct way to start execution on a scheduler. It produces a sender that emits no value - it just "enters" the scheduler's context. Every `then` after it will run on that context unless you explicitly transfer away:
 
+<!-- compile: needs third-party library header `stdexec/execution.hpp` -->
 ```cpp
 #include <stdexec/execution.hpp>
 #include <exec/static_thread_pool.hpp>

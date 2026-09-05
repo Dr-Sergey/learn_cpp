@@ -1,7 +1,7 @@
 # Use std::as_const and const_cast safely
 
-**Category:** Best Practices & Idioms  
-**Item:** #136  
+**Category:** Best Practices and Idioms  
+**Standard:** C++17  
 **Reference:** <https://en.cppreference.com/w/cpp/utility/as_const>  
 
 ---

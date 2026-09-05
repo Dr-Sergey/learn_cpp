@@ -1,7 +1,7 @@
 # Write JNI (Java Native Interface) wrappers for Android C++ code
 
 **Category:** Interoperability  
-**Item:** #696  
+**Standard:** Not version-specific  
 **Reference:** <https://docs.oracle.com/en/java/javase/17/docs/specs/jni/>  
 
 ---

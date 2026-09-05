@@ -1,7 +1,7 @@
 # Use std::debugging utilities: std::breakpoint and std::is_debugger_present
 
-**Category:** Standard Library — New in C++23/26  
-**Item:** #758  
+**Category:** Standard Library New Cpp23 26  
+**Standard:** C++26  
 **Reference:** <https://en.cppreference.com/w/cpp/utility/breakpoint>  
 
 ---
@@ -39,6 +39,7 @@ std::breakpoint()     -> portable, implementation picks the right instruction
 
 This example shows a side-by-side migration: the old `#ifdef` chain versus the single C++26 call. Pay attention to the GCC comment - the old code had a subtle bug where `__builtin_trap()` would terminate the program rather than pause it:
 
+<!-- compile: needs `debugging` (not in the CI standard library yet) -->
 ```cpp
 #include <debugging>  // C++26
 #include <iostream>
@@ -87,6 +88,7 @@ int compute_something() { return -1; }  // Simulated error
 
 Here is a practical pattern: an adaptive logger that automatically upgrades its verbosity when a debugger is attached. You do not need to rebuild or change a config file - the presence of the debugger is enough:
 
+<!-- compile: needs `debugging` (not in the CI standard library yet) -->
 ```cpp
 #include <debugging>  // C++26
 #include <iostream>

@@ -1,7 +1,7 @@
 # Use std::tie for lexicographic comparison of multiple struct members
 
-**Category:** Standard Library - Utilities  
-**Item:** #362  
+**Category:** Standard Library Utilities  
+**Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/utility/tuple/tie>  
 
 ---

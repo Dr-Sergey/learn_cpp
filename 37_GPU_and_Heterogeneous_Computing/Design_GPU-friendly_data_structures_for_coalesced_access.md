@@ -1,7 +1,7 @@
 # Design GPU-Friendly Data Structures for Coalesced Access
 
-**Category:** GPU & Heterogeneous Computing  
-**Standard:** C++17 / CUDA 12.x  
+**Category:** GPU and Heterogeneous Computing  
+**Standard:** C++17  
 **Reference:** https://docs.nvidia.com/cuda/cuda-c-best-practices-guide/index.html#coalesced-access-to-global-memory  
 
 ---
@@ -45,6 +45,7 @@ Here is a summary of how the major layout strategies compare. If the table feels
 
 This benchmark makes the performance difference tangible. Run both kernels on 4M particles for 100 iterations and watch the numbers. The CUDA event timing gives you GPU-only time, which is exactly what you want here.
 
+<!-- compile: needs third-party library header `cuda_runtime.h` -->
 ```cpp
 #include <cuda_runtime.h>
 #include <cstdio>
@@ -164,6 +165,7 @@ The SoA speedup is typically in the 3-10x range depending on GPU generation. The
 
 Matrix transpose is the canonical example of a kernel that needs shared memory. The naive approach writes to global memory in a strided, non-coalesced pattern. The tiled version loads a tile into shared memory with coalesced reads, then writes it out in transposed order with coalesced writes - fast in both directions. The tricky part is the bank conflict, which the `+1` padding trick solves.
 
+<!-- compile: needs third-party library header `cuda_runtime.h` -->
 ```cpp
 #include <cuda_runtime.h>
 #include <cstdio>
@@ -271,6 +273,7 @@ The bank conflict explanation in the comment is the key piece of intuition here.
 
 AoSoA is the best-of-both-worlds layout when you need multiple fields per particle in the same kernel. It groups particles into tiles of exactly warp size (32), and within each tile uses SoA ordering. That gives you coalesced access across a warp's threads (they hit consecutive addresses within the tile) while keeping all fields of the same warp's particles physically close together.
 
+<!-- compile: needs third-party library header `cuda_runtime.h` -->
 ```cpp
 #include <cuda_runtime.h>
 #include <cstdio>

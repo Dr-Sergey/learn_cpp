@@ -1,6 +1,7 @@
 # Design immutable classes and understand their thread-safety benefits
 
-**Category:** OOP Design
+**Category:** OOP Design  
+**Standard:** Not version-specific  
 
 ---
 

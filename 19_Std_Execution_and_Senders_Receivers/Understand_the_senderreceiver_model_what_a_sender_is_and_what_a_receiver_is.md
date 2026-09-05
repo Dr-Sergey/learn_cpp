@@ -1,7 +1,6 @@
 # Understand the sender/receiver model: what a sender is and what a receiver is
 
-**Category:** std::execution & Senders/Receivers  
-**Item:** #701  
+**Category:** Std Execution and Senders Receivers  
 **Standard:** C++26  
 **Reference:** <https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2023/p2300r7.html>  
 
@@ -52,6 +51,7 @@ Let's nail down what each role actually means in code.
 
 Here is a minimal example. The computation is pure description until `sync_wait` runs it. Notice that `make_computation()` returns without doing any work - the lambda inside `then` never runs at that point:
 
+<!-- compile: needs third-party library header `stdexec/execution.hpp` -->
 ```cpp
 #include <stdexec/execution.hpp>
 #include <iostream>
@@ -87,6 +87,7 @@ int main() {
 
 Laziness is one of those properties that is easy to state but easy to forget when you are writing code. This example makes it concrete with a global counter that only increments when the sender actually runs:
 
+<!-- compile: needs third-party library header `stdexec/execution.hpp` -->
 ```cpp
 #include <stdexec/execution.hpp>
 #include <iostream>

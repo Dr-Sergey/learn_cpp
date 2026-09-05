@@ -1,7 +1,7 @@
 # Use CFI (Control Flow Integrity) to prevent vtable hijacking attacks
 
-**Category:** Safety & Security  
-**Item:** #736  
+**Category:** Safety and Security  
+**Standard:** Not version-specific  
 **Reference:** <https://clang.llvm.org/docs/ControlFlowIntegrity.html>  
 
 ---

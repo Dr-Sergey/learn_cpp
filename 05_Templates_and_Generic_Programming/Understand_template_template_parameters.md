@@ -1,7 +1,7 @@
 # Understand Template Template Parameters
 
-**Category:** Templates & Generic Programming  
-**Item:** #47  
+**Category:** Templates and Generic Programming  
+**Standard:** Not version-specific  
 **Reference:** <https://en.cppreference.com/w/cpp/language/template_parameters>  
 
 ---

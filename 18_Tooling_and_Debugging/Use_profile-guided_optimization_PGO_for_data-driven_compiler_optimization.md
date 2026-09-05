@@ -1,7 +1,7 @@
 # Use profile-guided optimization (PGO) for data-driven compiler optimization
 
-**Category:** Tooling & Debugging  
-**Item:** #413  
+**Category:** Tooling and Debugging  
+**Standard:** Not version-specific  
 **Reference:** <https://clang.llvm.org/docs/UsersManual.html#profile-guided-optimization>  
 
 ---

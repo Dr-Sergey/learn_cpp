@@ -1,8 +1,7 @@
 # Understand How to Use `if consteval` (C++23) to Branch on Constant Evaluation Context
 
-**Category:** Compile-Time Programming  
-**Item:** #227  
-**Standard:** C++23 (`if consteval`), C++20 (`std::is_constant_evaluated`)  
+**Category:** Compile Time Programming  
+**Standard:** C++23, C++20 (`if consteval`)  
 **Reference:** <https://en.cppreference.com/w/cpp/language/if>  
 
 ---

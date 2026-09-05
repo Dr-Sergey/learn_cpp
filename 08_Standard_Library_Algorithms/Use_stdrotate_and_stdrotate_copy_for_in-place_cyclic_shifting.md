@@ -1,7 +1,7 @@
 # Use std::rotate and std::rotate_copy for in-place cyclic shifting
 
-**Category:** Standard Library - Algorithms  
-**Item:** #355  
+**Category:** Standard Library Algorithms  
+**Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/algorithm/rotate>  
 
 ---
@@ -214,6 +214,7 @@ The naive approach shifts elements one position at a time, K times - that's O(n*
 #include <vector>
 #include <algorithm>
 #include <chrono>
+#include <numeric>
 
 // Naive left-shift by 1 position
 void left_shift_one(std::vector<int>& v) {

@@ -1,6 +1,7 @@
 # Apply the Microkernel (plugin) architecture for extensible C++ systems
 
-**Category:** Project Architecture
+**Category:** Project Architecture  
+**Standard:** Not version-specific  
 
 ---
 

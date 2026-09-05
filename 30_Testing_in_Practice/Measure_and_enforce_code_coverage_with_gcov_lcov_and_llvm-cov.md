@@ -1,6 +1,7 @@
 # Measure and enforce code coverage with gcov, lcov, and llvm-cov
 
-**Category:** Testing in Practice
+**Category:** Testing in Practice  
+**Standard:** Not version-specific  
 
 ---
 

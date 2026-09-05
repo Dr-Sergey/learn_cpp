@@ -1,7 +1,6 @@
 # Master the rules of aggregate initialization
 
 **Category:** Core Language Fundamentals  
-**Item:** #10  
 **Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/language/aggregate_initialization>  
 

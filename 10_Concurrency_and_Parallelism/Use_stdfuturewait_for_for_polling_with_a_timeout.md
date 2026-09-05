@@ -1,7 +1,7 @@
 # Use std::future::wait_for for polling with a timeout
 
-**Category:** Concurrency & Parallelism  
-**Item:** #280  
+**Category:** Concurrency and Parallelism  
+**Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/thread/future/wait_for>  
 
 ---

@@ -1,7 +1,7 @@
 # Use std::multimap and std::multiset for non-unique keys
 
-**Category:** Standard Library - Containers  
-**Item:** #229  
+**Category:** Standard Library Containers  
+**Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/container/multimap>  
 
 ---

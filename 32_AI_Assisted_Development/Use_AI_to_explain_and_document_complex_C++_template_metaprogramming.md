@@ -1,6 +1,7 @@
 # Use AI to explain and document complex C++ template metaprogramming
 
-**Category:** AI-Assisted C++ Development
+**Category:** AI Assisted Development  
+**Standard:** Not version-specific  
 
 ---
 

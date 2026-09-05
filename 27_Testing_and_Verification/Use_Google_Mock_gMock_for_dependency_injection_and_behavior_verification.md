@@ -1,7 +1,7 @@
 # Use Google Mock (gMock) for dependency injection and behavior verification
 
-**Category:** Testing & Verification  
-**Item:** #681  
+**Category:** Testing and Verification  
+**Standard:** Not version-specific  
 **Reference:** <https://google.github.io/googletest/gmock_cook_book.html>  
 
 ---

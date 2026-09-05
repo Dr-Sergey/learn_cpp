@@ -1,7 +1,7 @@
 # Use std::copyable_function (C++26) vs std::move_only_function (C++23) vs std::function
 
 **Category:** Standard Library Utilities  
-**Standard:** C++23/26  
+**Standard:** C++23, C++26  
 **Reference:** <https://en.cppreference.com/w/cpp/utility/functional/move_only_function>  
 
 ---

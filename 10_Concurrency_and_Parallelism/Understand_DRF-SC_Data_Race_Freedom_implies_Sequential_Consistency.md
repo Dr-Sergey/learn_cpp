@@ -1,6 +1,6 @@
 # Understand DRF-SC: Data-Race Freedom Implies Sequential Consistency
 
-**Category:** Concurrency & Parallelism  
+**Category:** Concurrency and Parallelism  
 **Standard:** C++11 and later (Memory Model §6.9.2 [intro.races])  
 **Reference:** [cppreference - Memory model](https://en.cppreference.com/w/cpp/language/memory_model)  
 

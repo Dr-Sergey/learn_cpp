@@ -1,7 +1,7 @@
 # Use std::pmr::string and PMR Containers to Avoid Allocator Template Proliferation
 
-**Category:** Memory & Ownership  
-**Item:** #255  
+**Category:** Memory and Ownership  
+**Standard:** C++17  
 **Reference:** <https://en.cppreference.com/w/cpp/memory/polymorphic_allocator>  
 
 ---

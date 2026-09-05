@@ -1,7 +1,6 @@
 # Understand range algorithms' structured return types
 
-**Category:** Ranges (C++20)  
-**Item:** #498  
+**Category:** Ranges Cpp20  
 **Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/algorithm/ranges/copy>  
 

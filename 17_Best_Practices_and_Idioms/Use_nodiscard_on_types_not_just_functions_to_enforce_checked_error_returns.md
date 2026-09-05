@@ -1,7 +1,6 @@
 # Use [[nodiscard]] on types (not just functions) to enforce checked error returns
 
-**Category:** Best Practices & Idioms  
-**Item:** #143  
+**Category:** Best Practices and Idioms  
 **Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/language/attributes/nodiscard>  
 
@@ -33,6 +32,8 @@ Here's a practical use of the pattern. The `Result<T,E>` type carries either a s
 #include <iostream>
 #include <string>
 #include <variant>
+#include <tuple>
+#include <utility>
 
 template<typename T, typename E>
 [[nodiscard("Error result must be checked")]]

@@ -1,7 +1,7 @@
 # Know How to Use `std::allocator_traits` to Write Allocator-Aware Code
 
-**Category:** Memory & Ownership  
-**Item:** #34  
+**Category:** Memory and Ownership  
+**Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/memory/allocator_traits>  
 
 ---

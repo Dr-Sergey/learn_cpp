@@ -1,7 +1,7 @@
 # Provide noexcept guarantees on move operations for container compatibility
 
-**Category:** API & Library Design  
-**Standard:** C++11/17  
+**Category:** API and Library Design  
+**Standard:** C++11, C++17  
 **Reference:** <https://en.cppreference.com/w/cpp/types/is_nothrow_move_constructible>  
 
 ---
@@ -18,6 +18,8 @@ Here's a concrete demonstration of how a missing `noexcept` forces copies when y
 #include <vector>
 #include <iostream>
 #include <string>
+#include <type_traits>
+#include <utility>
 
 struct Slow {
     std::string data;

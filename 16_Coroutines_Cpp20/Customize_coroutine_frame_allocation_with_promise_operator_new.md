@@ -1,6 +1,6 @@
 # Customize Coroutine Frame Allocation with promise_type::operator new
 
-**Category:** Coroutines (C++20)  
+**Category:** Coroutines Cpp20  
 **Standard:** C++20  
 **Reference:** [cppreference — Coroutines (allocation)](https://en.cppreference.com/w/cpp/language/coroutines#Dynamic_allocation)  
 
@@ -52,6 +52,8 @@ A monotonic arena is the simplest and most cache-friendly allocator you can use 
 #include <cstdint>
 #include <cstdio>
 #include <new>
+#include <exception>
+#include <memory>
 
 // Simple monotonic arena — no individual deallocation
 class Arena {
@@ -228,6 +230,8 @@ HALO is the coroutine equivalent of NRVO - the compiler can prove that the corou
 #include <coroutine>
 #include <cstdio>
 #include <utility>
+#include <cstddef>
+#include <exception>
 
 struct DetectAllocTask {
     struct promise_type {

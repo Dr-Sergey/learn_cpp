@@ -1,7 +1,7 @@
 # Use inline namespaces for ABI versioning without breaking client code
 
-**Category:** API & Library Design  
-**Standard:** C++11/17  
+**Category:** API and Library Design  
+**Standard:** C++11, C++17  
 **Reference:** <https://en.cppreference.com/w/cpp/language/namespace#Inline_namespaces>  
 
 ---

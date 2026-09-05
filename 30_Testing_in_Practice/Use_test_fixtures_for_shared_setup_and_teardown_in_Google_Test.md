@@ -1,6 +1,7 @@
 # Use test fixtures for shared setup and teardown in Google Test
 
-**Category:** Testing in Practice
+**Category:** Testing in Practice  
+**Standard:** Not version-specific  
 
 ---
 

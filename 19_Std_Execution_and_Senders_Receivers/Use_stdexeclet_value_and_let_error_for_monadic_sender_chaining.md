@@ -1,7 +1,6 @@
 # Use stdexec::let_value and let_error for monadic sender chaining
 
-**Category:** std::execution & Senders/Receivers  
-**Item:** #704  
+**Category:** Std Execution and Senders Receivers  
 **Standard:** C++20  
 **Reference:** <https://github.com/NVIDIA/stdexec>  
 
@@ -35,6 +34,7 @@ If you have ever used `flatMap` in a functional language or `>>=` (bind) in Hask
 
 The classic use case is an async request chain where each step needs the result of the previous step to decide what to fetch next. You cannot use `then` here because each function returns a sender, not a plain value:
 
+<!-- compile: needs third-party library header `stdexec/execution.hpp` -->
 ```cpp
 #include <stdexec/execution.hpp>
 #include <exec/static_thread_pool.hpp>
@@ -91,6 +91,7 @@ int main() {
 
 `let_error` is the same idea applied to the error channel. When an error arrives, your callback can return a new sender that represents a recovery operation - which could itself be an async operation like fetching from a backup server:
 
+<!-- compile: needs third-party library header `stdexec/execution.hpp` -->
 ```cpp
 #include <stdexec/execution.hpp>
 #include <iostream>

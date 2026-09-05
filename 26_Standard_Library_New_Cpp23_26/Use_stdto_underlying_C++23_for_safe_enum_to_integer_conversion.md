@@ -1,6 +1,6 @@
 # Use `std::to_underlying` (C++23) for Safe Enum-to-Integer Conversion
 
-**Category:** Standard Library — New in C++23/26  
+**Category:** Standard Library New Cpp23 26  
 **Standard:** C++23  
 **Reference:** [cppreference — std::to_underlying](https://en.cppreference.com/w/cpp/utility/to_underlying)  
 

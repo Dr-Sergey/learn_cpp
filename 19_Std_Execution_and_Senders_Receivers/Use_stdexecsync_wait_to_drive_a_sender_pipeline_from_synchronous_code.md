@@ -1,7 +1,6 @@
 # Use stdexec::sync_wait to drive a sender pipeline from synchronous code
 
-**Category:** std::execution & Senders/Receivers  
-**Item:** #706  
+**Category:** Std Execution and Senders Receivers  
 **Standard:** C++17  
 **Reference:** <https://github.com/NVIDIA/stdexec>  
 
@@ -47,6 +46,7 @@ sync_wait flow:
 
 Let's see the blocking behavior in concrete terms. The pipeline runs on the thread pool, but the calling thread waits - and you can see that by observing the thread IDs:
 
+<!-- compile: needs third-party library header `stdexec/execution.hpp` -->
 ```cpp
 #include <stdexec/execution.hpp>
 #include <exec/static_thread_pool.hpp>
@@ -93,6 +93,7 @@ The thread IDs show that the computation ran on a pool thread while main was blo
 
 The return type feels a bit verbose at first, but it covers all three completion channels cleanly. A value arrives as `optional(tuple(values...))`, an error is rethrown as an exception, and cancellation produces `nullopt`. Here's each case in one place:
 
+<!-- compile: needs third-party library header `stdexec/execution.hpp` -->
 ```cpp
 #include <stdexec/execution.hpp>
 #include <iostream>

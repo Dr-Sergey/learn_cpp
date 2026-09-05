@@ -1,7 +1,6 @@
 # Understand the costs of header inclusion and how to minimize them
 
-**Category:** Best Practices & Idioms  
-**Item:** #403  
+**Category:** Best Practices and Idioms  
 **Standard:** C++20  
 **Reference:** <https://clang.llvm.org/docs/ClangCommandLineReference.html>  
 

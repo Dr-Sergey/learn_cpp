@@ -1,7 +1,7 @@
 # Use std::vector correctly: reserve, emplace_back, and iterator invalidation
 
-**Category:** Standard Library — Containers  
-**Item:** #61  
+**Category:** Standard Library Containers  
+**Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/container/vector>  
 
 ---

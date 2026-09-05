@@ -1,6 +1,7 @@
 # Design configuration management for multi-environment C++ deployments
 
-**Category:** Project Architecture
+**Category:** Project Architecture  
+**Standard:** Not version-specific  
 
 ---
 
@@ -41,6 +42,7 @@ The `Config` class below follows the layered override pattern precisely. You cal
 #include <stdexcept>
 #include <vector>
 #include <cstdlib>
+#include <algorithm>
 
 // === Type-safe configuration with defaults and validation ===
 class Config {

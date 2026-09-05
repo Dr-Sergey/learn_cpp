@@ -1,7 +1,6 @@
 # Avoid false sharing with cache-line padding in concurrent data structures
 
-**Category:** Concurrency & Parallelism  
-**Item:** #187  
+**Category:** Concurrency and Parallelism  
 **Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/thread/hardware_destructive_interference_size>  
 

@@ -1,7 +1,6 @@
 # Use Abbreviated Function Templates with `auto` Parameters (C++20)
 
-**Category:** Templates & Generic Programming  
-**Item:** #158  
+**Category:** Templates and Generic Programming  
 **Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/language/function_template#Abbreviated_function_template>  
 

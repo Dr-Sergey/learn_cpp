@@ -1,7 +1,7 @@
 # Apply the type-state pattern to prevent operations on invalid states
 
-**Category:** Best Practices & Idioms  
-**Item:** #501  
+**Category:** Best Practices and Idioms  
+**Standard:** Not version-specific  
 **Reference:** <https://en.cppreference.com/w/cpp/language/types>  
 
 ---

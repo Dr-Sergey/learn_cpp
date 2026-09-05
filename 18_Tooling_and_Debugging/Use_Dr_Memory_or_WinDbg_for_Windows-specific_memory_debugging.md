@@ -1,7 +1,7 @@
 # Use Dr. Memory or WinDbg for Windows-specific memory debugging
 
-**Category:** Tooling & Debugging  
-**Item:** #295  
+**Category:** Tooling and Debugging  
+**Standard:** Not version-specific  
 **Reference:** <https://drmemory.org>  
 
 ---

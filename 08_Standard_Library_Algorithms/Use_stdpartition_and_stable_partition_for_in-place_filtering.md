@@ -1,7 +1,7 @@
 # Use std::partition and stable_partition for in-place filtering
 
-**Category:** Standard Library — Algorithms  
-**Item:** #467  
+**Category:** Standard Library Algorithms  
+**Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/algorithm/partition>  
 
 ---

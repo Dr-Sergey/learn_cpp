@@ -1,6 +1,6 @@
 # Understand instruction-level parallelism (ILP) and out-of-order execution
 
-**Category:** Performance & CPU Architecture  
+**Category:** Performance and CPU Architecture  
 **Standard:** C++17 (architecture-aware coding)  
 **Reference:** <https://en.wikipedia.org/wiki/Instruction-level_parallelism>  
 

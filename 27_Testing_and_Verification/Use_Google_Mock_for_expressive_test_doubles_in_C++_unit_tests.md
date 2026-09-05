@@ -1,7 +1,6 @@
 # Use Google Mock for expressive test doubles in C++ unit tests
 
-**Category:** Testing & Verification  
-**Item:** #584  
+**Category:** Testing and Verification  
 **Standard:** C++23  
 **Reference:** <https://google.github.io/googletest/gmock_cook_book.html>  
 

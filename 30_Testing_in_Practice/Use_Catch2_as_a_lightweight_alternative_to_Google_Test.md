@@ -1,6 +1,7 @@
 # Use Catch2 as a lightweight alternative to Google Test
 
-**Category:** Testing in Practice
+**Category:** Testing in Practice  
+**Standard:** Not version-specific  
 
 ---
 

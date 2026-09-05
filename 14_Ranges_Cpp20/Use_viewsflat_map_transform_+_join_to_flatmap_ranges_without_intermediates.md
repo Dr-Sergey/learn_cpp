@@ -1,7 +1,6 @@
 # Use views::flat_map (transform + join) to flatmap ranges without intermediates
 
-**Category:** Ranges (C++20)  
-**Item:** #396  
+**Category:** Ranges Cpp20  
 **Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/ranges/join_view>  
 

@@ -1,7 +1,7 @@
 # Use CUDA Cooperative Groups for Flexible Thread Synchronization
 
-**Category:** GPU & Heterogeneous Computing  
-**Standard:** C++17 / CUDA 12.x  
+**Category:** GPU and Heterogeneous Computing  
+**Standard:** C++17  
 **Reference:** <https://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html#cooperative-groups>  
 
 ---
@@ -50,6 +50,7 @@ Cooperative Groups Hierarchy:
 
 The classic way to do a warp-level reduction is a manual loop of `__shfl_down_sync` calls. Cooperative Groups lets you replace that entire loop with a single `cg::reduce()` call that generates the same instructions. This example shows both side by side so you can see what you're trading:
 
+<!-- compile: needs third-party library header `cuda_runtime.h` -->
 ```cpp
 #include <cuda_runtime.h>
 #include <cooperative_groups.h>
@@ -145,6 +146,7 @@ This example is the most important use case for `grid_group`. Normally, an itera
 
 The reason this trips people up is the launch requirements. You cannot use `<<<>>>` syntax for a cooperative kernel. You must use `cudaLaunchCooperativeKernel`, and you must carefully calculate the block count so that all blocks can be simultaneously resident on the GPU. If you launch more blocks than the hardware can hold at once, the grid barrier will deadlock.
 
+<!-- compile: needs third-party library header `cuda_runtime.h` -->
 ```cpp
 #include <cuda_runtime.h>
 #include <cooperative_groups.h>
@@ -244,6 +246,7 @@ The `cudaOccupancyMaxActiveBlocksPerMultiprocessor` query is not optional boiler
 
 Divergent code - where threads in a warp take different branches - is a classic GPU performance problem because the warp has to execute both paths serially. Cooperative Groups adds `coalesced_threads()`, which gives you a group object representing only the threads that are *currently active* in the warp. This lets you perform collectives (like reductions) among just the active threads, avoiding wasted work and incorrect results from inactive lanes.
 
+<!-- compile: needs third-party library header `cuda_runtime.h` -->
 ```cpp
 #include <cuda_runtime.h>
 #include <cooperative_groups.h>

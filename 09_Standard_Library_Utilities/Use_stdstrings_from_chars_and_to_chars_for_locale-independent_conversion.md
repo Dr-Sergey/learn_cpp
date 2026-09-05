@@ -1,7 +1,7 @@
 # Use std::string's from_chars and to_chars for locale-independent conversion
 
-**Category:** Standard Library - Utilities  
-**Item:** #364  
+**Category:** Standard Library Utilities  
+**Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/utility/from_chars>  
 
 ---
@@ -78,6 +78,7 @@ Here is everything in action - integer and double parsing, integer and hex forma
 #include <iostream>
 #include <string_view>
 #include <array>
+#include <system_error>
 
 int main() {
     // === from_chars: parse integer ===

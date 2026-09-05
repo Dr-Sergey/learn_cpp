@@ -1,7 +1,7 @@
 # Use vcpkg or Conan for C++ dependency management
 
-**Category:** Tooling & Debugging  
-**Item:** #171  
+**Category:** Tooling and Debugging  
+**Standard:** Not version-specific  
 **Reference:** <https://vcpkg.io>  
 
 ---
@@ -72,6 +72,7 @@ target_link_libraries(server PRIVATE
 )
 ```
 
+<!-- compile: needs third-party library header `boost/asio.hpp` -->
 ```cpp
 // main.cpp
 #include <boost/asio.hpp>

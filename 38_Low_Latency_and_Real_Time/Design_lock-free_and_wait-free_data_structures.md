@@ -1,7 +1,7 @@
 # Design Lock-Free and Wait-Free Data Structures
 
-**Category:** Low Latency & Real-Time C++  
-**Standard:** C++20 / C++23  
+**Category:** Low Latency and Real Time  
+**Standard:** C++20, C++23  
 **Reference:** [P0233R0 - Hazard Pointers](https://wg21.link/p0233), [C++ Concurrency in Action, 2nd Ed.](https://www.manning.com/books/c-plus-plus-concurrency-in-action-second-edition)  
 
 ---
@@ -102,6 +102,7 @@ public:
 #include <thread>
 #include <vector>
 #include <cassert>
+#include <utility>
 
 int main() {
     LockFreeStack<int> stack;
@@ -134,6 +135,7 @@ The trick here is to eliminate contention entirely by giving each thread its own
 #include <thread>
 #include <cstdint>
 #include <cassert>
+#include <vector>
 
 // Distributed counter: each thread writes to its own cache line,
 // snapshot reads all slots — wait-free for both increment and read.

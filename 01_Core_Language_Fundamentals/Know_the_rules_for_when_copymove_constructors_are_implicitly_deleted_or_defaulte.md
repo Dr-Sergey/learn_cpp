@@ -1,7 +1,7 @@
 # Know the rules for when copy/move constructors are implicitly deleted or defaulted
 
 **Category:** Core Language Fundamentals  
-**Item:** #313  
+**Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/language/copy_constructor>  
 
 ---

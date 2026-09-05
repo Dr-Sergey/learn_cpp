@@ -1,7 +1,6 @@
 # Understand linkage: internal, external, no linkage, and module linkage
 
 **Category:** Core Language Fundamentals  
-**Item:** #172  
 **Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/language/storage_duration>  
 

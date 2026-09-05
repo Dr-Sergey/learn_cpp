@@ -1,7 +1,7 @@
 # Understand and use address-space sanitizer for security auditing
 
-**Category:** Tooling & Debugging  
-**Item:** #802  
+**Category:** Tooling and Debugging  
+**Standard:** Not version-specific  
 **Reference:** <https://clang.llvm.org/docs/AddressSanitizer.html>  
 
 ---

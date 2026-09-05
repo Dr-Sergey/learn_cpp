@@ -1,6 +1,7 @@
 # Implement the CRTP for static polymorphism and mixin classes
 
-**Category:** OOP Design
+**Category:** OOP Design  
+**Standard:** Not version-specific  
 
 ---
 
@@ -47,6 +48,7 @@ Here's the core CRTP shape pattern. Each shape type inherits from `Shape<itself>
 #include <cmath>
 #include <vector>
 #include <chrono>
+#include <numbers>
 
 // CRTP base: static interface
 template<typename Derived>
@@ -72,8 +74,8 @@ class Circle : public Shape<Circle> {
     double r_;
     friend class Shape<Circle>;
 
-    double area_impl() const { return M_PI * r_ * r_; }
-    double perimeter_impl() const { return 2 * M_PI * r_; }
+    double area_impl() const { return std::numbers::pi * r_ * r_; }
+    double perimeter_impl() const { return 2 * std::numbers::pi * r_; }
     void draw_impl() const { std::cout << "  circle radius=" << r_ << "\n"; }
     const char* name() const { return "Circle"; }
 
@@ -125,6 +127,9 @@ CRTP really shines as a mixin mechanism. You write one base class that adds a ca
 #include <string>
 #include <type_traits>
 #include <compare>
+#include <memory>
+#include <ostream>
+#include <sstream>
 
 // CRTP Mixin 1: Equality operators
 template<typename Derived>

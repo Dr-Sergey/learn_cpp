@@ -1,7 +1,6 @@
 # Understand flat_map and flat_set (C++23) and when they beat std::map
 
-**Category:** Standard Library — Containers  
-**Item:** #65  
+**Category:** Standard Library Containers  
 **Standard:** C++23  
 **Reference:** <https://en.cppreference.com/w/cpp/container/flat_map>  
 
@@ -63,6 +62,7 @@ Notice that insert and erase are O(n) for `flat_map` - that's the cost of shifti
 
 The API is intentionally nearly identical to `std::map`, so switching is low-friction. Notice the extra `keys()` and `values()` accessors that give you direct access to the underlying vectors:
 
+<!-- compile: needs `flat_map` (not in the CI standard library yet) -->
 ```cpp
 #include <iostream>
 #include <flat_map>  // C++23
@@ -125,6 +125,8 @@ This example simulates a `flat_map` with a sorted vector so you can benchmark th
 #include <chrono>
 #include <random>
 #include <string>
+#include <numeric>
+#include <utility>
 
 // Simulating flat_map with a sorted vector for pre-C++23
 template <typename K, typename V>

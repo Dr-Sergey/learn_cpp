@@ -1,7 +1,6 @@
 # Use std::atomic_ref for atomic access to non-atomic objects (C++20)
 
-**Category:** Concurrency & Parallelism  
-**Item:** #164  
+**Category:** Concurrency and Parallelism  
 **Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/atomic/atomic_ref>  
 

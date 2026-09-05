@@ -1,7 +1,7 @@
 # Design Hardware Register Abstractions with volatile and MMIO
 
-**Category:** Embedded & Constrained Systems  
-**Standard:** C++17 / C++20  
+**Category:** Embedded and Constrained Systems  
+**Standard:** C++17, C++20  
 **Reference:** https://en.cppreference.com/w/cpp/language/cv  
 
 ---

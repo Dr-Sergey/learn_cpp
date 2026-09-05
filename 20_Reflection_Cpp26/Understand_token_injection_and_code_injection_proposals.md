@@ -1,6 +1,6 @@
 # Understand token injection and code injection proposals
 
-**Category:** Reflection (C++26)  
+**Category:** Reflection Cpp26  
 **Standard:** C++26  
 **Reference:** <https://wg21.link/P2996> <https://wg21.link/P3294>  
 

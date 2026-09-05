@@ -1,7 +1,6 @@
 # Use std::indirect and std::polymorphic for value-semantic polymorphism
 
-**Category:** Standard Library — New in C++23/26  
-**Item:** #757  
+**Category:** Standard Library New Cpp23 26  
 **Standard:** C++26  
 **Reference:** <https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2024/p3019r11.html>  
 
@@ -46,6 +45,7 @@ Here is a practical scenario: a `Config` struct that holds a large payload. You 
 
 **Answer:**
 
+<!-- compile: needs `indirect` (not in the CI standard library yet) -->
 ```cpp
 #include <indirect>
 #include <iostream>
@@ -100,6 +100,7 @@ This example builds a document model with multiple element types (`Text`, `Image
 
 **Answer:**
 
+<!-- compile: needs `polymorphic` (not in the CI standard library yet) -->
 ```cpp
 #include <polymorphic>
 #include <indirect>
@@ -187,10 +188,12 @@ The old pattern was not wrong - it worked - but it accumulated boilerplate at ev
 
 **Answer:**
 
+<!-- compile: needs C++26 library support for `std::polymorphic` (not in the CI standard library yet) -->
 ```cpp
 #include <memory>
 #include <vector>
 #include <iostream>
+#include <map>
 
 // OLD: unique_ptr + clone()
 struct ShapeOld {

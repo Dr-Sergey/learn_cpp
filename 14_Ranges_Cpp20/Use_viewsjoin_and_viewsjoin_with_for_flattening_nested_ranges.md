@@ -1,8 +1,7 @@
 # Use views::join and views::join_with for flattening nested ranges
 
-**Category:** Ranges (C++20)  
-**Item:** #188  
-**Standard:** C++20 / C++23  
+**Category:** Ranges Cpp20  
+**Standard:** C++20, C++23  
 **Reference:** <https://en.cppreference.com/w/cpp/ranges/join_view>  
 
 ---
@@ -58,6 +57,7 @@ This is the most common use case. A 2D structure becomes a 1D stream of elements
 #include <iostream>
 #include <ranges>
 #include <vector>
+#include <functional>
 
 int main() {
     std::vector<std::vector<int>> matrix = {
@@ -188,6 +188,7 @@ Even if every inner range had the same known size, the standard does not provide
 #include <iostream>
 #include <ranges>
 #include <vector>
+#include <string_view>
 
 int main() {
     std::vector<std::vector<int>> vv = {{1,2}, {3,4}};

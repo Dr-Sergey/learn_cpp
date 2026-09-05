@@ -1,6 +1,6 @@
 # Implement Async Generator for Asynchronous Element Production
 
-**Category:** Coroutines (C++20)  
+**Category:** Coroutines Cpp20  
 **Standard:** C++20  
 **Reference:** [cppreference — Coroutines](https://en.cppreference.com/w/cpp/language/coroutines)  
 

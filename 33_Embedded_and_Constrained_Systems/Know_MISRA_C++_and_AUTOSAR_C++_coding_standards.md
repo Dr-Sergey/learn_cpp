@@ -1,7 +1,7 @@
 # Know MISRA C++ and AUTOSAR C++ Coding Standards
 
-**Category:** Embedded & Constrained Systems  
-**Standard:** MISRA C++ 2023, AUTOSAR C++ 14 (R22-11)  
+**Category:** Embedded and Constrained Systems  
+**Standard:** C++20, C++23, C++14 (R22-11)  
 **Reference:** <https://misra.org.uk/misra-c-plus-plus-2023/>  
 
 ---

@@ -1,7 +1,6 @@
 # Use Asio for async networking with coroutines
 
-**Category:** Networking & I/O  
-**Item:** #729  
+**Category:** Networking and IO  
 **Standard:** C++20  
 **Reference:** <https://think-async.com/Asio/>  
 
@@ -40,6 +39,7 @@ The key tradeoff table: thread-per-connection is dead simple to write but falls 
 
 Here is the complete single-threaded echo server. The structure is two coroutines: `session` handles one client until it disconnects, and `listener` runs forever accepting new connections and spawning sessions:
 
+<!-- compile: needs third-party library header `asio.hpp` -->
 ```cpp
 // Requires: standalone Asio or Boost.Asio
 // Compile: g++ -std=c++20 -fcoroutines -I/path/to/asio -lpthread server.cpp
@@ -102,6 +102,7 @@ Note that the `socket` is moved into the session coroutine - `std::move(socket)`
 
 The hardest thing to internalize when first learning async coroutines is that `co_await` suspends the coroutine frame but does NOT block the thread. The thread is free to run other coroutines while this one is waiting. The demo below proves it: two coroutines with the same timer period interleave their output on a single thread:
 
+<!-- compile: needs third-party library header `asio.hpp` -->
 ```cpp
 #include <asio.hpp>
 #include <asio/co_spawn.hpp>
@@ -167,6 +168,7 @@ The interleaved output (`A0 B0 A1 B1 A2 B2` rather than `A0 A1 A2 B0 B1 B2`) is 
 
 Scaling to multiple cores is a one-line change in the architecture: instead of one thread calling `io.run()`, you launch a whole pool of threads all calling `io.run()` on the same `io_context`. Asio distributes the coroutine resumptions across all available threads automatically:
 
+<!-- compile: needs third-party library header `asio.hpp` -->
 ```cpp
 #include <asio.hpp>
 #include <asio/co_spawn.hpp>

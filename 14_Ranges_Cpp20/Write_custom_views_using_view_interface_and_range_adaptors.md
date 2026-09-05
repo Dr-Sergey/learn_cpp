@@ -1,8 +1,7 @@
 # Write custom views using view_interface and range adaptors
 
-**Category:** Ranges (C++20)  
-**Item:** #119  
-**Standard:** C++20 / C++23  
+**Category:** Ranges Cpp20  
+**Standard:** C++20, C++23  
 **Reference:** <https://en.cppreference.com/w/cpp/ranges/view_interface>  
 
 ---
@@ -59,6 +58,8 @@ This example builds a complete custom view from scratch. It's a good template to
 #include <iterator>
 #include <ranges>
 #include <vector>
+#include <cstddef>
+#include <utility>
 
 template<std::ranges::forward_range R>
 class every_nth_view : public std::ranges::view_interface<every_nth_view<R>> {

@@ -1,7 +1,6 @@
 # Integrate Asio with P2300 senders via asio::execution
 
-**Category:** std::execution & Senders/Receivers  
-**Item:** #612  
+**Category:** Std Execution and Senders Receivers  
 **Standard:** C++20  
 **Reference:** <https://think-async.com/Asio/>  
 
@@ -111,6 +110,7 @@ Once the wrapper is written, the pipeline composition above looks exactly like a
 
 Making an `io_context` behave as a P2300 scheduler lets you use `starts_on` and `continues_on` to route work through Asio's event loop, just like you would route work through a thread pool. The adapter uses `asio::post` to enqueue work, and signals `set_value()` when the posted function actually runs.
 
+<!-- compile: needs third-party library header `stdexec/execution.hpp` -->
 ```cpp
 // asio_scheduler.cpp - adapt io_context to P2300 scheduler concept
 #include <stdexec/execution.hpp>

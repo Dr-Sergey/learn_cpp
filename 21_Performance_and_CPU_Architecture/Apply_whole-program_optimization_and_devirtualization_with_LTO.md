@@ -1,7 +1,7 @@
 # Apply whole-program optimization and devirtualization with LTO
 
-**Category:** Performance & CPU Architecture  
-**Item:** #637  
+**Category:** Performance and CPU Architecture  
+**Standard:** Not version-specific  
 **Reference:** <https://llvm.org/docs/LinkTimeOptimization.html>  
 
 ---
@@ -35,6 +35,7 @@ There are two modes worth knowing. Full LTO merges everything into a single gian
 
 This example shows the most impactful case: a virtual call that the compiler cannot devirtualize without LTO because the concrete type lives in a different file. The build command comments walk you through how to see the difference in the generated assembly.
 
+<!-- compile: fragment: depends on a header defined elsewhere in the topic -->
 ```cpp
 // === file: shape.h ===
 #pragma once
@@ -49,7 +50,7 @@ struct Shape {
 struct Circle : Shape {
     double radius;
     Circle(double r) : radius(r) {}
-    double area() const override { return M_PI * radius * radius; }
+    double area() const override { return std::numbers::pi * radius * radius; }
 };
 Shape* make_circle(double r) { return new Circle(r); }
 

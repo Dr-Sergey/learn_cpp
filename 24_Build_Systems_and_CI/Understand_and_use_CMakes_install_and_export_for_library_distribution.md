@@ -1,7 +1,7 @@
 # Understand and use CMake's install() and export() for library distribution
 
-**Category:** Build Systems & CI  
-**Item:** #665  
+**Category:** Build Systems and CI  
+**Standard:** Not version-specific  
 **Reference:** <https://cmake.org/cmake/help/latest/command/install.html>  
 
 ---

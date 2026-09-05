@@ -1,7 +1,7 @@
 # Master brace-initialization and the uniform initialization syntax
 
 **Category:** Core Language Fundamentals  
-**Item:** #2  
+**Standard:** Not version-specific  
 **Reference:** <https://github.com/AnthonyCalandra/modern-cpp-features/blob/master/CPP11.md#uniform-initialization>  
 
 ---
@@ -151,6 +151,7 @@ constructor - the brace syntax doesn't always pick the "obvious" one:
 ```cpp
 #include <iostream>
 #include <initializer_list>
+#include <vector>
 
 struct Widget {
     Widget(int value) {

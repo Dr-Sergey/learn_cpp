@@ -1,7 +1,7 @@
 # Use the cxx crate for safe Rust/C++ interoperability
 
 **Category:** Interoperability  
-**Item:** #775  
+**Standard:** Not version-specific  
 **Reference:** <https://cxx.rs>  
 
 ---

@@ -1,7 +1,7 @@
 # Understand integer promotion pitfalls in security-critical code
 
-**Category:** Safety & Security  
-**Item:** #655  
+**Category:** Safety and Security  
+**Standard:** Not version-specific  
 **Reference:** <https://en.cppreference.com/w/cpp/language/implicit_conversion>  
 
 ---

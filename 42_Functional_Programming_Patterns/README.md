@@ -9,11 +9,11 @@ Applying functional programming concepts in modern C++: monadic error chaining, 
 - [Apply the expression template pattern for lazy evaluation](Apply_the_expression_template_pattern_for_lazy_evaluation.md)
 - [Design pure functions and referential transparency for testability](Design_pure_functions_and_referential_transparency_for_testability.md)
 - [Implement monadic error chaining with std::expected and std::optional](Implement_monadic_error_chaining_with_stdstdexpected_and_stdstdoptional.md)
-- [Implement pattern matching manually with std::visit overload sets](Implement_pattern_matching_manually_with_stdstdvisit_overload_sets.md)
+- [Implement pattern matching manually with std::visit + overload sets](Implement_pattern_matching_manually_with_stdstdvisit_overload_sets.md)
 - [Implement persistent and immutable data structures in C++](Implement_persistent_and_immutable_data_structures_in_Cpp.md)
 - [Implement railway-oriented programming for error handling](Implement_railway-oriented_programming_for_error_handling.md)
 - [Use algebraic data types with std::variant as sum type and std::tuple as product type](Use_algebraic_data_types_with_stdstdvariant_as_sum_type_and_stdstdtuple_as_produ.md)
-- [Use continuation-passing style CPS with coroutines and senders](Use_continuation-passing_style_CPS_with_coroutines_and_senders.md)
+- [Use continuation-passing style (CPS) with coroutines and senders](Use_continuation-passing_style_CPS_with_coroutines_and_senders.md)
 - [Use std::views pipeline as a functional transformation chain](Use_stdstdviews_pipeline_as_a_functional_transformation_chain.md)
 
 ## Notes

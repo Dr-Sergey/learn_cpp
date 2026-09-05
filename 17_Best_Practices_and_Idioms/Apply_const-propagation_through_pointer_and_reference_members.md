@@ -1,7 +1,6 @@
 # Apply const-propagation through pointer and reference members
 
-**Category:** Best Practices & Idioms  
-**Item:** #796  
+**Category:** Best Practices and Idioms  
 **Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/experimental/propagate_const>  
 

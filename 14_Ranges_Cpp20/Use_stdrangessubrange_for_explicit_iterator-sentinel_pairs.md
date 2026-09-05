@@ -1,7 +1,6 @@
 # Use std::ranges::subrange for explicit iterator-sentinel pairs
 
-**Category:** Ranges (C++20)  
-**Item:** #395  
+**Category:** Ranges Cpp20  
 **Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/ranges/subrange>  
 

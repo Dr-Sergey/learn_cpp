@@ -1,7 +1,7 @@
 # Know the lifetime extension rules for temporaries bound to const references
 
 **Category:** Core Language Fundamentals  
-**Standard:** C++98/C++11/C++23  
+**Standard:** C++98, C++11, C++23  
 **Reference:** <https://en.cppreference.com/w/cpp/language/reference_initialization#Lifetime_of_a_temporary>  
 
 ---

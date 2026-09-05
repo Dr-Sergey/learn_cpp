@@ -1,6 +1,6 @@
 # Design bootloader and firmware update architecture in C++
 
-**Category:** Embedded & Constrained Systems  
+**Category:** Embedded and Constrained Systems  
 **Standard:** C++17  
 **Reference:** -  
 

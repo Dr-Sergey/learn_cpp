@@ -1,6 +1,7 @@
 # Use the Outbox pattern for reliable event publishing in C++ systems
 
-**Category:** Project Architecture
+**Category:** Project Architecture  
+**Standard:** Not version-specific  
 
 ---
 

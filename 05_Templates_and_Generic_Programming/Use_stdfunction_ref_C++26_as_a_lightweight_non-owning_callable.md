@@ -1,7 +1,6 @@
 # Use `std::function_ref` (C++26) as a Lightweight Non-Owning Callable
 
-**Category:** Templates & Generic Programming  
-**Item:** #455  
+**Category:** Templates and Generic Programming  
 **Standard:** C++26  
 **Reference:** <https://en.cppreference.com/w/cpp/utility/functional/function_ref>  
 

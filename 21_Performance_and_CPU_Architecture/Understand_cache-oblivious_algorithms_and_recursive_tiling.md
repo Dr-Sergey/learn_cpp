@@ -1,7 +1,7 @@
 # Understand cache-oblivious algorithms and recursive tiling
 
-**Category:** Performance & CPU Architecture  
-**Item:** #541  
+**Category:** Performance and CPU Architecture  
+**Standard:** Not version-specific  
 **Reference:** <https://en.wikipedia.org/wiki/Cache-oblivious_algorithm>  
 
 ---
@@ -176,6 +176,8 @@ If you want to see cache effects directly, the pointer-chasing benchmark is the 
 #include <vector>
 #include <chrono>
 #include <numeric>
+#include <algorithm>
+#include <random>
 
 int main() {
     // Measure random access latency at different working set sizes

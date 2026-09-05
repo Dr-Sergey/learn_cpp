@@ -1,7 +1,6 @@
 # Use std::hive (C++26) in depth: stable addresses, iteration, and erasure
 
-**Category:** Standard Library — New in C++23/26  
-**Item:** #581  
+**Category:** Standard Library New Cpp23 26  
 **Standard:** C++26  
 **Reference:** <https://en.cppreference.com/w/cpp/container/hive>  
 
@@ -43,6 +42,7 @@ The stability guarantee is the defining feature of `std::hive`. This example mak
 
 **Answer:**
 
+<!-- compile: needs `hive` (not in the CI standard library yet) -->
 ```cpp
 // C++26 — requires <hive> support
 #include <hive>
@@ -102,6 +102,7 @@ This example erases every other element and then iterates to show that the holes
 
 **Answer:**
 
+<!-- compile: needs `hive` (not in the CI standard library yet) -->
 ```cpp
 #include <hive>
 #include <iostream>
@@ -161,6 +162,7 @@ The benchmark below captures the performance story in concrete numbers. `std::hi
 
 **Answer:**
 
+<!-- compile: needs `hive` (not in the CI standard library yet) -->
 ```cpp
 #include <hive>
 #include <list>

@@ -1,6 +1,7 @@
 # Design multi-platform build architecture (Windows, Linux, embedded targets)
 
-**Category:** Project Architecture
+**Category:** Project Architecture  
+**Standard:** Not version-specific  
 
 ---
 

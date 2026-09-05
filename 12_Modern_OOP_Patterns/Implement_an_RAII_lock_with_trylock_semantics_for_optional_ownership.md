@@ -1,7 +1,6 @@
 # Implement an RAII lock with trylock semantics for optional ownership
 
 **Category:** Modern OOP Patterns  
-**Item:** #263  
 **Standard:** C++17  
 **Reference:** <https://en.cppreference.com/w/cpp/thread/unique_lock>  
 

@@ -1,7 +1,7 @@
 # Understand cache-oblivious algorithms and recursive tiling (Part 2: Transpose)
 
-**Category:** Performance & CPU Architecture  
-**Item:** #625  
+**Category:** Performance and CPU Architecture  
+**Standard:** Not version-specific  
 **Reference:** <https://en.wikipedia.org/wiki/Cache-oblivious_algorithm>  
 
 ---

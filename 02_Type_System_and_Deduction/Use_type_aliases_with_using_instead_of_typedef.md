@@ -1,7 +1,7 @@
 # Use Type Aliases with `using` Instead of `typedef`
 
-**Category:** Type System & Deduction  
-**Item:** #18  
+**Category:** Type System and Deduction  
+**Standard:** Not version-specific  
 **Reference:** <https://github.com/AnthonyCalandra/modern-cpp-features/blob/master/CPP11.md#type-aliases>  
 
 ---
@@ -151,6 +151,7 @@ This example demonstrates all the common alias template patterns, then shows the
 #include <map>
 #include <string>
 #include <memory>
+#include <functional>
 
 // === ALIAS TEMPLATES with using (C++11) ===
 

@@ -1,6 +1,7 @@
 # Use the Interface Segregation Principle to design minimal abstract classes
 
-**Category:** OOP Design
+**Category:** OOP Design  
+**Standard:** Not version-specific  
 
 ---
 
@@ -245,6 +246,10 @@ C++20 concepts give you ISP with zero overhead - no vtable, no indirection, no p
 #include <concepts>
 #include <string>
 #include <iostream>
+#include <span>
+#include <string_view>
+#include <utility>
+#include <vector>
 
 // ISP with concepts - zero-overhead, compile-time interfaces
 

@@ -1,7 +1,6 @@
 # Use std::packaged_task for deferred execution with future results
 
-**Category:** Concurrency & Parallelism  
-**Item:** #373  
+**Category:** Concurrency and Parallelism  
 **Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/thread/packaged_task>  
 

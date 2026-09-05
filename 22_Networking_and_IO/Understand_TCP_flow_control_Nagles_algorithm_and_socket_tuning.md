@@ -1,7 +1,7 @@
 # Understand TCP flow control, Nagle's algorithm, and socket tuning
 
-**Category:** Networking & I/O  
-**Item:** #644  
+**Category:** Networking and IO  
+**Standard:** Not version-specific  
 **Reference:** <https://man7.org/linux/man-pages/man7/tcp.7.html>  
 
 ---
@@ -44,6 +44,7 @@ If the table feels like a lot at first glance, the rule of thumb is: use `TCP_NO
 
 Setting `TCP_NODELAY` is a one-liner, but it is worth understanding exactly what it changes. Without it, two consecutive small writes will trigger the Nagle + delayed ACK interaction that adds 40ms per round-trip. With it, every write goes out immediately, regardless of whether there is unacknowledged data in flight.
 
+<!-- compile: needs POSIX header `sys/socket.h` -->
 ```cpp
 // Linux/POSIX example
 #include <iostream>
@@ -103,6 +104,7 @@ The key nuance here is timing: set `TCP_NODELAY` on the server side right after 
 
 The reason buffer sizes matter for throughput comes down to the **bandwidth-delay product (BDP)**: the amount of data that can be "in flight" on the network at any moment equals bandwidth multiplied by round-trip time. If your TCP receive buffer is smaller than the BDP, the sender must stop and wait for ACKs before the buffer even fills - you're leaving bandwidth unused. On a LAN this rarely matters, but on a WAN with a 10ms or 100ms RTT it can cut your throughput dramatically.
 
+<!-- compile: needs POSIX header `sys/socket.h` -->
 ```cpp
 #include <iostream>
 #include <sys/socket.h>
@@ -164,6 +166,7 @@ Notice that Linux quietly doubles whatever value you request. If you ask for 4 M
 
 `TCP_CORK` is the opposite of `TCP_NODELAY`. Instead of sending each write immediately, it holds everything back until you "uncork" the socket, then flushes the accumulated data as one burst of full-sized TCP segments. This is ideal for HTTP-style responses where you have a fixed structure (status line, headers, body) that you want to go out together.
 
+<!-- compile: needs POSIX header `sys/socket.h` -->
 ```cpp
 #include <iostream>
 #include <cstring>

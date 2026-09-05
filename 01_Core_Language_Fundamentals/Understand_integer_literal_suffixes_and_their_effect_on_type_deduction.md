@@ -1,7 +1,6 @@
 # Understand integer literal suffixes and their effect on type deduction
 
 **Category:** Core Language Fundamentals  
-**Item:** #261  
 **Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/language/integer_literal>  
 

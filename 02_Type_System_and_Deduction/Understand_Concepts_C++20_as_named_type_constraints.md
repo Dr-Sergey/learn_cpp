@@ -1,7 +1,6 @@
 # Understand Concepts (C++20) as named type constraints
 
-**Category:** Type System & Deduction  
-**Item:** #25  
+**Category:** Type System and Deduction  
 **Standard:** C++20  
 **Reference:** <https://github.com/AnthonyCalandra/modern-cpp-features/blob/master/CPP20.md#concepts>  
 

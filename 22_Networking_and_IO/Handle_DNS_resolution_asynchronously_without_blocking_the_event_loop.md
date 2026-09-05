@@ -1,7 +1,6 @@
 # Handle DNS resolution asynchronously without blocking the event loop
 
-**Category:** Networking & I/O  
-**Item:** #647  
+**Category:** Networking and IO  
 **Standard:** C++11  
 **Reference:** <https://think-async.com/Asio/>  
 
@@ -43,6 +42,7 @@ Asio's `async_resolve` solves this by offloading the blocking `getaddrinfo` call
 
 The key thing to notice in this example is that the timer fires *before* the DNS result arrives. That proves the event loop was not blocked waiting for the DNS lookup - both operations ran concurrently, and the timer (which completes in 1 ms) finished first.
 
+<!-- compile: needs third-party library header `asio.hpp` -->
 ```cpp
 // Requires: Asio standalone or Boost.Asio
 // Compile: g++ -std=c++20 -lpthread -o resolver resolver.cpp

@@ -1,7 +1,6 @@
 # Use compile-time CPU feature detection with __builtin_cpu_supports
 
-**Category:** Performance & CPU Architecture  
-**Item:** #725  
+**Category:** Performance and CPU Architecture  
 **Standard:** C++11  
 **Reference:** <https://gcc.gnu.org/onlinedocs/gcc/Other-Builtins.html>  
 

@@ -1,7 +1,7 @@
 # Use std::copy_if, std::remove_if, and std::count_if with predicates
 
-**Category:** Standard Library - Algorithms  
-**Item:** #78  
+**Category:** Standard Library Algorithms  
+**Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/algorithm/copy>  
 
 ---

@@ -1,6 +1,7 @@
 # Implement the Builder pattern for complex object construction in C++
 
-**Category:** OOP Design
+**Category:** OOP Design  
+**Standard:** Not version-specific  
 
 ---
 

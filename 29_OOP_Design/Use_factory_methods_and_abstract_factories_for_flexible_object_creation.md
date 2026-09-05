@@ -1,6 +1,7 @@
 # Use factory methods and abstract factories for flexible object creation
 
-**Category:** OOP Design
+**Category:** OOP Design  
+**Standard:** Not version-specific  
 
 ---
 
@@ -43,6 +44,7 @@ Static factory methods are just named constructors - instead of a single `Shape(
 #include <cmath>
 #include <stdexcept>
 #include <iostream>
+#include <numbers>
 
 class Shape {
 public:
@@ -55,12 +57,12 @@ class Circle : public Shape {
     double r_;
 public:
     explicit Circle(double r) : r_(r) {}
-    double area() const override { return M_PI * r_ * r_; }
+    double area() const override { return std::numbers::pi * r_ * r_; }
     std::string name() const override { return "Circle"; }
 
     // Static factory: named constructors
     static Circle unit() { return Circle(1.0); }
-    static Circle from_area(double a) { return Circle(std::sqrt(a / M_PI)); }
+    static Circle from_area(double a) { return Circle(std::sqrt(a / std::numbers::pi)); }
 };
 
 class Rect : public Shape {

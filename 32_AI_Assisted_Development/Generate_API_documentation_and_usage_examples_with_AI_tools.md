@@ -1,6 +1,7 @@
 # Generate API documentation and usage examples with AI tools
 
-**Category:** AI-Assisted C++ Development
+**Category:** AI Assisted Development  
+**Standard:** Not version-specific  
 
 ---
 
@@ -171,6 +172,9 @@ with code examples. Cover:
 Here is what AI-generated usage documentation looks like in practice for an HTTP client library:
 
 ```cpp
+#include <chrono>
+#include <iostream>
+#include <span>
 // === AI-generated usage guide ===
 
 // ## Quick Start

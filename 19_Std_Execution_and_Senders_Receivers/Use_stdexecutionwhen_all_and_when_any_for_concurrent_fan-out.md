@@ -1,7 +1,6 @@
 # Use std::execution::when_all and when_any for concurrent fan-out
 
-**Category:** std::execution & Senders/Receivers  
-**Item:** #526  
+**Category:** Std Execution and Senders Receivers  
 **Standard:** C++17  
 **Reference:** <https://en.cppreference.com/w/cpp/execution>  
 
@@ -31,6 +30,7 @@ when_all:                    when_any:
 
 Here three independent computations run concurrently on a thread pool. `when_all` starts all three, and then waits for every one of them to finish before it delivers the collected results. The order in the output may vary (task scheduling is non-deterministic), but the final values are always in declaration order:
 
+<!-- compile: needs third-party library header `stdexec/execution.hpp` -->
 ```cpp
 #include <stdexec/execution.hpp>
 #include <exec/static_thread_pool.hpp>
@@ -84,6 +84,7 @@ Even though Task 3 printed before Task 2 in the output above, the destructured r
 
 The reason this is designed to cancel remaining senders is efficiency - if one task has already failed, there is usually no point letting the others finish. You still get a clean result: the first error propagates to the caller via the normal exception mechanism. Tasks that have not yet started may never start at all:
 
+<!-- compile: needs third-party library header `stdexec/execution.hpp` -->
 ```cpp
 #include <stdexec/execution.hpp>
 #include <exec/static_thread_pool.hpp>
@@ -141,6 +142,7 @@ The error propagation rules are worth memorizing because they apply consistently
 
 `when_any` is not in P2300 R7 yet, but the pattern and use cases are clear. The idea is a race: whichever sender finishes first wins, and the rest are cancelled. This is extremely useful for scenarios like "try three servers and use whichever responds first":
 
+<!-- compile: needs third-party library header `stdexec/execution.hpp` -->
 ```cpp
 // when_any is not yet in P2300 R7, but the pattern can be built:
 // The idea: first sender to complete wins, others are cancelled.

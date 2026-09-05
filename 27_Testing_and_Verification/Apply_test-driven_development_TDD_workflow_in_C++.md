@@ -1,7 +1,7 @@
 # Apply test-driven development (TDD) workflow in C++
 
-**Category:** Testing & Verification  
-**Item:** #680  
+**Category:** Testing and Verification  
+**Standard:** Not version-specific  
 **Reference:** <https://github.com/catchorg/Catch2>  
 
 ---

@@ -1,7 +1,7 @@
 # Understand coroutine frame allocation and the Heap Allocation Elision Optimization (HALO)
 
-**Category:** Coroutines (C++20)  
-**Item:** #401  
+**Category:** Coroutines Cpp20  
+**Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/language/coroutines>  
 
 ---

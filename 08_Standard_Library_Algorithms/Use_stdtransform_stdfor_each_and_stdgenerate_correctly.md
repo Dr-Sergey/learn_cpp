@@ -1,8 +1,7 @@
 # Use std::transform, std::for_each, and std::generate correctly
 
-**Category:** Standard Library - Algorithms  
-**Item:** #72  
-**Standard:** C++98 / C++11 / C++17 / C++20  
+**Category:** Standard Library Algorithms  
+**Standard:** C++98, C++11, C++17, C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/algorithm/transform>  
 
 ---

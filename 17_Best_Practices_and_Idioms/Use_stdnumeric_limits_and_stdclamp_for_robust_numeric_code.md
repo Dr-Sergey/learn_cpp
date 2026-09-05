@@ -1,7 +1,7 @@
 # Use std::numeric_limits and std::clamp for robust numeric code
 
-**Category:** Best Practices & Idioms  
-**Item:** #250  
+**Category:** Best Practices and Idioms  
+**Standard:** C++17  
 **Reference:** <https://en.cppreference.com/w/cpp/algorithm/clamp>  
 
 ---

@@ -1,7 +1,7 @@
 # Use std::inclusive_scan and exclusive_scan for prefix sum computation
 
-**Category:** Standard Library — Algorithms  
-**Item:** #264  
+**Category:** Standard Library Algorithms  
+**Standard:** C++17  
 **Reference:** <https://en.cppreference.com/w/cpp/algorithm/inclusive_scan>  
 
 ---

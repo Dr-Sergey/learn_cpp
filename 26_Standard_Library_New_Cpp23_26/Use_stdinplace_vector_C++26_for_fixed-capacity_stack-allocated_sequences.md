@@ -1,7 +1,6 @@
 # Use std::inplace_vector (C++26) for fixed-capacity stack-allocated sequences
 
-**Category:** Standard Library — New in C++23/26  
-**Item:** #580  
+**Category:** Standard Library New Cpp23 26  
 **Standard:** C++26  
 **Reference:** <https://en.cppreference.com/w/cpp/container/inplace_vector>  
 
@@ -42,6 +41,7 @@ This example shows a grid neighbor computation - a classic hot-path pattern wher
 
 **Answer:**
 
+<!-- compile: needs `inplace_vector` (not in the CI standard library yet) -->
 ```cpp
 #include <inplace_vector>  // C++26
 #include <vector>
@@ -111,6 +111,7 @@ There are three ways to add an element to an `inplace_vector`, and they differ i
 
 **Answer:**
 
+<!-- compile: needs `inplace_vector` (not in the CI standard library yet) -->
 ```cpp
 #include <inplace_vector>  // C++26
 #include <iostream>
@@ -174,6 +175,7 @@ Because `inplace_vector` stores elements contiguously, it satisfies the `Contigu
 
 **Answer:**
 
+<!-- compile: needs `inplace_vector` (not in the CI standard library yet) -->
 ```cpp
 #include <inplace_vector>  // C++26
 #include <span>

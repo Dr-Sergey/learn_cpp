@@ -1,7 +1,6 @@
 # Use std::linalg (C++26) for linear algebra operations
 
-**Category:** Standard Library — Utilities  
-**Item:** #259  
+**Category:** Standard Library Utilities  
 **Standard:** C++26  
 **Reference:** <https://en.cppreference.com/w/cpp/numeric/linalg>  
 
@@ -59,6 +58,7 @@ The layering is important to understand because it explains why the design works
 
 Here's the simplest possible demonstration: wrap flat arrays in `mdspan` views, then hand them to `matrix_vector_product`. Notice there is no allocation inside the function - all memory is caller-owned.
 
+<!-- compile: needs `linalg` (not in the CI standard library yet) -->
 ```cpp
 // NOTE: C++26 — requires a compiler that supports <linalg>.
 // As of 2024, available in experimental form via reference implementations
@@ -99,6 +99,7 @@ int main() {
 
 `scaled()` is a good example of the lazy-view design. It returns an accessor-wrapped `mdspan` that applies the scale factor on each read without modifying the underlying data:
 
+<!-- compile: needs `linalg` (not in the CI standard library yet) -->
 ```cpp
 #include <linalg>
 #include <mdspan>
@@ -134,6 +135,7 @@ int main() {
 
 The caller allocates all storage and wraps it in `mdspan` views. The function signature makes the sizes clear from the types alone - a 3×2 matrix times a 2-element vector produces a 3-element result:
 
+<!-- compile: needs `linalg` (not in the CI standard library yet) -->
 ```cpp
 #include <linalg>
 #include <mdspan>
@@ -182,6 +184,7 @@ int main() {
 
 The example below shows a dynamic-extent matrix and the `transposed()` view. The transposition produces no copy - it's just a new `mdspan` with swapped layout strides:
 
+<!-- compile: needs `linalg` (not in the CI standard library yet) -->
 ```cpp
 #include <linalg>
 #include <mdspan>

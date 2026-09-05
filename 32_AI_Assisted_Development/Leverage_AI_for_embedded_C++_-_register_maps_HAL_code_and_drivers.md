@@ -1,6 +1,7 @@
 # Leverage AI for embedded C++ - register maps, HAL code, and drivers
 
-**Category:** AI-Assisted C++ Development
+**Category:** AI Assisted Development  
+**Standard:** Not version-specific  
 
 ---
 

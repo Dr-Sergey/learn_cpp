@@ -1,7 +1,6 @@
 # Know std::hive (C++26) for stable-address, high-throughput element storage
 
-**Category:** Standard Library - Containers  
-**Item:** #190  
+**Category:** Standard Library Containers  
 **Standard:** C++26  
 **Reference:** <https://en.cppreference.com/w/cpp/container/hive>  
 

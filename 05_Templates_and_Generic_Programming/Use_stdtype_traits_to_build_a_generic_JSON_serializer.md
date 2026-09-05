@@ -1,7 +1,6 @@
 # Use `std::type_traits` to Build a Generic JSON Serializer
 
-**Category:** Templates & Generic Programming  
-**Item:** #784  
+**Category:** Templates and Generic Programming  
 **Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/header/type_traits>  
 

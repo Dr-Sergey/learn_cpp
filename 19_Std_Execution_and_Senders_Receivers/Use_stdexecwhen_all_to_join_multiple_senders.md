@@ -1,7 +1,6 @@
 # Use stdexec::when_all to join multiple senders
 
-**Category:** std::execution & Senders/Receivers  
-**Item:** #703  
+**Category:** Std Execution and Senders Receivers  
 **Standard:** C++26  
 **Reference:** <https://github.com/NVIDIA/stdexec>  
 
@@ -38,6 +37,7 @@ Structured concurrency guarantee:
 
 This example deliberately uses two different result types - an `int` and a `std::string` - to show that `when_all` handles heterogeneous senders just fine. The tuple that comes back is strongly typed, and structured bindings let you unpack it cleanly:
 
+<!-- compile: needs third-party library header `stdexec/execution.hpp` -->
 ```cpp
 #include <stdexec/execution.hpp>
 #include <exec/static_thread_pool.hpp>
@@ -80,6 +80,7 @@ Both tasks run on separate threads (different IDs), and the result binds `num` t
 
 The important detail here is the `completions` counter. `when_all` waits for all tasks to acknowledge cancellation before delivering the error, but tasks that finish legitimately before they see the stop signal will still increment the counter. The exact count depends on timing - and that is intentional and correct:
 
+<!-- compile: needs third-party library header `stdexec/execution.hpp` -->
 ```cpp
 #include <stdexec/execution.hpp>
 #include <exec/static_thread_pool.hpp>

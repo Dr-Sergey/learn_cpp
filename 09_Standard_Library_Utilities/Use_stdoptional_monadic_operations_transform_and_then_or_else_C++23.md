@@ -1,7 +1,6 @@
 # Use std::optional monadic operations: transform, and_then, or_else (C++23)
 
-**Category:** Standard Library — Utilities  
-**Item:** #363  
+**Category:** Standard Library Utilities  
 **Standard:** C++23  
 **Reference:** <https://en.cppreference.com/w/cpp/utility/optional/transform>  
 

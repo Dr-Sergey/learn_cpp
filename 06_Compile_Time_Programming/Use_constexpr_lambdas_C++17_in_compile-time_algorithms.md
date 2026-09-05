@@ -1,7 +1,6 @@
 # Use `constexpr` Lambdas (C++17) in Compile-Time Algorithms
 
-**Category:** Compile-Time Programming  
-**Item:** #341  
+**Category:** Compile Time Programming  
 **Standard:** C++17  
 **Reference:** <https://en.cppreference.com/w/cpp/language/lambda>  
 

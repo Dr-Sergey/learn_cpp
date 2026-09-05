@@ -1,7 +1,6 @@
 # Use std::tuple and std::get for heterogeneous value grouping
 
-**Category:** Standard Library - Utilities  
-**Item:** #79  
+**Category:** Standard Library Utilities  
 **Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/utility/tuple>  
 

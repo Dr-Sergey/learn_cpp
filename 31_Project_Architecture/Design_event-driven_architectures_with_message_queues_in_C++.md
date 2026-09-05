@@ -1,6 +1,7 @@
 # Design event-driven architectures with message queues in C++
 
-**Category:** Project Architecture
+**Category:** Project Architecture  
+**Standard:** Not version-specific  
 
 ---
 

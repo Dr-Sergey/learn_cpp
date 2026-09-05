@@ -1,7 +1,6 @@
 # Use deducing-this (explicit object parameter, C++23) for CRTP without templates
 
 **Category:** Modern OOP Patterns  
-**Item:** #167  
 **Standard:** C++23  
 **Reference:** <https://en.cppreference.com/w/cpp/language/member_functions#Explicit_object_member_functions>  
 
@@ -186,6 +185,7 @@ This is the other classic CRTP headache: when a base class method returns `*this
 #include <iostream>
 #include <string>
 #include <optional>
+#include <utility>
 
 struct BuilderBase {
     std::string name_;

@@ -1,7 +1,7 @@
 # Detect integer overflow at compile time and runtime safely
 
-**Category:** Safety & Security  
-**Item:** #733  
+**Category:** Safety and Security  
+**Standard:** Not version-specific  
 **Reference:** <https://gcc.gnu.org/onlinedocs/gcc/Integer-Overflow-Builtins.html>  
 
 ---

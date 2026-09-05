@@ -1,7 +1,7 @@
 # Use mutation testing with Mull to measure test suite quality
 
-**Category:** Testing & Verification  
-**Item:** #587  
+**Category:** Testing and Verification  
+**Standard:** Not version-specific  
 **Reference:** <https://github.com/mull-project/mull>  
 
 ---

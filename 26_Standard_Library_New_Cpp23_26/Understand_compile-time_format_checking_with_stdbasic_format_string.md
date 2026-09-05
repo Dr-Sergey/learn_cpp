@@ -1,7 +1,7 @@
 # Understand Compile-Time Format Checking with `std::basic_format_string`
 
-**Category:** Standard Library — New in C++23/26  
-**Standard:** C++20 (core), C++23 (extended)  
+**Category:** Standard Library New Cpp23 26  
+**Standard:** C++20, C++23 (core)  
 **Reference:** [cppreference — std::basic_format_string](https://en.cppreference.com/w/cpp/utility/format/basic_format_string)  
 
 ---
@@ -113,6 +113,8 @@ This is where `std::format_string` really shines. By accepting it as a parameter
 #include <iostream>
 #include <source_location>
 #include <chrono>
+#include <string_view>
+#include <utility>
 
 // Custom log function with compile-time format checking
 enum class LogLevel { Debug, Info, Warn, Error };
@@ -188,6 +190,8 @@ Sometimes the format string is not known until runtime - it comes from a user, a
 #include <string>
 #include <iostream>
 #include <stdexcept>
+#include <string_view>
+#include <utility>
 
 // Runtime format strings with std::vformat
 // When the format string comes from user input, config files, etc.

@@ -1,6 +1,6 @@
 # Understand final_suspend Customization for Detached vs Awaited Tasks
 
-**Category:** Coroutines (C++20)  
+**Category:** Coroutines Cpp20  
 **Standard:** C++20  
 **Reference:** [cppreference - Coroutines (final_suspend)](https://en.cppreference.com/w/cpp/language/coroutines#co_await)  
 
@@ -61,6 +61,7 @@ The key thing to watch here is how `final_suspend` choice determines who is resp
 #include <coroutine>
 #include <cstdio>
 #include <utility>
+#include <exception>
 
 // --- Caller-driven Task (suspend_always) ---
 struct CallerDrivenTask {
@@ -138,6 +139,7 @@ This is where it gets interesting. Instead of just suspending or self-destructin
 #include <coroutine>
 #include <cstdio>
 #include <utility>
+#include <exception>
 
 struct ContinuationTask {
     struct promise_type {
@@ -250,6 +252,7 @@ The short answer is: it calls `std::terminate()`. The longer answer is that by t
 ```cpp
 #include <coroutine>
 #include <cstdio>
+#include <exception>
 
 struct BadTask {
     struct promise_type {

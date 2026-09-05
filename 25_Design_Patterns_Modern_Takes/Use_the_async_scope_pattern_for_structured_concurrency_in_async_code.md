@@ -1,7 +1,7 @@
 # Use the async_scope pattern for structured concurrency in async code
 
-**Category:** Design Patterns - Modern Takes  
-**Item:** #753  
+**Category:** Design Patterns Modern Takes  
+**Standard:** Not version-specific  
 **Reference:** <https://github.com/NVIDIA/stdexec>  
 
 ---

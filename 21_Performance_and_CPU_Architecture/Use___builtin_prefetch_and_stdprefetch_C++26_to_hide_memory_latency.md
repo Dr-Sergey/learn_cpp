@@ -1,7 +1,6 @@
 # Use __builtin_prefetch and std::prefetch (C++26) to hide memory latency
 
-**Category:** Performance & CPU Architecture  
-**Item:** #624  
+**Category:** Performance and CPU Architecture  
 **Standard:** C++26  
 **Reference:** <https://gcc.gnu.org/onlinedocs/gcc/Other-Builtins.html>  
 

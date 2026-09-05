@@ -1,8 +1,7 @@
 # Know std::function and its performance characteristics
 
-**Category:** Standard Library — Utilities  
-**Item:** #82  
-**Standard:** C++11 / C++23  
+**Category:** Standard Library Utilities  
+**Standard:** C++11, C++23  
 **Reference:** <https://en.cppreference.com/w/cpp/utility/functional/function>  
 
 ---

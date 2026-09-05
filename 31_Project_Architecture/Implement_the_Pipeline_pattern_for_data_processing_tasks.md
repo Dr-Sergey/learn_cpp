@@ -1,6 +1,7 @@
 # Implement the Pipeline pattern for data processing tasks
 
-**Category:** Project Architecture
+**Category:** Project Architecture  
+**Standard:** Not version-specific  
 
 ---
 

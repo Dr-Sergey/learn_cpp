@@ -1,7 +1,7 @@
 # Use clang-format to enforce consistent code style in a team
 
-**Category:** Tooling & Debugging  
-**Item:** #508  
+**Category:** Tooling and Debugging  
+**Standard:** Not version-specific  
 **Reference:** <https://clang.llvm.org/docs/ClangFormat.html>  
 
 ---

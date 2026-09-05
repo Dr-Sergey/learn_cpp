@@ -1,7 +1,7 @@
 # Use clangd and compile_commands.json for IDE code intelligence
 
-**Category:** Tooling & Debugging  
-**Item:** #200  
+**Category:** Tooling and Debugging  
+**Standard:** Not version-specific  
 **Reference:** <https://clangd.llvm.org>  
 
 ---

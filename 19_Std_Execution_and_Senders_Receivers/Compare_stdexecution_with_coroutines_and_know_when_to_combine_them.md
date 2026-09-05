@@ -1,7 +1,6 @@
 # Compare std::execution with coroutines and know when to combine them
 
-**Category:** std::execution & Senders/Receivers  
-**Item:** #532  
+**Category:** Std Execution and Senders Receivers  
 **Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/execution>  
 
@@ -42,6 +41,7 @@ The coroutine reads like ordinary sequential code; the sender pipeline reads lik
 
 The bridge between the two worlds is `co_await`. When you have a coroutine type that understands senders (like `exec::task`), you can `co_await` any sender directly - the coroutine suspends, the sender runs, and when it completes the coroutine resumes with the value. The example below also shows the other direction: a coroutine is itself a sender and can be dropped into a pipeline with `|`.
 
+<!-- compile: needs third-party library header `stdexec/execution.hpp` -->
 ```cpp
 // Using stdexec (NVIDIA P2300 reference implementation)
 #include <stdexec/execution.hpp>

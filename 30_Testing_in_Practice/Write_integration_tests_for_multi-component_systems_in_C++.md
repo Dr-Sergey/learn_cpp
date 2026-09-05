@@ -1,6 +1,7 @@
 # Write integration tests for multi-component systems in C++
 
-**Category:** Testing in Practice
+**Category:** Testing in Practice  
+**Standard:** Not version-specific  
 
 ---
 

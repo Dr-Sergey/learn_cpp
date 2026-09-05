@@ -1,7 +1,6 @@
 # Understand covariant return types in virtual functions
 
 **Category:** Modern OOP Patterns  
-**Item:** #491  
 **Standard:** C++17  
 **Reference:** <https://en.cppreference.com/w/cpp/language/virtual>  
 

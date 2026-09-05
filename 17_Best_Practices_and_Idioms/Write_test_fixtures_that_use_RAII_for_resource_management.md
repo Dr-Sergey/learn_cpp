@@ -1,7 +1,6 @@
 # Write test fixtures that use RAII for resource management
 
-**Category:** Best Practices & Idioms  
-**Item:** #505  
+**Category:** Best Practices and Idioms  
 **Standard:** C++17  
 **Reference:** <https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#Rt-raii>  
 

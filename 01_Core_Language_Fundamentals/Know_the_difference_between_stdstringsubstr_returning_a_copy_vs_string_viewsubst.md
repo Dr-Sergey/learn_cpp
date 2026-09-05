@@ -69,6 +69,8 @@ This benchmark makes the performance gap concrete. Watch how the same loop runs 
 #include <string>
 #include <string_view>
 #include <chrono>
+#include <algorithm>
+#include <type_traits>
 
 int main() {
     std::string original(10000, 'x');  // 10KB string

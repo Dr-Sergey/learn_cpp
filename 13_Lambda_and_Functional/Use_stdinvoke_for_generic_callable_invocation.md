@@ -1,7 +1,6 @@
 # Use std::invoke for generic callable invocation
 
-**Category:** Lambda & Functional  
-**Item:** #112  
+**Category:** Lambda and Functional  
 **Standard:** C++17  
 **Reference:** <https://en.cppreference.com/w/cpp/utility/functional/invoke>  
 
@@ -162,6 +161,8 @@ When you write a template that accepts a callable, you're making an implicit pro
 #include <functional>
 #include <type_traits>
 #include <concepts>
+#include <string>
+#include <utility>
 
 // Without constraint: terrible error messages
 template <typename F>

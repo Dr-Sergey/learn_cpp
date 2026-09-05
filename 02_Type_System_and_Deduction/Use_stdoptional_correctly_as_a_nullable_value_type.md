@@ -1,7 +1,6 @@
 # Use `std::optional` Correctly as a Nullable Value Type
 
-**Category:** Type System & Deduction  
-**Item:** #21  
+**Category:** Type System and Deduction  
 **Standard:** C++17 (monadic operations: C++23)  
 **Reference:** <https://en.cppreference.com/w/cpp/utility/optional>  
 

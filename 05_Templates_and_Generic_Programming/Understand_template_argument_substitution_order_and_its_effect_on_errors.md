@@ -1,7 +1,6 @@
 # Understand Template Argument Substitution Order and Its Effect on Errors
 
-**Category:** Templates & Generic Programming  
-**Item:** #785  
+**Category:** Templates and Generic Programming  
 **Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/language/sfinae>  
 

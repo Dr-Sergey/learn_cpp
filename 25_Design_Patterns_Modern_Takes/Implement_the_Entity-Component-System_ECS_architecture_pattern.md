@@ -1,7 +1,7 @@
 # Implement the Entity-Component-System (ECS) architecture pattern
 
-**Category:** Design Patterns — Modern Takes  
-**Item:** #750  
+**Category:** Design Patterns Modern Takes  
+**Standard:** Not version-specific  
 **Reference:** <https://en.cppreference.com/w/cpp/language/performance>  
 
 ---

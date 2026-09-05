@@ -1,7 +1,6 @@
 # Write stateful lambdas and understand their mutable semantics
 
-**Category:** Lambda & Functional  
-**Item:** #111  
+**Category:** Lambda and Functional  
 **Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/language/lambda>  
 

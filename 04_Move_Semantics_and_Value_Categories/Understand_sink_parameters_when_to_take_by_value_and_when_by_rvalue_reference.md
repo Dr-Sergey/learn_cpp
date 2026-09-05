@@ -1,7 +1,7 @@
 # Understand Sink Parameters: When to Take by Value and When by Rvalue Reference
 
-**Category:** Move Semantics & Value Categories  
-**Item:** #330  
+**Category:** Move Semantics and Value Categories  
+**Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/language/value_category>  
 
 ---
@@ -182,6 +182,7 @@ This example targets a different failure mode: a type where `move` and `copy` co
 #include <chrono>
 #include <array>
 #include <utility>
+#include <algorithm>
 
 // A type where move is EXPENSIVE (not just pointer-swap)
 struct BigMatrix {

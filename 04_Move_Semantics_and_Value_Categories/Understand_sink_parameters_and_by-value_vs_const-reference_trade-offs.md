@@ -1,7 +1,7 @@
 # Understand Sink Parameters and By-Value vs Const-Reference Trade-offs
 
-**Category:** Move Semantics & Value Categories  
-**Item:** #447  
+**Category:** Move Semantics and Value Categories  
+**Standard:** C++11  
 **Reference:** <https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#Rf-in-out>  
 
 ---

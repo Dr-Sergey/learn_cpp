@@ -1,7 +1,6 @@
 # Understand two-phase name lookup in templates
 
 **Category:** Core Language Fundamentals  
-**Item:** #151  
 **Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/language/two-phase_lookup>  
 

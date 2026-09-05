@@ -1,7 +1,7 @@
 # Understand C interop: extern C, name mangling, and calling conventions
 
 **Category:** Interoperability  
-**Item:** #590  
+**Standard:** Not version-specific  
 **Reference:** <https://en.cppreference.com/w/cpp/language/language_linkage>  
 
 ---

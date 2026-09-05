@@ -1,7 +1,7 @@
 # Understand Explicit Instantiation and Prevent Implicit Instantiation
 
-**Category:** Templates & Generic Programming  
-**Item:** #159  
+**Category:** Templates and Generic Programming  
+**Standard:** Not version-specific  
 **Reference:** <https://en.cppreference.com/w/cpp/language/class_template>  
 
 ---
@@ -49,6 +49,7 @@ Linker: uses the one from instantiation.cpp
 
 Here is the full pattern spread across multiple files. The key is that `extern template` in the header acts as a promise: "the definition exists elsewhere, don't generate it here." Only `heavy_type_instantiation.cpp` actually pays the instantiation cost:
 
+<!-- compile: fragment: depends on a header defined elsewhere in the topic -->
 ```cpp
 // === heavy_type.h ===
 #ifndef HEAVY_TYPE_H
@@ -130,6 +131,7 @@ The savings scale with the number of TUs. If ten files all include that header, 
 
 This example shows the same pattern applied to a custom template. Notice that `DataProcessor<double>` is deliberately left out of the explicit instantiation list - any TU that uses it will instantiate it implicitly, which is sometimes what you want for less-common specializations:
 
+<!-- compile: fragment: depends on a header defined elsewhere in the topic -->
 ```cpp
 // === my_template.h ===
 #ifndef MY_TEMPLATE_H

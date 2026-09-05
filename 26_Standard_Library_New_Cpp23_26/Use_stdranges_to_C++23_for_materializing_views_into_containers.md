@@ -1,6 +1,6 @@
 # Use `std::ranges::to` (C++23) for Materializing Views into Containers
 
-**Category:** Standard Library — New in C++23/26  
+**Category:** Standard Library New Cpp23 26  
 **Standard:** C++23  
 **Reference:** [cppreference — std::ranges::to](https://en.cppreference.com/w/cpp/ranges/to)  
 
@@ -162,6 +162,7 @@ Any extra arguments you pass to `ranges::to<C>(args...)` are forwarded directly 
 #include <memory>
 #include <iostream>
 #include <memory_resource>
+#include <functional>
 
 namespace rv = std::ranges::views;
 

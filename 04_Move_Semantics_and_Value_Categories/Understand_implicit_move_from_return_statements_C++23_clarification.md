@@ -1,7 +1,6 @@
 # Understand Implicit Move from Return Statements (C++23 Clarification)
 
-**Category:** Move Semantics & Value Categories  
-**Item:** #157  
+**Category:** Move Semantics and Value Categories  
 **Standard:** C++23  
 **Reference:** <https://en.cppreference.com/w/cpp/language/return>  
 

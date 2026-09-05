@@ -1,6 +1,6 @@
 # Implement compile-time-checked serialization with reflection (C++26)
 
-**Category:** Serialization & Data Formats  
+**Category:** Serialization and Data Formats  
 **Standard:** C++26  
 **Reference:** <https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2023/p2996r0.html>  
 
@@ -32,6 +32,7 @@ The problem is obvious once your codebase grows: that list of fields is a second
 
 With reflection, you write the serializer once and it works for every type automatically. The `template for` loop iterates over members at compile time - the compiler unrolls it into exactly the right code for each type. The `^T` operator produces a compile-time representation of the type `T`, and `obj.[:member:]` is the splice syntax that accesses the actual member at runtime:
 
+<!-- compile: needs `meta` (not in the CI standard library yet) -->
 ```cpp
 #include <meta>
 #include <string>

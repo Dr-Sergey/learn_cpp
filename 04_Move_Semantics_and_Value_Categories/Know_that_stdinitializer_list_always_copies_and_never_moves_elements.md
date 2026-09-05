@@ -1,6 +1,6 @@
 # Know That `std::initializer_list` Always Copies and Never Moves Elements
 
-**Category:** Move Semantics & Value Categories  
+**Category:** Move Semantics and Value Categories  
 **Standard:** C++11 and later  
 **Reference:** https://en.cppreference.com/w/cpp/utility/initializer_list  
 

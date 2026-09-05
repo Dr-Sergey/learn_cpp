@@ -1,7 +1,6 @@
 # Understand `std::any` and When to Prefer It Over `void*` or `variant`
 
-**Category:** Type System & Deduction  
-**Item:** #23  
+**Category:** Type System and Deduction  
 **Standard:** C++17  
 **Reference:** <https://en.cppreference.com/w/cpp/utility/any>  
 
@@ -358,6 +357,7 @@ auto* p = std::get_if<std::string>(&v);        // Returns nullptr safely
 #include <variant>
 #include <string>
 #include <iostream>
+#include <vector>
 
 struct Config {
     // Variant: size known at compile time, no heap alloc

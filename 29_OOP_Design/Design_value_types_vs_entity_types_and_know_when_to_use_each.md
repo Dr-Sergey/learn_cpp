@@ -1,6 +1,7 @@
 # Design value types vs entity types and know when to use each
 
-**Category:** OOP Design
+**Category:** OOP Design  
+**Standard:** Not version-specific  
 
 ---
 
@@ -41,6 +42,10 @@ A value type's defining characteristic is that two instances with the same conte
 #include <iostream>
 #include <string>
 #include <format>
+#include <ostream>
+#include <stdexcept>
+#include <utility>
+#include <cassert>
 
 // Value type: Money
 // - Compared by content (amount + currency)

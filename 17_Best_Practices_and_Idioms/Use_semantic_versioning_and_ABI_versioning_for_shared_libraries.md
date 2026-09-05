@@ -1,7 +1,7 @@
 # Use semantic versioning and ABI versioning for shared libraries
 
-**Category:** Best Practices & Idioms  
-**Item:** #792  
+**Category:** Best Practices and Idioms  
+**Standard:** Not version-specific  
 **Reference:** <https://semver.org>  
 
 ---

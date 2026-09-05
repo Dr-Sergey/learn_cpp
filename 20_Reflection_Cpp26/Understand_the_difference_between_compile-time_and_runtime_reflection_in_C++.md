@@ -1,7 +1,6 @@
 # Understand the difference between compile-time and runtime reflection in C++
 
-**Category:** Reflection (C++26)  
-**Item:** #538  
+**Category:** Reflection Cpp26  
 **Standard:** C++26  
 **Reference:** <https://en.cppreference.com/w/cpp/meta>  
 
@@ -29,6 +28,7 @@ C++ actually has two different reflection mechanisms, and they work at completel
 
 The fundamental reason static reflection has zero runtime overhead is that it is entirely a compiler feature. Every query you make with `std::meta` is evaluated during compilation - the answers become ordinary constants in your binary, exactly like the result of `sizeof` or a `constexpr` calculation.
 
+<!-- compile: needs `meta` (not in the CI standard library yet) -->
 ```cpp
 // C++26 with P2996 reflection
 #include <meta>
@@ -69,6 +69,7 @@ The `static_assert(sizeof(Point) == 2 * sizeof(int))` line makes the point concr
 
 Here you can see the two approaches side by side working on different problems. RTTI shines when you have a pointer to a base class and need to figure out the actual derived type at runtime - that is a runtime polymorphism problem, and `dynamic_cast` is the right tool. Static reflection shines when you know the type at compile time and want to enumerate its members, generate code for it, or log it.
 
+<!-- compile: needs `meta` (not in the CI standard library yet) -->
 ```cpp
 #include <meta>
 #include <iostream>
@@ -131,6 +132,7 @@ Notice that `describe<Sensor>` works even though `Sensor` has no virtual functio
 
 This is the pattern that unlocks the most power: use compile-time reflection to generate the data structures you need for runtime behavior. You do the structural analysis at compile time, and what lands in the binary is just a regular table or map - no reflection overhead at runtime.
 
+<!-- compile: needs `meta` (not in the CI standard library yet) -->
 ```cpp
 #include <meta>
 #include <iostream>

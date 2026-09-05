@@ -1,6 +1,7 @@
 # Design class invariants and validate them with assertions
 
-**Category:** OOP Design
+**Category:** OOP Design  
+**Standard:** Not version-specific  
 
 ---
 

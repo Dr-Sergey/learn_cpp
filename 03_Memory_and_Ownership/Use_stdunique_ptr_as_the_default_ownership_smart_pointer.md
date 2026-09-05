@@ -1,7 +1,6 @@
 # Use std::unique_ptr as the Default Ownership Smart Pointer
 
-**Category:** Memory & Ownership  
-**Item:** #26  
+**Category:** Memory and Ownership  
 **Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/memory/unique_ptr>  
 

@@ -1,7 +1,7 @@
 # Design callback and extension interfaces
 
-**Category:** API & Library Design  
-**Standard:** C++17/20  
+**Category:** API and Library Design  
+**Standard:** C++17, C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/utility/functional/function>  
 
 ---

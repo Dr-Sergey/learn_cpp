@@ -1,7 +1,6 @@
 # Implement a custom sender type satisfying the sender concept
 
-**Category:** std::execution & Senders/Receivers  
-**Item:** #607  
+**Category:** Std Execution and Senders Receivers  
 **Standard:** C++20  
 **Reference:** <https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2023/p2300r7.html>  
 
@@ -42,6 +41,7 @@ The `completion_signatures` type is how you declare what your sender can emit. T
 
 This is a realistic example of a custom sender that wraps a platform I/O operation. The key insight is that `start()` submits the actual work and then signals the receiver when it is done. In production you would use io_uring or epoll here; the example uses blocking `read()` to keep the focus on the sender protocol.
 
+<!-- compile: needs third-party library header `stdexec/execution.hpp` -->
 ```cpp
 // async_read_sender.cpp - a sender that reads from a file descriptor
 // Simplified example using POSIX read(); real implementation would use io_uring/epoll
@@ -130,6 +130,7 @@ int main() {
 
 The `completion_signatures` declaration is the part most people under-think when writing their first custom sender. It is worth getting right because the compiler uses it to validate your entire pipeline at compile time. The examples below show common patterns - from the trivial single-value case all the way to signatures that depend on the receiver's environment.
 
+<!-- compile: needs third-party library header `stdexec/execution.hpp` -->
 ```cpp
 #include <stdexec/execution.hpp>
 #include <system_error>
@@ -211,6 +212,7 @@ connect() protocol:
                         (success)       (failure)     (cancelled)
 ```
 
+<!-- compile: needs third-party library header `stdexec/execution.hpp` -->
 ```cpp
 #include <stdexec/execution.hpp>
 #include <iostream>

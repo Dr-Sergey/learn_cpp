@@ -1,7 +1,6 @@
 # Use std::condition_variable for thread synchronization
 
-**Category:** Concurrency & Parallelism  
-**Item:** #89  
+**Category:** Concurrency and Parallelism  
 **Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/thread/condition_variable>  
 

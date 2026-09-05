@@ -1,7 +1,7 @@
 # Know the Rules of the Rule of Zero, Rule of Three, and Rule of Five
 
-**Category:** Memory & Ownership  
-**Item:** #30  
+**Category:** Memory and Ownership  
+**Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/language/rule_of_three>  
 
 ---

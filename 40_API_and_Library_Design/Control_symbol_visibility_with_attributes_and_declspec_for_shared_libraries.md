@@ -1,6 +1,6 @@
 # Control symbol visibility with attributes and declspec for shared libraries
 
-**Category:** API & Library Design  
+**Category:** API and Library Design  
 **Standard:** C++17  
 **Reference:** <https://gcc.gnu.org/wiki/Visibility>  
 

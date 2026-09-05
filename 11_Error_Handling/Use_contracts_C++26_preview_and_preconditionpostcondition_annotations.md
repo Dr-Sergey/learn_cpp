@@ -1,7 +1,6 @@
 # Use contracts (C++26 preview) and precondition/postcondition annotations
 
 **Category:** Error Handling  
-**Item:** #166  
 **Standard:** C++26  
 **Reference:** <https://en.cppreference.com/w/cpp/language/contracts>  
 

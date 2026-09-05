@@ -1,7 +1,7 @@
 # Use std::exchange for implementing move semantics cleanly
 
-**Category:** Best Practices & Idioms  
-**Item:** #145  
+**Category:** Best Practices and Idioms  
+**Standard:** C++14  
 **Reference:** <https://en.cppreference.com/w/cpp/utility/exchange>  
 
 ---

@@ -1,7 +1,6 @@
 # Use std::net (Networking TS) when available for portable async networking
 
-**Category:** Networking & I/O  
-**Item:** #731  
+**Category:** Networking and IO  
 **Standard:** C++26 (proposed)  
 **Reference:** <https://cplusplus.github.io/networking-ts/draft.pdf>  
 
@@ -80,6 +79,7 @@ Let's walk through the core types before looking at code. Understanding what eac
 
 Here is the synchronous version first, which is the simplest way to see the API surface before layering in async callbacks:
 
+<!-- compile: needs third-party library header `asio.hpp` -->
 ```cpp
 // Using Asio as Networking TS reference implementation
 // Compile: g++ -std=c++20 -I/path/to/asio/include -DASIO_STANDALONE net_ts.cpp
@@ -124,6 +124,7 @@ The async version uses a `Session` class that keeps itself alive via `shared_fro
 
 The reason is that async operations complete later - potentially after the code that started them has returned from the stack. The callback holds a shared_ptr to the Session, which keeps the object alive until the callback runs. Without that, the Session object could be destroyed while the kernel still has a pending operation referencing its buffer:
 
+<!-- compile: needs third-party library header `asio.hpp` -->
 ```cpp
 // Async echo server using Asio (Networking TS reference)
 #include <asio.hpp>

@@ -1,7 +1,7 @@
 # Combine Coroutines with `std::execution` for Structured Async Concurrency
 
-**Category:** Concurrency & Parallelism  
-**Standard:** C++20 (Coroutines), C++26 (`std::execution` - P2300)  
+**Category:** Concurrency and Parallelism  
+**Standard:** C++20, C++26, C++23 (Coroutines)  
 **Reference:** [P2300 - std::execution](https://wg21.link/P2300), [cppreference - Coroutines](https://en.cppreference.com/w/cpp/language/coroutines)  
 
 ---
@@ -182,6 +182,8 @@ The goal here is to fan out two tasks in parallel and then rejoin before the par
 #include <tuple>
 #include <atomic>
 #include <utility>
+#include <exception>
+#include <string>
 
 // Simplified task<T> (same as Q1, abbreviated)
 template <typename T>
@@ -308,6 +310,10 @@ The two models have genuinely different strengths, and the real skill is knowing
 #include <iostream>
 #include <thread>
 #include <vector>
+#include <coroutine>
+#include <exception>
+#include <type_traits>
+#include <utility>
 
 // ---- Pure sender style: composable pipeline (pseudo P2300) ----
 // Senders are lazy descriptions of work. They compose without allocating

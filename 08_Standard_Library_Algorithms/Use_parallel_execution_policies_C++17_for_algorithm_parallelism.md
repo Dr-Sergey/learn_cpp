@@ -1,7 +1,6 @@
 # Use parallel execution policies (C++17) for algorithm parallelism
 
-**Category:** Standard Library - Algorithms  
-**Item:** #76  
+**Category:** Standard Library Algorithms  
 **Standard:** C++17  
 **Reference:** <https://en.cppreference.com/w/cpp/algorithm/execution_policy_tag>  
 

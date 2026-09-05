@@ -1,7 +1,7 @@
 # Harden the standard library with debug mode and hardening modes
 
-**Category:** Safety & Security  
-**Item:** #735  
+**Category:** Safety and Security  
+**Standard:** Not version-specific  
 **Reference:** <https://libcxx.llvm.org/Hardening.html>  
 
 ---

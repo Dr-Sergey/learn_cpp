@@ -1,7 +1,6 @@
 # Test C++ code from Python using pybind11 and pytest
 
-**Category:** Testing & Verification  
-**Item:** #589  
+**Category:** Testing and Verification  
 **Standard:** C++20  
 **Reference:** <https://pybind11.readthedocs.io/>  
 

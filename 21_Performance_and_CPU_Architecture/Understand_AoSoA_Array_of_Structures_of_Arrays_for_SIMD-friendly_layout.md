@@ -1,7 +1,7 @@
 # Understand AoSoA (Array of Structures of Arrays) for SIMD-friendly layout
 
-**Category:** Performance & CPU Architecture  
-**Item:** #724  
+**Category:** Performance and CPU Architecture  
+**Standard:** Not version-specific  
 **Reference:** <https://en.cppreference.com/w/cpp/language/performance>  
 
 ---

@@ -1,7 +1,6 @@
 # Understand the C++ memory model and happens-before relationships
 
-**Category:** Concurrency & Parallelism  
-**Item:** #93  
+**Category:** Concurrency and Parallelism  
 **Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/atomic/memory_order>  
 

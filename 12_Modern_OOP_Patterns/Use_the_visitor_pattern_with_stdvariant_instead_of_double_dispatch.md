@@ -1,7 +1,6 @@
 # Use the visitor pattern with std::variant instead of double dispatch
 
 **Category:** Modern OOP Patterns  
-**Item:** #207  
 **Standard:** C++17  
 **Reference:** <https://en.cppreference.com/w/cpp/utility/variant/visit>  
 
@@ -53,6 +52,7 @@ The shapes themselves are plain structs with no virtual functions whatsoever. Th
 #include <variant>
 #include <vector>
 #include <cmath>
+#include <string>
 
 // --- Types (simple structs, no virtual functions!) ---
 struct Circle    { double radius; };
@@ -215,6 +215,7 @@ This is the flip side of the expression problem. Adding a type to the variant im
 #include <iostream>
 #include <variant>
 #include <string>
+#include <vector>
 
 struct TextNode   { std::string text; };
 struct ImageNode  { std::string url; int width; };

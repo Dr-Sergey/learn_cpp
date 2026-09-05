@@ -1,7 +1,7 @@
 # Use std::list::splice for O(1) node transfers between lists
 
-**Category:** Standard Library - Containers  
-**Item:** #347  
+**Category:** Standard Library Containers  
+**Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/container/list/splice>  
 
 ---

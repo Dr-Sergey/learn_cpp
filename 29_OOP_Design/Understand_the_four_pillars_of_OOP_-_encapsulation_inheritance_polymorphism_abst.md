@@ -1,6 +1,7 @@
 # Understand the four pillars of OOP - encapsulation, inheritance, polymorphism, abstraction
 
-**Category:** OOP Design
+**Category:** OOP Design  
+**Standard:** Not version-specific  
 
 ---
 
@@ -237,6 +238,8 @@ Virtual dispatch and heap allocation are not the only tools for polymorphism. Mo
 #include <vector>
 #include <iostream>
 #include <cmath>
+#include <type_traits>
+#include <numbers>
 
 // Classical OOP (virtual dispatch)
 class Shape {
@@ -249,7 +252,7 @@ class Circle : public Shape {
     double r_;
 public:
     explicit Circle(double r) : r_(r) {}
-    double area() const override { return M_PI * r_ * r_; }
+    double area() const override { return std::numbers::pi * r_ * r_; }
     void draw() const override { std::cout << "Circle(r=" << r_ << ")\n"; }
 };
 
@@ -264,7 +267,7 @@ double area(const ShapeV& s) {
     return std::visit([](const auto& shape) -> double {
         using T = std::decay_t<decltype(shape)>;
         if constexpr (std::is_same_v<T, CircleV>)
-            return M_PI * shape.r * shape.r;
+            return std::numbers::pi * shape.r * shape.r;
         else if constexpr (std::is_same_v<T, RectV>)
             return shape.w * shape.h;
         else

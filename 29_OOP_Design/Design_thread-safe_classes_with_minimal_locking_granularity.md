@@ -1,6 +1,7 @@
 # Design thread-safe classes with minimal locking granularity
 
-**Category:** OOP Design
+**Category:** OOP Design  
+**Standard:** Not version-specific  
 
 ---
 
@@ -162,6 +163,7 @@ Lock-free atomics sound like the obvious win, but it's not that simple. Atomic o
 #include <vector>
 #include <chrono>
 #include <iostream>
+#include <array>
 
 // Lock-based counter
 class MutexCounter {

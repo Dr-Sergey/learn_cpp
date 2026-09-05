@@ -1,7 +1,7 @@
 # Implement Fixed-Point Arithmetic Without Floating Point
 
-**Category:** Embedded & Constrained Systems  
-**Standard:** C++17 / C++20  
+**Category:** Embedded and Constrained Systems  
+**Standard:** C++17, C++20  
 **Reference:** https://en.wikipedia.org/wiki/Fixed-point_arithmetic  
 
 ---

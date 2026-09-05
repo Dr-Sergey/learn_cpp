@@ -1,7 +1,6 @@
 # Use std::array for fixed-size stack-allocated arrays
 
-**Category:** Standard Library - Containers  
-**Item:** #67  
+**Category:** Standard Library Containers  
 **Standard:** C++11 (constexpr improvements in C++14/17/20)  
 **Reference:** <https://en.cppreference.com/w/cpp/container/array>  
 

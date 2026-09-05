@@ -1,6 +1,6 @@
 # Handle Modules and Traditional Headers in Mixed Codebases
 
-**Category:** Modules & Build (C++20)  
+**Category:** Modules and Build Cpp20  
 **Standard:** C++20  
 **Reference:** [cppreference — Modules](https://en.cppreference.com/w/cpp/language/modules)  
 

@@ -1,7 +1,7 @@
-# Understand reproducible builds and how to achieve them in C++
+# Debug build non-determinism to achieve reproducible C++ builds
 
-**Category:** Build Systems & CI  
-**Item:** #744  
+**Category:** Build Systems and CI  
+**Standard:** Not version-specific  
 **Reference:** <https://reproducible-builds.org>  
 
 ---

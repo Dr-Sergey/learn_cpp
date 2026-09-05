@@ -1,7 +1,6 @@
 # Understand structured concurrency and async_scope for safe task lifetimes
 
-**Category:** std::execution & Senders/Receivers  
-**Item:** #609  
+**Category:** Std Execution and Senders Receivers  
 **Standard:** C++11  
 **Reference:** <https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2023/p2300r7.html>  
 
@@ -32,6 +31,7 @@ With `detach` you are essentially saying "I don't care when this finishes" - and
 
 Here you can see the basic lifecycle: spawn tasks inside the scope, then call `on_empty()` to get a sender you can wait on. The key line is `stdexec::sync_wait(scope.on_empty())` - nothing after that line runs until every spawned task has called one of `set_value`, `set_error`, or `set_stopped` on its receiver:
 
+<!-- compile: needs third-party library header `stdexec/execution.hpp` -->
 ```cpp
 #include <stdexec/execution.hpp>
 #include <exec/static_thread_pool.hpp>
@@ -81,6 +81,7 @@ The task order in the output varies because the thread pool runs tasks concurren
 
 The reason dangling references are such a common async bug is that the programmer has to remember to synchronize manually. Structured concurrency makes the synchronization a structural property of the code, not something that can be forgotten. In this example, `local_data` is a plain string on the stack. Both spawned tasks capture it by reference. The only thing that makes this safe is the `on_empty()` call before the function returns:
 
+<!-- compile: needs third-party library header `stdexec/execution.hpp` -->
 ```cpp
 #include <stdexec/execution.hpp>
 #include <exec/static_thread_pool.hpp>

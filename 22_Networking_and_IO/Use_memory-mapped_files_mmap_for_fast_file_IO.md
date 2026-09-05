@@ -1,7 +1,7 @@
 # Use memory-mapped files (mmap) for fast file I/O
 
-**Category:** Networking & I/O  
-**Item:** #642  
+**Category:** Networking and IO  
+**Standard:** Not version-specific  
 **Reference:** <https://man7.org/linux/man-pages/man2/mmap.2.html>  
 
 ---
@@ -43,6 +43,7 @@ Here is how mmap stacks up against the alternatives. The "0 copies" row is what 
 
 The most important thing to notice here is that after `mmap()` succeeds, the file descriptor can be closed immediately - the mapping stays alive independently of the fd. That surprises people the first time they see it.
 
+<!-- compile: needs POSIX header `sys/mman.h` -->
 ```cpp
 // Linux/POSIX example
 #include <iostream>
@@ -105,6 +106,7 @@ Once you have `data`, you can jump to any offset instantly with pointer arithmet
 
 `madvise()` lets you tell the kernel how you're going to access the mapped region so it can prefetch smarter. Without any hint, the kernel uses a moderate read-ahead. `MADV_SEQUENTIAL` tells it to be aggressive - load pages ahead of where you are and immediately free the ones you've already passed. Watch the timing difference:
 
+<!-- compile: needs POSIX header `sys/mman.h` -->
 ```cpp
 #include <iostream>
 #include <cstring>
@@ -168,6 +170,7 @@ The `volatile` on `sum` prevents the compiler from optimizing away the scan loop
 
 This benchmark creates a 100 MB file and measures how long it takes to scan every byte under both approaches. The takeaway is not that one is always better - it is that you need to understand when each wins:
 
+<!-- compile: needs POSIX header `sys/mman.h` -->
 ```cpp
 #include <iostream>
 #include <chrono>

@@ -1,7 +1,6 @@
 # Understand How Deleter Types Affect `unique_ptr` Size
 
-**Category:** Memory & Ownership  
-**Item:** #441  
+**Category:** Memory and Ownership  
 **Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/memory/unique_ptr>  
 

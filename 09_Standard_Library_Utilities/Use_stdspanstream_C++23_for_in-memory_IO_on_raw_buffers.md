@@ -1,7 +1,6 @@
 # Use std::spanstream (C++23) for in-memory I/O on raw buffers
 
-**Category:** Standard Library — Utilities  
-**Item:** #240  
+**Category:** Standard Library Utilities  
 **Standard:** C++23  
 **Reference:** <https://en.cppreference.com/w/cpp/io/basic_spanstream>  
 
@@ -38,6 +37,8 @@ Here's the basic read/write pattern. You hand the stream a `span` over your buff
 #include <spanstream>
 #include <span>
 #include <iostream>
+#include <string>
+#include <string_view>
 
 int main() {
     // === Reading from a buffer (ispanstream) ===
@@ -53,7 +54,7 @@ int main() {
 
     // === Writing to a buffer (ospanstream) ===
     char output[64] = {};
-    std::ospanstream oss(std::span<char>(output));
+    std::ospanstream oss{std::span<char>(output)};
 
     oss << "Value: " << 42 << " Pi: " << 3.14;
 
@@ -181,6 +182,7 @@ int main() {
 #include <iostream>
 #include <array>
 #include <iomanip>
+#include <string_view>
 
 struct LogEntry {
     int level;
@@ -224,7 +226,7 @@ int main() {
 
     // Can also write multiple entries into one buffer
     std::array<char, 512> big_buf{};
-    std::ospanstream oss(std::span<char>(big_buf));
+    std::ospanstream oss{std::span<char>(big_buf)};
     for (int i = 0; i < 3; ++i) {
         oss << "Entry " << i << ": value=" << (i * 10) << "\n";
     }
@@ -257,6 +259,8 @@ int main() {
 #include <iostream>
 #include <chrono>
 #include <array>
+#include <span>
+#include <string>
 
 int main() {
     constexpr int ITERATIONS = 100'000;
@@ -275,7 +279,7 @@ int main() {
     std::array<char, 128> buf{};
     auto t3 = std::chrono::steady_clock::now();
     for (int i = 0; i < ITERATIONS; ++i) {
-        std::ospanstream oss(std::span<char>(buf));
+        std::ospanstream oss{std::span<char>(buf)};
         oss << "Sensor " << i << " temp=" << 23.5 << " hum=" << 65.0;
         auto result = oss.span(); // VIEW — no copy
         (void)result;

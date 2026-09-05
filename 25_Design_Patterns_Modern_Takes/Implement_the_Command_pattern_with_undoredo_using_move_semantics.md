@@ -1,7 +1,6 @@
 # Implement the Command pattern with undo/redo using move semantics
 
-**Category:** Design Patterns — Modern Takes  
-**Item:** #571  
+**Category:** Design Patterns Modern Takes  
 **Standard:** C++11  
 **Reference:** <https://en.wikipedia.org/wiki/Command_pattern>  
 

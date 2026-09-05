@@ -1,6 +1,6 @@
 # Use std::inplace_vector (C++26) for heap-free containers in embedded
 
-**Category:** Embedded & Constrained Systems  
+**Category:** Embedded and Constrained Systems  
 **Standard:** C++26  
 **Reference:** <https://en.cppreference.com/w/cpp/container/inplace_vector>  
 

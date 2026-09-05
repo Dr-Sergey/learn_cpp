@@ -1,6 +1,7 @@
 # Design thread pool architectures for concurrent task processing
 
-**Category:** Project Architecture
+**Category:** Project Architecture  
+**Standard:** Not version-specific  
 
 ---
 

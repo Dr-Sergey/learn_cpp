@@ -1,7 +1,7 @@
 # Use Sanitizer coverage and libFuzzer for fuzz testing C++ code
 
-**Category:** Tooling & Debugging  
-**Item:** #249  
+**Category:** Tooling and Debugging  
+**Standard:** Not version-specific  
 **Reference:** <https://llvm.org/docs/LibFuzzer.html>  
 
 ---

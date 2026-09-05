@@ -1,7 +1,7 @@
 # Implement the Strategy pattern using std::function and template policies
 
-**Category:** Design Patterns - Modern Takes  
-**Item:** #752  
+**Category:** Design Patterns Modern Takes  
+**Standard:** C++11  
 **Reference:** <https://en.wikipedia.org/wiki/Strategy_pattern>  
 
 ---

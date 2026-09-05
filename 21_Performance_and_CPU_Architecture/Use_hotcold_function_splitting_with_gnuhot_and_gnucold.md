@@ -1,7 +1,6 @@
 # Use hot/cold function splitting with [[gnu::hot]] and [[gnu::cold]]
 
-**Category:** Performance & CPU Architecture  
-**Item:** #721  
+**Category:** Performance and CPU Architecture  
 **Standard:** C++11  
 **Reference:** <https://gcc.gnu.org/onlinedocs/gcc/Common-Function-Attributes.html>  
 

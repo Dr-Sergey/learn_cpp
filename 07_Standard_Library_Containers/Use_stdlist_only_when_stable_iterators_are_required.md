@@ -1,7 +1,7 @@
 # Use std::list only when stable iterators are required
 
-**Category:** Standard Library - Containers  
-**Item:** #461  
+**Category:** Standard Library Containers  
+**Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/container/list>  
 
 ---

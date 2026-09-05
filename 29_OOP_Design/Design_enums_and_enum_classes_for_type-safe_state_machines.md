@@ -1,6 +1,7 @@
 # Design enums and enum classes for type-safe state machines
 
-**Category:** OOP Design
+**Category:** OOP Design  
+**Standard:** C++11  
 
 ---
 

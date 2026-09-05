@@ -1,7 +1,6 @@
 # Use string literals correctly: raw strings, char8_t, UTF-8, and string_view
 
 **Category:** Core Language Fundamentals  
-**Item:** #14  
 **Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/language/string_literal>  
 

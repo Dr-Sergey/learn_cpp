@@ -1,7 +1,6 @@
 # Understand `aligned_storage`, `aligned_union`, and Their C++23 Deprecation
 
-**Category:** Memory & Ownership  
-**Item:** #203  
+**Category:** Memory and Ownership  
 **Standard:** C++23  
 **Reference:** <https://en.cppreference.com/w/cpp/types/aligned_storage>  
 

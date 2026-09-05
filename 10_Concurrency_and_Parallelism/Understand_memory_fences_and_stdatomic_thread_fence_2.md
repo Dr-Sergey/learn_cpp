@@ -1,7 +1,6 @@
 # Understand memory fences and std::atomic_thread_fence (Part 2 - Advanced)
 
-**Category:** Concurrency & Parallelism  
-**Item:** #485  
+**Category:** Concurrency and Parallelism  
 **Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/atomic/atomic_thread_fence>  
 

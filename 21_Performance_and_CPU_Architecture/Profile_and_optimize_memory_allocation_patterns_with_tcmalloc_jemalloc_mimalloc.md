@@ -1,6 +1,6 @@
 # Profile and optimize memory allocation patterns with tcmalloc, jemalloc, mimalloc
 
-**Category:** Performance & CPU Architecture  
+**Category:** Performance and CPU Architecture  
 **Standard:** C++17 (allocator-agnostic)  
 **Reference:** <https://google.github.io/tcmalloc/> <https://jemalloc.net/> <https://microsoft.github.io/mimalloc/>  
 
@@ -81,6 +81,7 @@ jeprof --svg ./my_app jeprof.*.heap > heap_profile.svg
 
 **With tcmalloc's heap profiler:**
 
+<!-- compile: needs third-party library header `gperftools/heap-profiler.h` -->
 ```cpp
 #include <gperftools/heap-profiler.h>
 

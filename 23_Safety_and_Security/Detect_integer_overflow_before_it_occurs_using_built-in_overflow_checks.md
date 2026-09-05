@@ -1,7 +1,7 @@
 # Detect integer overflow before it occurs using built-in overflow checks
 
-**Category:** Safety & Security  
-**Item:** #557  
+**Category:** Safety and Security  
+**Standard:** Not version-specific  
 **Reference:** <https://gcc.gnu.org/onlinedocs/gcc/Integer-Overflow-Builtins.html>  
 
 ---

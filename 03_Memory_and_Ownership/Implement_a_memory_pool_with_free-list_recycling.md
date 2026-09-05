@@ -1,7 +1,7 @@
 # Implement a Memory Pool with Free-List Recycling
 
-**Category:** Memory & Ownership  
-**Item:** #444  
+**Category:** Memory and Ownership  
+**Standard:** Not version-specific  
 **Reference:** <https://en.cppreference.com/w/cpp/memory>  
 
 ---

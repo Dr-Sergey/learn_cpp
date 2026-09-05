@@ -1,7 +1,7 @@
 # Compile C++ to WebAssembly with Emscripten (Part 3: I/O, Debugging, and Optimization)
 
 **Category:** Interoperability  
-**Item:** #774  
+**Standard:** Not version-specific  
 **Reference:** <https://emscripten.org>  
 
 ---
@@ -45,6 +45,7 @@ Choosing the right optimization level is a trade-off between compile time and ou
 
 A game loop is a great example of how Wasm + Emscripten differs from normal desktop C++. You can't just write `while (true)` and update the screen - browsers don't work that way. Instead, you hand control over to `emscripten_set_main_loop_arg`, which schedules your update function using `requestAnimationFrame` under the hood:
 
+<!-- compile: needs third-party library header `emscripten.h` -->
 ```cpp
 // game_engine.cpp - simple game loop compiled to Wasm
 #include <emscripten.h>

@@ -1,7 +1,6 @@
 # Use gdb pretty-printers for STL types
 
-**Category:** Tooling & Debugging  
-**Item:** #514  
+**Category:** Tooling and Debugging  
 **Standard:** C++23  
 **Reference:** <https://sourceware.org/gdb/current/onlinedocs/gdb/Pretty-Printing.html>  
 

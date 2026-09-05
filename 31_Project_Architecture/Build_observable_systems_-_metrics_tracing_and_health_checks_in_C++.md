@@ -1,6 +1,7 @@
 # Build observable systems - metrics, tracing, and health checks in C++
 
-**Category:** Project Architecture
+**Category:** Project Architecture  
+**Standard:** Not version-specific  
 
 ---
 

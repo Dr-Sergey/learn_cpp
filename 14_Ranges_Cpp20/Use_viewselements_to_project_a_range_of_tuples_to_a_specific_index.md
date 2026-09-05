@@ -1,7 +1,7 @@
 # Use views::elements to project a range of tuples to a specific index
 
-**Category:** Ranges (C++20)  
-**Item:** #394  
+**Category:** Ranges Cpp20  
+**Standard:** Not version-specific  
 **Reference:** <https://en.cppreference.com/w/cpp/ranges/elements_view>  
 
 ---

@@ -1,6 +1,6 @@
 # Handle DLL and SO loading differences: LoadLibrary vs dlopen
 
-**Category:** Cross-Platform Development  
+**Category:** Cross Platform Development  
 **Standard:** C++17  
 **Reference:** <https://man7.org/linux/man-pages/man3/dlopen.3.html>  
 

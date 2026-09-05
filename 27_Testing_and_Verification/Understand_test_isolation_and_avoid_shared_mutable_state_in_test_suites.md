@@ -1,7 +1,7 @@
 # Understand test isolation and avoid shared mutable state in test suites
 
-**Category:** Testing & Verification  
-**Item:** #770  
+**Category:** Testing and Verification  
+**Standard:** Not version-specific  
 **Reference:** <https://github.com/google/googletest>  
 
 ---

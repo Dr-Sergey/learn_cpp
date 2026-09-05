@@ -6,20 +6,20 @@ C++20 modules, module partitions, and their interaction with build systems.
 
 ## Contents
 
-- [Know how CMake 328+ supports C++20 modules](Know_how_CMake_328+_supports_C++20_modules.md)
+- [Handle Modules and Traditional Headers in Mixed Codebases](Handle_modules_and_traditional_headers_in_mixed_codebases.md)
+- [Know Build System Challenges with Module Dependency Scanning](Know_build_system_challenges_with_module_dependency_scanning.md)
+- [Know how CMake 3.28+ supports C++20 modules](Know_how_CMake_328+_supports_C++20_modules.md)
+- [Know Named Modules vs Header Units and When to Use Each](Know_named_modules_vs_header_units_and_when_to_use_each.md)
+- [Plan Incremental Migration from Headers to Modules](Plan_incremental_migration_from_headers_to_modules.md)
 - [Understand C++20 modules and how they replace header files](Understand_C++20_modules_and_how_they_replace_header_files.md)
 - [Understand global module fragment for macros in module translation units](Understand_global_module_fragment_for_macros_in_module_translation_units.md)
 - [Understand how global module fragments work for macro dependencies](Understand_how_global_module_fragments_work_for_macro_dependencies.md)
 - [Understand how to mix modules with header-based code using header units](Understand_how_to_mix_modules_with_header-based_code_using_header_units.md)
+- [Understand Module Linkage vs External Linkage in Module Context](Understand_module_linkage_vs_external_linkage_in_module_context.md)
+- [Understand Module Ownership: Interface and Implementation Units](Understand_module_ownership_interface_and_implementation_units.md)
 - [Understand module partitions and private module fragments](Understand_module_partitions_and_private_module_fragments.md)
-- [Use precompiled headers PCH strategically before migrating to modules](Use_precompiled_headers_PCH_strategically_before_migrating_to_modules.md)
-- [Handle modules and traditional headers in mixed codebases](Handle_modules_and_traditional_headers_in_mixed_codebases.md)
-- [Know build system challenges with module dependency scanning](Know_build_system_challenges_with_module_dependency_scanning.md)
-- [Know named modules vs header units and when to use each](Know_named_modules_vs_header_units_and_when_to_use_each.md)
-- [Plan incremental migration from headers to modules](Plan_incremental_migration_from_headers_to_modules.md)
-- [Understand module linkage vs external linkage in module context](Understand_module_linkage_vs_external_linkage_in_module_context.md)
-- [Understand module ownership interface and implementation units](Understand_module_ownership_interface_and_implementation_units.md)
-- [Understand module reachability and visibility rules](Understand_module_reachability_and_visibility_rules.md)
+- [Understand Module Reachability and Visibility Rules](Understand_module_reachability_and_visibility_rules.md)
+- [Use precompiled headers (PCH) strategically before migrating to modules](Use_precompiled_headers_PCH_strategically_before_migrating_to_modules.md)
 
 ## Notes
 

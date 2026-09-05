@@ -1,8 +1,7 @@
 # Use std::hash and define custom hash specializations
 
-**Category:** Standard Library — Utilities  
-**Item:** #477  
-**Standard:** C++11 / C++17  
+**Category:** Standard Library Utilities  
+**Standard:** C++11, C++17  
 **Reference:** <https://en.cppreference.com/w/cpp/utility/hash>  
 
 ---
@@ -69,6 +68,8 @@ There are two approaches: specializing `std::hash` in namespace `std` (so the ty
 #include <unordered_map>
 #include <string>
 #include <iostream>
+#include <cstddef>
+#include <unordered_set>
 
 struct Employee {
     std::string name;

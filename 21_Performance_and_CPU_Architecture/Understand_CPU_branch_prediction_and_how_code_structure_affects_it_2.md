@@ -1,7 +1,7 @@
 # Understand CPU branch prediction and how code structure affects it (Part 2: Pipeline Cost)
 
-**Category:** Performance & CPU Architecture  
-**Item:** #716  
+**Category:** Performance and CPU Architecture  
+**Standard:** Not version-specific  
 **Reference:** <https://en.cppreference.com/w/cpp/language/attributes/likely>  
 
 ---

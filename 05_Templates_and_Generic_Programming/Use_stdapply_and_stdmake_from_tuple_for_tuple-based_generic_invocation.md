@@ -1,7 +1,7 @@
 # Use `std::apply` and `std::make_from_tuple` for Tuple-Based Generic Invocation
 
-**Category:** Templates & Generic Programming  
-**Item:** #248  
+**Category:** Templates and Generic Programming  
+**Standard:** C++17  
 **Reference:** <https://en.cppreference.com/w/cpp/utility/apply>  
 
 ---

@@ -1,7 +1,7 @@
 # Understand reproducible builds and how to achieve them in C++
 
-**Category:** Build Systems & CI  
-**Item:** #662  
+**Category:** Build Systems and CI  
+**Standard:** Not version-specific  
 **Reference:** <https://reproducible-builds.org/>  
 
 ---

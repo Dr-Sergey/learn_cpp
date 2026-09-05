@@ -1,6 +1,7 @@
 # Implement hexagonal architecture (ports and adapters) in C++
 
-**Category:** Project Architecture
+**Category:** Project Architecture  
+**Standard:** Not version-specific  
 
 ---
 
@@ -186,6 +187,7 @@ The adapters live outside the core and implement the core's interfaces. The comp
 
 **Answer:**
 
+<!-- compile: fragment: depends on a header defined elsewhere in the topic -->
 ```cpp
 // === adapters/driven/in_memory_user_repo.h ===
 #pragma once

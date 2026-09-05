@@ -1,7 +1,6 @@
 # Understand COM and DCOM interop on Windows
 
 **Category:** Interoperability  
-**Item:** #777  
 **Standard:** C++11  
 **Reference:** <https://docs.microsoft.com/en-us/cpp/cppcx/wrl/comptr-class>  
 

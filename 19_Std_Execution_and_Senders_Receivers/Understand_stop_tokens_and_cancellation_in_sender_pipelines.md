@@ -1,7 +1,6 @@
 # Understand stop tokens and cancellation in sender pipelines
 
-**Category:** std::execution & Senders/Receivers  
-**Item:** #531  
+**Category:** Std Execution and Senders Receivers  
 **Standard:** C++17  
 **Reference:** <https://en.cppreference.com/w/cpp/execution>  
 
@@ -32,6 +31,7 @@ Here is a quick reference for the key APIs you will encounter:
 
 The first thing to understand is that you do not thread the stop token through explicitly - the pipeline infrastructure does it for you. What you do is reach into the receiver's environment to read the token, then use it to decide whether to keep working or bail out. Here is a custom sender that does exactly that:
 
+<!-- compile: needs third-party library header `stdexec/execution.hpp` -->
 ```cpp
 #include <stdexec/execution.hpp>
 #include <exec/static_thread_pool.hpp>
@@ -105,6 +105,7 @@ Notice the two-step pattern inside `start()`: first pull the environment out of 
 
 For work that fans out across many items, the same principle applies. Here `bulk` runs a function once per index. In production you would add a token check inside the body; the comments below show where that guard would go:
 
+<!-- compile: needs third-party library header `stdexec/execution.hpp` -->
 ```cpp
 #include <stdexec/execution.hpp>
 #include <exec/static_thread_pool.hpp>
@@ -162,6 +163,7 @@ auto pipeline = stdexec::schedule(sched)
 
 Sometimes the caller does not want cancellation to be a hard stop. It just wants to know "did I get a value or not?" That is exactly what `stopped_as_optional` is for - it absorbs the stopped channel and emits an `optional` instead:
 
+<!-- compile: needs third-party library header `stdexec/execution.hpp` -->
 ```cpp
 #include <stdexec/execution.hpp>
 #include <iostream>

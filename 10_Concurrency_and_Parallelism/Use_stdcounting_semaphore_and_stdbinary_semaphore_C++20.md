@@ -1,7 +1,6 @@
 # Use std::counting_semaphore and std::binary_semaphore (C++20)
 
-**Category:** Concurrency & Parallelism  
-**Item:** #165  
+**Category:** Concurrency and Parallelism  
 **Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/thread/counting_semaphore>  
 

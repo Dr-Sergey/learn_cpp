@@ -1,7 +1,6 @@
 # Integrate C++ testing with Python using pybind11 + pytest
 
-**Category:** Testing & Verification  
-**Item:** #767  
+**Category:** Testing and Verification  
 **Standard:** C++17  
 **Reference:** <https://pybind11.readthedocs.io>  
 

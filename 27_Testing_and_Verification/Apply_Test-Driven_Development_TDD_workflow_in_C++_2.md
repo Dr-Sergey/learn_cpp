@@ -1,7 +1,7 @@
-# Apply Test-Driven Development (TDD) workflow in C++
+# Apply the TDD workflow in C++ with GoogleTest
 
-**Category:** Testing & Verification  
-**Item:** #763  
+**Category:** Testing and Verification  
+**Standard:** Not version-specific  
 **Reference:** <https://github.com/catchorg/Catch2>  
 
 ---

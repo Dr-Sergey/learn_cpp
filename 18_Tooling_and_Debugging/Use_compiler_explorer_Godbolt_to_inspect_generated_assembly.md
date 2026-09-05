@@ -1,7 +1,7 @@
 # Use compiler explorer (Godbolt) to inspect generated assembly
 
-**Category:** Tooling & Debugging  
-**Item:** #147  
+**Category:** Tooling and Debugging  
+**Standard:** Not version-specific  
 **Reference:** <https://godbolt.org>  
 
 ---

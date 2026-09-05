@@ -1,6 +1,7 @@
 # Master the Rule of Zero, Rule of Five, and Rule of Three
 
-**Category:** OOP Design
+**Category:** OOP Design  
+**Standard:** C++11  
 
 ---
 

@@ -1,6 +1,6 @@
 # Understand micro-architectural bottlenecks: port pressure, ROB size, store buffers
 
-**Category:** Performance & CPU Architecture  
+**Category:** Performance and CPU Architecture  
 **Standard:** C++17 (architecture-aware coding)  
 **Reference:** <https://uops.info/> <https://agner.org/optimize/>  
 

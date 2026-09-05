@@ -1,7 +1,7 @@
 # Write Expression Templates to Eliminate Temporaries in Arithmetic Chains
 
-**Category:** Templates & Generic Programming  
-**Item:** #451  
+**Category:** Templates and Generic Programming  
+**Standard:** Not version-specific  
 **Reference:** <https://en.cppreference.com/w/cpp/language/templates>  
 
 ---

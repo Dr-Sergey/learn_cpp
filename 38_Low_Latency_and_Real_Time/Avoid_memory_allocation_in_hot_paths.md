@@ -1,7 +1,7 @@
 # Avoid Memory Allocation in Hot Paths
 
-**Category:** Low Latency & Real-Time C++  
-**Standard:** C++17 / C++20  
+**Category:** Low Latency and Real Time  
+**Standard:** C++17, C++20  
 **Reference:** [P0211R3 - Allocator-aware library wrappers](https://wg21.link/p0211), [CppCon 2017 - John Lakos: Local Allocators](https://www.youtube.com/watch?v=nZNd5FjSquk)  
 
 ---

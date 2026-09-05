@@ -1,7 +1,6 @@
-# Implement the Command pattern with undo/redo using move semantics
+# Implement Command undo/redo with lambda commands instead of virtual interfaces
 
-**Category:** Design Patterns — Modern Takes  
-**Item:** #748  
+**Category:** Design Patterns Modern Takes  
 **Standard:** C++11  
 **Reference:** <https://en.wikipedia.org/wiki/Command_pattern>  
 

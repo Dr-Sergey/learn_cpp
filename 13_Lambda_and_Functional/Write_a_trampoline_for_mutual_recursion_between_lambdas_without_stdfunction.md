@@ -1,7 +1,6 @@
 # Write a trampoline for mutual recursion between lambdas without std::function
 
-**Category:** Lambda & Functional  
-**Item:** #389  
+**Category:** Lambda and Functional  
 **Standard:** C++23  
 **Reference:** <https://en.cppreference.com/w/cpp/language/lambda>  
 

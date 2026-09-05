@@ -1,6 +1,7 @@
 # Know how operator overloading rules constrain which operators can be overloaded
 
 **Category:** Core Language Fundamentals  
+**Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/language/operators>  
 
 ---

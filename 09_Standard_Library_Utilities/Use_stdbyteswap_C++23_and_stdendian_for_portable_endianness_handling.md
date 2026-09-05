@@ -1,8 +1,7 @@
 # Use std::byteswap (C++23) and std::endian for portable endianness handling
 
-**Category:** Standard Library — Utilities  
-**Item:** #365  
-**Standard:** C++20 (endian) / C++23 (byteswap)  
+**Category:** Standard Library Utilities  
+**Standard:** C++20, C++23 (endian)  
 **Reference:** <https://en.cppreference.com/w/cpp/numeric/byteswap>  
 
 ---

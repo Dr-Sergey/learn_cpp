@@ -1,7 +1,7 @@
 # Use binary search algorithms on sorted ranges
 
-**Category:** Standard Library - Algorithms  
-**Item:** #75  
+**Category:** Standard Library Algorithms  
+**Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/algorithm/lower_bound>  
 
 ---

@@ -1,7 +1,7 @@
 # Write parameterized tests for table-driven test cases
 
-**Category:** Testing & Verification  
-**Item:** #685  
+**Category:** Testing and Verification  
+**Standard:** Not version-specific  
 **Reference:** <https://google.github.io/googletest/advanced.html#value-parameterized-tests>  
 
 ---

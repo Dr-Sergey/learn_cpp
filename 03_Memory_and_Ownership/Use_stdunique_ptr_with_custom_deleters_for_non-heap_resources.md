@@ -1,7 +1,6 @@
 # Use std::unique_ptr with Custom Deleters for Non-Heap Resources
 
-**Category:** Memory & Ownership  
-**Item:** #326  
+**Category:** Memory and Ownership  
 **Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/memory/unique_ptr>  
 

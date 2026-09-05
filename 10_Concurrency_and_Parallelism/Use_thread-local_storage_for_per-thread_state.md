@@ -1,7 +1,6 @@
 # Use thread-local storage for per-thread state
 
-**Category:** Concurrency & Parallelism  
-**Item:** #482  
+**Category:** Concurrency and Parallelism  
 **Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/language/storage_duration>  
 

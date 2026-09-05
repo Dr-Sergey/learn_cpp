@@ -1,7 +1,7 @@
 # Prevent use-after-free with ownership discipline and lifetime analysis
 
-**Category:** Safety & Security  
-**Item:** #657  
+**Category:** Safety and Security  
+**Standard:** Not version-specific  
 **Reference:** <https://clang.llvm.org/docs/analyzer/developer-docs/DebugChecks.html>  
 
 ---

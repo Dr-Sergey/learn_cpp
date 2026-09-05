@@ -1,6 +1,7 @@
 # Use strong typedefs and phantom types to prevent parameter confusion
 
-**Category:** OOP Design
+**Category:** OOP Design  
+**Standard:** Not version-specific  
 
 ---
 
@@ -167,6 +168,7 @@ Phantom types take strong typing to the extreme: the type parameter carries stat
 ```cpp
 #include <string>
 #include <iostream>
+#include <utility>
 
 // Phantom type tags for connection states
 struct Disconnected {};

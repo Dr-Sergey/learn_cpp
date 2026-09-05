@@ -1,7 +1,6 @@
 # Use immediately invoked lambdas for complex variable initialization
 
-**Category:** Lambda & Functional  
-**Item:** #110  
+**Category:** Lambda and Functional  
 **Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/language/lambda>  
 

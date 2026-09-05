@@ -1,8 +1,7 @@
 # Use std::transform_reduce for parallel map-reduce operations
 
-**Category:** Standard Library - Algorithms  
-**Item:** #294  
-**Standard:** C++17 / C++20  
+**Category:** Standard Library Algorithms  
+**Standard:** C++17, C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/algorithm/transform_reduce>  
 
 ---

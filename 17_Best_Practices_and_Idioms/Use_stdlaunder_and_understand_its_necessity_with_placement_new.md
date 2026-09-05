@@ -1,7 +1,7 @@
 # Use std::launder and understand its necessity with placement new
 
-**Category:** Best Practices & Idioms  
-**Item:** #141  
+**Category:** Best Practices and Idioms  
+**Standard:** C++17  
 **Reference:** <https://en.cppreference.com/w/cpp/utility/launder>  
 
 ---

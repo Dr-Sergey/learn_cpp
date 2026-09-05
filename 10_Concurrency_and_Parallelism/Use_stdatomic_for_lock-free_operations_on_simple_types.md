@@ -1,8 +1,7 @@
 # Use std::atomic for lock-free operations on simple types
 
-**Category:** Concurrency & Parallelism  
-**Item:** #90  
-**Standard:** C++11 (core), C++20 (wait/notify, `atomic_ref`), C++23 (minor additions)  
+**Category:** Concurrency and Parallelism  
+**Standard:** C++11, C++20, C++23 (core)  
 **Reference:** <https://en.cppreference.com/w/cpp/atomic/atomic>  
 
 ---

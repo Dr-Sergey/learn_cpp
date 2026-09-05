@@ -1,6 +1,6 @@
 # Use std::spanstream and memory buffers for in-memory serialization
 
-**Category:** Serialization & Data Formats  
+**Category:** Serialization and Data Formats  
 **Standard:** C++23  
 **Reference:** <https://en.cppreference.com/w/cpp/io/basic_ispanstream>  
 

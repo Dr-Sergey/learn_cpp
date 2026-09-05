@@ -1,7 +1,7 @@
 # Understand devirtualization and how to help the compiler eliminate virtual calls
 
-**Category:** Performance & CPU Architecture  
-**Item:** #719  
+**Category:** Performance and CPU Architecture  
+**Standard:** Not version-specific  
 **Reference:** <https://en.cppreference.com/w/cpp/language/final>  
 
 ---

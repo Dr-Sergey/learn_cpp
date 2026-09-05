@@ -1,7 +1,7 @@
 # Understand and use std::terminate, std::abort, and terminate handlers
 
 **Category:** Error Handling  
-**Item:** #99  
+**Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/error/terminate>  
 
 ---

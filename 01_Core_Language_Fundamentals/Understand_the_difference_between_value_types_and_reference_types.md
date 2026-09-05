@@ -1,7 +1,7 @@
 # Understand the difference between value types and reference types
 
 **Category:** Core Language Fundamentals  
-**Item:** #1  
+**Standard:** Not version-specific  
 **Reference:** <https://github.com/AnthonyCalandra/modern-cpp-features/blob/master/CPP11.md>  
 
 ---
@@ -215,6 +215,7 @@ The numbers will vary by machine, but the relative difference is consistent: cop
 #include <iostream>
 #include <string>
 #include <chrono>
+#include <array>
 
 struct Large {
     std::array<int, 10000> data{};  // ~40KB

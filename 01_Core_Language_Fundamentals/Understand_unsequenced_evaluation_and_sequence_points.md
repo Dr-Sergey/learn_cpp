@@ -1,7 +1,6 @@
 # Understand unsequenced evaluation and sequence points
 
 **Category:** Core Language Fundamentals  
-**Item:** #427  
 **Standard:** C++17  
 **Reference:** <https://en.cppreference.com/w/cpp/language/eval_order>  
 

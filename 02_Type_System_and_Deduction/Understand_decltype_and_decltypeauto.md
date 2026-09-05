@@ -1,8 +1,7 @@
 # Understand `decltype` and `decltype(auto)`
 
-**Category:** Type System & Deduction  
-**Item:** #17  
-**Standard:** C++11 (`decltype`), C++14 (`decltype(auto)`)  
+**Category:** Type System and Deduction  
+**Standard:** C++11, C++14 (`decltype`)  
 **Reference:** <https://en.cppreference.com/w/cpp/language/decltype>  
 
 ---
@@ -228,6 +227,8 @@ Notice how `decltype(auto)` as the return type makes the wrapper fully transpare
 #include <iostream>
 #include <type_traits>
 #include <utility>
+#include <cstddef>
+#include <functional>
 
 // A container with element access returning references
 struct Container {

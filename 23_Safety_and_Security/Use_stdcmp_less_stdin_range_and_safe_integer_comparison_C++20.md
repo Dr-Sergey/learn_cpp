@@ -1,7 +1,6 @@
 # Use std::cmp_less, std::in_range, and safe integer comparison (C++20)
 
-**Category:** Safety & Security  
-**Item:** #648  
+**Category:** Safety and Security  
 **Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/utility/intcmp>  
 

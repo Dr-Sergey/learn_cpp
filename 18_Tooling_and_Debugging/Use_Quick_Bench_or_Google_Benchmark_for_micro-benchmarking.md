@@ -1,7 +1,7 @@
 # Use Quick Bench or Google Benchmark for micro-benchmarking
 
-**Category:** Tooling & Debugging  
-**Item:** #148  
+**Category:** Tooling and Debugging  
+**Standard:** Not version-specific  
 **Reference:** <https://github.com/google/benchmark>  
 
 ---

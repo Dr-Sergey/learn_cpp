@@ -1,7 +1,6 @@
 # Use concepts to model behavioral requirements for template parameters
 
 **Category:** Modern OOP Patterns  
-**Item:** #225  
 **Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/concepts>  
 

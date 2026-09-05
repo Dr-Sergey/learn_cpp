@@ -1,7 +1,7 @@
 # Understand Itanium ABI Layout Rules for Vtables, RTTI, and Exceptions
 
-**Category:** ABI & Binary Compatibility  
-**Standard:** C++17 / C++20 (ABI defined by Itanium C++ ABI specification)  
+**Category:** ABI and Binary Compatibility  
+**Standard:** C++17, C++20 (ABI defined by Itanium C++ ABI specification)  
 **Reference:** https://itanium-cxx-abi.github.io/cxx-abi/abi.html  
 
 ---
@@ -115,6 +115,7 @@ Diamond object layout:
 
 RTTI is what powers `dynamic_cast` and `typeid` at runtime. For a class like `Duck` that inherits from multiple bases, the ABI generates a `__vmi_class_type_info` structure that lists every base along with its offset and flags. When you attempt a cross-cast (say, going from an `Animal*` to a `Swimmable*`), the runtime walks this structure to find the right offset. The key insight is that `typeinfo` objects have identity - two references to `typeid(Duck)` must compare equal, which requires both to point to the same address. That guarantee breaks if you use `-fvisibility=hidden` carelessly across shared library boundaries.
 
+<!-- compile: needs POSIX header `cxxabi.h` -->
 ```cpp
 #include <typeinfo>
 #include <cstdio>

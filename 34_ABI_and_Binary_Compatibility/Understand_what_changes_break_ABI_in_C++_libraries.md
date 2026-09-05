@@ -1,7 +1,7 @@
 # Understand What Changes Break ABI in C++ Libraries
 
-**Category:** ABI & Binary Compatibility  
-**Standard:** C++11 / C++14 / C++17 / C++20 (ABI is implementation-defined)  
+**Category:** ABI and Binary Compatibility  
+**Standard:** C++11, C++14, C++17, C++20 (ABI is implementation-defined)  
 **Reference:** https://community.kde.org/Policies/Binary_Compatibility_Issues_With_C++  
 
 ---

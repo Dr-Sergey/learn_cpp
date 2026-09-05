@@ -1,7 +1,6 @@
 # Use coroutines for async I/O and task chaining
 
-**Category:** Coroutines (C++20)  
-**Item:** #126  
+**Category:** Coroutines Cpp20  
 **Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/language/coroutines>  
 
@@ -55,6 +54,8 @@ The key piece here is `AsyncFileRead`. It is an awaitable whose `await_suspend` 
 #include <string>
 #include <thread>
 #include <utility>
+#include <algorithm>
+#include <exception>
 
 // Minimal task type
 template<typename T>
@@ -148,6 +149,7 @@ This example builds a three-stage pipeline: fetch raw CSV text, parse it into a 
 #include <string>
 #include <utility>
 #include <vector>
+#include <exception>
 
 template<typename T>
 struct Task {

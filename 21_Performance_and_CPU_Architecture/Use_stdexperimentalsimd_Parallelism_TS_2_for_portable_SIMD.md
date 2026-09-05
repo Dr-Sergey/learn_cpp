@@ -1,7 +1,7 @@
 # Use std::experimental::simd (Parallelism TS 2) for portable SIMD
 
-**Category:** Performance & CPU Architecture  
-**Item:** #633  
+**Category:** Performance and CPU Architecture  
+**Standard:** Not version-specific  
 **Reference:** <https://github.com/VcDevel/std-simd>  
 
 ---
@@ -37,6 +37,7 @@ simd<T, Abi> template:
 
 This is the most compelling demonstration of `stdx::simd`: a single function that compiles to `vfmadd231ps ymm` on AVX2, `fmla v.4s` on ARM NEON, and a plain loop on any other target. You write it once, and the library does the platform work.
 
+<!-- compile: needs third-party library header `experimental/simd` -->
 ```cpp
 #include <experimental/simd>
 #include <iostream>
@@ -106,6 +107,7 @@ The `stdx::reduce(acc)` call at the end is doing a horizontal sum - adding all t
 
 Choosing the wrong ABI type is a common source of subtle bugs. The most dangerous one is passing a `native_simd` value across a shared library boundary if the two sides were compiled with different `-march` flags - the register width might not match. That's exactly what `compatible` is designed to prevent.
 
+<!-- compile: needs third-party library header `experimental/simd` -->
 ```cpp
 #include <experimental/simd>
 #include <iostream>

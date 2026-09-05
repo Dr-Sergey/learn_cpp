@@ -1,7 +1,6 @@
 # Use std::exception_ptr for cross-thread exception propagation
 
 **Category:** Error Handling  
-**Item:** #276  
 **Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/error/exception_ptr>  
 
@@ -100,6 +99,7 @@ This is the pattern you will use most often. The rule is simple: always wrap you
 #include <stdexcept>
 #include <vector>
 #include <mutex>
+#include <string>
 
 std::exception_ptr worker_exception;  // shared between threads
 

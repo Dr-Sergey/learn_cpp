@@ -31,6 +31,7 @@ The key word is "sharing." A naive implementation would copy the entire structur
 
 The `immer` library provides production-quality persistent data structures for C++. Here you can see all three versions of the vector living simultaneously with no explicit copying:
 
+<!-- compile: needs third-party library header `immer/vector.hpp` -->
 ```cpp
 #include <immer/vector.hpp>
 #include <iostream>

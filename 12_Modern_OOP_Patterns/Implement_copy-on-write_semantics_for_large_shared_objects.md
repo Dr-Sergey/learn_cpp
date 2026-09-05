@@ -1,7 +1,6 @@
 # Implement copy-on-write semantics for large shared objects
 
 **Category:** Modern OOP Patterns  
-**Item:** #492  
 **Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/memory/shared_ptr>  
 

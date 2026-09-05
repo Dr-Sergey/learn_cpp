@@ -1,6 +1,6 @@
 # Use `std::forward_like` (C++23) for Forwarding with Ownership Propagation
 
-**Category:** Move Semantics & Value Categories  
+**Category:** Move Semantics and Value Categories  
 **Standard:** C++23  
 **Reference:** <https://en.cppreference.com/w/cpp/utility/forward_like>  
 

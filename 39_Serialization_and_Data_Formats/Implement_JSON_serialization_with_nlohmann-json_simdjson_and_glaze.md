@@ -1,7 +1,7 @@
 # Implement JSON serialization with nlohmann-json, simdjson, and glaze
 
-**Category:** Serialization & Data Formats  
-**Standard:** C++17/20  
+**Category:** Serialization and Data Formats  
+**Standard:** C++17, C++20  
 **Reference:** <https://github.com/nlohmann/json> · <https://simdjson.org> · <https://github.com/stephenberry/glaze>  
 
 ---
@@ -24,6 +24,7 @@ If the table feels like a lot, the short version is: use nlohmann/json when you 
 
 nlohmann/json is the go-to library for most C++ JSON work. The `NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE` macro generates the serialization and deserialization code for you without touching the struct definition. The example below also shows dynamic field access with `.value()`, which gives you a default when a field is missing - a pattern you will use constantly in real code.
 
+<!-- compile: needs third-party library header `nlohmann/json.hpp` -->
 ```cpp
 #include <nlohmann/json.hpp>
 #include <iostream>

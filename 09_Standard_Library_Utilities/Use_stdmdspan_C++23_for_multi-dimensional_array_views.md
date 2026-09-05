@@ -1,7 +1,6 @@
 # Use std::mdspan (C++23) for multi-dimensional array views
 
-**Category:** Standard Library — Utilities  
-**Item:** #183  
+**Category:** Standard Library Utilities  
 **Standard:** C++23  
 **Reference:** <https://en.cppreference.com/w/cpp/container/mdspan>  
 
@@ -207,6 +206,7 @@ int main() {
 #include <mdspan>
 #include <vector>
 #include <iostream>
+#include <cstddef>
 
 // Simulated BLAS-style function that expects:
 //   raw pointer, rows, columns, leading dimension

@@ -1,7 +1,6 @@
 # Understand and prevent format string vulnerabilities in C++ logging
 
-**Category:** Safety & Security  
-**Item:** #738  
+**Category:** Safety and Security  
 **Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/utility/format>  
 
@@ -228,6 +227,8 @@ A real-world audit has four steps: find the vulnerable patterns, redesign the AP
 #include <source_location>
 #include <iostream>
 #include <chrono>
+#include <utility>
+#include <cstdarg>
 
 // Step 1: Identify vulnerable patterns
 

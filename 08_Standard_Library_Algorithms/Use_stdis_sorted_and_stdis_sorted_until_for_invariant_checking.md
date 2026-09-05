@@ -1,8 +1,7 @@
 # Use std::is_sorted and std::is_sorted_until for invariant checking
 
-**Category:** Standard Library — Algorithms  
-**Item:** #358  
-**Standard:** C++11 / C++20 (ranges)  
+**Category:** Standard Library Algorithms  
+**Standard:** C++11, C++20 (ranges)  
 **Reference:** <https://en.cppreference.com/w/cpp/algorithm/is_sorted>  
 
 ---

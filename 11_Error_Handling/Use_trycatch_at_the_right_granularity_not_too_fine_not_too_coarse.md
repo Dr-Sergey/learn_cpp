@@ -1,7 +1,7 @@
 # Use try/catch at the right granularity: not too fine, not too coarse
 
 **Category:** Error Handling  
-**Item:** #305  
+**Standard:** Not version-specific  
 **Reference:** <https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#Re-catch>  
 
 ---

@@ -1,7 +1,6 @@
 # Use AddressSanitizer, MemorySanitizer, and ThreadSanitizer effectively
 
-**Category:** Tooling & Debugging  
-**Item:** #149  
+**Category:** Tooling and Debugging  
 **Standard:** C++11  
 **Reference:** <https://clang.llvm.org/docs/AddressSanitizer.html>  
 

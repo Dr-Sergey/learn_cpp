@@ -1,7 +1,7 @@
 # Understand the Five Value Categories: lvalue, rvalue, xvalue, prvalue, glvalue
 
-**Category:** Move Semantics & Value Categories  
-**Item:** #36  
+**Category:** Move Semantics and Value Categories  
+**Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/language/value_category>  
 
 ---

@@ -1,7 +1,6 @@
 # Chain senders with then, upon_error, and upon_stopped
 
-**Category:** std::execution & Senders/Receivers  
-**Item:** #523  
+**Category:** Std Execution and Senders Receivers  
 **Standard:** C++26  
 **Reference:** <https://en.cppreference.com/w/cpp/execution>  
 
@@ -43,6 +42,7 @@ Nothing executes until sync_wait() or start()!
 
 Here is the simplest possible demonstration - a three-stage pipeline where each stage just transforms the value. Pay attention to when the print statements actually fire relative to when the pipeline is built.
 
+<!-- compile: needs third-party library header `stdexec/execution.hpp` -->
 ```cpp
 // Using stdexec (NVIDIA reference implementation of P2300)
 // Install: https://github.com/NVIDIA/stdexec
@@ -93,6 +93,7 @@ Notice that "Pipeline created" prints *before* the step lambdas fire. That is la
 
 Errors in a sender pipeline travel down a separate *error channel*. A plain `then` ignores that channel entirely - errors just pass through. `upon_error` is the adaptor that intercepts the error channel and converts it back into a value, so the downstream `then` stages can keep running as if nothing went wrong.
 
+<!-- compile: needs third-party library header `stdexec/execution.hpp` -->
 ```cpp
 #include <stdexec/execution.hpp>
 #include <iostream>
@@ -147,6 +148,7 @@ The `then` stage after `upon_error` runs normally with the fallback string becau
 
 There are three completion channels in P2300: value, error, and *stopped*. The stopped channel fires when an operation is cancelled - for instance, because a timeout expired or the caller requested a stop. `upon_stopped` intercepts that channel and lets you convert it into a value so the rest of the pipeline can keep going.
 
+<!-- compile: needs third-party library header `stdexec/execution.hpp` -->
 ```cpp
 #include <stdexec/execution.hpp>
 #include <exec/static_thread_pool.hpp>

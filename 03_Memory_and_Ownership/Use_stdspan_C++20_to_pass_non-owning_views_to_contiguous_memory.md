@@ -1,7 +1,6 @@
 # Use std::span (C++20) to Pass Non-Owning Views to Contiguous Memory
 
-**Category:** Memory & Ownership  
-**Item:** #32  
+**Category:** Memory and Ownership  
 **Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/container/span>  
 

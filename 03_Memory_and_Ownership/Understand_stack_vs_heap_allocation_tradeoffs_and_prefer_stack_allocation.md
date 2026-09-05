@@ -1,7 +1,7 @@
 # Understand Stack vs Heap Allocation Tradeoffs and Prefer Stack Allocation
 
-**Category:** Memory & Ownership  
-**Item:** #33  
+**Category:** Memory and Ownership  
+**Standard:** Not version-specific  
 **Reference:** <https://en.cppreference.com/w/cpp/memory>  
 
 ---

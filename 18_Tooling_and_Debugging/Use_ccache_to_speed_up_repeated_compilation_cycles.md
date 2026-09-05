@@ -1,7 +1,7 @@
 # Use ccache to speed up repeated compilation cycles
 
-**Category:** Tooling & Debugging  
-**Item:** #416  
+**Category:** Tooling and Debugging  
+**Standard:** Not version-specific  
 **Reference:** <https://ccache.dev>  
 
 ---

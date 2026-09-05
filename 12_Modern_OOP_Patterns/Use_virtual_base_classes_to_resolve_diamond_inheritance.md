@@ -1,7 +1,7 @@
 # Use virtual base classes to resolve diamond inheritance
 
 **Category:** Modern OOP Patterns  
-**Item:** #192  
+**Standard:** Not version-specific  
 **Reference:** <https://en.cppreference.com/w/cpp/language/derived_class#Virtual_base_classes>  
 
 ---

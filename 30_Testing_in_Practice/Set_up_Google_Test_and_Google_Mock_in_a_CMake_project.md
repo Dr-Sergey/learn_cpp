@@ -1,6 +1,7 @@
 # Set up Google Test and Google Mock in a CMake project
 
-**Category:** Testing in Practice
+**Category:** Testing in Practice  
+**Standard:** Not version-specific  
 
 ---
 
@@ -250,6 +251,7 @@ gtest_discover_tests(custom_main_tests)
 
 When you need one-time setup before any test runs (like starting an embedded database or creating a test fixture directory), use a `::testing::Environment`. This runs its `SetUp` before the first test and `TearDown` after the last, regardless of how many test cases there are:
 
+<!-- compile: needs third-party library header `gtest/gtest.h` -->
 ```cpp
 // === custom_main_test.cpp ===
 #include <gtest/gtest.h>

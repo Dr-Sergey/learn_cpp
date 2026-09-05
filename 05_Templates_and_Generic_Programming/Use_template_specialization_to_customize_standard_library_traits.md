@@ -1,7 +1,7 @@
 # Use Template Specialization to Customize Standard Library Traits
 
-**Category:** Templates & Generic Programming  
-**Item:** #337  
+**Category:** Templates and Generic Programming  
+**Standard:** Not version-specific  
 **Reference:** <https://en.cppreference.com/w/cpp/language/partial_specialization>  
 
 ---

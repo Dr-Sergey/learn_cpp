@@ -1,7 +1,7 @@
 # Provide customization points via ADL, tag_invoke, or CPO patterns
 
-**Category:** API & Library Design  
-**Standard:** C++20/23  
+**Category:** API and Library Design  
+**Standard:** C++20, C++23  
 **Reference:** <https://wg21.link/P1895R0>  
 
 ---

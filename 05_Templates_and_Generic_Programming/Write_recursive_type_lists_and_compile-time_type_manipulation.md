@@ -1,7 +1,7 @@
 # Write Recursive Type Lists and Compile-Time Type Manipulation
 
-**Category:** Templates & Generic Programming  
-**Item:** #454  
+**Category:** Templates and Generic Programming  
+**Standard:** Not version-specific  
 **Reference:** <https://en.cppreference.com/w/cpp/language/variadic_template>  
 
 ---
@@ -188,6 +188,9 @@ Here is a good illustration of when you don't need recursion. The simple `transf
 ```cpp
 #include <iostream>
 #include <type_traits>
+#include <cstddef>
+#include <utility>
+#include <vector>
 
 template <typename... Ts>
 struct type_list {};

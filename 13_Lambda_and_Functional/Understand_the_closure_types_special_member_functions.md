@@ -1,8 +1,7 @@
 # Understand the closure type's special member functions
 
-**Category:** Lambda & Functional  
-**Item:** #495  
-**Standard:** C++11 (closures), C++20 (default-constructible/assignable stateless lambdas)  
+**Category:** Lambda and Functional  
+**Standard:** C++11, C++20 (closures)  
 **Reference:** <https://en.cppreference.com/w/cpp/language/lambda>  
 
 ---
@@ -108,6 +107,8 @@ When you move a `unique_ptr` into a lambda via init-capture, the closure type in
 #include <memory>
 #include <type_traits>
 #include <vector>
+#include <functional>
+#include <utility>
 
 int main() {
     auto ptr = std::make_unique<int>(100);

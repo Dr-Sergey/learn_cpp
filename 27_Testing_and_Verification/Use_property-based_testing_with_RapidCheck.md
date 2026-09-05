@@ -1,7 +1,6 @@
 # Use property-based testing with RapidCheck
 
-**Category:** Testing & Verification  
-**Item:** #683  
+**Category:** Testing and Verification  
 **Standard:** C++17  
 **Reference:** <https://github.com/emil-e/rapidcheck>  
 
@@ -47,6 +46,7 @@ Here is the API you will use most often. The `*` dereference syntax is how Rapid
 
 The idea here is to express things we know are mathematically true about sorting - not just "sort([3,1,2]) gives [1,2,3]" but universal laws. Sorting twice should give the same result as sorting once, the output should be a permutation of the input, and so on. RapidCheck will test each property against 100 random vectors:
 
+<!-- compile: needs third-party library header `rapidcheck.h` -->
 ```cpp
 #include <rapidcheck.h>
 #include <algorithm>
@@ -117,6 +117,7 @@ All four properties pass. Notice `RC_PRE(!v.empty())` on the last one - that tel
 
 When `rc::gen::arbitrary<T>()` generates too many invalid inputs for your function, use constrained generators to aim the fuzzing at the interesting region. For a percentage calculator, you want `part` to be between 0 and `total`, not just any random integer:
 
+<!-- compile: needs third-party library header `rapidcheck.h` -->
 ```cpp
 #include <rapidcheck.h>
 #include <vector>
@@ -209,6 +210,7 @@ The nested `gen::container` for the matrix is worth studying: you first generate
 
 This is where property-based testing really shines. When a property fails, RapidCheck does not just dump the giant random input on you - it *shrinks* the counterexample down to the smallest input that still fails. Watch what happens when we test a buggy `remove_duplicates` that only removes adjacent duplicates:
 
+<!-- compile: needs third-party library header `rapidcheck.h` -->
 ```cpp
 #include <rapidcheck.h>
 #include <vector>

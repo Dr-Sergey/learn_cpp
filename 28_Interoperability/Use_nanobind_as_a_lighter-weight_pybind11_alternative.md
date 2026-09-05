@@ -1,7 +1,6 @@
 # Use nanobind as a lighter-weight pybind11 alternative
 
 **Category:** Interoperability  
-**Item:** #592  
 **Standard:** C++17  
 **Reference:** <https://nanobind.readthedocs.io/>  
 
@@ -59,6 +58,7 @@ The example ports a `Signal` class that represents audio samples. The pybind11 o
 #include <pybind11/stl.h>
 #include <vector>
 #include <cmath>
+#include <numbers>
 
 namespace py = pybind11;
 
@@ -73,7 +73,7 @@ struct Signal {
     void generate_sine(float freq) {
         for (size_t i = 0; i < samples.size(); ++i) {
             float t = static_cast<float>(i) / sample_rate;
-            samples[i] = std::sin(2.0f * M_PI * freq * t);
+            samples[i] = std::sin(2.0f * std::numbers::pi * freq * t);
         }
     }
 
@@ -102,6 +102,7 @@ The nanobind port is almost a word-for-word translation. The C++ business logic 
 #include <nanobind/stl/vector.h>
 #include <vector>
 #include <cmath>
+#include <numbers>
 
 namespace nb = nanobind;
 
@@ -116,7 +117,7 @@ struct Signal {
     void generate_sine(float freq) {
         for (size_t i = 0; i < samples.size(); ++i) {
             float t = static_cast<float>(i) / sample_rate;
-            samples[i] = std::sin(2.0f * M_PI * freq * t);
+            samples[i] = std::sin(2.0f * std::numbers::pi * freq * t);
         }
     }
 

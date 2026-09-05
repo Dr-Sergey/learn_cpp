@@ -1,7 +1,6 @@
 # Use std::ranges::find_last and find_last_if (C++23)
 
-**Category:** Standard Library — Algorithms  
-**Item:** #284  
+**Category:** Standard Library Algorithms  
 **Standard:** C++23  
 **Reference:** <https://en.cppreference.com/w/cpp/algorithm/ranges/find_last>  
 

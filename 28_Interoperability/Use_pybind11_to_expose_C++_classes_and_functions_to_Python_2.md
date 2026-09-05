@@ -1,7 +1,6 @@
-# Use pybind11 to expose C++ classes and functions to Python
+# Set up a pybind11 build with CMake and scikit-build
 
 **Category:** Interoperability  
-**Item:** #692  
 **Standard:** C++11  
 **Reference:** <https://pybind11.readthedocs.io/>  
 

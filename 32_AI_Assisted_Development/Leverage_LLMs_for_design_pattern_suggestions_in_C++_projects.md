@@ -1,6 +1,7 @@
 # Leverage LLMs for design pattern suggestions in C++ projects
 
-**Category:** AI-Assisted C++ Development
+**Category:** AI Assisted Development  
+**Standard:** Not version-specific  
 
 ---
 

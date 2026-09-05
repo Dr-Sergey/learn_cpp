@@ -1,7 +1,7 @@
 # Use SYCL and oneAPI for Portable Heterogeneous Computing
 
-**Category:** GPU & Heterogeneous Computing  
-**Standard:** SYCL 2020 / C++17  
+**Category:** GPU and Heterogeneous Computing  
+**Standard:** C++20, C++17  
 **Reference:** <https://registry.khronos.org/SYCL/specs/sycl-2020/html/sycl-2020.html>  
 
 ---
@@ -50,6 +50,7 @@ The buffer/accessor model is SYCL's original programming interface. You wrap you
 
 Notice the async exception handler passed to `sycl::queue`. Device-side errors in SYCL are asynchronous - if you don't provide a handler, they get silently dropped.
 
+<!-- compile: needs third-party library header `sycl/sycl.hpp` -->
 ```cpp
 #include <sycl/sycl.hpp>
 #include <iostream>
@@ -110,6 +111,7 @@ The closing brace of the inner scope is doing real work here: when the buffers g
 
 This example demonstrates `nd_range` (the SYCL equivalent of CUDA's grid/block launch) and `local_accessor` (shared memory). The tiling technique is the same as in CUDA - load a tile from global into local memory with coalesced reads, then write it transposed with coalesced writes. Without the tile, the writes would be strided and much slower.
 
+<!-- compile: needs third-party library header `sycl/sycl.hpp` -->
 ```cpp
 #include <sycl/sycl.hpp>
 #include <vector>
@@ -184,6 +186,7 @@ SYCL 2020 introduced built-in group algorithms that express collective operation
 
 This is the SYCL equivalent of CUDA Cooperative Groups' `cg::reduce()`. If you write it this way, the same source code generates efficient shuffle instructions on NVIDIA and efficient wavefront operations on AMD.
 
+<!-- compile: needs third-party library header `sycl/sycl.hpp` -->
 ```cpp
 #include <sycl/sycl.hpp>
 #include <iostream>

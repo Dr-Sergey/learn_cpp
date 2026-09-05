@@ -1,7 +1,7 @@
 # Use JNI to call C++ code from Java/Kotlin on Android
 
 **Category:** Interoperability  
-**Item:** #595  
+**Standard:** Not version-specific  
 **Reference:** <https://developer.android.com/training/articles/perf-jni>  
 
 ---

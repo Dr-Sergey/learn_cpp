@@ -1,7 +1,7 @@
 # Use std::merge and std::inplace_merge for sorted sequence merging
 
-**Category:** Standard Library — Algorithms  
-**Item:** #470  
+**Category:** Standard Library Algorithms  
+**Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/algorithm/merge>  
 
 ---

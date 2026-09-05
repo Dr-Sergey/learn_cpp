@@ -1,7 +1,6 @@
 # Use std::thread correctly and always join or detach
 
-**Category:** Concurrency & Parallelism  
-**Item:** #87  
+**Category:** Concurrency and Parallelism  
 **Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/thread/thread>  
 

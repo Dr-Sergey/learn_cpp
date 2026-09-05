@@ -1,7 +1,7 @@
 # Write a Generic Event Bus Using Templates and Type Erasure
 
-**Category:** Templates & Generic Programming  
-**Item:** #786  
+**Category:** Templates and Generic Programming  
+**Standard:** Not version-specific  
 **Reference:** <https://en.cppreference.com/w/cpp/types/type_index>  
 
 ---

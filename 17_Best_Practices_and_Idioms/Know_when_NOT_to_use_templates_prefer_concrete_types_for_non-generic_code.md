@@ -1,7 +1,6 @@
 # Know when NOT to use templates: prefer concrete types for non-generic code
 
-**Category:** Best Practices & Idioms  
-**Item:** #406  
+**Category:** Best Practices and Idioms  
 **Standard:** C++20  
 **Reference:** <https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#Rt-concepts>  
 

@@ -1,7 +1,7 @@
 # Use __builtin_prefetch to hide memory latency in hot loops
 
-**Category:** Performance & CPU Architecture  
-**Item:** #718  
+**Category:** Performance and CPU Architecture  
+**Standard:** Not version-specific  
 **Reference:** <https://gcc.gnu.org/onlinedocs/gcc/Other-Builtins.html>  
 
 ---

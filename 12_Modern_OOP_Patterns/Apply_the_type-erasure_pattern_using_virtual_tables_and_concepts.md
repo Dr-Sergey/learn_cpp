@@ -1,7 +1,6 @@
 # Apply the type-erasure pattern using virtual tables and concepts
 
 **Category:** Modern OOP Patterns  
-**Item:** #279  
 **Standard:** C++20  
 **Reference:** <https://www.youtube.com/watch?v=QGcVXgEVMJg>  
 

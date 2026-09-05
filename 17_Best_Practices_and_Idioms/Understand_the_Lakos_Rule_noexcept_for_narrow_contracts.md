@@ -1,7 +1,7 @@
 # Understand the Lakos Rule: noexcept for narrow contracts
 
-**Category:** Best Practices & Idioms  
-**Item:** #791  
+**Category:** Best Practices and Idioms  
+**Standard:** C++11  
 **Reference:** <https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#Re-noexcept>  
 
 ---
@@ -98,6 +98,8 @@ This is where the rule really bites. If you mark a narrow-contract function `noe
 ```cpp
 #include <iostream>
 #include <stdexcept>
+#include <exception>
+#include <string>
 
 class ArrayView {
     int* data_;

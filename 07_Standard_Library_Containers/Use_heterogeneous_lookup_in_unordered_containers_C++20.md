@@ -1,7 +1,6 @@
 # Use heterogeneous lookup in unordered containers (C++20)
 
-**Category:** Standard Library — Containers  
-**Item:** #253  
+**Category:** Standard Library Containers  
 **Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/container/unordered_map/find>  
 

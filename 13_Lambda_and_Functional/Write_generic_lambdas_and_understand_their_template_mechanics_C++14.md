@@ -1,7 +1,6 @@
 # Write generic lambdas and understand their template mechanics (C++14)
 
-**Category:** Lambda & Functional  
-**Item:** #109  
+**Category:** Lambda and Functional  
 **Standard:** C++14  
 **Reference:** <https://en.cppreference.com/w/cpp/language/lambda>  
 

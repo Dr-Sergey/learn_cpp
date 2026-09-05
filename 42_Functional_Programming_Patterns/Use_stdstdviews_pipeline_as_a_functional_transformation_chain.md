@@ -1,7 +1,7 @@
 # Use std::views pipeline as a functional transformation chain
 
 **Category:** Functional Programming Patterns  
-**Standard:** C++20/23  
+**Standard:** C++20, C++23  
 **Reference:** <https://en.cppreference.com/w/cpp/ranges>  
 
 ---

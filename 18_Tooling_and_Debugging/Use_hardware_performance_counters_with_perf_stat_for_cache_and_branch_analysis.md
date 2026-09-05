@@ -1,7 +1,7 @@
 # Use hardware performance counters with perf stat for cache and branch analysis
 
-**Category:** Tooling & Debugging  
-**Item:** #270  
+**Category:** Tooling and Debugging  
+**Standard:** Not version-specific  
 **Reference:** <https://perf.wiki.kernel.org>  
 
 ---

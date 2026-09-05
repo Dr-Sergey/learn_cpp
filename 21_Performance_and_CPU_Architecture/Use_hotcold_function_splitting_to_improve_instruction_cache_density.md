@@ -1,7 +1,7 @@
 # Use hot/cold function splitting to improve instruction cache density
 
-**Category:** Performance & CPU Architecture  
-**Item:** #628  
+**Category:** Performance and CPU Architecture  
+**Standard:** Not version-specific  
 **Reference:** <https://gcc.gnu.org/onlinedocs/gcc/Common-Function-Attributes.html>  
 
 ---

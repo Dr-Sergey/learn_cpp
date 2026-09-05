@@ -1,7 +1,6 @@
 # Use std::stacktrace (C++23) for diagnostic stack capture
 
-**Category:** Standard Library — Utilities  
-**Item:** #198  
+**Category:** Standard Library Utilities  
 **Standard:** C++23  
 **Reference:** <https://en.cppreference.com/w/cpp/utility/stacktrace>  
 
@@ -76,6 +75,8 @@ One of the most practical uses of `std::stacktrace` is storing it in a custom ex
 #include <stdexcept>
 #include <string>
 #include <sstream>
+#include <iostream>
+#include <utility>
 
 class traced_error : public std::runtime_error {
     std::stacktrace trace_;

@@ -1,7 +1,7 @@
 # Implement an Entity-Component-System (ECS) architecture in C++
 
-**Category:** Design Patterns - Modern Takes  
-**Item:** #572  
+**Category:** Design Patterns Modern Takes  
+**Standard:** Not version-specific  
 **Reference:** <https://en.wikipedia.org/wiki/Entity_component_system>  
 
 ---

@@ -1,7 +1,6 @@
 # Use std::linalg for linear algebra without external dependencies
 
-**Category:** Standard Library — New in C++23/26  
-**Item:** #761  
+**Category:** Standard Library New Cpp23 26  
 **Standard:** C++26  
 **Reference:** <https://en.cppreference.com/w/cpp/numeric/linalg>  
 
@@ -47,6 +46,7 @@ The most important row for day-to-day work is "Build dependency." The trade-off 
 
 All `std::linalg` functions work on `mdspan` views, not on new matrix types. You create a raw array, wrap it in an `mdspan` to give it shape, and pass that to the algorithm. Here's a concrete 3D rotation example to make the mechanics tangible:
 
+<!-- compile: needs `linalg` (not in the CI standard library yet) -->
 ```cpp
 #include <linalg>
 #include <mdspan>
@@ -106,6 +106,7 @@ Notice that `matrix_vector_product`, `dot`, and `vector_norm2` all follow the sa
 
 `scaled()` is a lazy view - it does not allocate any storage. It wraps an existing `mdspan` and applies the factor element-by-element only when an algorithm actually reads from it. The same is true for `transposed()` and `conjugated()`. You can compose them freely and no temporaries appear until a consuming algorithm runs.
 
+<!-- compile: needs `linalg` (not in the CI standard library yet) -->
 ```cpp
 #include <linalg>
 #include <mdspan>

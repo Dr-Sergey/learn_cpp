@@ -1,7 +1,6 @@
 # Use std::execution::on to run a sender on a specific scheduler
 
-**Category:** std::execution & Senders/Receivers  
-**Item:** #613  
+**Category:** Std Execution and Senders Receivers  
 **Standard:** C++11  
 **Reference:** <https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2023/p2300r7.html>  
 
@@ -36,6 +35,7 @@ starts_on(sched, sender):
 
 This example uses `starts_on` to pin work onto a thread pool. Notice how `work` is built first as a plain pipeline, and then `starts_on` wraps it to say "execute this pipeline on the pool." The second half of the example shows two pipelines running on the same pool and collected with `when_all`.
 
+<!-- compile: needs third-party library header `stdexec/execution.hpp` -->
 ```cpp
 #include <stdexec/execution.hpp>
 #include <exec/static_thread_pool.hpp>
@@ -89,6 +89,7 @@ The table makes the differences concrete, but the key mental model is: `starts_o
 
 The code below shows both patterns side by side - `p1` uses `starts_on` so everything stays on pool A, while `p2` uses `continues_on` to cross from pool A to pool B halfway through the pipeline:
 
+<!-- compile: needs third-party library header `stdexec/execution.hpp` -->
 ```cpp
 #include <stdexec/execution.hpp>
 #include <exec/static_thread_pool.hpp>
@@ -137,6 +138,7 @@ Watch the thread IDs in the output. In `p1` both lambdas print an `[A]` thread. 
 
 Real systems often need to move work between different execution contexts - compute work goes to a CPU thread pool, I/O goes to a dedicated I/O pool, and then the result callback bounces back to the compute pool. This pipeline demonstrates that three-phase pattern:
 
+<!-- compile: needs third-party library header `stdexec/execution.hpp` -->
 ```cpp
 #include <stdexec/execution.hpp>
 #include <exec/static_thread_pool.hpp>

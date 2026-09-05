@@ -1,7 +1,7 @@
 # Understand the Passkey idiom for selective friend access
 
-**Category:** Best Practices & Idioms  
-**Item:** #502  
+**Category:** Best Practices and Idioms  
+**Standard:** Not version-specific  
 **Reference:** <https://en.wikibooks.org/wiki/More_C%2B%2B_Idioms/Passkey>  
 
 ---

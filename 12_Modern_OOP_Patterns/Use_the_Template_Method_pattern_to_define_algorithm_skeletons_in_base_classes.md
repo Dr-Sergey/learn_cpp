@@ -1,7 +1,7 @@
 # Use the Template Method pattern to define algorithm skeletons in base classes
 
 **Category:** Modern OOP Patterns  
-**Item:** #382  
+**Standard:** Not version-specific  
 **Reference:** <https://en.wikipedia.org/wiki/Template_method_pattern>  
 
 ---
@@ -253,6 +253,9 @@ Both patterns solve "how do I let the caller customize one step of an algorithm?
 #include <functional>
 #include <memory>
 #include <string>
+#include <algorithm>
+#include <utility>
+#include <vector>
 
 // === TEMPLATE METHOD approach ===
 class Sorter {

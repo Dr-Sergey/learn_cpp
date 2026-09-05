@@ -1,7 +1,6 @@
 # Use pybind11 for C++/Python interoperability
 
 **Category:** Interoperability  
-**Item:** #772  
 **Standard:** C++11  
 **Reference:** <https://pybind11.readthedocs.io>  
 
@@ -163,6 +162,7 @@ The reason this matters is performance: if you had to copy every array through a
 #include <pybind11/numpy.h>
 #include <cmath>
 #include <algorithm>
+#include <numbers>
 
 namespace py = pybind11;
 
@@ -220,7 +220,7 @@ py::array_t<float> create_signal(int samples, float freq) {
     auto buf = result.mutable_unchecked<1>();
     for (py::ssize_t i = 0; i < samples; ++i) {
         float t = static_cast<float>(i) / 44100.0f;
-        buf(i) = std::sin(2.0f * M_PI * freq * t);
+        buf(i) = std::sin(2.0f * std::numbers::pi * freq * t);
     }
     return result;
 }

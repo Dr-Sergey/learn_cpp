@@ -1,6 +1,6 @@
 # Implement XML and HTML parsing with streaming SAX-style and DOM approaches
 
-**Category:** Serialization & Data Formats  
+**Category:** Serialization and Data Formats  
 **Standard:** C++17  
 **Reference:** <https://pugixml.org/> · <https://rapidxml.sourceforge.net/>  
 

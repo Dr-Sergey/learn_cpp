@@ -1,7 +1,7 @@
 # Use the Highway library for portable SIMD without platform ifdefs
 
-**Category:** Performance & CPU Architecture  
-**Item:** #545  
+**Category:** Performance and CPU Architecture  
+**Standard:** Not version-specific  
 **Reference:** <https://github.com/google/highway>  
 
 ---

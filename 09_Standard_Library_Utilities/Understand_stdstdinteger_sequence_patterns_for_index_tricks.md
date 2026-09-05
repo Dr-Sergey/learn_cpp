@@ -1,7 +1,7 @@
 # Understand std::integer_sequence patterns for index tricks
 
 **Category:** Standard Library Utilities  
-**Standard:** C++14/17  
+**Standard:** C++14, C++17  
 **Reference:** <https://en.cppreference.com/w/cpp/utility/integer_sequence>  
 
 ---

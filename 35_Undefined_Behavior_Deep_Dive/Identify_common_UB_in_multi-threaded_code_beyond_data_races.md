@@ -1,7 +1,7 @@
 # Identify Common UB in Multi-Threaded Code Beyond Data Races
 
 **Category:** Undefined Behavior Deep Dive  
-**Standard:** C++17 / C++20 / C++23  
+**Standard:** C++17, C++20, C++23  
 **Reference:** [cppreference - Memory model](https://en.cppreference.com/w/cpp/language/memory_model)  
 
 ---

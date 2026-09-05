@@ -1,7 +1,7 @@
 # Understand coroutine frame lifetime and heap allocation elision
 
-**Category:** Coroutines (C++20)  
-**Item:** #519  
+**Category:** Coroutines Cpp20  
+**Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/language/coroutines>  
 
 ---
@@ -102,6 +102,8 @@ This example shows three cases in the same file - two that prevent HALO and one 
 #include <coroutine>
 #include <iostream>
 #include <memory>
+#include <exception>
+#include <utility>
 
 struct Generator {
     struct promise_type {

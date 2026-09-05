@@ -1,7 +1,6 @@
 # Use reflection to implement automatic struct serialization
 
-**Category:** Reflection (C++26)  
-**Item:** #712  
+**Category:** Reflection Cpp26  
 **Standard:** C++11  
 **Reference:** <https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2024/p2996r5.html>  
 
@@ -29,6 +28,7 @@ The reason this is such a big deal in practice is the maintenance cost of the ol
 
 The `serialize` function below uses `nonstatic_data_members_of` to walk every field of `T` at compile time. For each member, `identifier_of` gives you the field name as a string, and `obj.[:m:]` gives you the runtime value. The `constexpr if` handles the string case to add quotes; everything else is printed directly.
 
+<!-- compile: needs `meta` (not in the CI standard library yet) -->
 ```cpp
 // C++26 with P2996 reflection
 #include <meta>
@@ -85,6 +85,7 @@ Notice that `std::meta::identifier_of(^T)` at the top of the output loop gives y
 
 This is the key proof of the "zero maintenance" claim. `UserV2` adds two fields compared to `UserV1`, and the `serialize` function handles both without any modification.
 
+<!-- compile: needs `meta` (not in the CI standard library yet) -->
 ```cpp
 #include <meta>
 #include <iostream>
@@ -153,6 +154,7 @@ The comment about "5+ places to update" is not an exaggeration for a real codeba
 
 There have been several prior attempts to solve this problem in C++. Understanding their limitations helps you appreciate why language-level reflection is the right fix rather than another library.
 
+<!-- compile: needs `meta` (not in the CI standard library yet) -->
 ```cpp
 #include <meta>
 #include <iostream>

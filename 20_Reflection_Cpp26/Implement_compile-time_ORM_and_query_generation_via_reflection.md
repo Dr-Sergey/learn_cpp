@@ -1,6 +1,6 @@
 # Implement compile-time ORM and query generation via reflection
 
-**Category:** Reflection (C++26)  
+**Category:** Reflection Cpp26  
 **Standard:** C++26  
 **Reference:** <https://wg21.link/P2996>  
 

@@ -1,7 +1,6 @@
 # Use std::execution::then to chain sender transformations
 
-**Category:** std::execution & Senders/Receivers  
-**Item:** #603  
+**Category:** Std Execution and Senders Receivers  
 **Standard:** C++20  
 **Reference:** <https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2023/p2300r7.html>  
 
@@ -30,6 +29,7 @@ Type flow through then():
 
 Here is the simplest pipeline you can write: a single `just` producing a value, piped into a `then` that transforms it, and `sync_wait` to get the result back. Notice the multi-value example at the end - when the predecessor produces multiple values, the `then` callable receives them all as separate arguments:
 
+<!-- compile: needs third-party library header `stdexec/execution.hpp` -->
 ```cpp
 #include <stdexec/execution.hpp>
 #include <iostream>
@@ -66,6 +66,7 @@ The comment about `connect` and `start` is worth noting. `sync_wait` is just a c
 
 This is the property that makes pipelines composable and storage-safe. When you write `just(42) | then(f)` you are constructing a description of work, not performing it. The counter stays at zero until `sync_wait` actually triggers execution:
 
+<!-- compile: needs third-party library header `stdexec/execution.hpp` -->
 ```cpp
 #include <stdexec/execution.hpp>
 #include <iostream>
@@ -109,6 +110,7 @@ Laziness is not just a technicality - it enables a whole set of practical capabi
 
 One of the nicest things about `then()` is that the type can change at every step. The compiler tracks the full type chain at compile time, which means type errors are caught before any code runs. This example walks through three type transformations - `int` to `double`, `double` to `string`, `string` to `size_t`:
 
+<!-- compile: needs third-party library header `stdexec/execution.hpp` -->
 ```cpp
 #include <stdexec/execution.hpp>
 #include <iostream>

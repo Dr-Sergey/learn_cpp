@@ -1,6 +1,7 @@
 # Use the Pimpl idiom for ABI stability and compilation firewall
 
-**Category:** OOP Design
+**Category:** OOP Design  
+**Standard:** Not version-specific  
 
 ---
 

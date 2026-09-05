@@ -1,7 +1,6 @@
 # Understand and avoid TOCTOU races in concurrent code
 
-**Category:** Concurrency & Parallelism  
-**Item:** #231  
+**Category:** Concurrency and Parallelism  
 **Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/atomic/atomic/compare_exchange>  
 

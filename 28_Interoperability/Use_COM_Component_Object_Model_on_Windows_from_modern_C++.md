@@ -1,7 +1,6 @@
 # Use COM (Component Object Model) on Windows from modern C++
 
 **Category:** Interoperability  
-**Item:** #697  
 **Standard:** C++11  
 **Reference:** <https://docs.microsoft.com/en-us/windows/win32/com/>  
 

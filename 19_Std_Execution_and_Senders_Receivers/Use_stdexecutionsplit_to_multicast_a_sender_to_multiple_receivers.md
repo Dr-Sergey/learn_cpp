@@ -1,7 +1,6 @@
 # Use std::execution::split to multicast a sender to multiple receivers
 
-**Category:** std::execution & Senders/Receivers  
-**Item:** #610  
+**Category:** Std Execution and Senders Receivers  
 **Standard:** C++26  
 **Reference:** <https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2023/p2300r7.html>  
 
@@ -29,6 +28,7 @@ Without split:                With split:
 
 Here the expensive work runs once on the thread pool. After `split()`, the resulting sender can be copied and piped into multiple downstream chains. Both consumers receive the same cached value 42 without re-triggering the upstream work:
 
+<!-- compile: needs third-party library header `stdexec/execution.hpp` -->
 ```cpp
 #include <stdexec/execution.hpp>
 #include <exec/static_thread_pool.hpp>
@@ -83,6 +83,7 @@ Notice that `[expensive]` only appears once in the output even though two consum
 
 This example makes the memoization explicit by counting invocations with an atomic counter. Three consumers all connect to the same split sender, but the underlying lambda only fires once:
 
+<!-- compile: needs third-party library header `stdexec/execution.hpp` -->
 ```cpp
 #include <stdexec/execution.hpp>
 #include <iostream>
@@ -128,6 +129,7 @@ The reason this works is that `split()` allocates a shared heap-allocated state 
 
 A common real-world pattern is computing something expensive (a hash, a network result, a file parse) and then feeding that single result into several independent downstream steps. Here three operations - cache lookup, audit logging, and integrity verification - all consume the same hash without recomputing it:
 
+<!-- compile: needs third-party library header `stdexec/execution.hpp` -->
 ```cpp
 #include <stdexec/execution.hpp>
 #include <exec/static_thread_pool.hpp>

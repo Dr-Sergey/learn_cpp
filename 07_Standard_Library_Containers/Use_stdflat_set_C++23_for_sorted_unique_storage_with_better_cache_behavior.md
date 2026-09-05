@@ -1,7 +1,6 @@
 # Use std::flat_set (C++23) for sorted unique storage with better cache behavior
 
-**Category:** Standard Library - Containers  
-**Item:** #351  
+**Category:** Standard Library Containers  
 **Standard:** C++23  
 **Reference:** <https://en.cppreference.com/w/cpp/container/flat_set>  
 
@@ -55,6 +54,7 @@ std::set<int> (red-black tree):        std::flat_set<int> (sorted vector):
 
 The interface is intentionally identical to `std::set` - you can often swap one for the other with a single type change:
 
+<!-- compile: needs `flat_set` (not in the CI standard library yet) -->
 ```cpp
 // Note: requires C++23 compiler with <flat_set> support
 #include <iostream>

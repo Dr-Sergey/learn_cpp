@@ -1,7 +1,7 @@
 # Understand Strict Aliasing Rules and Their Impact on Optimization
 
-**Category:** Memory & Ownership  
-**Item:** #235  
+**Category:** Memory and Ownership  
+**Standard:** C++98  
 **Reference:** <https://en.cppreference.com/w/cpp/language/reinterpret_cast>  
 
 ---

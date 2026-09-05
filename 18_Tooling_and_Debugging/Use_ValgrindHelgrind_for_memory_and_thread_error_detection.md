@@ -1,7 +1,6 @@
 # Use Valgrind/Helgrind for memory and thread error detection
 
-**Category:** Tooling & Debugging  
-**Item:** #237  
+**Category:** Tooling and Debugging  
 **Standard:** C++11  
 **Reference:** <https://valgrind.org>  
 

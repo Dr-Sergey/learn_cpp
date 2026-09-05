@@ -1,7 +1,7 @@
 # Understand `std::is_nothrow_move_constructible` and Its Effect on `std::vector`
 
-**Category:** Type System & Deduction  
-**Item:** #440  
+**Category:** Type System and Deduction  
+**Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/types/is_move_constructible>  
 
 ---

@@ -1,7 +1,6 @@
 # Use std::sample (C++17) for random reservoir sampling
 
-**Category:** Standard Library - Algorithms  
-**Item:** #212  
+**Category:** Standard Library Algorithms  
 **Standard:** C++17  
 **Reference:** <https://en.cppreference.com/w/cpp/algorithm/sample>  
 
@@ -112,6 +111,8 @@ This is the clever part. The reason you don't need to know the total size upfron
 #include <vector>
 #include <algorithm>
 #include <random>
+#include <iterator>
+#include <numeric>
 
 // Demonstration of the reservoir sampling algorithm that std::sample uses
 

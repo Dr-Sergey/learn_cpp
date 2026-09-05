@@ -1,7 +1,6 @@
 # Understand the coroutine model: promise_type, coroutine_handle, and suspension
 
-**Category:** Coroutines (C++20)  
-**Item:** #124  
+**Category:** Coroutines Cpp20  
 **Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/language/coroutines>  
 

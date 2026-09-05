@@ -1,7 +1,6 @@
 # Use std::rcu (Read-Copy-Update) for scalable read-heavy data structures
 
-**Category:** Standard Library — New in C++23/26  
-**Item:** #760  
+**Category:** Standard Library New Cpp23 26  
 **Standard:** C++26  
 **Reference:** <https://en.cppreference.com/w/cpp/thread/rcu_domain>  
 
@@ -48,6 +47,7 @@ read(*current_ptr);                  2. atomic swap: current_ptr = new_data
 
 Your data type needs to inherit from `std::rcu_obj_base<T>` to opt into the RCU reclamation machinery. This is the CRTP pattern - it gives the type a `retire()` method that the RCU system uses to schedule deferred deletion. Notice how the reader code has no mutex, no atomic read-modify-write, and no spin: it just creates a guard and reads:
 
+<!-- compile: needs `rcu` (not in the CI standard library yet) -->
 ```cpp
 #include <rcu>       // C++26
 #include <atomic>
@@ -120,6 +120,7 @@ The reason readers are safe to access `old_cfg` even after the writer has swappe
 
 This example makes the performance asymmetry concrete with timing. The reader loop is genuinely near-zero cost per iteration; the writer pays a real grace-period wait for each update. Understanding this trade-off is essential to deciding when RCU is the right tool:
 
+<!-- compile: needs `rcu` (not in the CI standard library yet) -->
 ```cpp
 #include <rcu>
 #include <atomic>

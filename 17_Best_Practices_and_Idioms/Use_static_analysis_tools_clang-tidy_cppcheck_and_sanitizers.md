@@ -1,7 +1,7 @@
 # Use static analysis tools: clang-tidy, cppcheck, and sanitizers
 
-**Category:** Best Practices & Idioms  
-**Item:** #133  
+**Category:** Best Practices and Idioms  
+**Standard:** Not version-specific  
 **Reference:** <https://clang.llvm.org/extra/clang-tidy/>  
 
 ---

@@ -1,7 +1,7 @@
 # Use ctest with labels and parallel execution for large test suites
 
-**Category:** Tooling & Debugging  
-**Item:** #421  
+**Category:** Tooling and Debugging  
+**Standard:** Not version-specific  
 **Reference:** <https://cmake.org/cmake/help/latest/manual/ctest.1.html>  
 
 ---

@@ -1,8 +1,7 @@
 # Write Type-Erased Wrappers Using Templates
 
-**Category:** Templates & Generic Programming  
-**Item:** #50  
-**Standard:** C++11 (basic), C++17 (std::any)  
+**Category:** Templates and Generic Programming  
+**Standard:** C++11, C++17 (basic)  
 **Reference:** <https://en.cppreference.com/w/cpp/utility/functional/function>  
 
 ---
@@ -70,6 +69,7 @@ The partial specialization on `R(Args...)` is what lets you write `Function<int(
 #include <memory>
 #include <utility>
 #include <string>
+#include <functional>
 
 // === Simplified std::function using type erasure ===
 

@@ -1,7 +1,7 @@
 # Understand Template Specialization Ordering and Partial Ordering Rules
 
-**Category:** Templates & Generic Programming  
-**Item:** #450  
+**Category:** Templates and Generic Programming  
+**Standard:** Not version-specific  
 **Reference:** <https://en.cppreference.com/w/cpp/language/partial_specialization>  
 
 ---

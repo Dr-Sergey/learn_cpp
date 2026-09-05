@@ -1,7 +1,6 @@
 # Implement a wait-free data structure using fetch_add
 
-**Category:** Concurrency & Parallelism  
-**Item:** #787  
+**Category:** Concurrency and Parallelism  
 **Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/atomic/atomic/fetch_add>  
 

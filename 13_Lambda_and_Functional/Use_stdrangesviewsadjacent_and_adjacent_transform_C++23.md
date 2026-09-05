@@ -1,7 +1,6 @@
 # Use std::ranges::views::adjacent and adjacent_transform (C++23)
 
-**Category:** Lambda & Functional  
-**Item:** #269  
+**Category:** Lambda and Functional  
 **Standard:** C++23  
 **Reference:** <https://en.cppreference.com/w/cpp/ranges/adjacent_view>  
 

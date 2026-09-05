@@ -1,7 +1,6 @@
 # Understand the ranges concept hierarchy: range, view, viewable_range
 
-**Category:** Ranges (C++20)  
-**Item:** #115  
+**Category:** Ranges Cpp20  
 **Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/ranges>  
 
@@ -183,6 +182,7 @@ All you need to satisfy `std::ranges::range` is a working `begin()` and `end()`.
 #include <ranges>
 #include <concepts>
 #include <algorithm>
+#include <cstddef>
 
 // Minimal custom range: generates integers in [start, end)
 struct IntRange {

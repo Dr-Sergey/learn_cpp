@@ -1,7 +1,7 @@
 # Measure Tail Latency (p99/p99.9) Accurately
 
-**Category:** Low Latency & Real-Time C++  
-**Standard:** C++17 / C++20  
+**Category:** Low Latency and Real Time  
+**Standard:** C++17, C++20  
 **Reference:** [HDR Histogram](http://hdrhistogram.org/), [Gil Tene - How NOT to Measure Latency](https://www.youtube.com/watch?v=lJ8ydIuPFeU)  
 
 ---

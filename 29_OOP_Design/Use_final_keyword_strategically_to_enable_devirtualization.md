@@ -1,6 +1,7 @@
 # Use final keyword strategically to enable devirtualization
 
-**Category:** OOP Design
+**Category:** OOP Design  
+**Standard:** Not version-specific  
 
 ---
 

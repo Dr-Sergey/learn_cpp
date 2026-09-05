@@ -1,7 +1,7 @@
 # Write a Type List and Implement Compile-Time Operations on It
 
-**Category:** Templates & Generic Programming  
-**Item:** #335  
+**Category:** Templates and Generic Programming  
+**Standard:** Not version-specific  
 **Reference:** <https://en.cppreference.com/w/cpp/language/variadic_template>  
 
 ---

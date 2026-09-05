@@ -1,7 +1,6 @@
 # Use views::as_rvalue (C++23) to move elements from a range
 
-**Category:** Ranges (C++20)  
-**Item:** #291  
+**Category:** Ranges Cpp20  
 **Standard:** C++23  
 **Reference:** <https://en.cppreference.com/w/cpp/ranges/as_rvalue_view>  
 

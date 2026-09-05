@@ -1,7 +1,6 @@
 # Use override and final explicitly on virtual functions
 
 **Category:** Modern OOP Patterns  
-**Item:** #100  
 **Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/language/override>  
 

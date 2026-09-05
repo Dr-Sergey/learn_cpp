@@ -1,7 +1,6 @@
 # Use std::promise<void> for one-shot thread synchronization signals
 
-**Category:** Concurrency & Parallelism  
-**Item:** #375  
+**Category:** Concurrency and Parallelism  
 **Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/thread/promise>  
 

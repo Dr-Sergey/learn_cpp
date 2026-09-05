@@ -1,7 +1,6 @@
 # Implement a lock-free stack using compare_exchange_weak
 
-**Category:** Concurrency & Parallelism  
-**Item:** #371  
+**Category:** Concurrency and Parallelism  
 **Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/atomic/atomic/compare_exchange>  
 
@@ -212,6 +211,8 @@ Thread 1 reads the head pointer (value A), then gets preempted. While it is slee
 #include <atomic>
 #include <iostream>
 #include <cstdint>
+#include <optional>
+#include <utility>
 
 // === THE ABA PROBLEM ===
 //

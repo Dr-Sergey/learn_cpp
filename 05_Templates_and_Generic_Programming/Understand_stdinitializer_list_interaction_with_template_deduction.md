@@ -1,7 +1,6 @@
 # Understand `std::initializer_list` Interaction with Template Deduction
 
-**Category:** Templates & Generic Programming  
-**Item:** #301  
+**Category:** Templates and Generic Programming  
 **Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/utility/initializer_list>  
 

@@ -1,7 +1,6 @@
 # Understand `std::common_reference` and Its Role in Ranges
 
-**Category:** Type System & Deduction  
-**Item:** #438  
+**Category:** Type System and Deduction  
 **Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/types/common_reference>  
 

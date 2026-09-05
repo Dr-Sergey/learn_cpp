@@ -1,7 +1,7 @@
 # Use the Clang AST dump to understand how the compiler sees your code
 
-**Category:** Tooling & Debugging  
-**Item:** #801  
+**Category:** Tooling and Debugging  
+**Standard:** Not version-specific  
 **Reference:** <https://clang.llvm.org/docs/IntroductionToTheClangAST.html>  
 
 ---

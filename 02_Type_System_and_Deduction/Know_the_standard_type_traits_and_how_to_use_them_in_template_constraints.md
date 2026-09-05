@@ -1,7 +1,6 @@
 # Know the standard type traits and how to use them in template constraints
 
-**Category:** Type System & Deduction  
-**Item:** #19  
+**Category:** Type System and Deduction  
 **Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/header/type_traits>  
 
@@ -196,6 +195,10 @@ This is the classic SFINAE detection pattern, shown in both the C++11/14 style a
 #include <type_traits>
 #include <vector>
 #include <string>
+#include <array>
+#include <concepts>
+#include <cstddef>
+#include <utility>
 
 // Method 1: SFINAE-based detection (C++11/14)
 template<typename T, typename = void>

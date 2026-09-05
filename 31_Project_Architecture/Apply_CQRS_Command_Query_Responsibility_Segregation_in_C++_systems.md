@@ -1,6 +1,7 @@
 # Apply CQRS (Command Query Responsibility Segregation) in C++ systems
 
-**Category:** Project Architecture
+**Category:** Project Architecture  
+**Standard:** Not version-specific  
 
 ---
 

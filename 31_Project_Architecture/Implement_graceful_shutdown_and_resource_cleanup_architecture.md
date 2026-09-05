@@ -1,6 +1,7 @@
 # Implement graceful shutdown and resource cleanup architecture
 
-**Category:** Project Architecture
+**Category:** Project Architecture  
+**Standard:** Not version-specific  
 
 ---
 

@@ -1,7 +1,7 @@
 # Eliminate Virtual Dispatch in Hot Paths with Compile-Time Dispatch
 
-**Category:** Low Latency & Real-Time C++  
-**Standard:** C++20 / C++23  
+**Category:** Low Latency and Real Time  
+**Standard:** C++20, C++23  
 **Reference:** [P0847R7 - Deducing this](https://wg21.link/p0847), [CppCon - CRTP and Mixin Idioms](https://www.youtube.com/results?search_query=crtp+cppcon)  
 
 ---
@@ -155,6 +155,8 @@ CRTP's main weakness is the syntax: the base class must be templated on the deri
 #include <cstdio>
 #include <cstdint>
 #include <utility>
+#include <cstddef>
+#include <tuple>
 
 struct MarketData {
     uint64_t seq;

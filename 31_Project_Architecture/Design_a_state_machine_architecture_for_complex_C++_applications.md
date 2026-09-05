@@ -1,6 +1,7 @@
 # Design a state machine architecture for complex C++ applications
 
-**Category:** Project Architecture
+**Category:** Project Architecture  
+**Standard:** Not version-specific  
 
 ---
 

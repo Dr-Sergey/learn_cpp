@@ -1,7 +1,6 @@
 # Use std::ranges::starts_with and ends_with (C++23) for range prefix/suffix checks
 
-**Category:** Standard Library — Algorithms  
-**Item:** #236  
+**Category:** Standard Library Algorithms  
 **Standard:** C++23  
 **Reference:** <https://en.cppreference.com/w/cpp/algorithm/ranges/starts_with>  
 

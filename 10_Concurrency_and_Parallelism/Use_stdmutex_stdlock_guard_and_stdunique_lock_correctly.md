@@ -1,7 +1,7 @@
 # Use std::mutex, std::lock_guard, and std::unique_lock correctly
 
-**Category:** Concurrency & Parallelism  
-**Item:** #88  
+**Category:** Concurrency and Parallelism  
+**Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/thread/mutex>  
 
 ---

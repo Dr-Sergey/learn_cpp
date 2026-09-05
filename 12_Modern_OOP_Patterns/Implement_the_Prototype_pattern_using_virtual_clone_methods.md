@@ -1,7 +1,6 @@
 # Implement the Prototype pattern using virtual clone methods
 
 **Category:** Modern OOP Patterns  
-**Item:** #381  
 **Standard:** C++17  
 **Reference:** <https://en.cppreference.com/w/cpp/language/virtual>  
 

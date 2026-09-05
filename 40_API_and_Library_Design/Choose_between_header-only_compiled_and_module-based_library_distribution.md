@@ -1,6 +1,6 @@
 # Choose between header-only, compiled, and module-based library distribution
 
-**Category:** API & Library Design  
+**Category:** API and Library Design  
 **Standard:** C++20  
 **Reference:** <https://isocpp.org/wiki/faq/cpp20-library-design>  
 

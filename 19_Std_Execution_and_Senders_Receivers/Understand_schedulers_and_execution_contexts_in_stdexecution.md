@@ -1,7 +1,6 @@
 # Understand schedulers and execution contexts in std::execution
 
-**Category:** std::execution & Senders/Receivers  
-**Item:** #525  
+**Category:** Std Execution and Senders Receivers  
 **Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/execution>  
 
@@ -53,6 +52,7 @@ This is the distinction that catches people off guard. The thread pool is the ex
 
 The code below shows both in action. Notice how `sched` is created from the pool and then used to build a pipeline - it is just a value:
 
+<!-- compile: needs third-party library header `stdexec/execution.hpp` -->
 ```cpp
 #include <stdexec/execution.hpp>
 #include <exec/static_thread_pool.hpp>
@@ -87,6 +87,7 @@ int main() {
 
 `schedule(sched)` is your entry point. It returns a sender that does nothing by itself - it just positions the next `then` to run on the target context. The pipeline example below also shows `starts_on`, which is a more explicit alternative for routing an existing sender to a specific scheduler.
 
+<!-- compile: needs third-party library header `stdexec/execution.hpp` -->
 ```cpp
 #include <stdexec/execution.hpp>
 #include <exec/static_thread_pool.hpp>
@@ -130,6 +131,7 @@ int main() {
 
 `continues_on` is the adaptor you reach for when you want to run different stages of a pipeline on different contexts - for example, CPU-heavy work on a compute pool and file writes on an I/O pool. It inserts a context switch in the middle of the pipeline without breaking the composition.
 
+<!-- compile: needs third-party library header `stdexec/execution.hpp` -->
 ```cpp
 #include <stdexec/execution.hpp>
 #include <exec/static_thread_pool.hpp>

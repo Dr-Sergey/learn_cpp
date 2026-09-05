@@ -1,7 +1,7 @@
 # Bridge std::execution with GPU Backends
 
-**Category:** GPU & Heterogeneous Computing  
-**Standard:** C++26 (P2300 std::execution) / C++20  
+**Category:** GPU and Heterogeneous Computing  
+**Standard:** C++26, C++20 (P2300 std::execution)  
 **Reference:** https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2024/p2300r10.html  
 
 ---
@@ -52,6 +52,7 @@ Each concept in this model maps to something concrete on both CPU and GPU. The t
 
 The simplest possible GPU sender chain looks like this. Notice how you build up the work description first, and only actually execute it at `sync_wait` - there's no manual stream management in sight.
 
+<!-- compile: needs third-party library header `stdexec/execution.hpp` -->
 ```cpp
 // Requires: stdexec + nvexec (NVIDIA's std::execution GPU backend)
 // Build: nvcc -std=c++20 -I<stdexec>/include -I<nvexec>/include
@@ -91,6 +92,7 @@ The two `then` continuations both run on the GPU because they are downstream of 
 
 This example shows the real power of the model: you can have a CPU preprocessing task and a GPU warmup task running concurrently, then merge their results - all without a single mutex or condition variable.
 
+<!-- compile: needs third-party library header `stdexec/execution.hpp` -->
 ```cpp
 #include <stdexec/execution.hpp>
 #include <exec/static_thread_pool.hpp>
@@ -171,6 +173,7 @@ int main() {
 
 `bulk` is how you express data-parallel work in the sender model. The `nvexec` backend maps it directly to a CUDA kernel launch, choosing appropriate grid and block dimensions for you.
 
+<!-- compile: needs third-party library header `stdexec/execution.hpp` -->
 ```cpp
 #include <stdexec/execution.hpp>
 #include <nvexec/stream_context.cuh>

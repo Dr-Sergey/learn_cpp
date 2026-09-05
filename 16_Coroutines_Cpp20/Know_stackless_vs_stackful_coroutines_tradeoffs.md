@@ -1,7 +1,7 @@
 # Know Stackless vs Stackful Coroutines Tradeoffs
 
-**Category:** Coroutines (C++20)  
-**Standard:** C++20 (stackless); Boost.Context / OS fibers (stackful)  
+**Category:** Coroutines Cpp20  
+**Standard:** C++20 (stackless)  
 **Reference:** [cppreference - Coroutines](https://en.cppreference.com/w/cpp/language/coroutines), [Boost.Context](https://www.boost.org/doc/libs/release/libs/context/doc/html/index.html)  
 
 ---
@@ -54,6 +54,7 @@ The workaround is to make the helper a coroutine too. That means every function 
 ```cpp
 #include <coroutine>
 #include <cstdio>
+#include <exception>
 
 struct Task {
     struct promise_type {
@@ -120,6 +121,7 @@ int main() {
 
 This is the example that makes the power of stackful coroutines concrete. Notice that `level3` is a perfectly ordinary function - no coroutine keywords, no special return type - yet it suspends the entire fiber from three call levels deep. With C++20 stackless coroutines, this is structurally impossible without rewriting all three helper functions:
 
+<!-- compile: needs third-party library header `boost/context/fiber.hpp` -->
 ```cpp
 // Requires: Boost.Context (link with -lboost_context)
 #include <boost/context/fiber.hpp>

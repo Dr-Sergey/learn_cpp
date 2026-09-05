@@ -1,7 +1,6 @@
 # Use std::bit_floor and bit_ceil (C++20) for power-of-two alignment
 
-**Category:** Standard Library — Utilities  
-**Item:** #366  
+**Category:** Standard Library Utilities  
 **Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/numeric/bit_ceil>  
 

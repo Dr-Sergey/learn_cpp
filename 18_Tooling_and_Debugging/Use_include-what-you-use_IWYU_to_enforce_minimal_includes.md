@@ -1,7 +1,7 @@
 # Use include-what-you-use (IWYU) to enforce minimal includes
 
-**Category:** Tooling & Debugging  
-**Item:** #224  
+**Category:** Tooling and Debugging  
+**Standard:** Not version-specific  
 **Reference:** <https://include-what-you-use.org>  
 
 ---
@@ -35,6 +35,8 @@ Here is a file that looks like it works but is actually relying on implementatio
 // bad_includes.cpp - relies on transitive includes
 #include <algorithm>   // pulls in <utility> on some implementations
 #include <map>         // not used at all!
+#include <string>
+#include <vector>
 
 // Uses std::string but doesn't include <string>
 // Works on GCC because <algorithm> transitively includes it.

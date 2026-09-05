@@ -1,7 +1,6 @@
 # Use std::gcd and std::lcm (C++17) for number theory in templates
 
-**Category:** Standard Library — Algorithms  
-**Item:** #277  
+**Category:** Standard Library Algorithms  
 **Standard:** C++17  
 **Reference:** <https://en.cppreference.com/w/cpp/numeric/gcd>  
 
@@ -196,7 +195,8 @@ template <int Num, int Den>
     requires (Den != 0)
 struct Rational {
     // Reduce at compile time
-    static constexpr int G = std::gcd(std::abs(Num), std::abs(Den));
+    // std::abs is not constexpr until C++23, so fold the sign by hand here.
+    static constexpr int G = std::gcd(Num < 0 ? -Num : Num, Den < 0 ? -Den : Den);
     static constexpr int Sign = (Den < 0) ? -1 : 1;
     static constexpr int num = Sign * Num / G;
     static constexpr int den = Sign * Den / G;

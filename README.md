@@ -13,13 +13,23 @@ Whether you are preparing for a senior engineering interview, auditing your own 
 ### What each topic file contains
 
 - **Full explanation** — the _why_ behind the feature, not just the _what_
-- **Worked code examples** — compiling, realistic snippets with commentary
-- **Self-assessment questions** with detailed answers and additional examples
-- **Personal notes section** — blank space reserved for your own annotations
+- **Worked code examples** — realistic snippets with commentary, checked against a real compiler
+- **Self-assessment questions** — exactly three per topic, each with a detailed answer and further examples
+- **Notes** — the takeaways worth remembering once you have read the rest
 
 ### How to use this guide
 
 Start anywhere. Jump to a category that matches your current project or study goal, open any topic file, and read straight through. The files are intentionally self-contained — no numbered sequence to follow, no prerequisites to satisfy first. Use the table below as a map, not a syllabus.
+
+Looking for one specific thing? [**INDEX.md**](INDEX.md) lists all 1166 topics on a single page — search it with find-in-page.
+
+The self-contained code examples are compile-checked with Clang against C++23. Where a snippet is
+not meant to build on its own — a fragment, a deliberate error, or a feature no shipping compiler
+has yet — the line above it carries an HTML comment saying so, visible only in the raw Markdown:
+
+```markdown
+<!-- compile: fragment: not a standalone translation unit -->
+```
 
 ## Categories
 
@@ -32,7 +42,7 @@ Start anywhere. Jump to a category that matches your current project or study go
 | 05 | [Templates & Generic Programming](05_Templates_and_Generic_Programming/README.md) | 38 |
 | 06 | [Compile-Time Programming](06_Compile_Time_Programming/README.md) | 29 |
 | 07 | [Standard Library — Containers](07_Standard_Library_Containers/README.md) | 32 |
-| 08 | [Standard Library — Algorithms](08_Standard_Library_Algorithms/README.md) | 39 |
+| 08 | [Standard Library - Algorithms](08_Standard_Library_Algorithms/README.md) | 39 |
 | 09 | [Standard Library — Utilities](09_Standard_Library_Utilities/README.md) | 37 |
 | 10 | [Concurrency & Parallelism](10_Concurrency_and_Parallelism/README.md) | 48 |
 | 11 | [Error Handling](11_Error_Handling/README.md) | 26 |
@@ -49,7 +59,7 @@ Start anywhere. Jump to a category that matches your current project or study go
 | 22 | [Networking & I/O](22_Networking_and_IO/README.md) | 29 |
 | 23 | [Safety & Security](23_Safety_and_Security/README.md) | 26 |
 | 24 | [Build Systems & CI](24_Build_Systems_and_CI/README.md) | 24 |
-| 25 | [Design Patterns — Modern Takes](25_Design_Patterns_Modern_Takes/README.md) | 25 |
+| 25 | [Design Patterns - Modern Takes](25_Design_Patterns_Modern_Takes/README.md) | 25 |
 | 26 | [Standard Library — New in C++23/26](26_Standard_Library_New_Cpp23_26/README.md) | 25 |
 | 27 | [Testing & Verification](27_Testing_and_Verification/README.md) | 26 |
 | 28 | [Interoperability](28_Interoperability/README.md) | 25 |
@@ -66,6 +76,6 @@ Start anywhere. Jump to a category that matches your current project or study go
 | 39 | [Serialization & Data Formats](39_Serialization_and_Data_Formats/README.md) | 12 |
 | 40 | [API & Library Design](40_API_and_Library_Design/README.md) | 15 |
 | 41 | [Advanced Debugging Techniques](41_Debugging_Advanced_Techniques/README.md) | 12 |
-| 42 | [Functional Programming Patterns](42_Functional_Programming_Patterns/README.md) | 9 |
+| 42 | [Functional Programming Patterns in C++](42_Functional_Programming_Patterns/README.md) | 9 |
 
 **Total: 1166 topics**

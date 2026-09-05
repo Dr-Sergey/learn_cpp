@@ -1,7 +1,6 @@
-# Understand schedulers and execution contexts in std::execution
+# Use schedulers as sender factories and switch context with continues_on
 
-**Category:** std::execution & Senders/Receivers  
-**Item:** #705  
+**Category:** Std Execution and Senders Receivers  
 **Standard:** C++11  
 **Reference:** <https://github.com/NVIDIA/stdexec>  
 
@@ -29,6 +28,7 @@ concept scheduler = requires(Sched s) {
 
 The example below shows the three levels clearly: the pool owns threads and has a lifetime, the scheduler is a cheap handle obtained from the pool, and `schedule(sched)` produces an inert sender that only starts running when `sync_wait` (or `start`) drives it.
 
+<!-- compile: needs third-party library header `stdexec/execution.hpp` -->
 ```cpp
 #include <stdexec/execution.hpp>
 #include <exec/static_thread_pool.hpp>
@@ -80,6 +80,7 @@ Steps 1 and 2 run on the same pool thread because `then` does not change the con
 
 The real power of schedulers comes when you combine `when_all` with `schedule`. Each call to `schedule(sched) | then(work)` creates an independent unit of work that can run on a different pool thread. `when_all` starts all of them concurrently and waits for all to finish.
 
+<!-- compile: needs third-party library header `stdexec/execution.hpp` -->
 ```cpp
 #include <stdexec/execution.hpp>
 #include <exec/static_thread_pool.hpp>
@@ -132,6 +133,7 @@ The two heavy computations run in parallel on pool threads, and `when_all` colle
 
 `continues_on` is the tool for routing different stages of the same pipeline to different execution contexts. This matters in real systems where some work is CPU-bound and should stay on a compute pool, while other work does I/O and should run on a dedicated I/O pool (or an Asio `io_context`, for example).
 
+<!-- compile: needs third-party library header `stdexec/execution.hpp` -->
 ```cpp
 #include <stdexec/execution.hpp>
 #include <exec/static_thread_pool.hpp>

@@ -1,7 +1,7 @@
 # Use UBSan, ASan, MSan, and Static Analyzers for UB Detection
 
 **Category:** Undefined Behavior Deep Dive  
-**Standard:** C++17 / C++20 / C++23  
+**Standard:** C++17, C++20, C++23  
 **Reference:** [Clang Sanitizer Documentation](https://clang.llvm.org/docs/index.html)  
 
 ---

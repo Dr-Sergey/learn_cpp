@@ -1,7 +1,6 @@
 # Use std::atomic<std::shared_ptr<T>> (C++20) for safe concurrent pointer updates
 
-**Category:** Concurrency & Parallelism  
-**Item:** #788  
+**Category:** Concurrency and Parallelism  
 **Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/memory/shared_ptr/atomic2>  
 

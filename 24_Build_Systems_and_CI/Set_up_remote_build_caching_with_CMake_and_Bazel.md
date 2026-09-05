@@ -1,7 +1,7 @@
 # Set up remote build caching with CMake and Bazel
 
-**Category:** Build Systems & CI  
-**Item:** #746  
+**Category:** Build Systems and CI  
+**Standard:** Not version-specific  
 **Reference:** <https://github.com/mozilla/sccache>  
 
 ---

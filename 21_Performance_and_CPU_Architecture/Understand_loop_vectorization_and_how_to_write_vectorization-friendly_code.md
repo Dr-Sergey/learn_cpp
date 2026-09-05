@@ -1,7 +1,6 @@
 # Understand loop vectorization and how to write vectorization-friendly code
 
-**Category:** Performance & CPU Architecture  
-**Item:** #722  
+**Category:** Performance and CPU Architecture  
 **Standard:** C++11  
 **Reference:** <https://gcc.gnu.org/projects/tree-ssa/vectorization.html>  
 

@@ -1,7 +1,7 @@
 # Use -O2 vs -O3 vs -Oz: understand what each optimization level enables
 
-**Category:** Tooling & Debugging  
-**Item:** #506  
+**Category:** Tooling and Debugging  
+**Standard:** Not version-specific  
 **Reference:** <https://gcc.gnu.org/onlinedocs/gcc/Optimize-Options.html>  
 
 ---

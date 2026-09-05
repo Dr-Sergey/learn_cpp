@@ -1,7 +1,7 @@
 # Follow the Core Guidelines: prefer interfaces that are easy to use correctly
 
-**Category:** Best Practices & Idioms  
-**Item:** #127  
+**Category:** Best Practices and Idioms  
+**Standard:** Not version-specific  
 **Reference:** <https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines>  
 
 ---

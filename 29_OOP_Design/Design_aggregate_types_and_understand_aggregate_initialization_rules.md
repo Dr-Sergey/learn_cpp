@@ -1,6 +1,7 @@
 # Design aggregate types and understand aggregate initialization rules
 
-**Category:** OOP Design
+**Category:** OOP Design  
+**Standard:** C++20  
 
 ---
 

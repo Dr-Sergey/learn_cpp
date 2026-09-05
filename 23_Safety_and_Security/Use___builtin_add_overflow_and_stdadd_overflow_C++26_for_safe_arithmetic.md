@@ -1,7 +1,6 @@
 # Use __builtin_add_overflow and std::add_overflow (C++26) for safe arithmetic
 
-**Category:** Safety & Security  
-**Item:** #649  
+**Category:** Safety and Security  
 **Standard:** C++26  
 **Reference:** <https://gcc.gnu.org/onlinedocs/gcc/Integer-Overflow-Builtins.html>  
 

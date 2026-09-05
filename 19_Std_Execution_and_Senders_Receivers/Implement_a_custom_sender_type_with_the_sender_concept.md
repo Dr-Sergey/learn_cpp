@@ -1,7 +1,6 @@
 # Implement a custom sender type with the sender concept
 
-**Category:** std::execution & Senders/Receivers  
-**Item:** #529  
+**Category:** Std Execution and Senders Receivers  
 **Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/execution>  
 
@@ -27,6 +26,7 @@ This topic builds a practical `timer_sender` that completes after a delay. A tim
 
 The trick with a timer sender is that you need to check for cancellation *before* sleeping and *after* waking up - the stop token might have been requested in either window. Also notice that `start()` is marked `noexcept`, so all exceptions must be caught internally and routed through the error channel.
 
+<!-- compile: needs third-party library header `stdexec/execution.hpp` -->
 ```cpp
 // timer_sender.cpp
 #include <stdexec/execution.hpp>
@@ -171,6 +171,7 @@ Notice the commented-out error case - the compiler catches the type mismatch at 
 
 The `debug_sender` below adds print statements to `connect()` and `start()` so you can see the exact sequence of events when `sync_wait` drives a pipeline. This kind of instrumentation is genuinely useful when you are debugging a custom sender for the first time.
 
+<!-- compile: needs third-party library header `stdexec/execution.hpp` -->
 ```cpp
 // connect() is the bridge between description (sender) and execution (operation_state)
 

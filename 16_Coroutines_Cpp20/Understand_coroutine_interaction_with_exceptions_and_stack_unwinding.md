@@ -1,6 +1,6 @@
 # Understand coroutine interaction with exceptions and stack unwinding
 
-**Category:** Coroutines (C++20)  
+**Category:** Coroutines Cpp20  
 **Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/language/coroutines>  
 

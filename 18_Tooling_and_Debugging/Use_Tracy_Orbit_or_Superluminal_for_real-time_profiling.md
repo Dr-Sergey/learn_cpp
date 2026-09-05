@@ -1,7 +1,7 @@
 # Use Tracy, Orbit, or Superluminal for real-time profiling
 
-**Category:** Tooling & Debugging  
-**Item:** #180  
+**Category:** Tooling and Debugging  
+**Standard:** Not version-specific  
 **Reference:** <https://github.com/wolfpld/tracy>  
 
 ---
@@ -30,6 +30,7 @@ The distinction between sampling and instrumentation matters in practice. Sampli
 
 Tracy's API is built around "zones" - regions of code that you explicitly mark with macros. When you add `ZoneScoped` at the top of a function, Tracy records the entry and exit times and sends them to the UI over a network connection. The UI then renders a real-time flame chart. The macro-based approach means the overhead is nearly zero when a zone is not being recorded.
 
+<!-- compile: needs third-party library header `tracy/Tracy.hpp` -->
 ```cpp
 // tracy_demo.cpp
 // Link with Tracy: add tracy as a dependency or include TracyClient.cpp
@@ -110,6 +111,7 @@ You can click on any zone to see its exact duration and which child zones contri
 
 Lock contention is one of the most common causes of multi-threaded performance problems, and it is almost impossible to spot by just reading code. When eight threads all need the same lock, seven of them spend most of their time waiting. Tracy can track this directly.
 
+<!-- compile: needs third-party library header `tracy/Tracy.hpp` -->
 ```cpp
 // contention.cpp
 #include <tracy/Tracy.hpp>

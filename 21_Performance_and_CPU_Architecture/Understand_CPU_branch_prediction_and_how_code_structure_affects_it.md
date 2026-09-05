@@ -1,7 +1,7 @@
 # Understand CPU branch prediction and how code structure affects it
 
-**Category:** Performance & CPU Architecture  
-**Item:** #623  
+**Category:** Performance and CPU Architecture  
+**Standard:** Not version-specific  
 **Reference:** <https://en.cppreference.com/w/cpp/language/attributes/likely>  
 
 ---

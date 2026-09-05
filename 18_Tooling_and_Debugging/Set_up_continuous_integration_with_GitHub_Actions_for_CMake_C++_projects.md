@@ -1,7 +1,7 @@
 # Set up continuous integration with GitHub Actions for CMake C++ projects
 
-**Category:** Tooling & Debugging  
-**Item:** #286  
+**Category:** Tooling and Debugging  
+**Standard:** Not version-specific  
 **Reference:** <https://docs.github.com/en/actions>  
 
 ---

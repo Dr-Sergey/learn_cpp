@@ -1,7 +1,7 @@
 # Understand `memory_resource` Interface and How to Chain Fallback Allocators
 
-**Category:** Memory & Ownership  
-**Item:** #325  
+**Category:** Memory and Ownership  
+**Standard:** Not version-specific  
 **Reference:** <https://en.cppreference.com/w/cpp/memory/memory_resource>  
 
 ---
@@ -249,6 +249,9 @@ This example shows the concrete consequence of the design difference: with templ
 #include <iostream>
 #include <memory_resource>
 #include <vector>
+#include <array>
+#include <cstddef>
+#include <memory>
 
 // The fundamental difference:
 

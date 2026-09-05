@@ -1,7 +1,7 @@
 # Write Expression Templates to Defer Computation and Eliminate Temporaries
 
-**Category:** Templates & Generic Programming  
-**Item:** #333  
+**Category:** Templates and Generic Programming  
+**Standard:** Not version-specific  
 **Reference:** <https://en.cppreference.com/w/cpp/language/template>  
 
 ---

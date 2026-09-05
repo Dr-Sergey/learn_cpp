@@ -1,7 +1,6 @@
 # Understand global module fragment for macros in module translation units
 
-**Category:** Modules & Build (C++20)  
-**Item:** #397  
+**Category:** Modules and Build Cpp20  
 **Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/language/modules>  
 
@@ -88,6 +87,7 @@ export [[nodiscard]] int safe_divide(int a, int b) {
 
 **Consumer: main.cpp**
 
+<!-- compile: fragment: one translation unit of a multi-file module example -->
 ```cpp
 import logging;
 #include <iostream>
@@ -141,6 +141,7 @@ export int get_detail() { return INTERNAL_DETAIL; }
 
 **Consumer: main.cpp**
 
+<!-- compile: fragment: one translation unit of a multi-file module example -->
 ```cpp
 import config;
 #include <iostream>

@@ -1,7 +1,6 @@
 # Understand Pack Indexing (C++26) for Accessing Parameter Pack Elements by Index
 
-**Category:** Compile-Time Programming  
-**Item:** #247  
+**Category:** Compile Time Programming  
 **Standard:** C++26 (P2662R3)  
 **Reference:** <https://en.cppreference.com/w/cpp/language/pack_indexing>  
 
@@ -237,6 +236,7 @@ This builds a `SimpleTuple` from scratch and uses pack indexing for both the `ge
 #include <string>
 #include <type_traits>
 #include <cstddef>
+#include <utility>
 
 // === C++26: Compile-time tuple using pack indexing ===
 

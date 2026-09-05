@@ -1,7 +1,6 @@
 # Use views::reverse for lazy bidirectional reversal
 
-**Category:** Ranges (C++20)  
-**Item:** #496  
+**Category:** Ranges Cpp20  
 **Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/ranges/reverse_view>  
 

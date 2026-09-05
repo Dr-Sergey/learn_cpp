@@ -1,7 +1,6 @@
 # Use property-based testing with RapidCheck to find edge cases
 
-**Category:** Testing & Verification  
-**Item:** #586  
+**Category:** Testing and Verification  
 **Standard:** C++11  
 **Reference:** <https://github.com/emil-e/rapidcheck>  
 
@@ -54,6 +53,7 @@ Shrinking is **automatic** for built-in types. RapidCheck tries:
 
 A round-trip property is one of the cleanest patterns in property-based testing: if you do an operation and then undo it, you should get back what you started with. Reversing twice is a textbook example. Notice that RapidCheck automatically discovers the interesting edge cases - empty vectors, single-element vectors, vectors with duplicates, vectors with `INT_MIN` - all without you having to think of them:
 
+<!-- compile: needs third-party library header `rapidcheck.h` -->
 ```cpp
 #include <rapidcheck.h>
 #include <algorithm>
@@ -124,6 +124,7 @@ The string version is particularly useful because `std::string` can contain NUL 
 
 `rc::gen::container` lets you build structured inputs rather than accepting whatever arbitrary generates. Here we use it to test a `second_largest` function that has specific preconditions (it needs at least two distinct elements), so we construct inputs that satisfy those constraints rather than filtering most of them out with `RC_PRE`:
 
+<!-- compile: needs third-party library header `rapidcheck.h` -->
 ```cpp
 #include <rapidcheck.h>
 #include <vector>
@@ -262,6 +263,7 @@ The reason this matters so much is that the raw random input is usually too larg
 
 Here is a demonstration. The `sum_ints` function has a signed integer overflow bug. The property we write checks that splitting the sum into halves gives the same result as summing the whole thing. When overflow occurs, the associativity breaks. RapidCheck finds it and shrinks to the minimal overflow trigger:
 
+<!-- compile: needs third-party library header `rapidcheck.h` -->
 ```cpp
 #include <rapidcheck.h>
 #include <vector>

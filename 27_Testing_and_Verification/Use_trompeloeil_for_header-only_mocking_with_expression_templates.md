@@ -1,7 +1,7 @@
 # Use trompeloeil for header-only mocking with expression templates
 
-**Category:** Testing & Verification  
-**Item:** #682  
+**Category:** Testing and Verification  
+**Standard:** Not version-specific  
 **Reference:** <https://github.com/rollbear/trompeloeil>  
 
 ---

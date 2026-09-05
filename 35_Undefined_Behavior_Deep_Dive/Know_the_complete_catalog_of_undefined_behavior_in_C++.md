@@ -1,7 +1,7 @@
 # Know the Complete Catalog of Undefined Behavior in C++
 
 **Category:** Undefined Behavior Deep Dive  
-**Standard:** C++17 / C++20 / C++23  
+**Standard:** C++17, C++20, C++23  
 **Reference:** [cppreference - Undefined Behavior](https://en.cppreference.com/w/cpp/language/ub)  
 
 ---

@@ -1,7 +1,7 @@
 # Use std::reference_wrapper for storing references in containers
 
-**Category:** Standard Library — Utilities  
-**Item:** #226  
+**Category:** Standard Library Utilities  
+**Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/utility/functional/reference_wrapper>  
 
 ---
@@ -131,6 +131,7 @@ This is the reason this trips people up: when you write `std::bind(f, x)` hoping
 #include <vector>
 #include <iostream>
 #include <string>
+#include <algorithm>
 
 struct Student {
     std::string name;
@@ -180,6 +181,9 @@ int main() {
 #include <vector>
 #include <map>
 #include <iostream>
+#include <array>
+#include <string>
+#include <utility>
 
 int main() {
     int a = 10, b = 20, c = 30;

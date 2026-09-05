@@ -1,7 +1,7 @@
 # Implement CPU-GPU task graphs for heterogeneous pipelines
 
 **Category:** GPU and Heterogeneous Computing  
-**Standard:** C++17/20  
+**Standard:** C++17, C++20  
 **Reference:** <https://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html#cuda-graphs>  
 
 ---

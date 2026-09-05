@@ -1,7 +1,7 @@
 # Implement zero-copy I/O with scatter-gather using iovec and readv/writev
 
-**Category:** Networking & I/O  
-**Item:** #553  
+**Category:** Networking and IO  
+**Standard:** Not version-specific  
 **Reference:** <https://man7.org/linux/man-pages/man2/readv.2.html>  
 
 ---
@@ -45,6 +45,7 @@ The table below summarises each technique along two dimensions that matter most 
 
 The classic use case is a network message with a fixed-size header struct and a variable payload sitting in different memory locations. Without `writev` you would need to either copy them into a single contiguous buffer first (wasting memory and CPU) or issue two separate `write` calls (wasting syscalls). With `writev` you just describe each piece using an `iovec` element and the kernel stitches them together in one shot.
 
+<!-- compile: needs POSIX header `unistd.h` -->
 ```cpp
 // Linux/POSIX only
 #include <iostream>
@@ -115,6 +116,7 @@ Notice that the read side knows how much payload to expect because it reads the 
 
 Length-prefixed framing is everywhere in network protocols. The sender writes a fixed-size header containing the payload length, then the payload. Without `writev` you would typically concatenate them into a temporary buffer, which is an unnecessary copy. Here the `FramedWriter` uses a two-element iovec so the header and payload travel together in a single syscall.
 
+<!-- compile: needs POSIX header `unistd.h` -->
 ```cpp
 #include <iostream>
 #include <cstdint>
@@ -204,6 +206,7 @@ The reader has to do its header and payload reads separately because it does not
 
 `sendfile` is the gold standard for serving static files. The comments in the code walk through the exact data path - the key point is that with a modern DMA-capable NIC, the CPU never has to touch the file data at all. It just tells the kernel "send bytes from this file descriptor to that socket descriptor" and the hardware does the rest.
 
+<!-- compile: needs POSIX header `unistd.h` -->
 ```cpp
 #include <iostream>
 #include <cstring>

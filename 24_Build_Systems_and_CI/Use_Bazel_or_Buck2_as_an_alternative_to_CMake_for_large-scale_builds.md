@@ -1,7 +1,7 @@
 # Use Bazel or Buck2 as an alternative to CMake for large-scale builds
 
-**Category:** Build Systems & CI  
-**Item:** #569  
+**Category:** Build Systems and CI  
+**Standard:** Not version-specific  
 **Reference:** <https://bazel.build/>  
 
 ---

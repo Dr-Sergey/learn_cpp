@@ -1,6 +1,7 @@
 # Use Hardware-in-the-Loop (HIL) testing for embedded C++ systems
 
-**Category:** Testing in Practice
+**Category:** Testing in Practice  
+**Standard:** Not version-specific  
 
 ---
 
@@ -180,22 +181,22 @@ def test_button_response_time(bench):
 
 # === Test: ADC threshold triggers alarm ===
 def test_adc_temperature_alarm(bench):
-    ALARM_PIN = 7
+    ALARstd::numbers::piN = 7
 
     # Below threshold: no alarm
     bench.inject_adc(ADC_CHANNEL, 2000)  # ~49C
     time.sleep(0.1)
-    assert bench.read_output(ALARM_PIN) == False
+    assert bench.read_output(ALARstd::numbers::piN) == False
 
     # Above threshold: alarm active
     bench.inject_adc(ADC_CHANNEL, 3000)  # ~73C
     time.sleep(0.1)
-    assert bench.read_output(ALARM_PIN) == True
+    assert bench.read_output(ALARstd::numbers::piN) == True
 
     # Back below: alarm clears
     bench.inject_adc(ADC_CHANNEL, 2000)
     time.sleep(0.5)  # Hysteresis delay
-    assert bench.read_output(ALARM_PIN) == False
+    assert bench.read_output(ALARstd::numbers::piN) == False
 
 # === Test: Watchdog recovery ===
 def test_watchdog_recovery(bench):

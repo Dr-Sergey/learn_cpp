@@ -1,6 +1,7 @@
 # Design embedded software architecture with layered HAL and BSP
 
-**Category:** Project Architecture
+**Category:** Project Architecture  
+**Standard:** Not version-specific  
 
 ---
 
@@ -154,6 +155,7 @@ The `to_hal_mode` and `to_hal_pull` helpers are private and static because they 
 
 The `Board` class is the top-level wiring object for a specific PCB revision. It owns all the BSP implementation objects and initializes the clocks and peripherals they depend on. Application code gets handles to the HAL interfaces through accessor methods - it receives an `IGpio&`, not a `GpioStm32F4&`. The concrete type stays hidden inside the BSP.
 
+<!-- compile: fragment: depends on a header defined elsewhere in the topic -->
 ```cpp
 // === BSP board initialization ===
 // bsp/stm32f4_discovery/board.h

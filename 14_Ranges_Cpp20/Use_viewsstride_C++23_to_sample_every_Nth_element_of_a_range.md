@@ -1,7 +1,6 @@
 # Use views::stride (C++23) to sample every Nth element of a range
 
-**Category:** Ranges (C++20)  
-**Item:** #393  
+**Category:** Ranges Cpp20  
 **Standard:** C++23  
 **Reference:** <https://en.cppreference.com/w/cpp/ranges/stride_view>  
 

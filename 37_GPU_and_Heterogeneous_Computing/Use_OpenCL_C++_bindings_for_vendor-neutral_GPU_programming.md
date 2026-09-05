@@ -1,7 +1,7 @@
 # Use OpenCL C++ Bindings for Vendor-Neutral GPU Programming
 
-**Category:** GPU & Heterogeneous Computing  
-**Standard:** OpenCL 3.0 / C++17  
+**Category:** GPU and Heterogeneous Computing  
+**Standard:** C++17  
 **Reference:** <https://www.khronos.org/opencl/>  
 
 ---
@@ -47,6 +47,7 @@ OpenCL Execution Model:
 
 This example walks through the full OpenCL workflow from start to finish: discover the platform, pick a device, create a context and queue, compile your kernel from a source string, allocate device buffers, set arguments, launch, and read back the results. Notice that the kernel source is just a plain string - the OpenCL driver compiles it at runtime.
 
+<!-- compile: needs third-party library header `CL/opencl.hpp` -->
 ```cpp
 #define CL_HPP_ENABLE_EXCEPTIONS
 #define CL_HPP_TARGET_OPENCL_VERSION 300
@@ -147,6 +148,7 @@ The `CL_MEM_COPY_HOST_PTR` flag on the buffer creation is doing the host-to-devi
 
 One of the most common mistakes when optimizing GPU code is optimizing the kernel when the real bottleneck is actually data transfer. This example measures each phase separately - the host-to-device write, the kernel, and the device-to-host read - so you can see where your time is actually going.
 
+<!-- compile: needs third-party library header `CL/opencl.hpp` -->
 ```cpp
 #define CL_HPP_ENABLE_EXCEPTIONS
 #define CL_HPP_TARGET_OPENCL_VERSION 300
@@ -223,6 +225,7 @@ Notice that `CL_QUEUE_PROFILING_ENABLE` must be set at queue creation time - you
 
 In a real application you often don't know what hardware the user has. This example scans all platforms and all devices, prints their capabilities, scores them with a simple heuristic, and picks the best one. The scoring function is deliberately simple - in a production system you might add weights for specific features your workload needs.
 
+<!-- compile: needs third-party library header `CL/opencl.hpp` -->
 ```cpp
 #define CL_HPP_ENABLE_EXCEPTIONS
 #define CL_HPP_TARGET_OPENCL_VERSION 300

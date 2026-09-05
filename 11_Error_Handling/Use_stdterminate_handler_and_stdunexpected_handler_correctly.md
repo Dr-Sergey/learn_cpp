@@ -1,7 +1,6 @@
 # Use std::terminate_handler and std::unexpected_handler correctly
 
 **Category:** Error Handling  
-**Item:** #215  
 **Standard:** C++17  
 **Reference:** <https://en.cppreference.com/w/cpp/error/terminate_handler>  
 

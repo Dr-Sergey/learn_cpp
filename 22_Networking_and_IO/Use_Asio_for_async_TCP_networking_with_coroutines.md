@@ -1,7 +1,6 @@
 # Use Asio for async TCP networking with coroutines
 
-**Category:** Networking & I/O  
-**Item:** #550  
+**Category:** Networking and IO  
 **Standard:** C++20  
 **Reference:** <https://think-async.com/Asio/>  
 
@@ -44,6 +43,7 @@ It is worth really understanding what "has pending operations" means: `io.run()`
 
 A coroutine-based echo server has a clean two-level structure: an outer "accept loop" that spawns a new session coroutine for every incoming connection, and an inner "session" coroutine that handles one client. Both are async - the accept loop suspends while waiting for connections, and the session suspends while waiting for data:
 
+<!-- compile: needs third-party library header `asio.hpp` -->
 ```cpp
 #include <asio.hpp>
 #include <asio/co_spawn.hpp>
@@ -95,6 +95,7 @@ Notice how each `co_spawn` for a new session is "fire and forget" (`asio::detach
 
 This example makes the lifecycle of `io.run()` concrete by showing three scenarios: calling it with no work registered, calling it with a coroutine that takes 1 second, and the pattern for keeping it running indefinitely:
 
+<!-- compile: needs third-party library header `asio.hpp` -->
 ```cpp
 #include <asio.hpp>
 #include <asio/co_spawn.hpp>
@@ -145,6 +146,7 @@ The `io.restart()` call between `run()` invocations is easy to forget. Once `run
 
 Implementing timeouts in async code requires a "race" between the operation you care about and a timer. Whichever finishes first cancels the other. The pattern below shows both a connection timeout and a per-read timeout, because both are common needs in real network code:
 
+<!-- compile: needs third-party library header `asio.hpp` -->
 ```cpp
 #include <asio.hpp>
 #include <asio/co_spawn.hpp>

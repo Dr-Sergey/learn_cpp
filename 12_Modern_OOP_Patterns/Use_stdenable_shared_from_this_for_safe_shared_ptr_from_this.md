@@ -1,7 +1,6 @@
 # Use std::enable_shared_from_this for safe shared_ptr from this
 
 **Category:** Modern OOP Patterns  
-**Item:** #105  
 **Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/memory/enable_shared_from_this>  
 

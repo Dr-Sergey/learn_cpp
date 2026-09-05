@@ -1,6 +1,6 @@
 # Design schema evolution strategies for field addition, removal, and renumbering
 
-**Category:** Serialization & Data Formats  
+**Category:** Serialization and Data Formats  
 **Standard:** C++17  
 **Reference:** <https://protobuf.dev/programming-guides/proto3/#updating>  
 

@@ -1,6 +1,7 @@
 # Design a clean separation between business logic and infrastructure code
 
-**Category:** Project Architecture
+**Category:** Project Architecture  
+**Standard:** Not version-specific  
 
 ---
 

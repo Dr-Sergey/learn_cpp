@@ -1,7 +1,7 @@
 # Understand Dangling Pointers vs Dangling References — UB in Both Cases
 
-**Category:** Memory & Ownership  
-**Item:** #446  
+**Category:** Memory and Ownership  
+**Standard:** Not version-specific  
 **Reference:** <https://en.cppreference.com/w/cpp/language/ub>  
 
 ---

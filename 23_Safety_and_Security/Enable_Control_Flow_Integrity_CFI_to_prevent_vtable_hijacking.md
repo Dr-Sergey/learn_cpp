@@ -1,7 +1,7 @@
 # Enable Control Flow Integrity (CFI) to prevent vtable hijacking
 
-**Category:** Safety & Security  
-**Item:** #560  
+**Category:** Safety and Security  
+**Standard:** Not version-specific  
 **Reference:** <https://clang.llvm.org/docs/ControlFlowIntegrity.html>  
 
 ---

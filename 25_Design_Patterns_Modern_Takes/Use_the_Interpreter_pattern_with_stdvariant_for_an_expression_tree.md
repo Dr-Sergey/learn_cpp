@@ -1,7 +1,6 @@
 # Use the Interpreter pattern with std::variant for an expression tree
 
-**Category:** Design Patterns - Modern Takes  
-**Item:** #676  
+**Category:** Design Patterns Modern Takes  
 **Standard:** C++23  
 **Reference:** <https://en.cppreference.com/w/cpp/utility/variant/visit>  
 

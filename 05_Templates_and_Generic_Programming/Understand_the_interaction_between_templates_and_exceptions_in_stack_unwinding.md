@@ -1,7 +1,6 @@
 # Understand the Interaction Between Templates and Exceptions in Stack Unwinding
 
-**Category:** Templates & Generic Programming  
-**Item:** #339  
+**Category:** Templates and Generic Programming  
 **Standard:** C++11 and later (not C++20-specific)  
 **Reference:** <https://en.cppreference.com/w/cpp/language/destructor>  
 
@@ -193,6 +192,7 @@ public:
 #include <iostream>
 #include <memory>
 #include <string>
+#include <utility>
 
 // Forward declare
 class Engine;

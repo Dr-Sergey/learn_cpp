@@ -1,7 +1,7 @@
 # Understand the logic_error vs runtime_error hierarchy
 
 **Category:** Error Handling  
-**Item:** #487  
+**Standard:** Not version-specific  
 **Reference:** <https://en.cppreference.com/w/cpp/error/exception>  
 
 ---
@@ -94,6 +94,8 @@ The key thing to internalize is that the *correct* response to each kind of erro
 #include <stdexcept>
 #include <vector>
 #include <fstream>
+#include <string>
+#include <system_error>
 
 // ========== logic_error examples - these are PROGRAMMER BUGS ==========
 

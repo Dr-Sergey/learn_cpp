@@ -1,7 +1,7 @@
 # Handle Unicode and Text Encoding Across Platforms
 
-**Category:** Cross-Platform Development  
-**Standard:** C++20 / C++26  
+**Category:** Cross Platform Development  
+**Standard:** C++20, C++26  
 **Reference:** <https://en.cppreference.com/w/cpp/language/string_literal>  
 
 ---
@@ -51,6 +51,7 @@ On Windows, the function you reach for is `MultiByteToWideChar` (UTF-8 to UTF-16
 #include <stdexcept>
 #include <iostream>
 #include <cstdint>
+#include <cstddef>
 
 #ifdef _WIN32
     #define WIN32_LEAN_AND_MEAN
@@ -271,6 +272,7 @@ This example shows the level of care required when processing real Unicode text 
 #include <vector>
 #include <cstdint>
 #include <array>
+#include <cstddef>
 
 // UTF-8 iteration without external libraries
 namespace utf8 {

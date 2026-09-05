@@ -1,7 +1,6 @@
 # Implement a binary protocol framer with length-prefixed messages
 
-**Category:** Networking & I/O  
-**Item:** #645  
+**Category:** Networking and IO  
 **Standard:** C++17  
 **Reference:** <https://en.cppreference.com/w/cpp/utility/from_chars>  
 

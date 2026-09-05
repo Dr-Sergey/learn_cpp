@@ -1,7 +1,7 @@
 # Use extern C for C interoperability and name mangling control
 
 **Category:** Interoperability  
-**Item:** #691  
+**Standard:** Not version-specific  
 **Reference:** <https://en.cppreference.com/w/cpp/language/language_linkage>  
 
 ---

@@ -1,7 +1,6 @@
 # Wrap a C library with a modern C++ RAII interface
 
 **Category:** Interoperability  
-**Item:** #698  
 **Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/memory/unique_ptr>  
 
@@ -52,6 +51,7 @@ This table covers the most common C patterns and their idiomatic C++ replacement
 
 The key design insight here is that a stateless deleter struct costs exactly zero bytes when stored in a `unique_ptr`. Contrast that with storing a `std::function` or a raw function pointer as the deleter - those add a pointer's worth of overhead per object. For wrappers that need to be zero-cost, always prefer a stateless struct.
 
+<!-- compile: needs third-party library header `openssl/evp.h` -->
 ```cpp
 #include <openssl/evp.h>
 #include <memory>

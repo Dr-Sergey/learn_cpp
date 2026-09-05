@@ -1,7 +1,7 @@
 # Write const-correct code throughout
 
-**Category:** Best Practices & Idioms  
-**Item:** #138  
+**Category:** Best Practices and Idioms  
+**Standard:** Not version-specific  
 **Reference:** <https://isocpp.org/wiki/faq/const-correctness>  
 
 ---

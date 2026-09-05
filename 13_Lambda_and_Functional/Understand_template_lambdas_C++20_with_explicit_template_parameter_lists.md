@@ -1,7 +1,6 @@
 # Understand template lambdas (C++20) with explicit template parameter lists
 
-**Category:** Lambda & Functional  
-**Item:** #114  
+**Category:** Lambda and Functional  
 **Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/language/lambda>  
 
@@ -168,6 +167,8 @@ Before C++14 generic lambdas and C++20 template lambdas, if you needed a templat
 #include <vector>
 #include <algorithm>
 #include <type_traits>
+#include <array>
+#include <string>
 
 int main() {
     // BEFORE (C++11/14): local struct for complex generic logic

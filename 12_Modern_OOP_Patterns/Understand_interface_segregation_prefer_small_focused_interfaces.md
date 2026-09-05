@@ -1,7 +1,6 @@
 # Understand interface segregation: prefer small focused interfaces
 
 **Category:** Modern OOP Patterns  
-**Item:** #302  
 **Standard:** C++20  
 **Reference:** <https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#Ri-segregate>  
 

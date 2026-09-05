@@ -1,7 +1,6 @@
 # Know std::in_place_t and std::in_place_type_t for in-place construction
 
-**Category:** Type System & Deduction  
-**Item:** #437  
+**Category:** Type System and Deduction  
 **Standard:** C++17  
 **Reference:** <https://en.cppreference.com/w/cpp/utility/in_place>  
 

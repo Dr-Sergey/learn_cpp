@@ -1,6 +1,7 @@
 # Structure a C++ project with clean directory layout and CMake
 
-**Category:** Project Architecture
+**Category:** Project Architecture  
+**Standard:** Not version-specific  
 
 ---
 

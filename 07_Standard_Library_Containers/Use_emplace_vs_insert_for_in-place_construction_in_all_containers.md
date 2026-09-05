@@ -1,7 +1,7 @@
 # Use emplace vs insert for in-place construction in all containers
 
-**Category:** Standard Library — Containers  
-**Item:** #463  
+**Category:** Standard Library Containers  
+**Standard:** Not version-specific  
 **Reference:** <https://en.cppreference.com/w/cpp/container/map/emplace>  
 
 ---
@@ -289,6 +289,9 @@ The honest answer is: for most everyday types, `emplace_back` and `push_back` co
 #include <vector>
 #include <set>
 #include <map>
+#include <initializer_list>
+#include <string>
+#include <utility>
 
 int main() {
     // === For scalar/trivial types: identical codegen ===

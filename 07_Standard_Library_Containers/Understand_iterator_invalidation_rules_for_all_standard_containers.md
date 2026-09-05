@@ -1,7 +1,7 @@
 # Understand iterator invalidation rules for all standard containers
 
-**Category:** Standard Library — Containers  
-**Item:** #346  
+**Category:** Standard Library Containers  
+**Standard:** Not version-specific  
 **Reference:** <https://en.cppreference.com/w/cpp/container>  
 
 ---

@@ -1,7 +1,7 @@
 # Avoid use of rand() and use cryptographically secure randomness
 
-**Category:** Safety & Security  
-**Item:** #737  
+**Category:** Safety and Security  
+**Standard:** Not version-specific  
 **Reference:** <https://en.cppreference.com/w/cpp/numeric/random/random_device>  
 
 ---

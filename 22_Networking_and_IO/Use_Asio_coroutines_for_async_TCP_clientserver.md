@@ -1,7 +1,6 @@
 # Use Asio coroutines for async TCP client/server
 
-**Category:** Networking & I/O  
-**Item:** #643  
+**Category:** Networking and IO  
 **Standard:** C++20  
 **Reference:** <https://think-async.com/Asio/asio-1.28.0/doc/asio/overview/composition/cpp20_coroutines.html>  
 
@@ -47,6 +46,7 @@ The coroutine version is not just prettier - it is genuinely easier to reason ab
 
 This is the basic pattern for an async TCP client written as a coroutine. Notice how it reads almost exactly like a synchronous blocking client - the difference is that `co_await` makes each operation non-blocking under the hood. The `io.run()` at the end is what actually drives the event loop and allows all the suspended coroutines to make progress:
 
+<!-- compile: needs third-party library header `asio.hpp` -->
 ```cpp
 // Requires: Asio (standalone or Boost) + C++20 compiler
 // Compile: g++ -std=c++20 -fcoroutines -I/path/to/asio -lpthread client.cpp
@@ -108,6 +108,7 @@ The socket closing via RAII is a small but important detail. When the coroutine 
 
 In coroutine-based Asio code, errors from `co_await` arrive as `asio::system_error` exceptions. You can wrap individual operations or groups of operations in `try/catch` blocks, making the error-handling structure match the logical structure of your code rather than being scattered across callbacks:
 
+<!-- compile: needs third-party library header `asio.hpp` -->
 ```cpp
 #include <asio.hpp>
 #include <asio/co_spawn.hpp>
@@ -184,6 +185,7 @@ asio::co_spawn(executor, coroutine, completion_token)
 
 There are three ways to handle the completion, and the right one depends on whether you care about the result:
 
+<!-- compile: needs third-party library header `asio.hpp` -->
 ```cpp
 #include <asio.hpp>
 #include <asio/co_spawn.hpp>

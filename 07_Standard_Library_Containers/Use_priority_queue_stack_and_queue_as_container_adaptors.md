@@ -1,7 +1,7 @@
 # Use priority_queue, stack, and queue as container adaptors
 
-**Category:** Standard Library - Containers  
-**Item:** #69  
+**Category:** Standard Library Containers  
+**Standard:** Not version-specific  
 **Reference:** <https://en.cppreference.com/w/cpp/container/priority_queue>  
 
 ---
@@ -206,6 +206,7 @@ All three adaptors accept a second template parameter that lets you choose the u
 #include <list>
 #include <functional>
 #include <string>
+#include <stack>
 
 int main() {
     // === priority_queue template: ===

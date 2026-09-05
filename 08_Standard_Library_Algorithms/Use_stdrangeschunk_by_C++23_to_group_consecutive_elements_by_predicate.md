@@ -1,7 +1,6 @@
 # Use std::ranges::chunk_by (C++23) to group consecutive elements by predicate
 
-**Category:** Standard Library — Algorithms  
-**Item:** #360  
+**Category:** Standard Library Algorithms  
 **Standard:** C++23  
 **Reference:** <https://en.cppreference.com/w/cpp/ranges/chunk_by_view>  
 

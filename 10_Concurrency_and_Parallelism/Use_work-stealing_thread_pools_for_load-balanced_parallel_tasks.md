@@ -1,7 +1,6 @@
 # Use work-stealing thread pools for load-balanced parallel tasks
 
-**Category:** Concurrency & Parallelism  
-**Item:** #272  
+**Category:** Concurrency and Parallelism  
 **Standard:** C++11  
 **Reference:** <https://github.com/taskflow/taskflow>  
 
@@ -89,6 +88,7 @@ Chase-Lev Deque (per worker):
 
 Rather than writing your own work-stealing pool, use an established library. Taskflow is header-only and provides a clean API for both simple parallel execution and complex task dependency graphs.
 
+<!-- compile: needs third-party library header `taskflow/taskflow.hpp` -->
 ```cpp
 // CMakeLists.txt:
 // find_package(Taskflow REQUIRED)
@@ -259,6 +259,7 @@ target_link_libraries(demo PRIVATE Threads::Threads)
 
 Each row of the output matrix is an independent task. Taskflow's work-stealing executor distributes these rows across available cores automatically.
 
+<!-- compile: needs third-party library header `taskflow/taskflow.hpp` -->
 ```cpp
 #include <taskflow/taskflow.hpp>
 #include <iostream>

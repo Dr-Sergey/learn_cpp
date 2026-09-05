@@ -1,7 +1,7 @@
 # Understand std::hazard_pointer for lock-free memory reclamation
 
-**Category:** Standard Library — New in C++23/26  
-**Item:** #759  
+**Category:** Standard Library New Cpp23 26  
+**Standard:** C++26  
 **Reference:** <https://en.cppreference.com/w/cpp/thread/hazard_pointer>  
 
 ---

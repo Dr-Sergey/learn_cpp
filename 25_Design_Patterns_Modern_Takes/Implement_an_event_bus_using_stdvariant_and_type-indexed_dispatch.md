@@ -1,7 +1,6 @@
 # Implement an event bus using std::variant and type-indexed dispatch
 
-**Category:** Design Patterns - Modern Takes  
-**Item:** #675  
+**Category:** Design Patterns Modern Takes  
 **Standard:** C++17  
 **Reference:** <https://en.cppreference.com/w/cpp/types/type_index>  
 

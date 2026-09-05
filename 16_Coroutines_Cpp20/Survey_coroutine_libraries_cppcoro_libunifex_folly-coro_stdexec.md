@@ -1,6 +1,6 @@
 # Survey coroutine libraries: cppcoro, libunifex, folly::coro, stdexec
 
-**Category:** Coroutines (C++20)  
+**Category:** Coroutines Cpp20  
 **Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/language/coroutines>  
 
@@ -26,6 +26,7 @@ Here is a quick orientation before diving into each one. The key axes are maturi
 
 The original C++20 coroutine library by Lewis Baker. It's now archived, but it remains the most widely cited reference for learning the patterns, and many newer libraries follow its API conventions. If you want to understand how coroutine libraries are supposed to feel to use, start here:
 
+<!-- compile: needs third-party library header `cppcoro/task.hpp` -->
 ```cpp
 #include <cppcoro/task.hpp>
 #include <cppcoro/sync_wait.hpp>
@@ -54,6 +55,7 @@ int main() {
 
 Facebook's library that implements the P2300 sender/receiver model with coroutine integration. The interesting thing about libunifex is that it treats coroutines as one composition mechanism among several - you can mix coroutine-style code with sender/receiver pipelines, which makes it very flexible:
 
+<!-- compile: needs third-party library header `unifex/task.hpp` -->
 ```cpp
 #include <unifex/task.hpp>
 #include <unifex/sync_wait.hpp>
@@ -80,6 +82,7 @@ Notice the `unifex::on(scheduler, work)` pattern - you explicitly choose which s
 
 Production-grade library used within Meta. If you need something battle-tested with a rich set of async primitives (retries, timeouts, scoped tasks, async generators), this is the answer. The API is coroutine-first and the ergonomics are polished from years of internal use:
 
+<!-- compile: needs third-party library header `folly/experimental/coro/Task.h` -->
 ```cpp
 #include <folly/experimental/coro/Task.h>
 #include <folly/experimental/coro/BlockingWait.h>
@@ -109,6 +112,7 @@ int main() {
 
 NVIDIA's reference implementation of `std::execution` (P2300). Where cppcoro and folly are coroutine-first, stdexec is sender/receiver-first, meaning you compose work as a pipeline of senders and only drop to coroutines when the imperative style helps. It also supports heterogeneous execution targets (CPU and GPU schedulers):
 
+<!-- compile: needs third-party library header `stdexec/execution.hpp` -->
 ```cpp
 #include <stdexec/execution.hpp>
 #include <exec/static_thread_pool.hpp>
@@ -147,6 +151,7 @@ If you're not sure which to pick, here is the decision table. Library choice is 
 
 Here is a recursive coroutine computing Fibonacci numbers with cppcoro. Each recursive call becomes a `co_await`, and `sync_wait` drives the whole thing from `main`. This is a clean demonstration of how a coroutine-based `task<T>` naturally replaces a plain function call for async work:
 
+<!-- compile: needs third-party library header `cppcoro/task.hpp` -->
 ```cpp
 #include <cppcoro/task.hpp>
 #include <cppcoro/sync_wait.hpp>

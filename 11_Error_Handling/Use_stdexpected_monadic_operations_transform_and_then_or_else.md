@@ -1,7 +1,6 @@
 # Use std::expected monadic operations: transform, and_then, or_else
 
 **Category:** Error Handling  
-**Item:** #486  
 **Standard:** C++23  
 **Reference:** <https://en.cppreference.com/w/cpp/utility/expected>  
 

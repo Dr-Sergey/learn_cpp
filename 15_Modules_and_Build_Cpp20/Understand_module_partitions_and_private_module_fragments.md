@@ -1,7 +1,6 @@
 # Understand module partitions and private module fragments
 
-**Category:** Modules & Build (C++20)  
-**Item:** #122  
+**Category:** Modules and Build Cpp20  
 **Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/language/modules>  
 
@@ -120,6 +119,7 @@ double detail_clamp(double x, double lo, double hi) {
 
 #### File: main.cpp (consumer)
 
+<!-- compile: fragment: one translation unit of a multi-file module example -->
 ```cpp
 import math;
 #include <iostream>
@@ -197,6 +197,7 @@ Counter make_counter(int initial) {
 
 The consumer just sees and uses the clean public interface:
 
+<!-- compile: fragment: one translation unit of a multi-file module example -->
 ```cpp
 import counter;
 #include <iostream>

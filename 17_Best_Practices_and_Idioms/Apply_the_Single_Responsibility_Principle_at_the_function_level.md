@@ -1,7 +1,6 @@
 # Apply the Single Responsibility Principle at the function level
 
-**Category:** Best Practices & Idioms  
-**Item:** #402  
+**Category:** Best Practices and Idioms  
 **Standard:** C++17  
 **Reference:** <https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#Rf-single>  
 

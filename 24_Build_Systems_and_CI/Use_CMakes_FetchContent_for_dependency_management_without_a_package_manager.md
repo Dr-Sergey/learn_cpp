@@ -1,7 +1,7 @@
 # Use CMake's FetchContent for dependency management without a package manager
 
-**Category:** Build Systems & CI  
-**Item:** #664  
+**Category:** Build Systems and CI  
+**Standard:** Not version-specific  
 **Reference:** <https://cmake.org/cmake/help/latest/module/FetchContent.html>  
 
 ---

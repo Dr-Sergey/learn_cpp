@@ -1,7 +1,7 @@
 # Distinguish Implementation-Defined, Unspecified, and Undefined Behavior
 
 **Category:** Undefined Behavior Deep Dive  
-**Standard:** C++17 / C++20 / C++23  
+**Standard:** C++17, C++20, C++23  
 **Reference:** [cppreference - Implementation-Defined Behavior](https://en.cppreference.com/w/cpp/language/implementation_defined_behavior)  
 
 ---

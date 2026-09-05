@@ -1,6 +1,7 @@
 # Test memory-constrained embedded code with custom allocators
 
-**Category:** Testing in Practice
+**Category:** Testing in Practice  
+**Standard:** C++20  
 
 ---
 

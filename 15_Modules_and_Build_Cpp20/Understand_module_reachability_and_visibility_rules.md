@@ -1,6 +1,6 @@
 # Understand Module Reachability and Visibility Rules
 
-**Category:** Modules & Build (C++20)  
+**Category:** Modules and Build Cpp20  
 **Standard:** C++20  
 **Reference:** [cppreference - Modules](https://en.cppreference.com/w/cpp/language/modules)  
 

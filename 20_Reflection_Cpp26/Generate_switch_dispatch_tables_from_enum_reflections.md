@@ -1,7 +1,6 @@
 # Generate switch dispatch tables from enum reflections
 
-**Category:** Reflection (C++26)  
-**Item:** #621  
+**Category:** Reflection Cpp26  
 **Standard:** C++26  
 **Reference:** <https://en.cppreference.com/w/cpp/language/reflection>  
 
@@ -38,6 +37,7 @@ dispatch_table[Op::Mul]  ->  handlers[2]  ->  multiply(a, b)
 
 This builds a compile-time array of function pointers where each slot corresponds to one enumerator. The `template for` loop pairs each enumerator's integer value (via `[:e:]` cast) with a handler at the matching index, filling the array at compile time.
 
+<!-- compile: needs `meta` (not in the CI standard library yet) -->
 ```cpp
 // C++26 with P2996 reflection
 #include <meta>
@@ -87,6 +87,7 @@ The `constexpr auto dispatch = ...` line means the entire table - including popu
 
 This approach is slightly different: instead of a pre-built array, it generates an inline chain of equality tests via `template for`, which the compiler then optimizes into a jump table. The bonus is that if you add a new `Shape` enumerator and forget to handle it in `ShapeHandler`, the compiler forces you to fix it.
 
+<!-- compile: needs `meta` (not in the CI standard library yet) -->
 ```cpp
 #include <meta>
 #include <iostream>
@@ -136,6 +137,7 @@ The `handler.template operator()<[:e:]>()` syntax looks intimidating but it just
 
 It is worth confirming that all this reflection machinery does not cost you anything at runtime. This example builds a name table using reflection and compares it side-by-side with a classic hand-written switch. At `-O2` they compile to essentially the same assembly.
 
+<!-- compile: needs `meta` (not in the CI standard library yet) -->
 ```cpp
 #include <meta>
 #include <array>

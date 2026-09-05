@@ -1,6 +1,6 @@
 # Implement power management and low-power modes from C++
 
-**Category:** Embedded & Constrained Systems  
+**Category:** Embedded and Constrained Systems  
 **Standard:** C++17  
 **Reference:** ARM Cortex-M documentation · <https://developer.arm.com/documentation>  
 

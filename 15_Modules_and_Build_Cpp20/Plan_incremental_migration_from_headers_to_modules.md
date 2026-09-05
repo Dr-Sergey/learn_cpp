@@ -1,6 +1,6 @@
 # Plan Incremental Migration from Headers to Modules
 
-**Category:** Modules & Build (C++20)  
+**Category:** Modules and Build Cpp20  
 **Standard:** C++20  
 **Reference:** [cppreference — Modules](https://en.cppreference.com/w/cpp/language/modules)  
 
@@ -46,6 +46,7 @@ The **global module fragment** (`module;` ... `export module M;`) is the key mig
 
 The global module fragment is designed exactly for this. You put the `#include` inside the fragment so that all the macros and declarations are available to the module body, without any of it leaking to consumers.
 
+<!-- compile: fragment: depends on a header defined elsewhere in the topic -->
 ```cpp
 // ---------- Original header: legacy/math_utils.h ----------
 #pragma once
@@ -208,6 +209,7 @@ target_link_libraries(app PRIVATE math_module graphics_module legacy_math)
 
 The application source shows what a migration-era file looks like: some things are imported from modules, others are still included from headers that have not been migrated yet.
 
+<!-- compile: fragment: depends on a header defined elsewhere in the topic -->
 ```cpp
 // src/main.cpp - mixed consumer
 #include "legacy/string_utils.h"  // not yet migrated

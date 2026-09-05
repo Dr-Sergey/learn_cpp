@@ -1,7 +1,7 @@
 # Use benchmark-driven development: set and enforce performance budgets
 
-**Category:** Testing & Verification  
-**Item:** #588  
+**Category:** Testing and Verification  
+**Standard:** Not version-specific  
 **Reference:** <https://github.com/google/benchmark>  
 
 ---

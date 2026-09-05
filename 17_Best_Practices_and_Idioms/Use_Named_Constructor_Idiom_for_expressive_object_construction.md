@@ -1,7 +1,7 @@
 # Use Named Constructor Idiom for expressive object construction
 
-**Category:** Best Practices & Idioms  
-**Item:** #129  
+**Category:** Best Practices and Idioms  
+**Standard:** Not version-specific  
 **Reference:** <https://isocpp.org/wiki/faq/ctors#named-ctor-idiom>  
 
 ---
@@ -33,6 +33,8 @@ The key move is making the real constructor `private`. That forces all callers t
 ```cpp
 #include <cmath>
 #include <iostream>
+#include <ostream>
+#include <numbers>
 
 class Circle {
     double radius_;
@@ -51,16 +53,16 @@ public:
     }
 
     static Circle fromArea(double area) {
-        return Circle(std::sqrt(area / M_PI));
+        return Circle(std::sqrt(area / std::numbers::pi));
     }
 
     static Circle fromCircumference(double c) {
-        return Circle(c / (2.0 * M_PI));
+        return Circle(c / (2.0 * std::numbers::pi));
     }
 
     double radius() const { return radius_; }
-    double area() const { return M_PI * radius_ * radius_; }
-    double circumference() const { return 2.0 * M_PI * radius_; }
+    double area() const { return std::numbers::pi * radius_ * radius_; }
+    double circumference() const { return 2.0 * std::numbers::pi * radius_; }
 
     friend std::ostream& operator<<(std::ostream& os, const Circle& c) {
         return os << "Circle(r=" << c.radius_ << ", area=" << c.area() << ")";

@@ -1,7 +1,7 @@
 # Understand how inheritance affects object layout and pointer adjustment
 
 **Category:** Core Language Fundamentals  
-**Item:** #312  
+**Standard:** Not version-specific  
 **Reference:** <https://en.cppreference.com/w/cpp/language/derived_class>  
 
 ---

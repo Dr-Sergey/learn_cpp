@@ -1,6 +1,7 @@
 # Structure a multi-target embedded project (bootloader, app, tests)
 
-**Category:** Project Architecture
+**Category:** Project Architecture  
+**Standard:** Not version-specific  
 
 ---
 

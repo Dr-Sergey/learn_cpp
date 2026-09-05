@@ -1,7 +1,7 @@
 # Prefer free functions over member functions for generic operations
 
-**Category:** Best Practices & Idioms  
-**Item:** #144  
+**Category:** Best Practices and Idioms  
+**Standard:** C++17  
 **Reference:** <https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#Rc-standalone>  
 
 ---

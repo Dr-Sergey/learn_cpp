@@ -1,7 +1,6 @@
 # Know when to use exceptions vs error codes vs std::expected
 
 **Category:** Error Handling  
-**Item:** #96  
 **Standard:** C++23  
 **Reference:** <https://en.cppreference.com/w/cpp/error/exception>  
 

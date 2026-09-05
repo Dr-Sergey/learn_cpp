@@ -1,7 +1,6 @@
 # Use Non-Type Template Parameters (NTTPs) Including Class Types (C++20)
 
-**Category:** Templates & Generic Programming  
-**Item:** #51  
+**Category:** Templates and Generic Programming  
 **Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/language/template_parameters#Non-type_template_parameter>  
 

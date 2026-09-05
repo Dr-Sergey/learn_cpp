@@ -1,7 +1,7 @@
 # Understand and use std::sort, partial_sort, nth_element, and stable_sort
 
-**Category:** Standard Library - Algorithms  
-**Item:** #71  
+**Category:** Standard Library Algorithms  
+**Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/algorithm/sort>  
 
 ---

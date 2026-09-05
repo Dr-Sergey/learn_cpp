@@ -1,6 +1,7 @@
 # Test safety-critical C++ code for MISRA and AUTOSAR compliance
 
-**Category:** Testing in Practice
+**Category:** Testing in Practice  
+**Standard:** Not version-specific  
 
 ---
 

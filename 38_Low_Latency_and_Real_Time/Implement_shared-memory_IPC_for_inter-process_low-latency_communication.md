@@ -1,7 +1,7 @@
 # Implement shared-memory IPC for inter-process low-latency communication
 
 **Category:** Low Latency and Real Time  
-**Standard:** C++17/20  
+**Standard:** C++17, C++20  
 **Reference:** <https://man7.org/linux/man-pages/man7/shm_overview.7.html>  
 
 ---

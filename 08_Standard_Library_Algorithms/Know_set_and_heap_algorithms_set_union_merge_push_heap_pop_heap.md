@@ -1,7 +1,7 @@
 # Know set and heap algorithms: set_union, merge, push_heap, pop_heap
 
-**Category:** Standard Library - Algorithms  
-**Item:** #77  
+**Category:** Standard Library Algorithms  
+**Standard:** Not version-specific  
 **Reference:** <https://en.cppreference.com/w/cpp/algorithm>  
 
 ---

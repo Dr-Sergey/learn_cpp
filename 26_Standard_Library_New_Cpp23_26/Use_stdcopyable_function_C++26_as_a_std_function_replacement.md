@@ -1,6 +1,6 @@
 # Use `std::copyable_function` (C++26) as a `std::function` Replacement
 
-**Category:** Standard Library — New in C++23/26  
+**Category:** Standard Library New Cpp23 26  
 **Standard:** C++26  
 **Reference:** [cppreference — std::copyable_function](https://en.cppreference.com/w/cpp/utility/functional/copyable_function)  
 
@@ -52,6 +52,7 @@ The C++26 callable type hierarchy, from most restrictive to most permissive:
 
 The bug is subtle and easy to miss. A `const std::function<void()>&` still lets you call the underlying mutable lambda - because `operator()` is declared `const` on `std::function` unconditionally. `std::copyable_function` makes the const-ness of `operator()` match what you wrote in the type signature:
 
+<!-- compile: needs C++26 library support for `std::copyable_function` (not in the CI standard library yet) -->
 ```cpp
 #include <functional>
 #include <iostream>
@@ -113,12 +114,16 @@ int main() {
 
 The `noexcept` qualifier in the signature is enforced at construction time: if you try to store a potentially-throwing callable in a `noexcept`-qualified `copyable_function`, the compiler rejects it. This is genuinely useful for safety-critical or lock-held callbacks where a thrown exception would be catastrophic:
 
+<!-- compile: needs C++26 library support for `std::copyable_function` (not in the CI standard library yet) -->
 ```cpp
 #include <functional>
 #include <vector>
 #include <string>
 #include <iostream>
 #include <algorithm>
+#include <ranges>
+#include <string_view>
+#include <utility>
 
 // noexcept-aware callback storage
 class EventBus {
@@ -186,11 +191,14 @@ int main() {
 
 This question is about picking the right tool. `std::function` is the broadest but has the const bug. `std::copyable_function` fixes the bug but still requires copyable callables. `std::move_only_function` (C++23) handles move-only callables like those capturing `unique_ptr`. For non-owning use, `std::function_ref` (C++26) avoids allocation entirely:
 
+<!-- compile: needs C++26 library support for `std::copyable_function` (not in the CI standard library yet) -->
 ```cpp
 #include <functional>
 #include <memory>
 #include <iostream>
 #include <vector>
+#include <string>
+#include <utility>
 
 // Comparison: three callable wrappers
 

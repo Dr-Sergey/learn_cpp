@@ -1,7 +1,7 @@
 # Use mutation testing to measure test suite effectiveness
 
-**Category:** Testing & Verification  
-**Item:** #684  
+**Category:** Testing and Verification  
+**Standard:** Not version-specific  
 **Reference:** <https://github.com/mull-project/mull>  
 
 ---

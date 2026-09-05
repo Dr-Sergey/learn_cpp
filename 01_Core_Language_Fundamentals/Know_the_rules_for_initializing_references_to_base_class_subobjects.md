@@ -1,7 +1,7 @@
 # Know the rules for initializing references to base class subobjects
 
 **Category:** Core Language Fundamentals  
-**Item:** #241  
+**Standard:** Not version-specific  
 **Reference:** <https://en.cppreference.com/w/cpp/language/reference_initialization>  
 
 ---

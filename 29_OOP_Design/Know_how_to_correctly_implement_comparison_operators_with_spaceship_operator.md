@@ -1,6 +1,7 @@
 # Know how to correctly implement comparison operators with spaceship operator
 
-**Category:** OOP Design
+**Category:** OOP Design  
+**Standard:** C++20  
 
 ---
 

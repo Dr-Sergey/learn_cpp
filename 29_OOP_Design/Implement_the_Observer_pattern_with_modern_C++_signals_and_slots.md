@@ -1,6 +1,7 @@
 # Implement the Observer pattern with modern C++ (signals and slots)
 
-**Category:** OOP Design
+**Category:** OOP Design  
+**Standard:** Not version-specific  
 
 ---
 

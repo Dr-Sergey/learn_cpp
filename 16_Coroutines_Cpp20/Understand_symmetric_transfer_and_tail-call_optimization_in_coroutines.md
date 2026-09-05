@@ -1,7 +1,7 @@
 # Understand symmetric transfer and tail-call optimization in coroutines
 
-**Category:** Coroutines (C++20)  
-**Item:** #399  
+**Category:** Coroutines Cpp20  
+**Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/language/coroutines>  
 
 ---

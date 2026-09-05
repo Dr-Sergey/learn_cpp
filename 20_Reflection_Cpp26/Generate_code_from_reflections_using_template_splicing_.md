@@ -1,7 +1,6 @@
 # Generate code from reflections using template splicing [:...]:
 
-**Category:** Reflection (C++26)  
-**Item:** #617  
+**Category:** Reflection Cpp26  
 **Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/language/reflection>  
 
@@ -40,6 +39,7 @@ The reason this trips people up is that `[:..:]` does not return a value - it is
 
 Here you can see the most fundamental use of splicing: taking a reflected type and putting it back into a `using` declaration or a template argument. Once you have a `meta::info` handle, you can pass it around like any other `constexpr` value and splice it wherever you need a type.
 
+<!-- compile: needs `meta` (not in the CI standard library yet) -->
 ```cpp
 // C++26 with P2996 reflection
 #include <meta>
@@ -81,6 +81,7 @@ The last part is particularly interesting: you reflect an anonymous struct inlin
 
 Splicing is not limited to types - you can splice function reflections too, which lets you build name-based dispatch tables. The pattern here iterates the static members of a class by name and calls whichever one matches the string argument.
 
+<!-- compile: needs `meta` (not in the CI standard library yet) -->
 ```cpp
 #include <meta>
 #include <iostream>
@@ -122,6 +123,7 @@ The line `return [:m:](a, b)` is where the splice does the work: `[:m:]` splices
 
 Here both kinds of splicing work together: `obj.[:m:]` splices a member access for the field value, and `using MType = [:std::meta::type_of(m):]` splices the member's type into a `using` declaration so you can branch on it with `if constexpr`. The recursive call handles nested structs automatically.
 
+<!-- compile: needs `meta` (not in the CI standard library yet) -->
 ```cpp
 #include <meta>
 #include <iostream>

@@ -1,7 +1,6 @@
 # Understand constexpr variables and when they are evaluated at compile time
 
 **Category:** Core Language Fundamentals  
-**Item:** #4  
 **Standard:** C++11  
 **Reference:** <https://github.com/AnthonyCalandra/modern-cpp-features/blob/master/CPP11.md#constexpr>  
 
@@ -249,6 +248,7 @@ non-constant argument. Here's the problem, and three ways to prevent it:
 
 ```cpp
 #include <iostream>
+#include <array>
 
 constexpr int compute(int n) {
     return n * n + 1;

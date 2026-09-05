@@ -1,6 +1,7 @@
 # Apply AI tools to migrate C++ codebases between standards (C++14 to C++20)
 
-**Category:** AI-Assisted C++ Development
+**Category:** AI Assisted Development  
+**Standard:** C++14  
 
 ---
 

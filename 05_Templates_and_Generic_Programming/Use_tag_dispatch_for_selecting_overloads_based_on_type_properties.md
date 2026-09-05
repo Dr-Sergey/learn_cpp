@@ -1,7 +1,6 @@
 # Use Tag Dispatch for Selecting Overloads Based on Type Properties
 
-**Category:** Templates & Generic Programming  
-**Item:** #189  
+**Category:** Templates and Generic Programming  
 **Standard:** C++17  
 **Reference:** <https://en.cppreference.com/w/cpp/iterator/advance>  
 

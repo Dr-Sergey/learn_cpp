@@ -1,8 +1,7 @@
 # Use mixins through CRTP or inheritance to compose behavior
 
 **Category:** Modern OOP Patterns  
-**Item:** #106  
-**Standard:** C++11 (CRTP), C++20 (concepts alternative)  
+**Standard:** C++11, C++20 (CRTP)  
 **Reference:** <https://en.cppreference.com/w/cpp/language/crtp>  
 
 ---
@@ -117,6 +116,7 @@ The key insight here is in the comment after the code: `Printable<Sensor>`, `Ser
 #include <iostream>
 #include <string>
 #include <sstream>
+#include <memory>
 
 // Mixin 1: Printable -- adds print() based on to_string()
 template <typename Derived>

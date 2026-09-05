@@ -1,7 +1,6 @@
 # Understand the C++26 static reflection model with the ^ operator
 
-**Category:** Reflection (C++26)  
-**Item:** #615  
+**Category:** Reflection Cpp26  
 **Standard:** C++26  
 **Reference:** <https://en.cppreference.com/w/cpp/language/reflection>  
 
@@ -30,6 +29,7 @@ Here is what you can reflect with `^`:
 
 Here is the simplest possible introduction to the reflect operator. You write `^T` where `T` is any named entity, and you get a `meta::info` value back. You can then ask that value for a human-readable name using `display_string_of` or `identifier_of`.
 
+<!-- compile: needs `meta` (not in the CI standard library yet) -->
 ```cpp
 // C++26 with P2996 reflection
 #include <meta>
@@ -64,6 +64,7 @@ Notice that every one of these queries is a compile-time constant. There is noth
 
 This is the distinction that trips people up most often. A reflection is not a type - it is a compile-time value that *describes* a type. The difference matters because they live in completely different syntactic positions.
 
+<!-- compile: needs `meta` (not in the CI standard library yet) -->
 ```cpp
 #include <meta>
 #include <iostream>
@@ -109,6 +110,7 @@ The round trip `^int` -> `meta::info` -> `[:r:]` -> `int` is the key. The reflec
 
 Once you can reflect an entity, you can write `consteval` functions that accept `meta::info` and answer compile-time questions about it. This is the foundation for all the interesting compile-time metaprogramming that reflection enables.
 
+<!-- compile: needs `meta` (not in the CI standard library yet) -->
 ```cpp
 #include <meta>
 #include <iostream>

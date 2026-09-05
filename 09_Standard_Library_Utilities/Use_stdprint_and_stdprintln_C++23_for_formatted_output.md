@@ -1,7 +1,6 @@
 # Use std::print and std::println (C++23) for formatted output
 
-**Category:** Standard Library — Utilities  
-**Item:** #163  
+**Category:** Standard Library Utilities  
 **Standard:** C++23  
 **Reference:** <https://en.cppreference.com/w/cpp/io/print>  
 
@@ -88,6 +87,7 @@ Any type that has a `std::formatter` specialization works with `std::println` au
 #include <print>
 #include <format>
 #include <string>
+#include <vector>
 
 struct Point {
     double x, y;

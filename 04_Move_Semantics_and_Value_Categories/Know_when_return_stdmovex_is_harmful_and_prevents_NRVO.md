@@ -1,7 +1,7 @@
 # Know When `return std::move(x)` Is Harmful and Prevents NRVO
 
-**Category:** Move Semantics & Value Categories  
-**Item:** #448  
+**Category:** Move Semantics and Value Categories  
+**Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/language/copy_elision>  
 
 ---

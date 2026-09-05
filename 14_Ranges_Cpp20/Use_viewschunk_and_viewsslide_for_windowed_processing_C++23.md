@@ -1,7 +1,6 @@
 # Use views::chunk and views::slide for windowed processing (C++23)
 
-**Category:** Ranges (C++20)  
-**Item:** #169  
+**Category:** Ranges Cpp20  
 **Standard:** C++23  
 **Reference:** <https://en.cppreference.com/w/cpp/ranges/chunk_view>  
 

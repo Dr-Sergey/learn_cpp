@@ -1,6 +1,7 @@
 # Use package managers (Conan, vcpkg) in project architecture
 
-**Category:** Project Architecture
+**Category:** Project Architecture  
+**Standard:** Not version-specific  
 
 ---
 

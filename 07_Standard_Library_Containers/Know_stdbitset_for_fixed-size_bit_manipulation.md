@@ -1,7 +1,7 @@
 # Know std::bitset for fixed-size bit manipulation
 
-**Category:** Standard Library - Containers  
-**Item:** #68  
+**Category:** Standard Library Containers  
+**Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/utility/bitset>  
 
 ---

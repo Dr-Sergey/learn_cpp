@@ -1,7 +1,7 @@
 # Serialize and deserialize std::variant and polymorphic types
 
-**Category:** Serialization & Data Formats  
-**Standard:** C++17/20  
+**Category:** Serialization and Data Formats  
+**Standard:** C++17, C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/utility/variant>  
 
 ---

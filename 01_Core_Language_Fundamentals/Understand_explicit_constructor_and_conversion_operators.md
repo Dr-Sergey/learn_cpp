@@ -1,7 +1,6 @@
 # Understand explicit constructor and conversion operators
 
 **Category:** Core Language Fundamentals  
-**Item:** #191  
 **Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/language/explicit>  
 

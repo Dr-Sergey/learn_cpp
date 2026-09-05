@@ -1,7 +1,7 @@
 # Write noexcept exception specifications correctly and propagate them
 
 **Category:** Error Handling  
-**Item:** #228  
+**Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/language/noexcept_spec>  
 
 ---
@@ -295,6 +295,7 @@ The danger of incorrectly marking a function `noexcept` is that you are making a
 #include <exception>
 #include <stdexcept>
 #include <vector>
+#include <string>
 
 // DANGEROUS: noexcept on a function that CAN throw
 int parse_int(const std::string& s) noexcept {

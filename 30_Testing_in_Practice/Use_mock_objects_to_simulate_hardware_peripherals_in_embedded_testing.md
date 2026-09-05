@@ -1,6 +1,7 @@
 # Use mock objects to simulate hardware peripherals in embedded testing
 
-**Category:** Testing in Practice
+**Category:** Testing in Practice  
+**Standard:** Not version-specific  
 
 ---
 

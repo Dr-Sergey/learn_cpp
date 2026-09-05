@@ -1,6 +1,7 @@
 # Leverage AI to generate property-based tests and fuzzing harnesses
 
-**Category:** AI-Assisted C++ Development
+**Category:** AI Assisted Development  
+**Standard:** Not version-specific  
 
 ---
 

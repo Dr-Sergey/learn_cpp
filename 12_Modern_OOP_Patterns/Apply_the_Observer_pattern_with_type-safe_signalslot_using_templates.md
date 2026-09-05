@@ -1,7 +1,6 @@
 # Apply the Observer pattern with type-safe signal/slot using templates
 
 **Category:** Modern OOP Patterns  
-**Item:** #493  
 **Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/language/variadic_template>  
 

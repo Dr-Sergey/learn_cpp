@@ -1,7 +1,7 @@
 # Know When to Mark Functions `noexcept` and Its Performance Implications
 
-**Category:** Move Semantics & Value Categories  
-**Item:** #41  
+**Category:** Move Semantics and Value Categories  
+**Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/language/noexcept_spec>  
 
 ---

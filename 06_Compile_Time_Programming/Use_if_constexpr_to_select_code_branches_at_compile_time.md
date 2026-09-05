@@ -1,7 +1,6 @@
 # Use `if constexpr` to Select Code Branches at Compile Time
 
-**Category:** Compile-Time Programming  
-**Item:** #55  
+**Category:** Compile Time Programming  
 **Standard:** C++17  
 **Reference:** <https://en.cppreference.com/w/cpp/language/if>  
 

@@ -1,7 +1,6 @@
 # Know all the ways a type can be incomplete and the rules around using incomplete types
 
-**Category:** Type System & Deduction  
-**Item:** #297  
+**Category:** Type System and Deduction  
 **Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/language/type#Incomplete_type>  
 

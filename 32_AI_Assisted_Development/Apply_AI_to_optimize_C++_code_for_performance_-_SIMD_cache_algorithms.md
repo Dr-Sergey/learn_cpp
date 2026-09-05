@@ -1,6 +1,7 @@
 # Apply AI to optimize C++ code for performance - SIMD, cache, algorithms
 
-**Category:** AI-Assisted C++ Development
+**Category:** AI Assisted Development  
+**Standard:** Not version-specific  
 
 ---
 

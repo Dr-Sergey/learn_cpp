@@ -1,6 +1,6 @@
 # Use pack expansion in lambda init-captures (C++20)
 
-**Category:** Lambda & Functional  
+**Category:** Lambda and Functional  
 **Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/language/lambda>  
 

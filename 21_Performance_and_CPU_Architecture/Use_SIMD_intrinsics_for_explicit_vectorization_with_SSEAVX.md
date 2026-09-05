@@ -1,7 +1,7 @@
 # Use SIMD intrinsics for explicit vectorization with SSE/AVX
 
-**Category:** Performance & CPU Architecture  
-**Item:** #632  
+**Category:** Performance and CPU Architecture  
+**Standard:** Not version-specific  
 **Reference:** <https://www.intel.com/content/www/us/en/docs/intrinsics-guide/index.html>  
 
 ---

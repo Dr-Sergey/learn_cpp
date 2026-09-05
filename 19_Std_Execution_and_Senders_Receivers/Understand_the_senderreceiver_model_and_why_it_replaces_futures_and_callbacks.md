@@ -1,7 +1,6 @@
 # Understand the sender/receiver model and why it replaces futures and callbacks
 
-**Category:** std::execution & Senders/Receivers  
-**Item:** #521  
+**Category:** Std Execution and Senders Receivers  
 **Standard:** C++26  
 **Reference:** <https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2024/p2300r10.html>  
 
@@ -34,6 +33,7 @@ The sender/receiver model fixes all four of these at the design level, not as ad
 
 The best way to see the three primitives working together is to look at what `sync_wait` does internally. You hand it a sender, and it quietly creates a receiver, connects them, starts the operation, and waits. Here is the full picture:
 
+<!-- compile: needs third-party library header `stdexec/execution.hpp` -->
 ```cpp
 #include <stdexec/execution.hpp>
 #include <iostream>
@@ -123,6 +123,7 @@ The allocation difference is worth slowing down on. Every `std::async` call allo
 
 This is one of the most practical benefits of the model. You write the algorithm once, and the scheduler determines where it runs. The algorithm code does not even need to know whether it is running on a thread pool, a GPU, or the calling thread:
 
+<!-- compile: needs third-party library header `stdexec/execution.hpp` -->
 ```cpp
 #include <stdexec/execution.hpp>
 #include <exec/static_thread_pool.hpp>

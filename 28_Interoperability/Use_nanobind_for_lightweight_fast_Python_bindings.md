@@ -1,7 +1,6 @@
 # Use nanobind for lightweight, fast Python bindings
 
 **Category:** Interoperability  
-**Item:** #693  
 **Standard:** C++17  
 **Reference:** <https://nanobind.readthedocs.io/>  
 

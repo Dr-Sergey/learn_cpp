@@ -1,7 +1,6 @@
-# Implement a type-safe state machine with std::variant and transition tables
+# Extend a std::variant state machine with entry actions and extended state
 
-**Category:** Design Patterns - Modern Takes  
-**Item:** #749  
+**Category:** Design Patterns Modern Takes  
 **Standard:** C++17  
 **Reference:** <https://en.cppreference.com/w/cpp/utility/variant>  
 
@@ -138,6 +137,8 @@ Entry and exit actions are a common requirement in real state machines - you wan
 #include <functional>
 #include <vector>
 #include <string>
+#include <type_traits>
+#include <utility>
 
 // States
 struct LoggedOut {};
@@ -206,6 +207,8 @@ The key takeaway from this example is the contrast between the two visitors. The
 ```cpp
 #include <iostream>
 #include <variant>
+#include <string>
+#include <type_traits>
 
 struct Draft     {};
 struct Review    {};

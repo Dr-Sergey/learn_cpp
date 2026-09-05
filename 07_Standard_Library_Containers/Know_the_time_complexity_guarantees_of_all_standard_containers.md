@@ -1,7 +1,7 @@
 # Know the time complexity guarantees of all standard containers
 
-**Category:** Standard Library - Containers  
-**Item:** #60  
+**Category:** Standard Library Containers  
+**Standard:** Not version-specific  
 **Reference:** <https://en.cppreference.com/w/cpp/container>  
 
 ---

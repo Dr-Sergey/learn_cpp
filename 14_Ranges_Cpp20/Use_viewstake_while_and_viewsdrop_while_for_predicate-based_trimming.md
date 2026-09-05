@@ -1,7 +1,7 @@
 # Use views::take_while and views::drop_while for predicate-based trimming
 
-**Category:** Ranges (C++20)  
-**Item:** #497  
+**Category:** Ranges Cpp20  
+**Standard:** Not version-specific  
 **Reference:** <https://en.cppreference.com/w/cpp/ranges/take_while_view>  
 
 ---
@@ -151,6 +151,7 @@ This is the single most important concept in this topic. The reason it trips peo
 #include <iostream>
 #include <ranges>
 #include <vector>
+#include <string>
 
 int main() {
     std::vector<int> data = {2, 4, 7, 6, 8, 3, 10};

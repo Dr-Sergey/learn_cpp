@@ -1,7 +1,7 @@
 # Use Kernel Bypass Networking (DPDK) for Ultra-Low Latency
 
-**Category:** Low Latency & Real-Time C++  
-**Standard:** C++17 / C++20  
+**Category:** Low Latency and Real Time  
+**Standard:** C++17, C++20  
 **Reference:** [DPDK Documentation](https://doc.dpdk.org/guides/), [DPDK Programmer's Guide](https://doc.dpdk.org/guides/prog_guide/)  
 
 ---
@@ -215,6 +215,7 @@ The comment "no sleep, no yield" is the key design decision: this loop burns 100
 
 EAL initialization is the mandatory first step in any DPDK application - it sets up hugepage mappings, binds devices, and initializes per-core memory. The `std::expected` return type lets you propagate errors cleanly without exceptions. The mempool parameters matter: the cache size per core (256 here) keeps recently freed mbufs in a per-core cache to avoid contention on the global pool:
 
+<!-- compile: needs third-party library header `rte_eal.h` -->
 ```cpp
 #include <rte_eal.h>
 #include <rte_ethdev.h>

@@ -1,6 +1,7 @@
 # Apply the Saga pattern for distributed transactions in C++ microservices
 
-**Category:** Project Architecture
+**Category:** Project Architecture  
+**Standard:** Not version-specific  
 
 ---
 

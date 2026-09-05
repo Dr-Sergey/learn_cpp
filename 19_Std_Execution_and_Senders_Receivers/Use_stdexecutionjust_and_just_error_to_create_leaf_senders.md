@@ -1,7 +1,6 @@
 # Use std::execution::just and just_error to create leaf senders
 
-**Category:** std::execution & Senders/Receivers  
-**Item:** #522  
+**Category:** Std Execution and Senders Receivers  
 **Standard:** C++26  
 **Reference:** <https://en.cppreference.com/w/cpp/execution>  
 
@@ -35,6 +34,7 @@ They are the "return" / "throw" / "cancel" of the sender world.
 
 `just` can carry any number of values, including zero. When you pass multiple values they all travel together as a bundle to the next step in the pipeline:
 
+<!-- compile: needs third-party library header `stdexec/execution.hpp` -->
 ```cpp
 #include <stdexec/execution.hpp>
 #include <iostream>
@@ -81,6 +81,7 @@ The multi-value case (`just(10, 20)`) is worth noting - both values arrive at th
 
 `just_error` is how you inject a pre-known failure into a pipeline. You'll use it in tests, in mock implementations, and in `let_error` recovery handlers that want to re-signal an error of a different type. The error type is not restricted to `exception_ptr` - it can be a `std::error_code`, a custom enum, or anything the pipeline is prepared to handle:
 
+<!-- compile: needs third-party library header `stdexec/execution.hpp` -->
 ```cpp
 #include <stdexec/execution.hpp>
 #include <iostream>

@@ -1,6 +1,6 @@
 # Design CI matrices for cross-platform testing
 
-**Category:** Cross-Platform Development  
+**Category:** Cross Platform Development  
 **Standard:** C++17  
 **Reference:** <https://docs.github.com/en/actions/using-jobs/using-a-matrix-strategy-for-your-jobs>  
 

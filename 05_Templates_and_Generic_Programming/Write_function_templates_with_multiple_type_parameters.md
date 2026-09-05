@@ -1,8 +1,7 @@
 # Write Function Templates with Multiple Type Parameters
 
-**Category:** Templates & Generic Programming  
-**Item:** #43  
-**Standard:** C++11 (basic), C++17 (deduction improvements)  
+**Category:** Templates and Generic Programming  
+**Standard:** C++11, C++17 (basic)  
 **Reference:** <https://en.cppreference.com/w/cpp/language/function_template>  
 
 ---
@@ -152,6 +151,7 @@ The reason non-deducible parameters trip people up is that they look just like d
 #include <iostream>
 #include <vector>
 #include <type_traits>
+#include <array>
 
 // === Case 1: Return type is non-deducible (C++11) ===
 template <typename R, typename T>

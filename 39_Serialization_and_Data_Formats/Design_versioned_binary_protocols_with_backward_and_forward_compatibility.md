@@ -1,7 +1,7 @@
 # Design versioned binary protocols with backward and forward compatibility
 
-**Category:** Serialization & Data Formats  
-**Standard:** C++17/20  
+**Category:** Serialization and Data Formats  
+**Standard:** C++17, C++20  
 **Reference:** <https://en.wikipedia.org/wiki/Wire_protocol>  
 
 ---

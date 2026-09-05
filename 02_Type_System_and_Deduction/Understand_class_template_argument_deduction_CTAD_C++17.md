@@ -1,7 +1,6 @@
 # Understand class template argument deduction (CTAD, C++17)
 
-**Category:** Type System & Deduction  
-**Item:** #20  
+**Category:** Type System and Deduction  
 **Standard:** C++17  
 **Reference:** <https://github.com/AnthonyCalandra/modern-cpp-features/blob/master/CPP17.md#class-template-argument-deduction>  
 
@@ -202,6 +201,7 @@ This is where CTAD's "do what I mean" promise breaks down. The problem is that C
 #include <iostream>
 #include <string>
 #include <type_traits>
+#include <utility>
 
 // Problem: StringWrapper should hold std::string, but CTAD gets confused
 template<typename T>

@@ -1,7 +1,7 @@
 # Wrap POSIX sockets in RAII and use them safely from C++
 
-**Category:** Networking & I/O  
-**Item:** #726  
+**Category:** Networking and IO  
+**Standard:** C++11  
 **Reference:** <https://man7.org/linux/man-pages/man2/socket.2.html>  
 
 ---
@@ -38,6 +38,7 @@ RAII socket lifecycle:
 
 Here is a minimal but complete `Socket` class. The critical decisions are: throw in the constructor if the OS call fails (so you never hold an invalid descriptor), delete the copy operations (you cannot meaningfully duplicate a file descriptor), and implement move so the class can transfer ownership into containers and return values.
 
+<!-- compile: needs POSIX header `sys/socket.h` -->
 ```cpp
 #include <iostream>
 #include <stdexcept>
@@ -129,6 +130,7 @@ After the move, `sock.fd()` returns `-1` because the source deliberately sets it
 
 Here is the `Socket` class put to practical use as a TCP client. Notice that the `try`/`catch` in `main` is not doing any resource management - it just prints the error. The resource management happens automatically through RAII regardless of whether the connection succeeds, the send fails, or the receive throws.
 
+<!-- compile: needs POSIX header `sys/socket.h` -->
 ```cpp
 #include <iostream>
 #include <cstring>
@@ -202,6 +204,7 @@ int main() {
 
 This example makes the leak scenario concrete so you can see exactly what goes wrong without RAII and exactly what RAII fixes. The `without_raii` function has a file descriptor that never gets closed if an exception is thrown, which is a resource leak. The `with_raii` version lets the destructor handle it.
 
+<!-- compile: needs POSIX header `sys/socket.h` -->
 ```cpp
 #include <iostream>
 #include <stdexcept>

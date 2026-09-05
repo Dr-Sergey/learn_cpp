@@ -1,0 +1,27 @@
+# Build and scratch output from the code-block checker
+build/
+*.o
+*.obj
+*.exe
+*.out
+*.pdb
+*.ilk
+a.out
+
+# Maintenance machinery. This repo is the C++ guide itself; the checkers that
+# verify it, and the CI that runs them, stay local and are not published here.
+tools/
+.github/
+
+# Python tooling
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Editors and OS
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db

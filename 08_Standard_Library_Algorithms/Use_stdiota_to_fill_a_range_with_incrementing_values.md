@@ -1,7 +1,7 @@
 # Use std::iota to fill a range with incrementing values
 
-**Category:** Standard Library — Algorithms  
-**Item:** #469  
+**Category:** Standard Library Algorithms  
+**Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/algorithm/iota>  
 
 ---

@@ -1,7 +1,7 @@
 # Understand conversion sequences and overload resolution ranking
 
 **Category:** Core Language Fundamentals  
-**Item:** #435  
+**Standard:** Not version-specific  
 **Reference:** <https://en.cppreference.com/w/cpp/language/overload_resolution>  
 
 ---

@@ -1,7 +1,6 @@
 # Use std::debugging utilities (C++26): breakpoint and is_debugger_present
 
-**Category:** Standard Library — New in C++23/26  
-**Item:** #577  
+**Category:** Standard Library New Cpp23 26  
 **Standard:** C++26  
 **Reference:** <https://en.cppreference.com/w/cpp/utility/breakpoint>  
 
@@ -41,6 +40,7 @@ Before (platform-specific):                After (portable):
 
 The typical use case is breaking on an unexpected condition so the debugger stops right at the point of interest, with the full call stack available. Notice that `std::breakpoint()` is used here inside a data processing loop - this is much cleaner than setting a conditional breakpoint in the IDE:
 
+<!-- compile: needs `debugging` (not in the CI standard library yet) -->
 ```cpp
 #include <debugging>  // C++26
 #include <iostream>
@@ -78,6 +78,7 @@ int main() {
 
 `is_debugger_present()` is a simple runtime check - no `#ifdef`, no compile-time flag. The overhead is minimal (typically one memory read), so it is safe to put behind a conditional even in hot paths:
 
+<!-- compile: needs `debugging` (not in the CI standard library yet) -->
 ```cpp
 #include <debugging>  // C++26
 #include <iostream>
@@ -141,6 +142,7 @@ The `breakpoint_if_debugging()` call in the `connect` method is the idiomatic fo
 
 The order of operations here matters: you want the debugger to stop *first*, while the call stack is still intact, and only then print the diagnostic. Printing first and then breaking loses the stack context you actually need:
 
+<!-- compile: needs `debugging` (not in the CI standard library yet) -->
 ```cpp
 #include <debugging>  // C++26
 #include <iostream>

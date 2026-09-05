@@ -1,7 +1,7 @@
 # Use Approval Tests for characterization testing of legacy code
 
-**Category:** Testing & Verification  
-**Item:** #688  
+**Category:** Testing and Verification  
+**Standard:** Not version-specific  
 **Reference:** <https://approvaltests.com/>  
 
 ---

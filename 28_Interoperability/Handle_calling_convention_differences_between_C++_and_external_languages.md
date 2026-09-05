@@ -1,7 +1,7 @@
 # Handle calling convention differences between C++ and external languages
 
 **Category:** Interoperability  
-**Item:** #700  
+**Standard:** Not version-specific  
 **Reference:** <https://docs.microsoft.com/en-us/cpp/cpp/argument-passing-and-naming-conventions>  
 
 ---

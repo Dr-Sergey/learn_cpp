@@ -1,7 +1,6 @@
 # Use std::execution::let_value and let_error for monadic sender chaining
 
-**Category:** std::execution & Senders/Receivers  
-**Item:** #608  
+**Category:** Std Execution and Senders Receivers  
 **Standard:** C++20  
 **Reference:** <https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2023/p2300r7.html>  
 
@@ -27,6 +26,7 @@ The callback returns a **sender**, not a value. This allows dynamic async decisi
 
 Here's a realistic example: a two-step lookup where each step depends on the result of the previous one. Each lookup function returns a sender - and that's exactly what `let_value` expects:
 
+<!-- compile: needs third-party library header `stdexec/execution.hpp` -->
 ```cpp
 #include <stdexec/execution.hpp>
 #include <exec/static_thread_pool.hpp>
@@ -75,6 +75,7 @@ Notice how the username from the first `let_value` is passed directly into the s
 
 `let_error` is the error-channel counterpart. When the upstream sender signals an error, `let_error` gives you a chance to replace it with a recovery sender. This is the pattern for fallback logic and retry strategies:
 
+<!-- compile: needs third-party library header `stdexec/execution.hpp` -->
 ```cpp
 #include <stdexec/execution.hpp>
 #include <iostream>

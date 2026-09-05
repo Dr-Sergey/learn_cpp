@@ -1,7 +1,6 @@
 # Understand std::string::substr vs std::string_view::substr lifetime differences
 
 **Category:** Core Language Fundamentals  
-**Item:** #599  
 **Standard:** C++17  
 **Reference:** <https://en.cppreference.com/w/cpp/string/basic_string_view/substr>  
 

@@ -1,7 +1,6 @@
 # Use std::addressof to safely get an object's address despite operator& overloads
 
-**Category:** Standard Library — Utilities  
-**Item:** #479  
+**Category:** Standard Library Utilities  
 **Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/memory/addressof>  
 

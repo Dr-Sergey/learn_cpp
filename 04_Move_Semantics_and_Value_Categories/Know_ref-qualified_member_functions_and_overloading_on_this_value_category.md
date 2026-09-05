@@ -1,6 +1,6 @@
 # Know Ref-Qualified Member Functions and Overloading on `*this` Value Category
 
-**Category:** Move Semantics & Value Categories  
+**Category:** Move Semantics and Value Categories  
 **Standard:** C++11 and later  
 **Reference:** https://en.cppreference.com/w/cpp/language/member_functions#ref-qualified_member_functions  
 

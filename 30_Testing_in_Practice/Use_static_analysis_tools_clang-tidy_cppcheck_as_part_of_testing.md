@@ -1,6 +1,7 @@
 # Use static analysis tools (clang-tidy, cppcheck) as part of testing
 
-**Category:** Testing in Practice
+**Category:** Testing in Practice  
+**Standard:** Not version-specific  
 
 ---
 

@@ -1,7 +1,7 @@
 # Use Cache Warming and Prefetching in Latency-Critical Code
 
-**Category:** Low Latency & Real-Time C++  
-**Standard:** C++17 / C++20  
+**Category:** Low Latency and Real Time  
+**Standard:** C++17, C++20  
 **Reference:** [Intel 64 Optimization Manual](https://www.intel.com/content/www/us/en/developer/articles/technical/intel-sdm.html), [What Every Programmer Should Know About Memory - U. Drepper](https://people.freebsd.org/~lstewart/articles/cpumemory.pdf)  
 
 ---

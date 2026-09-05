@@ -1,6 +1,7 @@
 # Design SOA (Structure of Arrays) vs AOS with class wrappers for performance
 
-**Category:** OOP Design
+**Category:** OOP Design  
+**Standard:** Not version-specific  
 
 ---
 

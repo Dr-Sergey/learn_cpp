@@ -1,7 +1,6 @@
 # Know std::inplace_vector (C++26) for fixed-capacity, stack-allocated vectors
 
-**Category:** Standard Library - Containers  
-**Item:** #176  
+**Category:** Standard Library Containers  
 **Standard:** C++26  
 **Reference:** <https://en.cppreference.com/w/cpp/container/inplace_vector>  
 

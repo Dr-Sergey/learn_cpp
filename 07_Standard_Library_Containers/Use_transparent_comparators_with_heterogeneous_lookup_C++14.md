@@ -1,7 +1,6 @@
 # Use transparent comparators with heterogeneous lookup (C++14)
 
-**Category:** Standard Library — Containers  
-**Item:** #218  
+**Category:** Standard Library Containers  
 **Standard:** C++14  
 **Reference:** <https://en.cppreference.com/w/cpp/utility/functional/less_void>  
 

@@ -1,7 +1,7 @@
 # Use compile-time benchmarking to track build performance regressions
 
-**Category:** Tooling & Debugging  
-**Item:** #512  
+**Category:** Tooling and Debugging  
+**Standard:** Not version-specific  
 **Reference:** <https://github.com/aras-p/ClangBuildAnalyzer>  
 
 ---

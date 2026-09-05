@@ -1,7 +1,6 @@
 # Understand the interaction between const member functions and mutable members
 
 **Category:** Core Language Fundamentals  
-**Item:** #310  
 **Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/language/cv>  
 

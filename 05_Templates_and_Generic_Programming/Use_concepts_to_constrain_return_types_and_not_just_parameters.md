@@ -1,7 +1,6 @@
 # Use Concepts to Constrain Return Types, Not Just Parameters
 
-**Category:** Templates & Generic Programming  
-**Item:** #267  
+**Category:** Templates and Generic Programming  
 **Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/language/function_template>  
 

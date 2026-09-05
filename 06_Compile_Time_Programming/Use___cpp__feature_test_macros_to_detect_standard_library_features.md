@@ -1,8 +1,7 @@
 # Use `__cpp_*` Feature Test Macros to Detect Standard Library Features
 
-**Category:** Compile-Time Programming  
-**Item:** #160  
-**Standard:** C++20 (`<version>` header), macros defined incrementally since C++11  
+**Category:** Compile Time Programming  
+**Standard:** C++20, C++11 (`<version>` header)  
 **Reference:** <https://en.cppreference.com/w/cpp/feature_test>  
 
 ---
@@ -311,6 +310,10 @@ And here's what usage looks like - identical regardless of which path the header
 // === main.cpp - uses the polyfill header ===
 #include <iostream>
 #include <string>
+#include <cstddef>
+#include <exception>
+#include <expected>
+#include <variant>
 
 // In real code: #include "my_expected.h"
 // For this self-contained example, the header content is above.

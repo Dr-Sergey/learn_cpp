@@ -1,7 +1,6 @@
 # Use structured bindings with custom types via tuple protocol
 
-**Category:** Best Practices & Idioms  
-**Item:** #179  
+**Category:** Best Practices and Idioms  
 **Standard:** C++17  
 **Reference:** <https://en.cppreference.com/w/cpp/language/structured_binding>  
 
@@ -93,6 +92,7 @@ The interesting wrinkle with structured bindings is that the binding mode - by v
 #include <iostream>
 #include <tuple>
 #include <cstddef>
+#include <type_traits>
 
 class Point {
     double x_, y_;

@@ -1,7 +1,7 @@
 # Use vcpkg or Conan for C++ dependency management in CMake projects
 
-**Category:** Tooling & Debugging  
-**Item:** #425  
+**Category:** Tooling and Debugging  
+**Standard:** Not version-specific  
 **Reference:** <https://vcpkg.io>  
 
 ---

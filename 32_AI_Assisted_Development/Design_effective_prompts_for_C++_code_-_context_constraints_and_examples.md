@@ -1,6 +1,7 @@
 # Design effective prompts for C++ code - context, constraints, and examples
 
-**Category:** AI-Assisted C++ Development
+**Category:** AI Assisted Development  
+**Standard:** C++20  
 
 ---
 

@@ -1,7 +1,6 @@
 # Implement a custom sender from scratch
 
-**Category:** std::execution & Senders/Receivers  
-**Item:** #707  
+**Category:** Std Execution and Senders Receivers  
 **Standard:** C++26  
 **Reference:** <https://github.com/NVIDIA/stdexec>  
 
@@ -41,6 +40,7 @@ The reason this trips people up is that the sender itself is inert. All it does 
 
 This example shows two approaches to the same idea: a sender that delivers a value on a specific scheduler. The first version sketches the full hand-rolled anatomy; the second shows how to achieve the same thing by composing existing senders - which is usually what you want in practice.
 
+<!-- compile: needs third-party library header `stdexec/execution.hpp` -->
 ```cpp
 // just_on_sender.cpp - schedules delivery of a value on a given scheduler
 // Using stdexec for concepts and utilities
@@ -134,6 +134,7 @@ int main() {
 
 Here is the minimal version - just a sender that emits a single `int`. It shows the three required pieces at their absolute smallest, which makes it a good template to copy when you need to write a custom sender.
 
+<!-- compile: needs third-party library header `stdexec/execution.hpp` -->
 ```cpp
 // Minimal custom sender with explicit connect/start
 #include <stdexec/execution.hpp>

@@ -1,7 +1,6 @@
 # Understand the difference between range categories: contiguous, random-access, bidirectional, forward, input
 
-**Category:** Ranges (C++20)  
-**Item:** #256  
+**Category:** Ranges Cpp20  
 **Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/ranges#Range_concepts>  
 

@@ -1,6 +1,7 @@
 # Design type-erased interfaces for runtime polymorphism without inheritance
 
-**Category:** OOP Design
+**Category:** OOP Design  
+**Standard:** Not version-specific  
 
 ---
 
@@ -51,6 +52,9 @@ The outer `Drawable` class is what users see and interact with - it's a regular 
 #include <vector>
 #include <iostream>
 #include <cmath>
+#include <ostream>
+#include <utility>
+#include <numbers>
 
 // Type-erased Drawable
 class Drawable {
@@ -101,7 +105,7 @@ struct Circle {
     void draw(std::ostream& os) const {
         os << "Circle(r=" << radius << ")\n";
     }
-    double area() const { return M_PI * radius * radius; }
+    double area() const { return std::numbers::pi * radius * radius; }
 };
 
 struct Square {
@@ -183,6 +187,7 @@ One downside of type-erased wrappers is that every stored object needs a heap al
 #include <type_traits>
 #include <utility>
 #include <iostream>
+#include <functional>
 
 // Type-erased callable with SBO (like std::function)
 template<typename Signature>

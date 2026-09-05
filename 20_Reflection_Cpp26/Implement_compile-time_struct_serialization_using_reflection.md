@@ -1,7 +1,6 @@
 # Implement compile-time struct serialization using reflection
 
-**Category:** Reflection (C++26)  
-**Item:** #619  
+**Category:** Reflection Cpp26  
 **Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/language/reflection>  
 
@@ -30,6 +29,7 @@ The "0 LOC per type" row is the key. You define your struct once, and every refl
 
 Here is the fundamental pattern: iterate the members, check each member's type at compile time with `if constexpr`, and format the value appropriately. The recursive call at the end handles nested structs by applying the same function to the sub-object.
 
+<!-- compile: needs `meta` (not in the CI standard library yet) -->
 ```cpp
 // C++26 with P2996 reflection
 #include <meta>
@@ -87,6 +87,7 @@ The `using MType = [:std::meta::type_of(m):]` line is the key to the type dispat
 
 For binary protocols and network serialization you often need to know the exact byte layout. Reflection gives you `offset_of` and `size_of` at compile time, so you can build a layout descriptor that is guaranteed to match the actual struct layout.
 
+<!-- compile: needs `meta` (not in the CI standard library yet) -->
 ```cpp
 #include <meta>
 #include <cstring>
@@ -169,6 +170,7 @@ int main() {
 
 It is worth seeing the three approaches side by side to understand what reflection replaces and why. The comparison uses comments to show the old approaches because they do not interact cleanly with the new reflection-based `print_all_fields`.
 
+<!-- compile: needs `meta` (not in the CI standard library yet) -->
 ```cpp
 #include <meta>
 #include <iostream>

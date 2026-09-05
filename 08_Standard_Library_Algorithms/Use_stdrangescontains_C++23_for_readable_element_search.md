@@ -1,7 +1,6 @@
 # Use std::ranges::contains (C++23) for readable element search
 
-**Category:** Standard Library — Algorithms  
-**Item:** #223  
+**Category:** Standard Library Algorithms  
 **Standard:** C++23  
 **Reference:** <https://en.cppreference.com/w/cpp/algorithm/ranges/contains>  
 

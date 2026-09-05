@@ -1,7 +1,7 @@
 # Apply the Law of Demeter to reduce coupling between classes
 
-**Category:** Best Practices & Idioms  
-**Item:** #504  
+**Category:** Best Practices and Idioms  
+**Standard:** Not version-specific  
 **Reference:** <https://en.wikipedia.org/wiki/Law_of_Demeter>  
 
 ---

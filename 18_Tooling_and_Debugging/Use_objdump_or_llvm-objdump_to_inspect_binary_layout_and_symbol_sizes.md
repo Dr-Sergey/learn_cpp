@@ -1,7 +1,7 @@
 # Use objdump or llvm-objdump to inspect binary layout and symbol sizes
 
-**Category:** Tooling & Debugging  
-**Item:** #510  
+**Category:** Tooling and Debugging  
+**Standard:** Not version-specific  
 **Reference:** <https://llvm.org/docs/CommandGuide/llvm-objdump.html>  
 
 ---

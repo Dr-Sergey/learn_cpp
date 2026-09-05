@@ -1,7 +1,6 @@
 # Implement a producer-consumer queue with backpressure using counting_semaphore
 
-**Category:** Concurrency & Parallelism  
-**Item:** #369  
+**Category:** Concurrency and Parallelism  
 **Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/thread/counting_semaphore>  
 

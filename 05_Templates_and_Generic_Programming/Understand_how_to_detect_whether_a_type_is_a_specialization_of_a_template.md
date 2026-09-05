@@ -1,7 +1,6 @@
 # Understand How to Detect Whether a Type Is a Specialization of a Template
 
-**Category:** Templates & Generic Programming  
-**Item:** #452  
+**Category:** Templates and Generic Programming  
 **Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/language/partial_specialization>  
 

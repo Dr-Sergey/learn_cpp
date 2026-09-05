@@ -1,8 +1,7 @@
 # Understand CTAD Deduction Guides for User-Defined Class Templates
 
-**Category:** Type System & Deduction  
-**Item:** #319  
-**Standard:** C++17 (deduction guides), C++20 (aggregate CTAD)  
+**Category:** Type System and Deduction  
+**Standard:** C++17, C++20 (deduction guides)  
 **Reference:** <https://en.cppreference.com/w/cpp/language/class_template_argument_deduction>  
 
 ---
@@ -245,6 +244,7 @@ Without a guide, `Name{"Alice"}` deduces `Name<const char*>` - storing a raw poi
 #include <string>
 #include <string_view>
 #include <type_traits>
+#include <cstddef>
 
 // A "Name" wrapper: we always want to store std::string internally
 template<typename T>

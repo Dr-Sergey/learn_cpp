@@ -1,7 +1,7 @@
 # Understand the Poison Pill Idiom to disable specific base class functionality
 
-**Category:** Best Practices & Idioms  
-**Item:** #409  
+**Category:** Best Practices and Idioms  
+**Standard:** Not version-specific  
 **Reference:** <https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines>  
 
 ---

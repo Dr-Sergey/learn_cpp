@@ -1,7 +1,7 @@
 # Know dangling reference UB in range-based for with temporaries
 
 **Category:** Undefined Behavior Deep Dive  
-**Standard:** C++17/20  
+**Standard:** C++17, C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/language/range-for>  
 
 ---

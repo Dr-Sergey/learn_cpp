@@ -1,7 +1,7 @@
 # Use OS entropy sources correctly: std::random_device and /dev/urandom
 
-**Category:** Safety & Security  
-**Item:** #559  
+**Category:** Safety and Security  
+**Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/numeric/random/random_device>  
 
 ---

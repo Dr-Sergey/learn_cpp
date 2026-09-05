@@ -1,7 +1,7 @@
 # Prefer standard algorithms over hand-rolled loops
 
-**Category:** Standard Library - Algorithms  
-**Item:** #70  
+**Category:** Standard Library Algorithms  
+**Standard:** Not version-specific  
 **Reference:** <https://en.cppreference.com/w/cpp/algorithm>  
 
 ---

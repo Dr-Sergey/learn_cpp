@@ -1,7 +1,6 @@
 # Write a Compile-Time String Parser Using `consteval`
 
-**Category:** Compile-Time Programming  
-**Item:** #457  
+**Category:** Compile Time Programming  
 **Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/language/consteval>  
 
@@ -249,6 +248,7 @@ This benchmark makes the performance benefit concrete by parsing the same set of
 #include <string_view>
 #include <chrono>
 #include <cstring>  // for runtime parsing comparison
+#include <cstddef>
 
 struct IPv4 { uint8_t octets[4]{}; };
 

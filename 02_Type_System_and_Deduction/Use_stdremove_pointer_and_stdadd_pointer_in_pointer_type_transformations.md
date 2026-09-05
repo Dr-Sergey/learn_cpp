@@ -1,7 +1,7 @@
 # Use `std::remove_pointer` and `std::add_pointer` in Pointer Type Transformations
 
-**Category:** Type System & Deduction  
-**Item:** #321  
+**Category:** Type System and Deduction  
+**Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/types/remove_pointer>  
 
 ---

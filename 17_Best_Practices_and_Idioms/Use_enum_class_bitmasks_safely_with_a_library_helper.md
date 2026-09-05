@@ -1,7 +1,6 @@
 # Use enum class bitmasks safely with a library helper
 
-**Category:** Best Practices & Idioms  
-**Item:** #285  
+**Category:** Best Practices and Idioms  
 **Standard:** C++11  
 **Reference:** <https://github.com/Neargye/magic_enum>  
 

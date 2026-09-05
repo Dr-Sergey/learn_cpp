@@ -1,6 +1,6 @@
 # Use `chunk_by`, `stride`, and `cartesian_product` Views (C++23)
 
-**Category:** Standard Library — New in C++23/26  
+**Category:** Standard Library New Cpp23 26  
 **Standard:** C++23  
 **Reference:** [cppreference — range adaptors](https://en.cppreference.com/w/cpp/ranges#Range_adaptors)  
 
@@ -126,6 +126,7 @@ The column extraction example at the end is a nice demonstration of how views co
 #include <print>
 #include <cmath>
 #include <numeric>
+#include <functional>
 
 namespace rv = std::ranges::views;
 

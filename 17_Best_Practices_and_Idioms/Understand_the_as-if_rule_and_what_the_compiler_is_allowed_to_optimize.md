@@ -1,7 +1,6 @@
 # Understand the as-if rule and what the compiler is allowed to optimize
 
-**Category:** Best Practices & Idioms  
-**Item:** #139  
+**Category:** Best Practices and Idioms  
 **Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/language/as_if>  
 

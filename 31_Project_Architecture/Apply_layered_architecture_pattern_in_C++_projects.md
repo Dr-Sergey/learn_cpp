@@ -1,6 +1,7 @@
 # Apply layered architecture pattern in C++ projects
 
-**Category:** Project Architecture
+**Category:** Project Architecture  
+**Standard:** Not version-specific  
 
 ---
 

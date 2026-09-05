@@ -1,7 +1,6 @@
 # Use std::source_location (C++20) for zero-overhead logging metadata
 
-**Category:** Standard Library — Utilities  
-**Item:** #86  
+**Category:** Standard Library Utilities  
 **Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/utility/source_location>  
 

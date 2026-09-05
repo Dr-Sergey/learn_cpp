@@ -1,7 +1,7 @@
 # Understand std::owner_less for comparing weak_ptr in ordered containers
 
 **Category:** Memory and Ownership  
-**Standard:** C++11/17  
+**Standard:** C++11, C++17  
 **Reference:** <https://en.cppreference.com/w/cpp/memory/owner_less>  
 
 ---

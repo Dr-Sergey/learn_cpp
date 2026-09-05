@@ -1,8 +1,7 @@
 # Use std::async with a thread pool pattern for task parallelism
 
-**Category:** Concurrency & Parallelism  
-**Item:** #260  
-**Standard:** C++11/C++20  
+**Category:** Concurrency and Parallelism  
+**Standard:** C++11, C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/thread/async>  
 
 ---

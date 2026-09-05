@@ -1,7 +1,7 @@
 # Write fuzz-driven unit tests using structure-aware fuzzing
 
-**Category:** Testing & Verification  
-**Item:** #768  
+**Category:** Testing and Verification  
+**Standard:** Not version-specific  
 **Reference:** <https://llvm.org/docs/LibFuzzer.html>  
 
 ---

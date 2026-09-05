@@ -1,6 +1,7 @@
 # Design inter-process communication (IPC) architecture in C++
 
-**Category:** Project Architecture
+**Category:** Project Architecture  
+**Standard:** Not version-specific  
 
 ---
 

@@ -1,7 +1,6 @@
 # Understand static reflection with the ^ operator and std::meta
 
-**Category:** Reflection (C++26)  
-**Item:** #711  
+**Category:** Reflection Cpp26  
 **Standard:** C++26  
 **Reference:** <https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2024/p2996r5.html>  
 
@@ -46,6 +45,7 @@ The `^` operator takes you from code to a meta-value, and the splice operator `[
 
 This example shows the most fundamental use: reflect several different kinds of entities and print their names. Notice that `^` works on types, built-ins, namespaces, and enums equally.
 
+<!-- compile: needs `meta` (not in the CI standard library yet) -->
 ```cpp
 // C++26 with P2996 reflection
 #include <meta>
@@ -90,6 +90,7 @@ Every call here is a compile-time operation. By the time this program runs, all 
 
 This is where reflection starts to get genuinely useful. The `template for` loop is a compile-time expansion - it unrolls once per member, even though each member may have a completely different type. Notice how the loop body uses both `type_of` and `identifier_of` to print a type-annotated field list for any struct you hand it.
 
+<!-- compile: needs `meta` (not in the CI standard library yet) -->
 ```cpp
 #include <meta>
 #include <iostream>
@@ -138,6 +139,7 @@ The `print_members` function is completely generic - you did not write a single 
 
 This example nails down the most important conceptual point: `std::meta::info` is a compile-time-only value. You cannot store it in a `std::vector` at runtime, and you cannot create one inside an ordinary (non-`consteval`) function that runs at runtime. The reason this trips people up is that `meta::info` looks like a normal type, but it only has meaning during compilation - it is more like a type in a template than a value you carry around at runtime.
 
+<!-- compile: needs `meta` (not in the CI standard library yet) -->
 ```cpp
 #include <meta>
 #include <iostream>

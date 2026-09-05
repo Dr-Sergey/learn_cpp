@@ -1,7 +1,6 @@
 # Enumerate struct members at compile time using std::meta::members_of
 
-**Category:** Reflection (C++26)  
-**Item:** #616  
+**Category:** Reflection Cpp26  
 **Standard:** C++23  
 **Reference:** <https://en.cppreference.com/w/cpp/language/reflection>  
 
@@ -29,6 +28,7 @@ These are the queries you will reach for most often when writing generic struct 
 
 This example shows the full workflow: reflect the struct, walk its members, and then print each field value from a live object. Pay attention to the `if constexpr` blocks inside the loop - because each member has a different type, you need to branch at compile time to handle strings, booleans, and numeric types differently.
 
+<!-- compile: needs `meta` (not in the CI standard library yet) -->
 ```cpp
 // C++26 with P2996 reflection
 #include <meta>
@@ -83,6 +83,7 @@ The line `using MemberType = [:std::meta::type_of(m):]` is how you get the actua
 
 You can also query layout information - byte offset and size - directly from reflection. This is useful for debugging memory layouts, writing binary serializers, or just understanding how a struct is laid out without looking it up in a debugger.
 
+<!-- compile: needs `meta` (not in the CI standard library yet) -->
 ```cpp
 #include <meta>
 #include <iostream>
@@ -134,6 +135,7 @@ Notice that all four queries - `identifier_of`, `display_string_of`, `offset_of`
 
 Putting it all together: a fully generic `to_string` that handles any struct you throw at it. The function uses `identifier_of(^T)` to get the type's own name for the prefix, then iterates members with the same `if constexpr` type-dispatch pattern from Q1.
 
+<!-- compile: needs `meta` (not in the CI standard library yet) -->
 ```cpp
 #include <meta>
 #include <iostream>

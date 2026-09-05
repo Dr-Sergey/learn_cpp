@@ -1,7 +1,7 @@
 # Design Platform Abstraction Layers in C++
 
-**Category:** Cross-Platform Development  
-**Standard:** C++17 / C++20  
+**Category:** Cross Platform Development  
+**Standard:** C++17, C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/language/if#Constexpr_if>  
 
 ---

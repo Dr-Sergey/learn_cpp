@@ -1,7 +1,6 @@
 # Use precondition documentation with Expects (GSL) or [[pre]] (C++26)
 
-**Category:** Best Practices & Idioms  
-**Item:** #408  
+**Category:** Best Practices and Idioms  
 **Standard:** C++26  
 **Reference:** <https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#i-in-and-out-parameters>  
 
@@ -93,6 +92,8 @@ The reason both tools exist is that they operate in different worlds. `static_as
 ```cpp
 #include <iostream>
 #include <type_traits>
+#include <string>
+#include <cassert>
 
 // Compile-time precondition: static_assert
 template<typename T>

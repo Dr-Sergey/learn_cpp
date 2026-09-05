@@ -1,7 +1,7 @@
 # Use std::random_device and mt19937 for high-quality random number generation
 
-**Category:** Standard Library — Utilities  
-**Item:** #283  
+**Category:** Standard Library Utilities  
+**Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/numeric/random>  
 
 ---
@@ -99,6 +99,7 @@ Here's a subtlety that trips people up: `mt19937` has 624 × 32-bit words of int
 #include <array>
 #include <algorithm>
 #include <functional>
+#include <iostream>
 
 int main() {
     // mt19937 has 624 × 32-bit state words.

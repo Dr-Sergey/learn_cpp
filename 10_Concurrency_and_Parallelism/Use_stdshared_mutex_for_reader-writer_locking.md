@@ -1,7 +1,6 @@
 # Use std::shared_mutex for reader-writer locking
 
-**Category:** Concurrency & Parallelism  
-**Item:** #370  
+**Category:** Concurrency and Parallelism  
 **Standard:** C++17  
 **Reference:** <https://en.cppreference.com/w/cpp/thread/shared_mutex>  
 

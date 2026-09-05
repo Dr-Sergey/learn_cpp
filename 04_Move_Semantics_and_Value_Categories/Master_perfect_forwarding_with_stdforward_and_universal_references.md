@@ -1,7 +1,7 @@
 # Master Perfect Forwarding with std::forward and Universal References
 
-**Category:** Move Semantics & Value Categories  
-**Item:** #39  
+**Category:** Move Semantics and Value Categories  
+**Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/utility/forward>  
 
 ---

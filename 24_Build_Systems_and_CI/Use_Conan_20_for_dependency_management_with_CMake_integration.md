@@ -1,7 +1,7 @@
 # Use Conan 2.0 for dependency management with CMake integration
 
-**Category:** Build Systems & CI  
-**Item:** #565  
+**Category:** Build Systems and CI  
+**Standard:** Not version-specific  
 **Reference:** <https://docs.conan.io/2/>  
 
 ---

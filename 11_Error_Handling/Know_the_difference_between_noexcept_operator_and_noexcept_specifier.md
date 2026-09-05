@@ -1,7 +1,7 @@
 # Know the Difference Between `noexcept` Operator and `noexcept` Specifier
 
 **Category:** Error Handling  
-**Standard:** C++11 / C++17 (conditional noexcept refinements)  
+**Standard:** C++11, C++17 (conditional noexcept refinements)  
 **Reference:** [cppreference - noexcept specifier](https://en.cppreference.com/w/cpp/language/noexcept_spec), [cppreference - noexcept operator](https://en.cppreference.com/w/cpp/language/noexcept)  
 
 ---
@@ -152,6 +152,7 @@ This is the practical application: using the operator to select between a fast m
 #include <vector>
 #include <algorithm>
 #include <type_traits>
+#include <utility>
 
 // Trait: is T nothrow move-constructible AND nothrow move-assignable?
 template <typename T>

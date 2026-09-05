@@ -1,7 +1,7 @@
 # Apply data-oriented design for cache-friendly data structures
 
-**Category:** Best Practices & Idioms  
-**Item:** #209  
+**Category:** Best Practices and Idioms  
+**Standard:** Not version-specific  
 **Reference:** <https://en.cppreference.com/w/cpp/language/performance>  
 
 ---

@@ -1,7 +1,6 @@
 # Use views::cartesian_product (C++23) for Cartesian product of ranges
 
-**Category:** Ranges (C++20)  
-**Item:** #205  
+**Category:** Ranges Cpp20  
 **Standard:** C++23  
 **Reference:** <https://en.cppreference.com/w/cpp/ranges/cartesian_product_view>  
 

@@ -1,7 +1,7 @@
 # Understand Threading Model Differences and std::thread Portability
 
-**Category:** Cross-Platform Development  
-**Standard:** C++11 / C++20  
+**Category:** Cross Platform Development  
+**Standard:** C++11, C++20  
 **Reference:** https://en.cppreference.com/w/cpp/thread/thread  
 
 ---

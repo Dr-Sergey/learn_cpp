@@ -1,7 +1,7 @@
 # Enable hardened STL mode for bounds-checked containers in debug builds
 
-**Category:** Safety & Security  
-**Item:** #650  
+**Category:** Safety and Security  
+**Standard:** Not version-specific  
 **Reference:** <https://libcxx.llvm.org/Hardening.html>  
 
 ---

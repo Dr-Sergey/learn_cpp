@@ -1,7 +1,7 @@
 # Write Bare-Metal Startup Code and Linker Scripts for C++
 
-**Category:** Embedded & Constrained Systems  
-**Standard:** C++17 / C++23, ARM Architecture Reference  
+**Category:** Embedded and Constrained Systems  
+**Standard:** C++17, C++23  
 **Reference:** <https://developer.arm.com/documentation/dui0474/m/>  
 
 ---

@@ -1,7 +1,6 @@
 # Use `constexpr` Containers and Algorithms (C++20)
 
-**Category:** Compile-Time Programming  
-**Item:** #59  
+**Category:** Compile Time Programming  
 **Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/algorithm>  
 
@@ -144,6 +143,8 @@ This example explores the transient allocation rule in depth and shows the worka
 #include <vector>
 #include <string>
 #include <array>
+#include <algorithm>
+#include <cstddef>
 
 // === The Rule: Transient constexpr allocation ===
 // All memory allocated during constant evaluation MUST be freed
@@ -245,6 +246,7 @@ Sorted array: 1 2 3 4 5
 #include <iostream>
 #include <array>
 #include <algorithm>
+#include <cstddef>
 
 // === Compile-time sorted array ===
 constexpr std::array<int, 10> data = {2, 5, 8, 12, 16, 23, 38, 56, 72, 91};

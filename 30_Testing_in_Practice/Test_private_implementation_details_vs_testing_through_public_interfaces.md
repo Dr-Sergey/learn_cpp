@@ -1,6 +1,7 @@
 # Test private implementation details vs testing through public interfaces
 
-**Category:** Testing in Practice
+**Category:** Testing in Practice  
+**Standard:** Not version-specific  
 
 ---
 

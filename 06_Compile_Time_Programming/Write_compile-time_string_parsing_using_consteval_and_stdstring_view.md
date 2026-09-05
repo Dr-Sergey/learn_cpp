@@ -1,7 +1,6 @@
 # Write Compile-Time String Parsing Using `consteval` and `std::string_view`
 
-**Category:** Compile-Time Programming  
-**Item:** #345  
+**Category:** Compile Time Programming  
 **Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/language/consteval>  
 
@@ -260,6 +259,7 @@ When you have a set of date constants that are part of your program's configurat
 #include <string_view>
 #include <chrono>
 #include <cstring>
+#include <cstddef>
 
 struct Date { int year, month, day; };
 

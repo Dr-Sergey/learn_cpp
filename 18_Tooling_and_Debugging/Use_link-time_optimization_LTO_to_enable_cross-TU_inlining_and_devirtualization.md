@@ -1,7 +1,7 @@
 # Use link-time optimization (LTO) to enable cross-TU inlining and devirtualization
 
-**Category:** Tooling & Debugging  
-**Item:** #412  
+**Category:** Tooling and Debugging  
+**Standard:** Not version-specific  
 **Reference:** <https://llvm.org/docs/LinkTimeOptimization.html>  
 
 ---
@@ -127,6 +127,7 @@ The ThinLTO cache directory stores the results of previous link-time optimizatio
 
 Devirtualization is one of the most compelling reasons to enable LTO in programs with polymorphism. A virtual call normally requires an indirect dispatch through the vtable at runtime. If LTO can prove that the dynamic type of an object is always the same concrete class, it can replace the indirect call with a direct call - and then inline that call and constant-fold through it.
 
+<!-- compile: fragment: depends on a header defined elsewhere in the topic -->
 ```cpp
 // === shape.h ===
 struct Shape {

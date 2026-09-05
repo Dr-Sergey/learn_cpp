@@ -1,7 +1,7 @@
 # Know how std::unordered_map handles load factor and rehashing
 
-**Category:** Standard Library - Containers  
-**Item:** #348  
+**Category:** Standard Library Containers  
+**Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/container/unordered_map>  
 
 ---

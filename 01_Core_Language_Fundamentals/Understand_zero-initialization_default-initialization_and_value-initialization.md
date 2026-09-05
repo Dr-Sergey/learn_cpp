@@ -1,7 +1,7 @@
 # Understand zero-initialization, default-initialization, and value-initialization
 
 **Category:** Core Language Fundamentals  
-**Item:** #307  
+**Standard:** Not version-specific  
 **Reference:** <https://en.cppreference.com/w/cpp/language/initialization>  
 
 ---

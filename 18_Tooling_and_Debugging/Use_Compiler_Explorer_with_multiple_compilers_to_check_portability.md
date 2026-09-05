@@ -1,7 +1,6 @@
 # Use Compiler Explorer with multiple compilers to check portability
 
-**Category:** Tooling & Debugging  
-**Item:** #803  
+**Category:** Tooling and Debugging  
 **Standard:** C++20  
 **Reference:** <https://godbolt.org>  
 
@@ -86,6 +85,7 @@ Godbolt's "Add new..." - "Conformance" view tests your code against every compil
 ```cpp
 // Feature: C++23 std::expected
 #include <expected>
+#include <string>
 
 std::expected<int, std::string> parse(const char* s) {
     if (s[0] >= '0' && s[0] <= '9')

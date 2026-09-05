@@ -1,6 +1,7 @@
 # Implement SFINAE-friendly and concept-constrained class interfaces
 
-**Category:** OOP Design
+**Category:** OOP Design  
+**Standard:** C++20  
 
 ---
 

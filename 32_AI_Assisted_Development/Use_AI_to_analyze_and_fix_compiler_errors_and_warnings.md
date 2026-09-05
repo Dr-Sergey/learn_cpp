@@ -1,6 +1,7 @@
 # Use AI to analyze and fix compiler errors and warnings
 
-**Category:** AI-Assisted C++ Development
+**Category:** AI Assisted Development  
+**Standard:** Not version-specific  
 
 ---
 

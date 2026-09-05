@@ -1,7 +1,7 @@
 # Understand Placement `new` and Its Valid Use Cases
 
-**Category:** Memory & Ownership  
-**Item:** #31  
+**Category:** Memory and Ownership  
+**Standard:** Not version-specific  
 **Reference:** <https://en.cppreference.com/w/cpp/language/new>  
 
 ---

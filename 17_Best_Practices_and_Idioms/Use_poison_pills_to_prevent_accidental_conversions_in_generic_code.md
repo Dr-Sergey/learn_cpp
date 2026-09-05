@@ -1,7 +1,7 @@
 # Use poison pills to prevent accidental conversions in generic code
 
-**Category:** Best Practices & Idioms  
-**Item:** #232  
+**Category:** Best Practices and Idioms  
+**Standard:** Not version-specific  
 **Reference:** <https://en.cppreference.com/w/cpp/language/function#Deleted_functions>  
 
 ---
@@ -29,6 +29,8 @@ Here's the pattern applied to constructors. `UserId` wraps an `int`, but you don
 ```cpp
 #include <iostream>
 #include <string>
+#include <cstddef>
+#include <utility>
 
 class UserId {
     int id_;

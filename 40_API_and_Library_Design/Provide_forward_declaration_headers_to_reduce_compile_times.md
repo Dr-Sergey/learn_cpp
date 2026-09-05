@@ -1,6 +1,6 @@
 # Provide forward declaration headers to reduce compile times
 
-**Category:** API & Library Design  
+**Category:** API and Library Design  
 **Standard:** C++17  
 **Reference:** <https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#sf-source-files>  
 

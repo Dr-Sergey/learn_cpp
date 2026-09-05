@@ -1,6 +1,6 @@
 # Implement SO and DLL Versioning Strategies
 
-**Category:** ABI & Binary Compatibility  
+**Category:** ABI and Binary Compatibility  
 **Standard:** C++11 and later (platform-specific linking)  
 **Reference:** https://tldp.org/HOWTO/Program-Library-HOWTO/shared-libraries.html  
 
@@ -270,6 +270,7 @@ END
 #ifdef _WIN32
 #include <windows.h>
 #include <cstdio>
+#include <memory>
 
 #pragma comment(lib, "version.lib")
 

@@ -1,7 +1,7 @@
 # Use the type-safe builder pattern with designated initializers
 
-**Category:** Best Practices & Idioms  
-**Item:** #795  
+**Category:** Best Practices and Idioms  
+**Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/language/aggregate_initialization>  
 
 ---

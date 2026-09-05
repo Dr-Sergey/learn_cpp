@@ -1,7 +1,6 @@
 # Use std::format (C++20) for type-safe string formatting
 
-**Category:** Standard Library — Utilities  
-**Item:** #83  
+**Category:** Standard Library Utilities  
 **Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/utility/format>  
 

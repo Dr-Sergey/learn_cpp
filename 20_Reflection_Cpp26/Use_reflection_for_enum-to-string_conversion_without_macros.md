@@ -1,7 +1,6 @@
 # Use reflection for enum-to-string conversion without macros
 
-**Category:** Reflection (C++26)  
-**Item:** #714  
+**Category:** Reflection Cpp26  
 **Standard:** C++17  
 **Reference:** <https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2024/p2996r5.html>  
 
@@ -30,6 +29,7 @@ The real win over `magic_enum` is the "None" in the enum limits column. `magic_e
 
 This is the foundation everything else builds on. `enumerators_of` hands you a compile-time sequence of `std::meta::info` values, one per enumerator. The `template for` loop then expands over them - it is conceptually like a regular for loop, but each iteration is a separate compile-time step.
 
+<!-- compile: needs `meta` (not in the CI standard library yet) -->
 ```cpp
 // C++26 with P2996 reflection
 #include <meta>
@@ -73,6 +73,7 @@ Notice the `[:e:]` syntax - that is the "splice" operator, which takes a `std::m
 
 With the basic iteration in place, the generic `to_string` is just a loop that checks each enumerator against the runtime value. What makes this elegant is that the same five-line template works for every enum in your codebase.
 
+<!-- compile: needs `meta` (not in the CI standard library yet) -->
 ```cpp
 #include <meta>
 #include <iostream>
@@ -123,6 +124,7 @@ The `static_assert` lines at the top of `main` are not just documentation - they
 
 It is worth understanding exactly *why* `magic_enum` has range limits before you appreciate how reflection avoids them. This example walks through both approaches side by side.
 
+<!-- compile: needs `meta` (not in the CI standard library yet) -->
 ```cpp
 #include <meta>
 #include <iostream>

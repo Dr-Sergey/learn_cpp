@@ -1,7 +1,6 @@
 # Implement the Memento pattern for state snapshots with value semantics
 
-**Category:** Design Patterns — Modern Takes  
-**Item:** #754  
+**Category:** Design Patterns Modern Takes  
 **Standard:** C++11  
 **Reference:** <https://en.wikipedia.org/wiki/Memento_pattern>  
 

@@ -1,6 +1,7 @@
 # Write effective unit tests with Arrange-Act-Assert pattern
 
-**Category:** Testing in Practice
+**Category:** Testing in Practice  
+**Standard:** Not version-specific  
 
 ---
 

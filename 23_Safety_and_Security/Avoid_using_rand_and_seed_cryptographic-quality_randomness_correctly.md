@@ -1,7 +1,7 @@
 # Avoid using rand() and seed cryptographic-quality randomness correctly
 
-**Category:** Safety & Security  
-**Item:** #653  
+**Category:** Safety and Security  
+**Standard:** Not version-specific  
 **Reference:** <https://en.cppreference.com/w/cpp/numeric/random/random_device>  
 
 ---

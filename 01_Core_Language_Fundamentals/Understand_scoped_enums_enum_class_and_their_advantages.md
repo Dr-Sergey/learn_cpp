@@ -1,7 +1,6 @@
 # Understand scoped enums (enum class) and their advantages
 
 **Category:** Core Language Fundamentals  
-**Item:** #6  
 **Standard:** C++11  
 **Reference:** <https://github.com/AnthonyCalandra/modern-cpp-features/blob/master/CPP11.md#strongly-typed-enums>  
 

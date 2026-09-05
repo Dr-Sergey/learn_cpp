@@ -1,7 +1,7 @@
 # Understand `std::conditional_t` for Selecting Types at Compile Time
 
-**Category:** Type System & Deduction  
-**Item:** #216  
+**Category:** Type System and Deduction  
+**Standard:** C++17  
 **Reference:** <https://en.cppreference.com/w/cpp/types/conditional>  
 
 ---

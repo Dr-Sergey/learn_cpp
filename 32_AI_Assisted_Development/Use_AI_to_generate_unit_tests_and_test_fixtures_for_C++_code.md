@@ -1,6 +1,7 @@
 # Use AI to generate unit tests and test fixtures for C++ code
 
-**Category:** AI-Assisted C++ Development
+**Category:** AI Assisted Development  
+**Standard:** Not version-specific  
 
 ---
 

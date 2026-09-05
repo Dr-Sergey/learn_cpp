@@ -1,7 +1,6 @@
 # Understand std::hazard_pointer and std::rcu (C++26 preview) for lock-free reclamation
 
-**Category:** Concurrency & Parallelism  
-**Item:** #178  
+**Category:** Concurrency and Parallelism  
 **Standard:** C++26  
 **Reference:** <https://en.cppreference.com/w/cpp/thread/hazard_pointer>  
 

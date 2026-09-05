@@ -1,7 +1,7 @@
-# Use Conan 2.0 for C++ package management
+# Model Conan 2.0 dependency types: requires, tool_requires, and test_requires
 
-**Category:** Build Systems & CI  
-**Item:** #743  
+**Category:** Build Systems and CI  
+**Standard:** Not version-specific  
 **Reference:** <https://docs.conan.io/2/>  
 
 ---

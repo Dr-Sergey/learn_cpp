@@ -1,6 +1,6 @@
 # Use `std::osyncstream` (C++20) for Synchronized Concurrent Output
 
-**Category:** Standard Library — New in C++23/26  
+**Category:** Standard Library New Cpp23 26  
 **Standard:** C++20 (often overlooked, included here for completeness)  
 **Reference:** [cppreference — std::osyncstream](https://en.cppreference.com/w/cpp/io/basic_osyncstream)  
 

@@ -1,7 +1,7 @@
 # Test API usability with compile-fail tests using static_assert and SFINAE
 
-**Category:** API & Library Design  
-**Standard:** C++17/20  
+**Category:** API and Library Design  
+**Standard:** C++17, C++20  
 **Reference:** <https://cmake.org/cmake/help/latest/prop_test/WILL_FAIL.html>  
 
 ---

@@ -1,7 +1,6 @@
 # Write a Compile-Time Prime Sieve as a `constexpr std::array`
 
-**Category:** Compile-Time Programming  
-**Item:** #344  
+**Category:** Compile Time Programming  
 **Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/language/consteval>  
 

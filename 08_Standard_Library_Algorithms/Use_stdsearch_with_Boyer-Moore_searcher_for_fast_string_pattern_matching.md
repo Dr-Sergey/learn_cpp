@@ -1,7 +1,6 @@
 # Use std::search with Boyer-Moore searcher for fast string pattern matching
 
-**Category:** Standard Library - Algorithms  
-**Item:** #353  
+**Category:** Standard Library Algorithms  
 **Standard:** C++17  
 **Reference:** <https://en.cppreference.com/w/cpp/algorithm/search>  
 

@@ -1,7 +1,7 @@
 # Understand std::text_encoding for portable character encoding
 
-**Category:** Standard Library — New in C++23/26  
-**Item:** #762  
+**Category:** Standard Library New Cpp23 26  
+**Standard:** C++26  
 **Reference:** <https://en.cppreference.com/w/cpp/locale/text_encoding>  
 
 ---
@@ -42,6 +42,7 @@ Shift_JIS        -> MIB 17
 
 This is the most common starting point: query both what the compiler embedded in your string literals and what the system currently expects, then decide if they match:
 
+<!-- compile: needs `text_encoding` (not in the CI standard library yet) -->
 ```cpp
 // C++26 - requires compiler/library support for <text_encoding>
 #include <text_encoding>
@@ -156,6 +157,7 @@ The key mental model here: `literal()` tells you what encoding was baked into yo
 
 This example shows the real-world Windows scenario that trips up many developers: you compiled with `/utf-8` so your string literals are UTF-8, but the Windows console is using an ANSI code page. `std::text_encoding` makes this mismatch explicit:
 
+<!-- compile: needs `text_encoding` (not in the CI standard library yet) -->
 ```cpp
 #include <text_encoding>
 #include <iostream>

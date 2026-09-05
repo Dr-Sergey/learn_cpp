@@ -1,7 +1,7 @@
 # Handle Exceptions Safely in Constructors That Manage Multiple Resources
 
-**Category:** Memory & Ownership  
-**Item:** #327  
+**Category:** Memory and Ownership  
+**Standard:** Not version-specific  
 **Reference:** <https://en.cppreference.com/w/cpp/language/constructor>  
 
 ---

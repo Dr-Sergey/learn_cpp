@@ -1,7 +1,6 @@
 # Use the Pipeline pattern with coroutines for streaming data processing
 
-**Category:** Design Patterns - Modern Takes  
-**Item:** #679  
+**Category:** Design Patterns Modern Takes  
 **Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/coroutine/generator>  
 

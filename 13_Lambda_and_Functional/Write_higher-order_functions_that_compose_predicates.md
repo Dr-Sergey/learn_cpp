@@ -1,7 +1,6 @@
 # Write higher-order functions that compose predicates
 
-**Category:** Lambda & Functional  
-**Item:** #230  
+**Category:** Lambda and Functional  
 **Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/utility/functional>  
 

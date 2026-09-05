@@ -1,7 +1,6 @@
 # Use std::destroy, std::construct_at, and Related Low-Level Memory Utilities (C++17/20)
 
-**Category:** Memory & Ownership  
-**Item:** #156  
+**Category:** Memory and Ownership  
 **Standard:** C++17  
 **Reference:** <https://en.cppreference.com/w/cpp/memory>  
 
@@ -127,6 +126,7 @@ Whenever you construct objects manually into raw storage, you are responsible fo
 #include <memory>
 #include <string>
 #include <new>
+#include <utility>
 
 struct Sensor {
     std::string id;

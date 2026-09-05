@@ -1,7 +1,6 @@
 # Use std::latch and std::barrier (C++20) for thread synchronization points
 
-**Category:** Concurrency & Parallelism  
-**Item:** #95  
+**Category:** Concurrency and Parallelism  
 **Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/thread/latch>  
 

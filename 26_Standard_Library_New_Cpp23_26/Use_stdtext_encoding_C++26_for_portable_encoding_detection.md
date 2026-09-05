@@ -1,7 +1,6 @@
 # Use std::text_encoding (C++26) for portable encoding detection
 
-**Category:** Standard Library — New in C++23/26  
-**Item:** #578  
+**Category:** Standard Library New Cpp23 26  
 **Standard:** C++26  
 **Reference:** <https://en.cppreference.com/w/cpp/locale/text_encoding>  
 
@@ -46,6 +45,7 @@ Display: garbled "cafÃ©" unless converted!
 
 `environment()` returns a `text_encoding` object that describes the encoding the current system uses for narrow strings - essentially, what the OS locale or Windows code page resolves to. You can query it by MIB enum value, by name, or compare it directly to a named encoding:
 
+<!-- compile: needs `text_encoding` (not in the CI standard library yet) -->
 ```cpp
 #include <text_encoding>  // C++26
 #include <iostream>
@@ -98,6 +98,7 @@ The MIB values come from the IANA character set registry. `UTF8`, `ISO8859_1`, a
 
 The reason this distinction matters is that the same program binary can be deployed to machines with different locale settings. The bytes in your string literals are fixed at compile time, but whether those bytes make sense to the receiving system depends on what encoding that system expects at runtime.
 
+<!-- compile: needs `text_encoding` (not in the CI standard library yet) -->
 ```cpp
 #include <text_encoding>  // C++26
 #include <iostream>
@@ -168,6 +169,7 @@ The reason this trips people up is that on Linux and macOS everything is almost 
 
 The key limitation to know upfront: `std::text_encoding` *detects* encodings but does *not convert* between them. The conversion itself still requires a platform API (Win32's `MultiByteToWideChar`/`WideCharToMultiByte`) or a library like iconv. What `text_encoding` gives you is a portable way to *decide* whether conversion is needed:
 
+<!-- compile: needs `text_encoding` (not in the CI standard library yet) -->
 ```cpp
 #include <text_encoding>  // C++26
 #include <iostream>

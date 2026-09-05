@@ -1,7 +1,6 @@
 # Write self-testing code using constexpr and static_assert as documentation
 
-**Category:** Best Practices & Idioms  
-**Item:** #793  
+**Category:** Best Practices and Idioms  
 **Standard:** C++17  
 **Reference:** <https://en.cppreference.com/w/cpp/language/static_assert>  
 

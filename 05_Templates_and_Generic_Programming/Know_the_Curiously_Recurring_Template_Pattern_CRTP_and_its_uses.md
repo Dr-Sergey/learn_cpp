@@ -1,8 +1,7 @@
 # Know the Curiously Recurring Template Pattern (CRTP) and Its Uses
 
-**Category:** Templates & Generic Programming  
-**Item:** #49  
-**Standard:** C++11 (CRTP), C++23 (deducing-this alternative)  
+**Category:** Templates and Generic Programming  
+**Standard:** C++11, C++23 (CRTP)  
 **Reference:** <https://en.cppreference.com/w/cpp/language/crtp>  
 
 ---

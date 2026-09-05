@@ -1,7 +1,6 @@
 # Use GDB Python scripts for visualizing complex data structures
 
-**Category:** Tooling & Debugging  
-**Item:** #418  
+**Category:** Tooling and Debugging  
 **Standard:** C++20  
 **Reference:** <https://sourceware.org/gdb/current/onlinedocs/gdb/Python-API.html>  
 

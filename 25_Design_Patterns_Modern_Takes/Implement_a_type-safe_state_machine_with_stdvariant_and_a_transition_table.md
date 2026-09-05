@@ -1,7 +1,6 @@
 # Implement a type-safe state machine with std::variant and a transition table
 
-**Category:** Design Patterns - Modern Takes  
-**Item:** #570  
+**Category:** Design Patterns Modern Takes  
 **Standard:** C++17  
 **Reference:** <https://en.cppreference.com/w/cpp/utility/variant>  
 

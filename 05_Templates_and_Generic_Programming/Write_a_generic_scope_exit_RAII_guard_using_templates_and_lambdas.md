@@ -1,8 +1,7 @@
 # Write a Generic scope_exit RAII Guard Using Templates and Lambdas
 
-**Category:** Templates & Generic Programming  
-**Item:** #338  
-**Standard:** C++11 (basic), C++17 (std::uncaught_exceptions)  
+**Category:** Templates and Generic Programming  
+**Standard:** C++11, C++17 (basic)  
 **Reference:** <https://en.cppreference.com/w/cpp/language/raii>  
 
 ---

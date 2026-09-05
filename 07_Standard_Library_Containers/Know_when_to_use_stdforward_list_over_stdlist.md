@@ -1,7 +1,6 @@
 # Know when to use std::forward_list over std::list
 
-**Category:** Standard Library — Containers  
-**Item:** #350  
+**Category:** Standard Library Containers  
 **Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/container/forward_list>  
 

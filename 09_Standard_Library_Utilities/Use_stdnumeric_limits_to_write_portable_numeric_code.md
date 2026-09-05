@@ -1,7 +1,7 @@
 # Use std::numeric_limits to write portable numeric code
 
-**Category:** Standard Library — Utilities  
-**Item:** #84  
+**Category:** Standard Library Utilities  
+**Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/types/numeric_limits>  
 
 ---

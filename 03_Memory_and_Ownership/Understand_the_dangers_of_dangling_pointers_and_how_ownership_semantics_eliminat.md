@@ -1,7 +1,6 @@
 # Understand the Dangers of Dangling Pointers and How Ownership Semantics Eliminate Them
 
-**Category:** Memory & Ownership  
-**Item:** #328  
+**Category:** Memory and Ownership  
 **Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/memory>  
 
@@ -47,6 +46,7 @@ The three "BAD" functions below each represent a different flavour of the same m
 #include <iostream>
 #include <string>
 #include <memory>
+#include <vector>
 
 // BUG: Returns pointer to local variable — instant dangling pointer
 int* get_value_BAD() {

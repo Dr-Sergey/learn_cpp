@@ -1,6 +1,7 @@
 # Structure safety-critical C++ projects (DO-178C, IEC 61508 guidelines)
 
-**Category:** Project Architecture
+**Category:** Project Architecture  
+**Standard:** Not version-specific  
 
 ---
 

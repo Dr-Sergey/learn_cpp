@@ -1,6 +1,6 @@
 # Use extern "C" Wrappers for Stable FFI Boundaries
 
-**Category:** ABI & Binary Compatibility  
+**Category:** ABI and Binary Compatibility  
 **Standard:** C++11 and later  
 **Reference:** https://en.cppreference.com/w/cpp/language/language_linkage  
 

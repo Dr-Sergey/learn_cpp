@@ -1,6 +1,6 @@
 # Design C-compatible wrapper APIs for FFI consumers
 
-**Category:** API & Library Design  
+**Category:** API and Library Design  
 **Standard:** C++17  
 **Reference:** <https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#cpl-c-style-programming>  
 

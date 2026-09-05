@@ -1,7 +1,7 @@
 # Use mlock and Huge Pages to Prevent Page Faults
 
-**Category:** Low Latency & Real-Time C++  
-**Standard:** C++17 / POSIX  
+**Category:** Low Latency and Real Time  
+**Standard:** C++17  
 **Reference:** [mlock(2)](https://man7.org/linux/man-pages/man2/mlock.2.html), [hugetlbfs](https://www.kernel.org/doc/html/latest/admin-guide/mm/hugetlbpage.html)  
 
 ---
@@ -44,6 +44,7 @@ Added latency @ 10ns/miss:          ~159 µs       0 µs
 
 The key sequence here is: map -> pre-fault -> lock. If you lock first and then pre-fault you still pay the fault cost, but at least the pages won't get swapped. The `prefault()` method forces every page to take its minor fault now, in the cold path, so the hot path never sees one:
 
+<!-- compile: needs POSIX header `sys/mman.h` -->
 ```cpp
 #include <cstdio>
 #include <cstdlib>
@@ -155,6 +156,7 @@ The bump allocator (`allocate`) is just a pointer increment - O(1) and determini
 
 This benchmark allocates 256MB with regular pages and 256MB with huge pages, then scans both to measure the time difference. The huge page version skips most TLB misses because 32 TLB entries cover the whole array instead of needing 65,536. Run the binary under `perf stat -e dTLB-load-misses` to see the raw miss counts:
 
+<!-- compile: needs POSIX header `sys/mman.h` -->
 ```cpp
 #include <cstdio>
 #include <cstdlib>
@@ -234,6 +236,7 @@ The speedup tends to be more dramatic on access patterns with poor spatial local
 
 This is the full real-time startup recipe. The tricky part is the stack: `mlockall(MCL_CURRENT)` locks memory that is already mapped, but the stack grows lazily as functions are called. If your real-time loop calls a function with a large stack frame for the first time, it triggers a stack-extension fault. The `prefault_stack()` function forces the OS to map the stack pages right now:
 
+<!-- compile: needs POSIX header `sys/mman.h` -->
 ```cpp
 #include <cstdio>
 #include <cstdlib>

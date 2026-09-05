@@ -6,16 +6,16 @@ ABI (Application Binary Interface) is the contract that governs how compiled cod
 
 ## Contents
 
-- [Control symbol visibility for shared libraries](Control_symbol_visibility_for_shared_libraries.md)
-- [Design ABI-stable C++ library interfaces](Design_ABI-stable_C++_library_interfaces.md)
-- [Implement SO and DLL versioning strategies](Implement_SO_and_DLL_versioning_strategies.md)
-- [Know MSVC ABI and class layout with reportSingleClassLayout](Know_MSVC_ABI_and_class_layout_with_reportSingleClassLayout.md)
-- [Understand abi_tag attribute for symbol versioning](Understand_abi_tag_attribute_for_symbol_versioning.md)
-- [Understand COM ABI implications on Windows](Understand_COM_ABI_implications_on_Windows.md)
-- [Understand Itanium ABI layout rules for vtables RTTI and exceptions](Understand_Itanium_ABI_layout_rules_for_vtables_RTTI_and_exceptions.md)
-- [Understand what changes break ABI in C++ libraries](Understand_what_changes_break_ABI_in_C++_libraries.md)
-- [Use extern C wrappers for stable FFI boundaries](Use_extern_C_wrappers_for_stable_FFI_boundaries.md)
-- [Use inline namespace versioning for ABI evolution](Use_inline_namespace_versioning_for_ABI_evolution.md)
+- [Control Symbol Visibility for Shared Libraries](Control_symbol_visibility_for_shared_libraries.md)
+- [Design ABI-Stable C++ Library Interfaces](Design_ABI-stable_C++_library_interfaces.md)
+- [Implement SO and DLL Versioning Strategies](Implement_SO_and_DLL_versioning_strategies.md)
+- [Know MSVC ABI and Class Layout with /d1reportSingleClassLayout](Know_MSVC_ABI_and_class_layout_with_reportSingleClassLayout.md)
+- [Understand abi_tag Attribute for Symbol Versioning](Understand_abi_tag_attribute_for_symbol_versioning.md)
+- [Understand COM ABI Implications on Windows](Understand_COM_ABI_implications_on_Windows.md)
+- [Understand Itanium ABI Layout Rules for Vtables, RTTI, and Exceptions](Understand_Itanium_ABI_layout_rules_for_vtables_RTTI_and_exceptions.md)
+- [Understand What Changes Break ABI in C++ Libraries](Understand_what_changes_break_ABI_in_C++_libraries.md)
+- [Use extern "C" Wrappers for Stable FFI Boundaries](Use_extern_C_wrappers_for_stable_FFI_boundaries.md)
+- [Use Inline Namespace Versioning for ABI Evolution](Use_inline_namespace_versioning_for_ABI_evolution.md)
 
 ## Notes
 

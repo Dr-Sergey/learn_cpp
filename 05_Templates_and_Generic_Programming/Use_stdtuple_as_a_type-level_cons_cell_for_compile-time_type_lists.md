@@ -1,7 +1,7 @@
 # Use `std::tuple` as a Type-Level Cons Cell for Compile-Time Type Lists
 
-**Category:** Templates & Generic Programming  
-**Item:** #600  
+**Category:** Templates and Generic Programming  
+**Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/utility/tuple>  
 
 ---

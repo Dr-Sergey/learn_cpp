@@ -1,6 +1,7 @@
 # Build shared library architecture with proper symbol visibility
 
-**Category:** Project Architecture
+**Category:** Project Architecture  
+**Standard:** Not version-specific  
 
 ---
 

@@ -1,7 +1,6 @@
 # Understand the limits of C++26 reflection: what is and is not reflectable
 
-**Category:** Reflection (C++26)  
-**Item:** #622  
+**Category:** Reflection Cpp26  
 **Standard:** C++26  
 **Reference:** <https://en.cppreference.com/w/cpp/language/reflection>  
 
@@ -31,6 +30,7 @@ C++26 static reflection can reflect many entities, but not everything. The rough
 
 This example covers the full range of entities you can successfully pass to `^`. It is worth running through all of them at least once mentally so you know where the language draws the lines.
 
+<!-- compile: needs `meta` (not in the CI standard library yet) -->
 ```cpp
 // C++26 with P2996 reflection
 #include <meta>
@@ -90,6 +90,7 @@ Everything at a named, declared scope works. Individual enumerators like `^Color
 
 Here you see the boundaries. The most important ones to internalize are: macros are not C++ entities (they are text - the compiler never even sees them), local variables are not reflectable, and expression results are not named entities.
 
+<!-- compile: needs `meta` (not in the CI standard library yet) -->
 ```cpp
 #include <meta>
 #include <iostream>
@@ -136,6 +137,7 @@ The workaround note at the bottom is worth keeping in mind: if you have a value 
 
 This example puts both mechanisms in the same file so you can compare them directly. The goal is to make the trade-offs concrete, not abstract.
 
+<!-- compile: needs `meta` (not in the CI standard library yet) -->
 ```cpp
 #include <meta>
 #include <iostream>

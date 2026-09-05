@@ -1,7 +1,6 @@
 # Use std::assume_aligned (C++20) to Inform the Optimizer of Pointer Alignment
 
-**Category:** Memory & Ownership  
-**Item:** #324  
+**Category:** Memory and Ownership  
 **Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/memory/assume_aligned>  
 

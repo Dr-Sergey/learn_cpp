@@ -1,7 +1,6 @@
 # Use CMakePresets.json for reproducible, shareable build configurations
 
-**Category:** Build Systems & CI  
-**Item:** #563  
+**Category:** Build Systems and CI  
 **Standard:** CMake 3.21+  
 **Reference:** <https://cmake.org/cmake/help/latest/manual/cmake-presets.7.html>  
 

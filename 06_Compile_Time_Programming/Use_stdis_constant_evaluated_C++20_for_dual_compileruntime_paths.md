@@ -1,7 +1,6 @@
 # Use `std::is_constant_evaluated` (C++20) for Dual Compile/Runtime Paths
 
-**Category:** Compile-Time Programming  
-**Item:** #193  
+**Category:** Compile Time Programming  
 **Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/types/is_constant_evaluated>  
 

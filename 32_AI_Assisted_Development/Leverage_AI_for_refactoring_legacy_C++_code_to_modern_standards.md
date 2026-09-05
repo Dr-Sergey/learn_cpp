@@ -1,6 +1,7 @@
 # Leverage AI for refactoring legacy C++ code to modern standards
 
-**Category:** AI-Assisted C++ Development
+**Category:** AI Assisted Development  
+**Standard:** Not version-specific  
 
 ---
 

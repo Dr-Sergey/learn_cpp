@@ -1,7 +1,7 @@
 # Apply the Strategy pattern using templates and std::function
 
 **Category:** Modern OOP Patterns  
-**Item:** #489  
+**Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/utility/functional/function>  
 
 ---

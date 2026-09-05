@@ -1,7 +1,6 @@
 # Use std::jthread and stop tokens (C++20) for cooperative cancellation
 
-**Category:** Concurrency & Parallelism  
-**Item:** #92  
+**Category:** Concurrency and Parallelism  
 **Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/thread/jthread>  
 

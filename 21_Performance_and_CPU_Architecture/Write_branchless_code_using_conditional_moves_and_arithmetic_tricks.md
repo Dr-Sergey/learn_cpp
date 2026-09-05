@@ -1,7 +1,7 @@
 # Write branchless code using conditional moves and arithmetic tricks
 
-**Category:** Performance & CPU Architecture  
-**Item:** #540  
+**Category:** Performance and CPU Architecture  
+**Standard:** Not version-specific  
 **Reference:** <https://godbolt.org>  
 
 ---

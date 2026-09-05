@@ -1,7 +1,6 @@
 # Nest exceptions with std::throw_with_nested for diagnostic chains
 
 **Category:** Error Handling  
-**Item:** #488  
 **Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/error/throw_with_nested>  
 

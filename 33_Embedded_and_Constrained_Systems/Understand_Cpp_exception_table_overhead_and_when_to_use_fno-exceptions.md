@@ -1,6 +1,6 @@
 # Understand C++ exception table overhead and when to use -fno-exceptions
 
-**Category:** Embedded & Constrained Systems  
+**Category:** Embedded and Constrained Systems  
 **Standard:** C++17  
 **Reference:** <https://itanium-cxx-abi.github.io/cxx-abi/abi-eh.html>  
 

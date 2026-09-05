@@ -1,8 +1,7 @@
 # Understand lambda capture modes: by value, by reference, and init-captures
 
-**Category:** Lambda & Functional  
-**Item:** #108  
-**Standard:** C++11 (basic captures), C++14 (init-captures)  
+**Category:** Lambda and Functional  
+**Standard:** C++11, C++14 (basic captures)  
 **Reference:** <https://en.cppreference.com/w/cpp/language/lambda>  
 
 ---

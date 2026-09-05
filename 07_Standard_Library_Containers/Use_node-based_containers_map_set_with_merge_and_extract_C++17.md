@@ -1,7 +1,6 @@
 # Use node-based containers (map, set) with merge and extract (C++17)
 
-**Category:** Standard Library — Containers  
-**Item:** #63  
+**Category:** Standard Library Containers  
 **Standard:** C++17  
 **Reference:** <https://en.cppreference.com/w/cpp/container/map/extract>  
 

@@ -1,7 +1,7 @@
 # Build HTTP Servers and Clients with Boost.Beast and cpp-httplib
 
-**Category:** Networking & I/O  
-**Standard:** C++17/20  
+**Category:** Networking and IO  
+**Standard:** C++17, C++20  
 **Reference:** [Boost.Beast Docs](https://www.boost.org/doc/libs/release/libs/beast/doc/html/index.html), [cpp-httplib](https://github.com/yhirose/cpp-httplib)  
 
 ---
@@ -50,6 +50,7 @@ Beast Architecture:                cpp-httplib Architecture:
 
 The server below uses C++20 coroutines (`co_await`) to handle each connection asynchronously. Pay attention to the `handle_request` function, which acts as the router - it inspects the method and target and returns an appropriate response object. The `handle_session` coroutine drives the HTTP request/response loop for a single connection, and the `listener` coroutine accepts new connections and spawns a session for each one.
 
+<!-- compile: needs third-party library header `boost/beast/core.hpp` -->
 ```cpp
 #include <boost/beast/core.hpp>
 #include <boost/beast/http.hpp>
@@ -153,6 +154,7 @@ Notice that Beast does not provide a router - `handle_request` is a plain functi
 
 Here is how the same kind of service looks in cpp-httplib. The amount of boilerplate drops dramatically because the library handles routing, threading, and request parsing for you. The server below also demonstrates a pre-routing handler (useful as a logging middleware) and a thread-safe in-memory key-value store.
 
+<!-- compile: needs third-party library header `httplib.h` -->
 ```cpp
 // server.cpp - cpp-httplib with routing, logging middleware, and JSON
 #include "httplib.h"  // single header
@@ -222,6 +224,7 @@ int main() {
 
 The client side is equally concise. You construct a `Client`, set timeouts, and call `Get`, `Post`, etc. The result is a `std::optional`-like object - always check it before reading the status or body, because a null result means the connection itself failed.
 
+<!-- compile: needs third-party library header `httplib.h` -->
 ```cpp
 // client.cpp - cpp-httplib client
 #include "httplib.h"

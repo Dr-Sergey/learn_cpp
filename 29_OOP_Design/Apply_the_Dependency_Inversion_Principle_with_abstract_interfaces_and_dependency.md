@@ -1,6 +1,7 @@
 # Apply the Dependency Inversion Principle with abstract interfaces and dependency injection
 
-**Category:** OOP Design
+**Category:** OOP Design  
+**Standard:** Not version-specific  
 
 ---
 
@@ -198,6 +199,10 @@ When the concrete dependency type is known at compile time and you want zero vta
 #include <string>
 #include <vector>
 #include <iostream>
+#include <concepts>
+#include <string_view>
+#include <utility>
+#include <cassert>
 
 // Template DIP: compile-time injection, zero vtable overhead
 

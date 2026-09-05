@@ -1,7 +1,6 @@
 # Use reflection to implement automatic JSON serialization
 
-**Category:** Reflection (C++26)  
-**Item:** #535  
+**Category:** Reflection Cpp26  
 **Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/meta>  
 
@@ -30,6 +29,7 @@ Before reflection, JSON serialization in C++ meant choosing between writing a `t
 
 The function below uses `nonstatic_data_members_of` to get every field of `T`, then uses `identifier_of` for the JSON key name and `obj.[:m:]` to access the runtime value. The `constexpr if` chain handles each type category - string, bool, arithmetic, and nested struct. Notice the recursive call for nested structs: reflection naturally handles arbitrary depth.
 
+<!-- compile: needs `meta` (not in the CI standard library yet) -->
 ```cpp
 // C++26 with P2996 reflection
 #include <meta>
@@ -95,6 +95,7 @@ The recursion through `is_reflectable_struct` is what makes deep nesting work au
 
 This version factors the type dispatch into a separate `to_json_value` helper, which makes the main `to_json` loop cleaner and makes it easier to extend later. The multi-level trip example shows three levels of nesting working transparently.
 
+<!-- compile: needs `meta` (not in the CI standard library yet) -->
 ```cpp
 #include <meta>
 #include <iostream>
@@ -162,6 +163,7 @@ The `requires { std::meta::nonstatic_data_members_of(^T); }` check in `to_json_v
 
 This comparison makes the before/after contrast concrete. The old macro approach required every field to be explicitly listed - which was easy to get wrong, painful to maintain, and opaque to IDEs and static analyzers.
 
+<!-- compile: needs `meta` (not in the CI standard library yet) -->
 ```cpp
 #include <meta>
 #include <iostream>

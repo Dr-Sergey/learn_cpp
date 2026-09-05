@@ -1,7 +1,7 @@
 # Offload Computation with OpenMP Target Directives
 
-**Category:** GPU & Heterogeneous Computing  
-**Standard:** OpenMP 5.0/5.1/5.2 / C++17  
+**Category:** GPU and Heterogeneous Computing  
+**Standard:** C++17  
 **Reference:** https://www.openmp.org/specifications/  
 
 ---
@@ -53,6 +53,7 @@ OpenMP Target Execution Mapping to GPU:
 
 There are three common ways to manage data movement: per-kernel `map`, structured `target data` regions, and unstructured enter/exit data. Each has a different cost profile. This example shows all three on the same SAXPY computation so you can compare them directly.
 
+<!-- compile: needs OpenMP (compile with -fopenmp) -->
 ```cpp
 #include <cstdio>
 #include <cstdlib>

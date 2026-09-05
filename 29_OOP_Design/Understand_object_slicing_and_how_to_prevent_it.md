@@ -1,6 +1,7 @@
-# Understand object slicing and how to prevent it
+# Prevent object slicing with a clone pattern in polymorphic hierarchies
 
-**Category:** OOP Design
+**Category:** OOP Design  
+**Standard:** Not version-specific  
 
 ---
 

@@ -1,7 +1,6 @@
 # Use std::atomic::wait and notify for efficient waiting (C++20)
 
-**Category:** Concurrency & Parallelism  
-**Item:** #484  
+**Category:** Concurrency and Parallelism  
 **Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/atomic/atomic/wait>  
 

@@ -1,8 +1,7 @@
 # Use std::string's starts_with, ends_with, and contains (C++20/23)
 
-**Category:** Standard Library — Containers  
-**Item:** #204  
-**Standard:** C++20 (`starts_with`, `ends_with`), C++23 (`contains`)  
+**Category:** Standard Library Containers  
+**Standard:** C++20, C++23 (`starts_with`, `ends_with`)  
 **Reference:** <https://en.cppreference.com/w/cpp/string/basic_string/starts_with>  
 
 ---

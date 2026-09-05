@@ -1,7 +1,6 @@
 # Use lambdas as custom deleters for smart pointers
 
-**Category:** Lambda & Functional  
-**Item:** #494  
+**Category:** Lambda and Functional  
 **Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/memory/unique_ptr>  
 

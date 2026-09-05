@@ -1,7 +1,7 @@
 # Understand the Small String Optimization (SSO) in std::string
 
-**Category:** Memory & Ownership  
-**Item:** #186  
+**Category:** Memory and Ownership  
+**Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/string/basic_string>  
 
 ---

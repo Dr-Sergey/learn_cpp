@@ -1,7 +1,7 @@
 # Use async_scope for structured concurrency and lifetime management
 
-**Category:** std::execution & Senders/Receivers  
-**Item:** #530  
+**Category:** Std Execution and Senders Receivers  
+**Standard:** Not version-specific  
 **Reference:** <https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2024/p3149r5.html>  
 
 ---
@@ -27,6 +27,7 @@ Here is a quick reference for the operations you will use:
 
 The pattern is: create the scope, spawn as many tasks as you need, then call `on_empty()` and wait. The scope internally counts in-flight tasks, and `on_empty()` produces a sender that does not complete until that count reaches zero. Here is a full example with a mutex-protected accumulator:
 
+<!-- compile: needs third-party library header `stdexec/execution.hpp` -->
 ```cpp
 #include <stdexec/execution.hpp>
 #include <exec/static_thread_pool.hpp>
@@ -116,6 +117,7 @@ The reason these bugs are insidious is that they often do not surface in tests. 
 
 You can cancel all outstanding work by calling `request_stop()` on the scope. This does not terminate tasks immediately - cancellation is cooperative. It sets the stop token that each spawned task can check. Tasks that are well-behaved (that is, they check the stop token periodically) will complete with `set_stopped`. Tasks that are already running to completion will finish normally. Either way, `on_empty()` will eventually complete:
 
+<!-- compile: needs third-party library header `stdexec/execution.hpp` -->
 ```cpp
 #include <stdexec/execution.hpp>
 #include <exec/static_thread_pool.hpp>

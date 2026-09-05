@@ -1,7 +1,7 @@
 # Set up a multi-stage Docker build for hermetic C++ CI
 
-**Category:** Build Systems & CI  
-**Item:** #568  
+**Category:** Build Systems and CI  
+**Standard:** Not version-specific  
 **Reference:** <https://docs.docker.com/build/guide/multi-stage/>  
 
 ---

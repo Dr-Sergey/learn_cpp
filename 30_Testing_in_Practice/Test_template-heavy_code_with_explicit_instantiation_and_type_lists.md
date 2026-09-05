@@ -1,6 +1,7 @@
 # Test template-heavy code with explicit instantiation and type lists
 
-**Category:** Testing in Practice
+**Category:** Testing in Practice  
+**Standard:** Not version-specific  
 
 ---
 

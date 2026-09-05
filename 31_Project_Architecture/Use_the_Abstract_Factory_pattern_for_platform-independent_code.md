@@ -1,6 +1,7 @@
 # Use the Abstract Factory pattern for platform-independent code
 
-**Category:** Project Architecture
+**Category:** Project Architecture  
+**Standard:** Not version-specific  
 
 ---
 

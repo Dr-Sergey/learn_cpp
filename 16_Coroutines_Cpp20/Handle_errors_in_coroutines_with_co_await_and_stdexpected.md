@@ -1,7 +1,7 @@
 # Handle Errors in Coroutines with co_await and std::expected
 
-**Category:** Coroutines (C++20)  
-**Standard:** C++20 / C++23 (`std::expected`)  
+**Category:** Coroutines Cpp20  
+**Standard:** C++20, C++23 (`std::expected`)  
 **Reference:** [cppreference — Coroutines](https://en.cppreference.com/w/cpp/language/coroutines), [cppreference — std::expected](https://en.cppreference.com/w/cpp/utility/expected)  
 
 ---
@@ -224,6 +224,8 @@ The pattern here is a thin adapter function `try_call` that calls a potentially-
 #include <iostream>
 #include <stdexcept>
 #include <string>
+#include <exception>
+#include <utility>
 
 using Error = std::string;
 

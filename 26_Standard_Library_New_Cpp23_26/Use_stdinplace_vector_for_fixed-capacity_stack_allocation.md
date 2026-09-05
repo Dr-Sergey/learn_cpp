@@ -1,7 +1,7 @@
 # Use std::inplace_vector for fixed-capacity stack allocation
 
-**Category:** Standard Library — New in C++23/26  
-**Item:** #756  
+**Category:** Standard Library New Cpp23 26  
+**Standard:** C++26  
 **Reference:** <https://en.cppreference.com/w/cpp/container/inplace_vector>  
 
 ---
@@ -37,6 +37,7 @@ The best way to get comfortable with `inplace_vector` is to see that its API is 
 
 **Answer:**
 
+<!-- compile: needs `inplace_vector` (not in the CI standard library yet) -->
 ```cpp
 #include <inplace_vector>  // C++26
 #include <iostream>
@@ -95,6 +96,7 @@ This is the one behavioral difference from `std::vector` that you need to intern
 
 **Answer:**
 
+<!-- compile: needs `inplace_vector` (not in the CI standard library yet) -->
 ```cpp
 #include <inplace_vector>  // C++26
 #include <iostream>
@@ -156,6 +158,7 @@ This benchmark simulates a physics tick that collects collision pairs. The key i
 
 **Answer:**
 
+<!-- compile: needs `inplace_vector` (not in the CI standard library yet) -->
 ```cpp
 #include <inplace_vector>  // C++26
 #include <vector>

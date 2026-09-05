@@ -1,7 +1,7 @@
 # Master Strict Aliasing Rules with Practical Examples
 
 **Category:** Undefined Behavior Deep Dive  
-**Standard:** C++17 / C++20 / C++23  
+**Standard:** C++17, C++20, C++23  
 **Reference:** [cppreference - reinterpret_cast](https://en.cppreference.com/w/cpp/language/reinterpret_cast)  
 
 ---
@@ -122,6 +122,8 @@ This is the pattern that appears most often in real-world codebases - especially
 #include <cstring>
 #include <iostream>
 #include <array>
+#include <cstddef>
+#include <new>
 
 // Network packet header (packed, arrives as raw bytes)
 struct [[gnu::packed]] PacketHeader {

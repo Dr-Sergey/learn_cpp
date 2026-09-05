@@ -1,7 +1,6 @@
 # Use `std::bit_width`, `std::countl_zero`, and Other Bit Utilities (C++20)
 
-**Category:** Compile-Time Programming  
-**Item:** #304  
+**Category:** Compile Time Programming  
 **Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/numeric/bit_width>  
 

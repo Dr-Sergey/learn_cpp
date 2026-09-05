@@ -1,6 +1,7 @@
 # Monitor stack usage and memory leaks in embedded test environments
 
-**Category:** Testing in Practice
+**Category:** Testing in Practice  
+**Standard:** Not version-specific  
 
 ---
 

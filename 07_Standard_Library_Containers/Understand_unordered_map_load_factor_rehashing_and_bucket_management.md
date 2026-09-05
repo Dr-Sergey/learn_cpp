@@ -1,7 +1,7 @@
 # Understand unordered_map load factor, rehashing, and bucket management
 
-**Category:** Standard Library — Containers  
-**Item:** #462  
+**Category:** Standard Library Containers  
+**Standard:** Not version-specific  
 **Reference:** <https://en.cppreference.com/w/cpp/container/unordered_map>  
 
 ---
@@ -78,6 +78,8 @@ Here is the basic API for querying and controlling the bucket structure. Notice 
 ```cpp
 #include <iostream>
 #include <unordered_map>
+#include <algorithm>
+#include <string>
 
 int main() {
     std::unordered_map<int, std::string> m;

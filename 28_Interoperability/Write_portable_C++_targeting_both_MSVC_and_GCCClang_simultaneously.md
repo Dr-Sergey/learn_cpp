@@ -1,7 +1,7 @@
 # Write portable C++ targeting both MSVC and GCC/Clang simultaneously
 
 **Category:** Interoperability  
-**Item:** #596  
+**Standard:** C++17  
 **Reference:** <https://docs.microsoft.com/en-us/cpp/cpp/>  
 
 ---

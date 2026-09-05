@@ -1,7 +1,7 @@
 # Understand name hiding and why using declarations are sometimes needed
 
 **Category:** Core Language Fundamentals  
-**Item:** #434  
+**Standard:** Not version-specific  
 **Reference:** <https://en.cppreference.com/w/cpp/language/using_declaration>  
 
 ---

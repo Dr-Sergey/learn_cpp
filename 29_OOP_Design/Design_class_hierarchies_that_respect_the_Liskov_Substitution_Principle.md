@@ -1,6 +1,7 @@
 # Design class hierarchies that respect the Liskov Substitution Principle
 
-**Category:** OOP Design
+**Category:** OOP Design  
+**Standard:** Not version-specific  
 
 ---
 

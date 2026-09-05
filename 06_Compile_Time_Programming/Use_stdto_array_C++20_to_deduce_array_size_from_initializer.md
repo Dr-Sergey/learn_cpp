@@ -1,7 +1,6 @@
 # Use `std::to_array` (C++20) to Deduce Array Size from Initializer
 
-**Category:** Compile-Time Programming  
-**Item:** #206  
+**Category:** Compile Time Programming  
 **Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/container/array/to_array>  
 

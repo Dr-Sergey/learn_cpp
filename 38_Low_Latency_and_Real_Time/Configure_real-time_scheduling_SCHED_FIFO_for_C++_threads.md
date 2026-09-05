@@ -1,7 +1,7 @@
 # Configure Real-Time Scheduling (SCHED_FIFO) for C++ Threads
 
-**Category:** Low Latency & Real-Time C++  
-**Standard:** C++17 / POSIX (Linux-specific)  
+**Category:** Low Latency and Real Time  
+**Standard:** C++17 (Linux-specific)  
 **Reference:** [sched(7)](https://man7.org/linux/man-pages/man7/sched.7.html), [RT Linux Wiki](https://wiki.linuxfoundation.org/realtime/start)  
 
 ---
@@ -48,6 +48,7 @@ PRIORITY PREEMPTION:
 
 Setting up a proper RT thread involves several independent steps: setting the scheduler policy, setting the priority, pinning to a CPU core, and locking memory pages. Doing them piecemeal is error-prone. This class bundles everything into one creation call.
 
+<!-- compile: needs POSIX header `pthread.h` -->
 ```cpp
 #include <pthread.h>
 #include <sched.h>
@@ -178,6 +179,7 @@ Notice `PTHREAD_EXPLICIT_SCHED` - without it, the child thread inherits the pare
 
 Priority inversion is a subtle failure mode. A low-priority thread holds a mutex. A high-priority thread needs that mutex. The high-priority thread blocks, now effectively running at the low priority. Meanwhile, a medium-priority thread can preempt the low-priority lock holder because it has higher priority - and the low-priority thread never gets to release the mutex. The `PTHREAD_PRIO_INHERIT` protocol addresses this by temporarily boosting the lock holder's priority.
 
+<!-- compile: needs POSIX header `pthread.h` -->
 ```cpp
 #include <pthread.h>
 #include <sched.h>
@@ -280,6 +282,7 @@ Without `PTHREAD_PRIO_INHERIT`, the high-priority thread could wait for a very l
 
 This example measures actual jitter - the deviation of a periodic loop from its intended wake time. The jitter numbers tell you whether your RT setup is actually working. Before isolation, you'll typically see p99.9 jitter in the tens of microseconds. With proper isolation and RT scheduling, you can drive it down to the low hundreds of nanoseconds.
 
+<!-- compile: needs POSIX header `pthread.h` -->
 ```cpp
 #include <pthread.h>
 #include <sched.h>

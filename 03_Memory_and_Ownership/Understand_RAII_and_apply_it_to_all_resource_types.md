@@ -1,7 +1,6 @@
 # Understand RAII and Apply It to All Resource Types
 
-**Category:** Memory & Ownership  
-**Item:** #29  
+**Category:** Memory and Ownership  
 **Standard:** C++17  
 **Reference:** <https://en.cppreference.com/w/cpp/language/raii>  
 

@@ -1,7 +1,7 @@
 # Use Static Allocation Strategies Without Heap
 
-**Category:** Embedded & Constrained Systems  
-**Standard:** C++17 / C++20  
+**Category:** Embedded and Constrained Systems  
+**Standard:** C++17, C++20  
 **Reference:** <https://www.etlcpp.com/>  
 
 ---

@@ -1,6 +1,7 @@
 # Apply the Strangler Fig pattern when modernizing legacy C++ code
 
-**Category:** Project Architecture
+**Category:** Project Architecture  
+**Standard:** Not version-specific  
 
 ---
 

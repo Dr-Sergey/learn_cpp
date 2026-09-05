@@ -1,7 +1,7 @@
-# Use benchmark-driven development: measure before and after every optimization
+# Avoid misleading micro-benchmarks when measuring optimizations
 
-**Category:** Testing & Verification  
-**Item:** #766  
+**Category:** Testing and Verification  
+**Standard:** Not version-specific  
 **Reference:** <https://github.com/google/benchmark>  
 
 ---

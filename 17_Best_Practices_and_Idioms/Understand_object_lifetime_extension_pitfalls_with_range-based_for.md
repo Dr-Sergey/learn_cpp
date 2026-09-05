@@ -1,7 +1,6 @@
 # Understand object lifetime extension pitfalls with range-based for
 
-**Category:** Best Practices & Idioms  
-**Item:** #794  
+**Category:** Best Practices and Idioms  
 **Standard:** C++23  
 **Reference:** <https://en.cppreference.com/w/cpp/language/range-for>  
 

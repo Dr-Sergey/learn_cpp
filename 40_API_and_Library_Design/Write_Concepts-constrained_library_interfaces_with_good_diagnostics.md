@@ -1,6 +1,6 @@
 # Write Concepts-constrained library interfaces with good diagnostics
 
-**Category:** API & Library Design  
+**Category:** API and Library Design  
 **Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/language/constraints>  
 

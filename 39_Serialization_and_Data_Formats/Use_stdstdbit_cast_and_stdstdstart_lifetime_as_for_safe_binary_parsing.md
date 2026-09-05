@@ -1,7 +1,7 @@
 # Use std::bit_cast and std::start_lifetime_as for safe binary parsing
 
-**Category:** Serialization & Data Formats  
-**Standard:** C++20/23  
+**Category:** Serialization and Data Formats  
+**Standard:** C++20, C++23  
 **Reference:** <https://en.cppreference.com/w/cpp/numeric/bit_cast> · <https://en.cppreference.com/w/cpp/memory/start_lifetime_as>  
 
 ---
@@ -134,6 +134,7 @@ The strict aliasing rule says that the compiler is allowed to assume a `uint8_t[
 #include <cstring>
 #include <bit>
 #include <iostream>
+#include <array>
 
 // The strict aliasing rule says: you can only access an object through
 // a pointer/reference of the same type (or char/byte types).
@@ -172,12 +173,14 @@ int main() { example(); }
 
 The `[[gnu::packed]]` attribute on `NetworkPacket` removes alignment padding, which is exactly what you want for network packet headers that arrive in a fixed byte layout. The `start_lifetime_as` call then makes accessing those bytes through the struct pointer well-defined:
 
+<!-- compile: needs C++26 library support for `std::start_lifetime_as` (not in the CI standard library yet) -->
 ```cpp
 #include <cstdint>
 #include <memory>
 #include <vector>
 #include <iostream>
 #include <algorithm>
+#include <type_traits>
 
 struct [[gnu::packed]] NetworkPacket {
     uint8_t  version;

@@ -1,6 +1,6 @@
 # Use Inline Namespace Versioning for ABI Evolution
 
-**Category:** ABI & Binary Compatibility  
+**Category:** ABI and Binary Compatibility  
 **Standard:** C++11 and later  
 **Reference:** https://en.cppreference.com/w/cpp/language/namespace#Inline_namespaces  
 
@@ -229,6 +229,8 @@ In a real library you often can't just drop the old format on day one - you have
 
 ```cpp
 #include <cstdio>
+#include <cstdint>
+#include <cstring>
 
 namespace serialization {
 

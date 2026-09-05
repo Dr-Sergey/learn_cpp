@@ -1,7 +1,6 @@
 # Implement co_await for a custom awaitable type
 
-**Category:** Coroutines (C++20)  
-**Item:** #518  
+**Category:** Coroutines Cpp20  
 **Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/language/coroutines>  
 

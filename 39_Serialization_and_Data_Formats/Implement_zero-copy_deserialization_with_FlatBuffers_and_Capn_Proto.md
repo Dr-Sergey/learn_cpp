@@ -1,6 +1,6 @@
 # Implement zero-copy deserialization with FlatBuffers and Cap'n Proto
 
-**Category:** Serialization & Data Formats  
+**Category:** Serialization and Data Formats  
 **Standard:** C++17  
 **Reference:** <https://flatbuffers.dev/> · <https://capnproto.org/>  
 
@@ -46,6 +46,7 @@ root_type Monster;
 
 After running `flatc --cpp monster.fbs`, you get a generated header with the `Monster` class. Notice in the reading code below that there is no "parse" call at all - `GetMonster(buf)` is just a cast, and every field access is an offset read straight from the buffer:
 
+<!-- compile: fragment: depends on a header defined elsewhere in the topic -->
 ```cpp
 #include "monster_generated.h"  // Generated header
 #include <flatbuffers/flatbuffers.h>

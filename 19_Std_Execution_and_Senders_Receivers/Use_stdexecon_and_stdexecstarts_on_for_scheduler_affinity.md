@@ -1,7 +1,6 @@
 # Use stdexec::on and stdexec::starts_on for scheduler affinity
 
-**Category:** std::execution & Senders/Receivers  
-**Item:** #708  
+**Category:** Std Execution and Senders Receivers  
 **Standard:** C++11  
 **Reference:** <https://github.com/NVIDIA/stdexec>  
 
@@ -27,6 +26,7 @@ Think of `starts_on` as "launch this whole thing on scheduler X" and `continues_
 
 Without `starts_on`, `sync_wait` uses its own internal `run_loop` to drive the pipeline - usually the calling thread. With `starts_on`, you hand the work off to a real scheduler before it even begins. Here's what that looks like:
 
+<!-- compile: needs third-party library header `stdexec/execution.hpp` -->
 ```cpp
 #include <stdexec/execution.hpp>
 #include <exec/static_thread_pool.hpp>
@@ -62,6 +62,7 @@ Notice that the thread ID printed inside the lambda will be one of the pool's th
 
 Once a pipeline is running, you may want to hand off to a different context part-way through. For example, heavy CPU work belongs on a compute pool, but writing results to disk or a socket belongs on an I/O pool. `continues_on` inserts that handoff directly in the pipeline chain:
 
+<!-- compile: needs third-party library header `stdexec/execution.hpp` -->
 ```cpp
 #include <stdexec/execution.hpp>
 #include <exec/static_thread_pool.hpp>
@@ -104,6 +105,7 @@ The thread IDs in the output will change at each `continues_on` call. That's the
 
 Here's a more realistic example - an image processing pipeline that deliberately assigns each phase to the right kind of resource. Reading and writing are I/O-bound, so they go on the I/O pool. The pixel transformation is CPU-bound, so it goes on the compute pool:
 
+<!-- compile: needs third-party library header `stdexec/execution.hpp` -->
 ```cpp
 #include <stdexec/execution.hpp>
 #include <exec/static_thread_pool.hpp>

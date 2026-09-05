@@ -1,7 +1,6 @@
 # Enumerate struct members at compile time using reflection
 
-**Category:** Reflection (C++26)  
-**Item:** #534  
+**Category:** Reflection Cpp26  
 **Standard:** C++26  
 **Reference:** <https://en.cppreference.com/w/cpp/meta>  
 
@@ -32,6 +31,7 @@ The distinction between `nonstatic_data_members_of` and `members_of` matters: if
 
 Here you can see the two main things you do with a reflected member: read its name with `identifier_of`, and access its value on a concrete object with `obj.[:m:]`. The splice syntax `p.[:m:]` is the key - it turns a compile-time `meta::info` handle into an actual member access at that point in the code.
 
+<!-- compile: needs `meta` (not in the CI standard library yet) -->
 ```cpp
 // C++26 with P2996 reflection
 #include <meta>
@@ -77,6 +77,7 @@ Notice that you get the type names printed too via `display_string_of(type_of(m)
 
 This one is genuinely clever and worth reading carefully. The goal is to pack all fields of any struct into a `std::tuple` without the caller listing them. The trick is using a lambda with an index sequence to build `make_tuple(obj.[:members[Is]:]...)` as a pack expansion - one tuple element per member index.
 
+<!-- compile: needs `meta` (not in the CI standard library yet) -->
 ```cpp
 #include <meta>
 #include <tuple>
@@ -123,6 +124,7 @@ The reason this pattern uses index sequences rather than `template for` directly
 
 One of the simpler but most immediately useful things you can do: get the number of fields in a struct as a `constexpr` value. This lets you write constraints and `static_assert`s that depend on struct shape - for example, a template that only accepts structs with eight fields or fewer.
 
+<!-- compile: needs `meta` (not in the CI standard library yet) -->
 ```cpp
 #include <meta>
 #include <iostream>

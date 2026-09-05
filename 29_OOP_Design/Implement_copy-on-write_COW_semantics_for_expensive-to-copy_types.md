@@ -1,6 +1,7 @@
 # Implement copy-on-write (COW) semantics for expensive-to-copy types
 
-**Category:** OOP Design
+**Category:** OOP Design  
+**Standard:** Not version-specific  
 
 ---
 

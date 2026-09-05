@@ -1,7 +1,7 @@
 # Use sendfile and splice for kernel-space zero-copy data transfer
 
-**Category:** Networking & I/O  
-**Item:** #646  
+**Category:** Networking and IO  
+**Standard:** Not version-specific  
 **Reference:** <https://man7.org/linux/man-pages/man2/sendfile.2.html>  
 
 ---
@@ -44,6 +44,7 @@ Here is a summary of all the zero-copy transfer tools and their constraints - th
 
 This demo sets up a minimal TCP server, waits for one client to connect, and then sends a file to it via `sendfile()`. The key line is the `sendfile()` call - it takes the destination socket, the source file, a byte offset, and a count, and does the whole transfer in the kernel. Notice there is no buffer declared anywhere:
 
+<!-- compile: needs POSIX header `sys/sendfile.h` -->
 ```cpp
 // Linux only
 #include <iostream>
@@ -105,6 +106,7 @@ The `offset` parameter is updated by the kernel after the call, so if `sendfile(
 
 `splice()` is more flexible than `sendfile()` but has an unusual constraint: at least one of the two endpoints must be a pipe. The way you use it to copy a file to another file is therefore a two-step process: splice from the source file into a pipe, then splice from the pipe into the destination. The data never enters user space:
 
+<!-- compile: needs POSIX header `unistd.h` -->
 ```cpp
 // Linux only
 #define _GNU_SOURCE

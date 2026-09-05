@@ -1,7 +1,6 @@
 # Apply struct packing and padding to minimize memory footprint
 
-**Category:** Performance & CPU Architecture  
-**Item:** #630  
+**Category:** Performance and CPU Architecture  
 **Standard:** C++23  
 **Reference:** <https://en.cppreference.com/w/cpp/language/object#Alignment>  
 

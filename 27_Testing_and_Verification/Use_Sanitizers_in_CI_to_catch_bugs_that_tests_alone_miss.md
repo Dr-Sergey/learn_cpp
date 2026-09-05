@@ -1,7 +1,7 @@
 # Use Sanitizers in CI to catch bugs that tests alone miss
 
-**Category:** Testing & Verification  
-**Item:** #690  
+**Category:** Testing and Verification  
+**Standard:** Not version-specific  
 **Reference:** <https://clang.llvm.org/docs/AddressSanitizer.html>  
 
 ---

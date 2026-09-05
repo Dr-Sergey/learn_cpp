@@ -1,6 +1,7 @@
 # Use multiple inheritance safely with virtual inheritance and interfaces
 
-**Category:** OOP Design
+**Category:** OOP Design  
+**Standard:** Not version-specific  
 
 ---
 

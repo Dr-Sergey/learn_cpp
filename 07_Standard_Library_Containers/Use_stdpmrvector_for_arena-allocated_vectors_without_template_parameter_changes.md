@@ -1,7 +1,6 @@
 # Use std::pmr::vector for arena-allocated vectors without template parameter changes
 
-**Category:** Standard Library - Containers  
-**Item:** #288  
+**Category:** Standard Library Containers  
 **Standard:** C++17  
 **Reference:** <https://en.cppreference.com/w/cpp/memory/polymorphic_allocator>  
 

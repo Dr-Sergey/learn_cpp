@@ -1,7 +1,6 @@
 # Know how CMake 3.28+ supports C++20 modules
 
-**Category:** Modules & Build (C++20)  
-**Item:** #517  
+**Category:** Modules and Build Cpp20  
 **Standard:** C++20  
 **Reference:** <https://cmake.org/cmake/help/latest/manual/cmake-cxxmodules.7.html>  
 
@@ -119,6 +118,7 @@ The consumer just imports the module by name and uses everything that was export
 
 **src/main.cpp:**
 
+<!-- compile: fragment: one translation unit of a multi-file module example -->
 ```cpp
 import math;
 #include <iostream>

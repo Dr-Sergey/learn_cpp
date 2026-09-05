@@ -1,7 +1,6 @@
 # Implement the Specification pattern for composable business rules
 
-**Category:** Design Patterns - Modern Takes  
-**Item:** #674  
+**Category:** Design Patterns Modern Takes  
 **Standard:** C++20  
 **Reference:** <https://en.wikipedia.org/wiki/Specification_pattern>  
 

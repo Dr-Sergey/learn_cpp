@@ -1,7 +1,7 @@
 # Understand Substitution Failure vs Hard Error in SFINAE
 
-**Category:** Templates & Generic Programming  
-**Item:** #456  
+**Category:** Templates and Generic Programming  
+**Standard:** Not version-specific  
 **Reference:** <https://en.cppreference.com/w/cpp/language/sfinae>  
 
 ---

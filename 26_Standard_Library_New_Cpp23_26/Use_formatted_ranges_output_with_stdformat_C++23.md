@@ -1,6 +1,6 @@
 # Use Formatted Ranges Output with `std::format` (C++23)
 
-**Category:** Standard Library — New in C++23/26  
+**Category:** Standard Library New Cpp23 26  
 **Standard:** C++23  
 **Reference:** [cppreference — range formatting](https://en.cppreference.com/w/cpp/utility/format/ranges)  
 
@@ -51,6 +51,7 @@ The most common use case is just printing a container for debugging or logging. 
 #include <set>
 #include <string>
 #include <tuple>
+#include <utility>
 
 int main() {
     // Vector formatting
@@ -151,6 +152,8 @@ When you have a custom type, you can specialize `std::formatter` for it. Once yo
 #include <vector>
 #include <string>
 #include <ranges>
+#include <cstddef>
+#include <string_view>
 
 // Custom type that is range-like
 template <typename T>

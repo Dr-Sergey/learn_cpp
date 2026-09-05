@@ -1,7 +1,7 @@
 # Use trompeloeil for header-only mocking with Catch2 or doctest
 
-**Category:** Testing & Verification  
-**Item:** #585  
+**Category:** Testing and Verification  
+**Standard:** Not version-specific  
 **Reference:** <https://github.com/rollbear/trompeloeil>  
 
 ---

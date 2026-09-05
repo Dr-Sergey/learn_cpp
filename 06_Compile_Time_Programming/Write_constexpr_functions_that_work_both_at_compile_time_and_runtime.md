@@ -1,7 +1,6 @@
 # Write `constexpr` Functions That Work Both at Compile Time and Runtime
 
-**Category:** Compile-Time Programming  
-**Item:** #53  
+**Category:** Compile Time Programming  
 **Standard:** C++11 (expanded in C++14, C++17, C++20)  
 **Reference:** <https://en.cppreference.com/w/cpp/language/constexpr>  
 
@@ -294,6 +293,8 @@ C++20 made the entire `<algorithm>` header `constexpr`. This means you can call 
 #include <algorithm>
 #include <numeric>
 #include <functional>
+#include <cstddef>
+#include <utility>
 
 // === C++20: std::sort is constexpr! ===
 

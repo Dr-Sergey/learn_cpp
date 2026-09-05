@@ -1,7 +1,7 @@
 # Use perf annotate and flamegraphs to understand CPU time distribution
 
-**Category:** Performance & CPU Architecture  
-**Item:** #548  
+**Category:** Performance and CPU Architecture  
+**Standard:** Not version-specific  
 **Reference:** <https://www.brendangregg.com/flamegraphs.html>  
 
 ---

@@ -1,7 +1,6 @@
 # Use std::flat_map and flat_set in depth: construction, merge, and extract
 
-**Category:** Standard Library — New in C++23/26  
-**Item:** #579  
+**Category:** Standard Library New Cpp23 26  
 **Standard:** C++23  
 **Reference:** <https://en.cppreference.com/w/cpp/container/flat_map>  
 
@@ -43,6 +42,7 @@ The four construction methods below range from the fastest (you guarantee sorted
 
 **Answer:**
 
+<!-- compile: needs `flat_map` (not in the CI standard library yet) -->
 ```cpp
 #include <flat_map>
 #include <vector>
@@ -96,6 +96,7 @@ Merging is where `flat_map` reveals its most important gotcha: every insert or e
 
 **Answer:**
 
+<!-- compile: needs `flat_map` (not in the CI standard library yet) -->
 ```cpp
 #include <flat_map>
 #include <iostream>
@@ -156,6 +157,7 @@ Here is one of the most powerful things `flat_map` lets you do that `std::map` c
 
 **Answer:**
 
+<!-- compile: needs `flat_map` (not in the CI standard library yet) -->
 ```cpp
 #include <flat_map>
 #include <vector>

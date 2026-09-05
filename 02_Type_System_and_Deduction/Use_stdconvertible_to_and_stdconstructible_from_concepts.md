@@ -1,7 +1,6 @@
 # Use `std::convertible_to` and `std::constructible_from` Concepts
 
-**Category:** Type System & Deduction  
-**Item:** #436  
+**Category:** Type System and Deduction  
 **Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/concepts/convertible_to>  
 

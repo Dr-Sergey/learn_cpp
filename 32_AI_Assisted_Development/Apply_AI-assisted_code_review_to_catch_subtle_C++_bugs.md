@@ -1,6 +1,7 @@
 # Apply AI-assisted code review to catch subtle C++ bugs
 
-**Category:** AI-Assisted C++ Development
+**Category:** AI Assisted Development  
+**Standard:** Not version-specific  
 
 ---
 

@@ -1,7 +1,7 @@
 # Use `std::underlying_type` to Work with Enum Underlying Types
 
-**Category:** Type System & Deduction  
-**Item:** #275  
+**Category:** Type System and Deduction  
+**Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/types/underlying_type>  
 
 ---

@@ -1,7 +1,6 @@
 # Know how to implement a custom iterator satisfying std::random_access_iterator
 
-**Category:** Standard Library - Containers  
-**Item:** #465  
+**Category:** Standard Library Containers  
 **Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/iterator/random_access_iterator>  
 
@@ -276,6 +275,9 @@ The best workflow when writing an iterator is to put your `static_assert` checks
 #include <concepts>
 #include <type_traits>
 #include <ranges>
+#include <algorithm>
+#include <cstddef>
+#include <vector>
 
 // Minimal random access iterator for an int array
 struct MyIterator {

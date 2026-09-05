@@ -1,7 +1,6 @@
 # Enumerate enum values and names at compile time using reflection
 
-**Category:** Reflection (C++26)  
-**Item:** #536  
+**Category:** Reflection Cpp26  
 **Standard:** C++26  
 **Reference:** <https://en.cppreference.com/w/cpp/meta>  
 
@@ -44,6 +43,7 @@ Reflection flow:
 
 The goal here is simple: print every enumerator's name and integer value at runtime by doing all the introspection at compile time. Notice the `template for` loop - this is the C++26 expansion statement that lets you iterate a compile-time sequence, unlike a regular `for` which requires a runtime range.
 
+<!-- compile: needs `meta` (not in the CI standard library yet) -->
 ```cpp
 // C++26 with P2996 reflection
 #include <meta>
@@ -80,6 +80,7 @@ Each iteration gives you a compile-time `meta::info` handle for one enumerator. 
 
 Before reflection, converting an enum to a string meant either a giant hand-written switch or a brittle macro expansion. With reflection you write the function once and it works for every enum type automatically - the compiler walks the enumerators for you.
 
+<!-- compile: needs `meta` (not in the CI standard library yet) -->
 ```cpp
 #include <meta>
 #include <string_view>
@@ -122,6 +123,7 @@ The `static_assert` lines at the bottom are not just a test - they prove this al
 
 Going the other direction (string to enum) is equally clean. The first approach below does a linear scan - fine for small enums. The second builds a sorted array at compile time so you can binary-search it at runtime, which matters when you're parsing many strings in a loop.
 
+<!-- compile: needs `meta` (not in the CI standard library yet) -->
 ```cpp
 #include <meta>
 #include <string_view>

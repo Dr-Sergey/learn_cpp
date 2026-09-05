@@ -1,7 +1,6 @@
 # Use if-init and switch-init statements (C++17)
 
 **Category:** Core Language Fundamentals  
-**Item:** #8  
 **Standard:** C++17  
 **Reference:** <https://github.com/AnthonyCalandra/modern-cpp-features/blob/master/CPP17.md#selection-statements-with-initializer>  
 

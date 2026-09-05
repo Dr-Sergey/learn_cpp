@@ -1,6 +1,7 @@
 # Master Google Mock - matchers, actions, and expectations
 
-**Category:** Testing in Practice
+**Category:** Testing in Practice  
+**Standard:** Not version-specific  
 
 ---
 

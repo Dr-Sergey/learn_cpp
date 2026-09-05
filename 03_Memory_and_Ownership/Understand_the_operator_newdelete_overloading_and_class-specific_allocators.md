@@ -1,7 +1,6 @@
 # Understand the operator new/delete Overloading and Class-Specific Allocators
 
-**Category:** Memory & Ownership  
-**Item:** #323  
+**Category:** Memory and Ownership  
 **Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/memory/new/operator_new>  
 

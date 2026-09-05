@@ -1,7 +1,7 @@
 # Understand [[fallthrough]] in switch statements and why it matters
 
 **Category:** Core Language Fundamentals  
-**Item:** #15  
+**Standard:** C++17  
 **Reference:** <https://en.cppreference.com/w/cpp/language/attributes/fallthrough>  
 
 ---

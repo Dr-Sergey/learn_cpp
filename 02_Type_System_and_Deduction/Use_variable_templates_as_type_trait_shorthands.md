@@ -1,7 +1,6 @@
 # Use Variable Templates as Type Trait Shorthands
 
-**Category:** Type System & Deduction  
-**Item:** #322  
+**Category:** Type System and Deduction  
 **Standard:** C++14  
 **Reference:** <https://en.cppreference.com/w/cpp/language/variable_template>  
 

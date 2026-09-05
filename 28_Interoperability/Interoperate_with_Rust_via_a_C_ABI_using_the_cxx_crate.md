@@ -1,7 +1,7 @@
 # Interoperate with Rust via a C ABI using the cxx crate (Ownership and Error Handling)
 
 **Category:** Interoperability  
-**Item:** #594  
+**Standard:** Not version-specific  
 **Reference:** <https://cxx.rs/>  
 
 ---

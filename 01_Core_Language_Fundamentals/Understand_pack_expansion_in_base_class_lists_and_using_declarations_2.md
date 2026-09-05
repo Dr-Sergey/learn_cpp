@@ -1,7 +1,7 @@
 # Understand pack expansion in base class lists and using declarations - Part 2
 
 **Category:** Core Language Fundamentals  
-**Item:** #780  
+**Standard:** Not version-specific  
 **Reference:** <https://en.cppreference.com/w/cpp/language/parameter_pack>  
 
 ---

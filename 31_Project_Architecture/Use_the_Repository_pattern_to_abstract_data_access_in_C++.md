@@ -1,6 +1,7 @@
 # Use the Repository pattern to abstract data access in C++
 
-**Category:** Project Architecture
+**Category:** Project Architecture  
+**Standard:** Not version-specific  
 
 ---
 

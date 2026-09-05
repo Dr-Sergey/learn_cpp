@@ -1,7 +1,7 @@
 # Write Portable SIMD Code with Highway and std::simd
 
-**Category:** Cross-Platform Development  
-**Standard:** C++23 (Parallelism TS v2) / C++26  
+**Category:** Cross Platform Development  
+**Standard:** C++23, C++26 (Parallelism TS v2)  
 **Reference:** <https://en.cppreference.com/w/cpp/experimental/simd>  
 
 ---
@@ -47,6 +47,7 @@ The `std::simd` proposal (`std::simd<T, Abi>`) follows a different philosophy: t
 
 The unusual-looking include structure at the top is intentional: Highway's multi-target compilation model requires the file to include itself multiple times, once per SIMD target. `HWY_BEFORE_NAMESPACE` and `HWY_AFTER_NAMESPACE` create a distinct namespace for each compiled version so they can all coexist in the same binary.
 
+<!-- compile: needs third-party library header `hwy/foreach_target.h` -->
 ```cpp
 // Requires: google/highway library (CMake: FetchContent or find_package)
 // Build with: -march=native (or Highway handles multi-target compilation)
@@ -129,6 +130,7 @@ The `HWY_RESTRICT` annotation tells the compiler that the pointers do not alias,
 
 `std::experimental::simd` takes a different approach from Highway: instead of a runtime dispatch mechanism, you use `native_simd<T>` which selects the best fixed width for the current compilation target. The `where()` function for predicated operations is one of its more elegant features - it expresses "set these lanes, leave others unchanged" without any explicit branch.
 
+<!-- compile: needs third-party library header `experimental/simd` -->
 ```cpp
 // Requires: GCC with libstdc++ (has <experimental/simd> support)
 // Compile: g++ -std=c++20 -O2 -march=native

@@ -1,6 +1,7 @@
 # Generate boilerplate code - serialization, operators, constructors with AI
 
-**Category:** AI-Assisted C++ Development
+**Category:** AI Assisted Development  
+**Standard:** Not version-specific  
 
 ---
 

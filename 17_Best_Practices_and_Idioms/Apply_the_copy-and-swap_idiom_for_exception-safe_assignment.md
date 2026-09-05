@@ -1,7 +1,7 @@
 # Apply the copy-and-swap idiom for exception-safe assignment
 
-**Category:** Best Practices & Idioms  
-**Item:** #130  
+**Category:** Best Practices and Idioms  
+**Standard:** Not version-specific  
 **Reference:** <https://en.wikibooks.org/wiki/More_C%2B%2B_Idioms/Copy-and-swap>  
 
 ---

@@ -1,7 +1,7 @@
 # Use std::bit_cast as the Safe Alternative to reinterpret_cast
 
 **Category:** Undefined Behavior Deep Dive  
-**Standard:** C++20 / C++23  
+**Standard:** C++20, C++23  
 **Reference:** [cppreference - std::bit_cast](https://en.cppreference.com/w/cpp/numeric/bit_cast)  
 
 ---

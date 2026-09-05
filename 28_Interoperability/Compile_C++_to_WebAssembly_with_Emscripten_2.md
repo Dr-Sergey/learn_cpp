@@ -1,7 +1,6 @@
 # Compile C++ to WebAssembly with Emscripten (Part 2: Bindings and Memory)
 
 **Category:** Interoperability  
-**Item:** #694  
 **Standard:** C++11  
 **Reference:** <https://emscripten.org/docs/>  
 

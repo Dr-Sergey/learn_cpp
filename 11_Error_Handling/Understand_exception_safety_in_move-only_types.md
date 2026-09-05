@@ -1,7 +1,7 @@
 # Understand Exception Safety in Move-Only Types
 
 **Category:** Error Handling  
-**Standard:** C++11 / C++14 / C++17  
+**Standard:** C++11, C++14, C++17  
 **Reference:** [cppreference - Move constructors](https://en.cppreference.com/w/cpp/language/move_constructor), [cppreference - std::move_if_noexcept](https://en.cppreference.com/w/cpp/utility/move_if_noexcept)  
 
 ---

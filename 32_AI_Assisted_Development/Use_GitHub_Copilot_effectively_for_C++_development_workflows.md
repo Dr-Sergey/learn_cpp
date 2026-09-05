@@ -1,6 +1,7 @@
 # Use GitHub Copilot effectively for C++ development workflows
 
-**Category:** AI-Assisted C++ Development
+**Category:** AI Assisted Development  
+**Standard:** Not version-specific  
 
 ---
 

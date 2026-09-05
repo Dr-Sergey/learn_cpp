@@ -1,8 +1,7 @@
 # Generate Dispatch Tables at Compile Time Using Parameter Pack Expansion
 
-**Category:** Compile-Time Programming  
-**Item:** #459  
-**Standard:** C++11 (parameter packs), C++17 (constexpr enhancements)  
+**Category:** Compile Time Programming  
+**Standard:** C++11, C++17 (parameter packs)  
 **Reference:** <https://en.cppreference.com/w/cpp/language/constexpr>  
 
 ---

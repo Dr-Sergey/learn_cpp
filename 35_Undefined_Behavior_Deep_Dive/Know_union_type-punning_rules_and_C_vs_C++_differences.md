@@ -1,7 +1,7 @@
 # Know Union Type-Punning Rules and C vs C++ Differences
 
 **Category:** Undefined Behavior Deep Dive  
-**Standard:** C++17 / C++20 / C++23 and C99 / C11 / C23  
+**Standard:** C++17, C++20, C++23, C++11  
 **Reference:** [cppreference - Union declaration](https://en.cppreference.com/w/cpp/language/union)  
 
 ---

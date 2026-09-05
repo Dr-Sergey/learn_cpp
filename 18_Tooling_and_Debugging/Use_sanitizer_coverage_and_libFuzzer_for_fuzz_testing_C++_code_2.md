@@ -1,7 +1,7 @@
-# Use sanitizer coverage and libFuzzer for fuzz testing C++ code
+# Fuzz C++ code with structured inputs and multiple sanitizers
 
-**Category:** Tooling & Debugging  
-**Item:** #424  
+**Category:** Tooling and Debugging  
+**Standard:** Not version-specific  
 **Reference:** <https://llvm.org/docs/LibFuzzer.html>  
 
 ---

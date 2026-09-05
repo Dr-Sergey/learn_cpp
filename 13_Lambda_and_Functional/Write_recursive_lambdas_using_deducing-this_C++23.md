@@ -1,7 +1,6 @@
 # Write recursive lambdas using deducing-this (C++23)
 
-**Category:** Lambda & Functional  
-**Item:** #168  
+**Category:** Lambda and Functional  
 **Standard:** C++23  
 **Reference:** <https://en.cppreference.com/w/cpp/language/lambda>  
 

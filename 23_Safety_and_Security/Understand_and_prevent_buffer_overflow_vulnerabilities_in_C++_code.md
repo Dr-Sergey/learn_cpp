@@ -1,7 +1,6 @@
 # Understand and prevent buffer overflow vulnerabilities in C++ code
 
-**Category:** Safety & Security  
-**Item:** #651  
+**Category:** Safety and Security  
 **Standard:** C++23  
 **Reference:** <https://clang.llvm.org/docs/AddressSanitizer.html>  
 

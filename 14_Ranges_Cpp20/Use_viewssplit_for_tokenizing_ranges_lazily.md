@@ -1,7 +1,6 @@
 # Use views::split for tokenizing ranges lazily
 
-**Category:** Ranges (C++20)  
-**Item:** #499  
+**Category:** Ranges Cpp20  
 **Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/ranges/split_view>  
 

@@ -1,7 +1,6 @@
 # Understand Concept Subsumption and Overload Ordering
 
-**Category:** Templates & Generic Programming  
-**Item:** #336  
+**Category:** Templates and Generic Programming  
 **Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/language/constraints#Partial_ordering_of_constraints>  
 
@@ -131,6 +130,8 @@ This is the classic pitfall with concepts. If you write two independent concepts
 ```cpp
 #include <iostream>
 #include <concepts>
+#include <cstddef>
+#include <vector>
 
 // Two concepts defined INDEPENDENTLY - no shared atomic constraints
 template <typename T>

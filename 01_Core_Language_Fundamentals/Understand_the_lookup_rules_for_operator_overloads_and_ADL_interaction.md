@@ -1,7 +1,6 @@
 # Understand the lookup rules for operator overloads and ADL interaction
 
 **Category:** Core Language Fundamentals  
-**Item:** #783  
 **Standard:** C++23  
 **Reference:** <https://en.cppreference.com/w/cpp/language/adl>  
 

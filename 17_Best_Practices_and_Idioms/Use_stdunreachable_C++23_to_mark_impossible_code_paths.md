@@ -1,7 +1,6 @@
 # Use std::unreachable() (C++23) to mark impossible code paths
 
-**Category:** Best Practices & Idioms  
-**Item:** #170  
+**Category:** Best Practices and Idioms  
 **Standard:** C++23  
 **Reference:** <https://en.cppreference.com/w/cpp/utility/unreachable>  
 

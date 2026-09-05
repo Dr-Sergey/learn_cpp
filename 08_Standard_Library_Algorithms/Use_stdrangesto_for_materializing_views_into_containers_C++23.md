@@ -1,7 +1,6 @@
 # Use std::ranges::to for materializing views into containers (C++23)
 
-**Category:** Standard Library — Algorithms  
-**Item:** #162  
+**Category:** Standard Library Algorithms  
 **Standard:** C++23  
 **Reference:** <https://en.cppreference.com/w/cpp/ranges/to>  
 

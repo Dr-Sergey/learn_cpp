@@ -1,7 +1,6 @@
 # Know When to Use Intrusive Reference Counting vs `std::shared_ptr`
 
-**Category:** Memory & Ownership  
-**Item:** #443  
+**Category:** Memory and Ownership  
 **Standard:** C++11  
 **Reference:** <https://www.boost.org/doc/libs/release/libs/smart_ptr/doc/html/smart_ptr.html#intrusive_ptr>  
 
@@ -298,6 +297,7 @@ The C API interop case is the most compelling. Here is why `shared_ptr` fails in
 ```cpp
 #include <iostream>
 #include <memory>
+#include <atomic>
 
 // Example: C API interop (the killer use case for intrusive_ptr)
 // With shared_ptr, passing a raw pointer to C loses the control block

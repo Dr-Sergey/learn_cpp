@@ -1,7 +1,6 @@
 # Write a constexpr string_view Command Dispatcher Using Template Metaprogramming
 
-**Category:** Templates & Generic Programming  
-**Item:** #340  
+**Category:** Templates and Generic Programming  
 **Standard:** C++17  
 **Reference:** <https://en.cppreference.com/w/cpp/language/constexpr>  
 

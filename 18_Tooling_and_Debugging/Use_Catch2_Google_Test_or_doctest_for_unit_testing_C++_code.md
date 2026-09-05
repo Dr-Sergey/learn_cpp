@@ -1,7 +1,7 @@
 # Use Catch2, Google Test, or doctest for unit testing C++ code
 
-**Category:** Tooling & Debugging  
-**Item:** #210  
+**Category:** Tooling and Debugging  
+**Standard:** Not version-specific  
 **Reference:** <https://github.com/catchorg/Catch2>  
 
 ---

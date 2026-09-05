@@ -1,6 +1,7 @@
 # Use AI assistants for learning new C++ features with interactive examples
 
-**Category:** AI-Assisted C++ Development
+**Category:** AI Assisted Development  
+**Standard:** C++23  
 
 ---
 

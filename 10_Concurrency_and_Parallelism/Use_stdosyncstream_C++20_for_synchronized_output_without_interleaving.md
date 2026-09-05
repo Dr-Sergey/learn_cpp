@@ -1,6 +1,6 @@
 # Use `std::osyncstream` (C++20) for Synchronized Output Without Interleaving
 
-**Category:** Concurrency & Parallelism  
+**Category:** Concurrency and Parallelism  
 **Standard:** C++20 (Header `<syncstream>`)  
 **Reference:** [cppreference - std::basic_osyncstream](https://en.cppreference.com/w/cpp/io/basic_osyncstream)  
 

@@ -1,7 +1,6 @@
 # Understand the C++26 static reflection model with the ^ splice operator
 
-**Category:** Reflection (C++26)  
-**Item:** #533  
+**Category:** Reflection Cpp26  
 **Standard:** C++26  
 **Reference:** <https://en.cppreference.com/w/cpp/meta>  
 
@@ -37,6 +36,7 @@ Here is a reference for the different ways you can use both operators:
 
 Here you can see `^` applied to a variety of different kinds of entities all at once: built-in types, user-defined types, enums, namespaces, and variables. The result in every case is a `meta::info` value that you can compare, pass to query functions, or store in a `constexpr` variable.
 
+<!-- compile: needs `meta` (not in the CI standard library yet) -->
 ```cpp
 // C++26 with P2996 reflection
 #include <meta>
@@ -75,6 +75,7 @@ The identity comparison `static_assert(int_r == ^int)` illustrates that two refl
 
 One of the most practical immediate benefits of reflection is getting a reliable, portable, human-readable name for a type - no more `typeid(T).name()` returning mangled garbage. Here, `type_name<T>()` returns exactly the identifier as written in the source.
 
+<!-- compile: needs `meta` (not in the CI standard library yet) -->
 ```cpp
 #include <meta>
 #include <iostream>
@@ -118,6 +119,7 @@ Use `identifier_of` when you want the short, source-level name. Use `display_str
 
 This is the other half of the story. `[:r:]` takes a `meta::info` value and injects the entity it represents directly into whatever syntactic position you put it. You can use it as a type (in a `using` declaration or a template argument), as a member access on an object, or to write through a reflected member.
 
+<!-- compile: needs `meta` (not in the CI standard library yet) -->
 ```cpp
 #include <meta>
 #include <iostream>

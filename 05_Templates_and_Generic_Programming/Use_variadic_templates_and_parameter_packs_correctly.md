@@ -1,8 +1,7 @@
 # Use Variadic Templates and Parameter Packs Correctly
 
-**Category:** Templates & Generic Programming  
-**Item:** #45  
-**Standard:** C++11 (variadic templates), C++17 (fold expressions)  
+**Category:** Templates and Generic Programming  
+**Standard:** C++11, C++17 (variadic templates)  
 **Reference:** <https://en.cppreference.com/w/cpp/language/variadic_template>  
 
 ---

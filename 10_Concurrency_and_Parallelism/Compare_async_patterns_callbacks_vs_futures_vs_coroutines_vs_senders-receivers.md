@@ -1,7 +1,7 @@
 # Compare async patterns: callbacks vs futures vs coroutines vs senders/receivers
 
 **Category:** Concurrency and Parallelism  
-**Standard:** C++20/26  
+**Standard:** C++20, C++26  
 **Reference:** <https://wg21.link/P2300>  
 
 ---

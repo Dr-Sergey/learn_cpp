@@ -1,8 +1,7 @@
 # Understand C++20 modules and how they replace header files
 
-**Category:** Modules & Build (C++20)  
-**Item:** #121  
-**Standard:** C++20 / C++23  
+**Category:** Modules and Build Cpp20  
+**Standard:** C++20, C++23  
 **Reference:** <https://en.cppreference.com/w/cpp/language/modules>  
 
 ---
@@ -103,6 +102,7 @@ int greet_length(const char* name) {
 
 **Consumer (main.cpp):**
 
+<!-- compile: fragment: one translation unit of a multi-file module example -->
 ```cpp
 import my.module;     // import the module
 #include <iostream>   // still use #include for non-module headers
@@ -165,6 +165,7 @@ export inline int compute() { return MAX; }  // uses MAX internally
 export inline int error_code() { return ERROR; }
 ```
 
+<!-- compile: fragment: one translation unit of a multi-file module example -->
 ```cpp
 // user.cpp
 import safe;

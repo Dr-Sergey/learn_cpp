@@ -1,8 +1,7 @@
 # Understand SFINAE and Know When to Replace It with Concepts
 
-**Category:** Templates & Generic Programming  
-**Item:** #48  
-**Standard:** C++11 (SFINAE), C++20 (Concepts)  
+**Category:** Templates and Generic Programming  
+**Standard:** C++11, C++20 (SFINAE)  
 **Reference:** <https://en.cppreference.com/w/cpp/language/sfinae>  
 
 ---

@@ -1,6 +1,6 @@
 # Use `std::function_ref` (C++26) as a Lightweight Non-Owning Callable Reference
 
-**Category:** Standard Library — New in C++23/26  
+**Category:** Standard Library New Cpp23 26  
 **Standard:** C++26  
 **Reference:** [cppreference - std::function_ref](https://en.cppreference.com/w/cpp/utility/functional/function_ref)  
 
@@ -43,6 +43,7 @@ Caller                          Callee
 
 There are three common ways to accept a callback in C++, and each fits a different situation. The example below shows all three side by side so you can compare them directly. The comments in the decision table in the code explain when to reach for each one.
 
+<!-- compile: needs C++26 library support for `std::function_ref` (not in the CI standard library yet) -->
 ```cpp
 #include <functional>
 #include <vector>
@@ -104,6 +105,7 @@ If you are writing a library function that must live in a `.cpp` file (for compi
 
 One of the underappreciated strengths of `function_ref` over plain `std::function` is that the qualifiers in the type signature actually mean something. A `function_ref<void(int) const>` will refuse to bind a mutable lambda at compile time. A `function_ref<void(int) const noexcept>` will additionally refuse to bind a lambda that might throw. The compiler enforces your API contract for you.
 
+<!-- compile: needs C++26 library support for `std::function_ref` (not in the CI standard library yet) -->
 ```cpp
 #include <functional>
 #include <iostream>
@@ -164,11 +166,14 @@ int main() {
 
 The dangling rule is simple but critical: a `function_ref` is only safe for the duration of the call that receives it. The example below shows a bad event system design and a correct one, followed by a micro-benchmark that illustrates the overhead difference.
 
+<!-- compile: needs C++26 library support for `std::copyable_function` (not in the CI standard library yet) -->
 ```cpp
 #include <functional>
 #include <iostream>
 #include <chrono>
 #include <vector>
+#include <cstddef>
+#include <utility>
 
 // DANGER: storing function_ref leads to dangling
 class Bad_EventSystem {

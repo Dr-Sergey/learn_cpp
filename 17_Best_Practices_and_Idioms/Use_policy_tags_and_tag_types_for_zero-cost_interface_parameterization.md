@@ -1,7 +1,7 @@
 # Use policy tags and tag types for zero-cost interface parameterization
 
-**Category:** Best Practices & Idioms  
-**Item:** #296  
+**Category:** Best Practices and Idioms  
+**Standard:** Not version-specific  
 **Reference:** <https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines>  
 
 ---
@@ -36,6 +36,8 @@ Here's how to build your own version of the pattern. Two empty structs - `check_
 #include <iostream>
 #include <stdexcept>
 #include <vector>
+#include <initializer_list>
+#include <string>
 
 // Policy tags (empty structs)
 struct check_bounds_t {};

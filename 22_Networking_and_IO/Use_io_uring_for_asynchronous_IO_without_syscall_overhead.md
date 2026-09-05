@@ -1,7 +1,7 @@
 # Use io_uring for asynchronous I/O without syscall overhead
 
-**Category:** Networking & I/O  
-**Item:** #640  
+**Category:** Networking and IO  
+**Standard:** Not version-specific  
 **Reference:** <https://kernel.dk/io_uring.pdf>  
 
 ---
@@ -48,6 +48,7 @@ The table below compares the four main I/O models you might choose on Linux. The
 
 Here is the minimal end-to-end flow. You initialize the ring, open a file, prepare a submission queue entry (SQE), submit it with a single syscall, and then wait for the completion queue entry (CQE). The `user_data` field is your way of tagging a request so you can identify it when the completion arrives.
 
+<!-- compile: needs POSIX header `liburing.h` -->
 ```cpp
 // Requires: liburing (apt install liburing-dev)
 // Compile: g++ -std=c++20 -luring uring_read.cpp
@@ -107,6 +108,7 @@ int main() {
 
 Once you have submitted operations you can poll the completion queue without making any syscall. `io_uring_peek_cqe` reads from shared memory and returns immediately whether or not a CQE is available. This is the zero-syscall hot path that makes io_uring so attractive for high-throughput workloads.
 
+<!-- compile: needs POSIX header `liburing.h` -->
 ```cpp
 #include <iostream>
 #include <liburing.h>

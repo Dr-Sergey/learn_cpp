@@ -1,6 +1,6 @@
 # Apply Hyrum's Law and understand implicit API contracts
 
-**Category:** API & Library Design  
+**Category:** API and Library Design  
 **Standard:** C++17  
 **Reference:** <https://www.hyrumslaw.com/>  
 

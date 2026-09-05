@@ -1,7 +1,7 @@
 # Use std::midpoint and std::lerp for safe numeric interpolation
 
-**Category:** Standard Library — Utilities  
-**Item:** #476  
+**Category:** Standard Library Utilities  
+**Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/numeric/midpoint>  
 
 ---

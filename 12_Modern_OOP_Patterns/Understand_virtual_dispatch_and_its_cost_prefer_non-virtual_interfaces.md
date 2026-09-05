@@ -1,7 +1,7 @@
 # Understand virtual dispatch and its cost; prefer non-virtual interfaces
 
 **Category:** Modern OOP Patterns  
-**Item:** #101  
+**Standard:** Not version-specific  
 **Reference:** <https://en.cppreference.com/w/cpp/language/virtual>  
 
 ---

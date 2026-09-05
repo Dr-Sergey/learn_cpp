@@ -1,7 +1,7 @@
 # Implement an Entity-Component-System (ECS) architecture
 
-**Category:** Design Patterns - Modern Takes  
-**Item:** #671  
+**Category:** Design Patterns Modern Takes  
+**Standard:** Not version-specific  
 **Reference:** <https://en.wikipedia.org/wiki/Entity_component_system>  
 
 ---

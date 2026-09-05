@@ -1,7 +1,7 @@
 # Use std::ratio for compile-time rational arithmetic
 
-**Category:** Standard Library — Utilities  
-**Item:** #213  
+**Category:** Standard Library Utilities  
+**Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/numeric/ratio>  
 
 ---

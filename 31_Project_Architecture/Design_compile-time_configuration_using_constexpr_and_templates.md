@@ -1,6 +1,7 @@
 # Design compile-time configuration using constexpr and templates
 
-**Category:** Project Architecture
+**Category:** Project Architecture  
+**Standard:** Not version-specific  
 
 ---
 

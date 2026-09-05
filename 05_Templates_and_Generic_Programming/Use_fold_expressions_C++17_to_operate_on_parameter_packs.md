@@ -1,7 +1,6 @@
 # Use Fold Expressions (C++17) to Operate on Parameter Packs
 
-**Category:** Templates & Generic Programming  
-**Item:** #46  
+**Category:** Templates and Generic Programming  
 **Standard:** C++17  
 **Reference:** <https://github.com/AnthonyCalandra/modern-cpp-features/blob/master/CPP17.md#fold-expressions>  
 

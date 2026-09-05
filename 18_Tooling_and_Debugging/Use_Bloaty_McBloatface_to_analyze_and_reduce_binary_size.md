@@ -1,7 +1,7 @@
 # Use Bloaty McBloatface to analyze and reduce binary size
 
-**Category:** Tooling & Debugging  
-**Item:** #515  
+**Category:** Tooling and Debugging  
+**Standard:** Not version-specific  
 **Reference:** <https://github.com/google/bloaty>  
 
 ---

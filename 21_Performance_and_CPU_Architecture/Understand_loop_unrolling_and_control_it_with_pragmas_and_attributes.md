@@ -1,7 +1,7 @@
 # Understand loop unrolling and control it with pragmas and attributes
 
-**Category:** Performance & CPU Architecture  
-**Item:** #547  
+**Category:** Performance and CPU Architecture  
+**Standard:** Not version-specific  
 **Reference:** <https://llvm.org/docs/LoopTerminology.html>  
 
 ---

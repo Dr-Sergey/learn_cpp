@@ -1,7 +1,6 @@
 # Use make_unique and make_shared Instead of Raw new
 
-**Category:** Memory & Ownership  
-**Item:** #28  
+**Category:** Memory and Ownership  
 **Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/memory/unique_ptr/make_unique>  
 

@@ -1,8 +1,7 @@
 # Use `std::array` with `constexpr` to Generate Lookup Tables at Compile Time
 
-**Category:** Compile-Time Programming  
-**Item:** #343  
-**Standard:** C++11 (`std::array`), C++14/17 (`constexpr` enhancements)  
+**Category:** Compile Time Programming  
+**Standard:** C++11, C++14, C++17 (`std::array`)  
 **Reference:** <https://en.cppreference.com/w/cpp/container/array>  
 
 ---

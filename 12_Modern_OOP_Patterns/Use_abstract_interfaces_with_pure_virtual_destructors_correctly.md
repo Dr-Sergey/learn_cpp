@@ -1,7 +1,7 @@
 # Use abstract interfaces with pure virtual destructors correctly
 
 **Category:** Modern OOP Patterns  
-**Item:** #102  
+**Standard:** Not version-specific  
 **Reference:** <https://en.cppreference.com/w/cpp/language/destructor>  
 
 ---

@@ -1,7 +1,7 @@
 # Use ctypes / cffi from Python to call C++ shared libraries
 
 **Category:** Interoperability  
-**Item:** #778  
+**Standard:** Not version-specific  
 **Reference:** <https://docs.python.org/3/library/ctypes.html>  
 
 ---

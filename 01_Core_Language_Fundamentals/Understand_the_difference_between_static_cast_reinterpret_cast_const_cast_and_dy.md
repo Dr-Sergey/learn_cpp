@@ -1,7 +1,6 @@
 # Understand the difference between static_cast, reinterpret_cast, const_cast, and dynamic_cast
 
 **Category:** Core Language Fundamentals  
-**Item:** #303  
 **Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/language/cast_operator>  
 

@@ -1,7 +1,6 @@
 # Master auto type deduction rules and when they differ from template deduction
 
-**Category:** Type System & Deduction  
-**Item:** #16  
+**Category:** Type System and Deduction  
 **Standard:** C++23  
 **Reference:** <https://github.com/AnthonyCalandra/modern-cpp-features/blob/master/CPP11.md#type-deduction>  
 

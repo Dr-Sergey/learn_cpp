@@ -1,8 +1,7 @@
 # Use transparent comparators for heterogeneous lookup in ordered containers
 
-**Category:** Standard Library — Containers  
-**Item:** #349  
-**Standard:** C++14 (introduced), C++17 (refined)  
+**Category:** Standard Library Containers  
+**Standard:** C++14, C++17 (introduced)  
 **Reference:** <https://en.cppreference.com/w/cpp/utility/functional/less_void>  
 
 ---
@@ -141,6 +140,9 @@ This example uses a global allocation counter to make the benefit concrete and m
 #include <set>
 #include <string>
 #include <cstdlib>
+#include <cstddef>
+#include <functional>
+#include <map>
 
 // === Track heap allocations ===
 static int alloc_count = 0;

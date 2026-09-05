@@ -1,7 +1,7 @@
 # Understand the Itanium ABI name mangling and extern C
 
 **Category:** Core Language Fundamentals  
-**Item:** #433  
+**Standard:** Not version-specific  
 **Reference:** <https://itanium-cxx-abi.github.io/cxx-abi/abi.html>  
 
 ---

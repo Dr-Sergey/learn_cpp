@@ -1,7 +1,7 @@
 # Write Correct Move Constructors and Move Assignment Operators
 
-**Category:** Move Semantics & Value Categories  
-**Item:** #37  
+**Category:** Move Semantics and Value Categories  
+**Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/language/move_constructor>  
 
 ---
@@ -157,6 +157,7 @@ Self-assignment with move (`x = std::move(x)`) can happen in generic code, espec
 #include <iostream>
 #include <utility>
 #include <algorithm>
+#include <numeric>
 
 class Buffer {
     int* data_;

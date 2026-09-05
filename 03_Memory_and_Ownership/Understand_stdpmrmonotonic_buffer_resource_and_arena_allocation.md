@@ -1,7 +1,6 @@
 # Understand std::pmr::monotonic_buffer_resource and Arena Allocation
 
-**Category:** Memory & Ownership  
-**Item:** #35  
+**Category:** Memory and Ownership  
 **Standard:** C++17  
 **Reference:** <https://en.cppreference.com/w/cpp/memory/monotonic_buffer_resource>  
 

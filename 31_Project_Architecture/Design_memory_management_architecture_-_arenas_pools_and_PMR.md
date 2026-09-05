@@ -1,6 +1,7 @@
 # Design memory management architecture - arenas, pools, and PMR
 
-**Category:** Project Architecture
+**Category:** Project Architecture  
+**Standard:** Not version-specific  
 
 ---
 

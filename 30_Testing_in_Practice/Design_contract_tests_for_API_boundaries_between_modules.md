@@ -1,6 +1,7 @@
 # Design contract tests for API boundaries between modules
 
-**Category:** Testing in Practice
+**Category:** Testing in Practice  
+**Standard:** C++26  
 
 ---
 

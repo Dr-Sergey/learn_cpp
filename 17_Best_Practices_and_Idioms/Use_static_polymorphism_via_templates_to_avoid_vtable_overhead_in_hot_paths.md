@@ -1,7 +1,7 @@
 # Use static polymorphism via templates to avoid vtable overhead in hot paths
 
-**Category:** Best Practices & Idioms  
-**Item:** #243  
+**Category:** Best Practices and Idioms  
+**Standard:** Not version-specific  
 **Reference:** <https://en.cppreference.com/w/cpp/language/virtual>  
 
 ---

@@ -1,7 +1,6 @@
 # Use C++ Insights (cppinsights.io) to understand compiler transformations
 
-**Category:** Tooling & Debugging  
-**Item:** #800  
+**Category:** Tooling and Debugging  
 **Standard:** C++20  
 **Reference:** <https://cppinsights.io>  
 

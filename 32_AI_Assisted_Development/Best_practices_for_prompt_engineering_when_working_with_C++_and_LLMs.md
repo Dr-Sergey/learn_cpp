@@ -1,6 +1,7 @@
 # Best practices for prompt engineering when working with C++ and LLMs
 
-**Category:** AI-Assisted C++ Development
+**Category:** AI Assisted Development  
+**Standard:** Not version-specific  
 
 ---
 

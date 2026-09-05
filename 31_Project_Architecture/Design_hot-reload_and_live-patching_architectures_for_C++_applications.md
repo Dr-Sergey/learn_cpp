@@ -1,6 +1,7 @@
 # Design hot-reload and live-patching architectures for C++ applications
 
-**Category:** Project Architecture
+**Category:** Project Architecture  
+**Standard:** Not version-specific  
 
 ---
 

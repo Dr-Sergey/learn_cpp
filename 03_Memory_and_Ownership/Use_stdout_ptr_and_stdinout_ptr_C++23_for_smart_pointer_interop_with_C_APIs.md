@@ -1,7 +1,6 @@
 # Use std::out_ptr and std::inout_ptr (C++23) for Smart Pointer Interop with C APIs
 
-**Category:** Memory & Ownership  
-**Item:** #222  
+**Category:** Memory and Ownership  
 **Standard:** C++23  
 **Reference:** <https://en.cppreference.com/w/cpp/memory/out_ptr_t>  
 

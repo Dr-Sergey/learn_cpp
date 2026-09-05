@@ -1,7 +1,6 @@
 # Understand and prevent race conditions in security-critical code
 
-**Category:** Safety & Security  
-**Item:** #658  
+**Category:** Safety and Security  
 **Standard:** C++11  
 **Reference:** <https://clang.llvm.org/docs/ThreadSanitizer.html>  
 

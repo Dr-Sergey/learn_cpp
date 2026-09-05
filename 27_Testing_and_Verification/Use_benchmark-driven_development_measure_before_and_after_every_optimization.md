@@ -1,7 +1,7 @@
 # Use benchmark-driven development: measure before and after every optimization
 
-**Category:** Testing & Verification  
-**Item:** #686  
+**Category:** Testing and Verification  
+**Standard:** Not version-specific  
 **Reference:** <https://github.com/google/benchmark>  
 
 ---
@@ -170,6 +170,7 @@ The JSON output flag is not cosmetic - it is how you build a paper trail. Save `
 
 When you have four competing implementations and three input sizes, that is twelve benchmark runs. Writing twelve static functions by hand is tedious and repetitive. `RegisterBenchmark` lets you loop over the implementations and sizes programmatically instead.
 
+<!-- compile: needs third-party library header `benchmark/benchmark.h` -->
 ```cpp
 #include <benchmark/benchmark.h>
 #include <vector>

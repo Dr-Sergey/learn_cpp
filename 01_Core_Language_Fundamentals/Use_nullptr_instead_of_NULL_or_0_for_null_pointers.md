@@ -1,7 +1,6 @@
 # Use nullptr instead of NULL or 0 for null pointers
 
 **Category:** Core Language Fundamentals  
-**Item:** #3  
 **Standard:** C++11  
 **Reference:** <https://github.com/AnthonyCalandra/modern-cpp-features/blob/master/CPP11.md#nullptr>  
 
@@ -198,6 +197,7 @@ This pulls the previous ideas together: a template that only makes sense if `T` 
 
 ```cpp
 #include <iostream>
+#include <cstddef>
 
 // Template that expects to receive a pointer:
 template<typename T>

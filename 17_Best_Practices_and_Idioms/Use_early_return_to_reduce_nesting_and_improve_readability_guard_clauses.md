@@ -1,7 +1,7 @@
 # Use early return to reduce nesting and improve readability (guard clauses)
 
-**Category:** Best Practices & Idioms  
-**Item:** #404  
+**Category:** Best Practices and Idioms  
+**Standard:** Not version-specific  
 **Reference:** <https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#Res-nested>  
 
 ---

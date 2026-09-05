@@ -1,6 +1,7 @@
 # Know hidden friends idiom for operators and ADL-safe free functions
 
-**Category:** OOP Design
+**Category:** OOP Design  
+**Standard:** Not version-specific  
 
 ---
 

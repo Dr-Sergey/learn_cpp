@@ -1,7 +1,6 @@
 # Know the rules of structured bindings (C++17)
 
 **Category:** Core Language Fundamentals  
-**Item:** #7  
 **Standard:** C++17  
 **Reference:** <https://github.com/AnthonyCalandra/modern-cpp-features/blob/master/CPP17.md#structured-bindings>  
 
@@ -259,6 +258,7 @@ propagates through to all the individual bindings. Watch how this plays out in p
 #include <iostream>
 #include <string>
 #include <utility>
+#include <map>
 
 int main() {
     std::pair<std::string, int> person{"Alice", 30};

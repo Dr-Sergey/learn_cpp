@@ -1,6 +1,7 @@
 # Structure a monorepo for multiple C++ libraries and applications
 
-**Category:** Project Architecture
+**Category:** Project Architecture  
+**Standard:** Not version-specific  
 
 ---
 

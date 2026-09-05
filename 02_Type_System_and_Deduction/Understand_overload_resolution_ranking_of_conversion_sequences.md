@@ -1,7 +1,7 @@
 # Understand Overload Resolution: Ranking of Conversion Sequences
 
-**Category:** Type System & Deduction  
-**Item:** #317  
+**Category:** Type System and Deduction  
+**Standard:** Not version-specific  
 **Reference:** <https://en.cppreference.com/w/cpp/language/overload_resolution>  
 
 ---

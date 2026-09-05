@@ -1,7 +1,6 @@
 # Use designated initializers (C++20) for self-documenting struct initialization
 
-**Category:** Best Practices & Idioms  
-**Item:** #140  
+**Category:** Best Practices and Idioms  
 **Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/language/aggregate_initialization>  
 

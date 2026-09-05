@@ -1,7 +1,6 @@
 # Use std::string_view to avoid unnecessary string copies in APIs
 
-**Category:** Standard Library - Containers  
-**Item:** #66  
+**Category:** Standard Library Containers  
 **Standard:** C++17  
 **Reference:** <https://en.cppreference.com/w/cpp/string/basic_string_view>  
 

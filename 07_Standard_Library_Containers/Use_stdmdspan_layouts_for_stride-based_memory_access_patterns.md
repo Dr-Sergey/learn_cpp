@@ -1,8 +1,7 @@
 # Use std::mdspan layouts for stride-based memory access patterns
 
-**Category:** Standard Library - Containers  
-**Item:** #268  
-**Standard:** C++23 (mdspan), C++26 (mdarray)  
+**Category:** Standard Library Containers  
+**Standard:** C++23, C++26 (mdspan)  
 **Reference:** <https://en.cppreference.com/w/cpp/container/mdspan>  
 
 ---
@@ -23,14 +22,14 @@ mdspan<int, extents<3,4>> with layout_right (row-major, C-style):
   [4][5][6][7]     Row 1
   [8][9][10][11]   Row 2
 
-  m(i, j) -> memory[i * 4 + j]
+  m[i, j] -> memory[i * 4 + j]
 
 mdspan<int, extents<3,4>> with layout_left (column-major, Fortran-style):
   [0][3][6][9]     (reading columns)
   [1][4][7][10]
   [2][5][8][11]
 
-  m(i, j) -> memory[j * 3 + i]
+  m[i, j] -> memory[j * 3 + i]
 ```
 
 ### Layout Policies
@@ -49,6 +48,7 @@ Here is the minimal setup - wrap a flat buffer in an mdspan and access it with r
 #include <mdspan>
 #include <vector>
 #include <iostream>
+#include <numeric>
 
 int main() {
     std::vector<int> data(12);
@@ -58,23 +58,23 @@ int main() {
     std::mdspan<int, std::extents<size_t, 3, 4>> mat(data.data());
 
     // Access with multi-dimensional indices
-    std::cout << mat(0, 0) << "\n";  // 0
-    std::cout << mat(1, 2) << "\n";  // 6  (1*4 + 2)
-    std::cout << mat(2, 3) << "\n";  // 11 (2*4 + 3)
+    std::cout << mat[0, 0] << "\n";  // 0
+    std::cout << mat[1, 2] << "\n";  // 6  (1*4 + 2)
+    std::cout << mat[2, 3] << "\n";  // 11 (2*4 + 3)
 
     // Query dimensions
     std::cout << "rows: " << mat.extent(0) << "\n";  // 3
     std::cout << "cols: " << mat.extent(1) << "\n";  // 4
 
     // Modify through the view
-    mat(1, 1) = 99;
+    mat[1, 1] = 99;
     std::cout << data[5] << "\n";  // 99
 
     return 0;
 }
 ```
 
-Assigning through `mat(1, 1)` directly modifies the underlying `data` vector - the mdspan is just a view, not a copy.
+Assigning through `mat[1, 1]` directly modifies the underlying `data` vector - the mdspan is just a view, not a copy.
 
 ### Extents
 
@@ -122,7 +122,7 @@ int main() {
     // 1   2   3   4
     // 5   6   7   8
     // 9   10  11  12
-    // m(i,j) = data[i*4 + j]
+    // m[i, j] = data[i*4 + j]
 
     // === Column-major view (layout_left) over SAME buffer ===
     std::mdspan<int, std::extents<size_t, 3, 4>, std::layout_left> col_major(data.data());
@@ -138,7 +138,7 @@ int main() {
     // 1   4   7   10
     // 2   5   8   11
     // 3   6   9   12
-    // m(i,j) = data[j*3 + i]
+    // m[i, j] = data[j*3 + i]
 
     // === Verify element access ===
     std::cout << "\nElement (1,2):\n";
@@ -157,7 +157,7 @@ int main() {
 }
 ```
 
-`layout_right` (default) is row-major: the last index varies fastest in memory. `m(i,j)` maps to `data[i * cols + j]`. `layout_left` is column-major: the first index varies fastest. `m(i,j)` maps to `data[j * rows + i]`. This is critical for interop with Fortran/BLAS/LAPACK (column-major) or image libraries (often row-major). Without mdspan you would need to manually compute the right offset every time - a common source of bugs.
+`layout_right` (default) is row-major: the last index varies fastest in memory. `m[i, j]` maps to `data[i * cols + j]`. `layout_left` is column-major: the first index varies fastest. `m[i, j]` maps to `data[j * rows + i]`. This is critical for interop with Fortran/BLAS/LAPACK (column-major) or image libraries (often row-major). Without mdspan you would need to manually compute the right offset every time - a common source of bugs.
 
 ### Q2: Implement a custom layout policy for tiled (blocked) matrix storage
 
@@ -236,13 +236,13 @@ int main() {
     int val = 0;
     for (size_t i = 0; i < ROWS; ++i)
         for (size_t j = 0; j < COLS; ++j)
-            mat(i, j) = val++;
+            mat[i, j] = val++;
 
     // Print logical view
     std::cout << "Logical view:\n";
     for (size_t i = 0; i < ROWS; ++i) {
         for (size_t j = 0; j < COLS; ++j)
-            std::cout << mat(i, j) << "\t";
+            std::cout << mat[i, j] << "\t";
         std::cout << "\n";
     }
 
@@ -291,7 +291,7 @@ int main() {
     // For a 3x4 row-major matrix (layout_right):
     //   stride[0] = 4  (skip 4 elements to go to next row)
     //   stride[1] = 1  (skip 1 element to go to next column)
-    //   m(i,j) = data[i*4 + j*1] = data[i*stride[0] + j*stride[1]]
+    //   m[i, j] = data[i*4 + j*1] = data[i*stride[0] + j*stride[1]]
 
     std::vector<int> data(12);
     std::iota(data.begin(), data.end(), 0);
@@ -306,7 +306,7 @@ int main() {
     std::cout << "3x4 with strides {4,1} (row-major):\n";
     for (size_t i = 0; i < 3; ++i) {
         for (size_t j = 0; j < 4; ++j)
-            std::cout << mat(i, j) << "\t";
+            std::cout << mat[i, j] << "\t";
         std::cout << "\n";
     }
     // Same as layout_right

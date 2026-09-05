@@ -1,7 +1,7 @@
 # Use -ftime-trace (Clang) to identify compilation bottlenecks
 
-**Category:** Tooling & Debugging  
-**Item:** #417  
+**Category:** Tooling and Debugging  
+**Standard:** Not version-specific  
 **Reference:** <https://aras-p.info/blog/2019/01/16/time-trace-timeline-flame-chart-profiler-for-Clang/>  
 
 ---

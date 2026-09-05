@@ -1,7 +1,7 @@
 # Use `std::is_nothrow_move_constructible` to Guide Safe Generic Code
 
-**Category:** Type System & Deduction  
-**Item:** #318  
+**Category:** Type System and Deduction  
+**Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/types/is_move_constructible>  
 
 ---
@@ -296,6 +296,9 @@ This is a subtlety worth knowing: `std::string` itself is guaranteed nothrow-mov
 #include <iostream>
 #include <type_traits>
 #include <string>
+#include <memory>
+#include <new>
+#include <vector>
 
 int main() {
     std::cout << std::boolalpha;

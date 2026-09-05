@@ -1,7 +1,7 @@
 # Understand function-try-blocks for catching exceptions from member initializers
 
 **Category:** Core Language Fundamentals  
-**Item:** #315  
+**Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/language/function-try-block>  
 
 ---

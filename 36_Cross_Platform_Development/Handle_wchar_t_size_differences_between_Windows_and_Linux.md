@@ -1,6 +1,6 @@
 # Handle wchar_t size differences between Windows and Linux
 
-**Category:** Cross-Platform Development  
+**Category:** Cross Platform Development  
 **Standard:** C++17  
 **Reference:** <https://en.cppreference.com/w/cpp/language/types>  
 

@@ -1,6 +1,7 @@
 # Set up cross-compilation testing with QEMU for ARM targets
 
-**Category:** Testing in Practice
+**Category:** Testing in Practice  
+**Standard:** Not version-specific  
 
 ---
 

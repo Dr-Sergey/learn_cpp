@@ -1,7 +1,6 @@
 # Understand the one definition rule (ODR) precisely
 
 **Category:** Core Language Fundamentals  
-**Item:** #153  
 **Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/language/definition>  
 

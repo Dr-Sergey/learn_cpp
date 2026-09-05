@@ -1,7 +1,6 @@
 # Use std::ranges::views::zip and views::enumerate (C++23)
 
-**Category:** Standard Library — Algorithms  
-**Item:** #161  
+**Category:** Standard Library Algorithms  
 **Standard:** C++23  
 **Reference:** <https://en.cppreference.com/w/cpp/ranges/zip_view>  
 

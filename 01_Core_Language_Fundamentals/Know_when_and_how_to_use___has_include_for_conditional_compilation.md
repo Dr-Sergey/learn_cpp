@@ -1,7 +1,6 @@
 # Know when and how to use __has_include for conditional compilation
 
 **Category:** Core Language Fundamentals  
-**Item:** #432  
 **Standard:** C++17  
 **Reference:** <https://en.cppreference.com/w/cpp/preprocessor/include>  
 
@@ -109,6 +108,7 @@ whole thing in an `#ifdef`. The pattern below is safe even on a pre-C++17 compil
 The goal here is a compatibility header that makes the rest of your code blissfully unaware
 of which `optional` it's using. Notice how user code only ever touches `compat::optional`:
 
+<!-- compile: fragment: depends on a header defined elsewhere in the topic -->
 ```cpp
 // ---- optional_compat.h ----
 #pragma once

@@ -1,6 +1,7 @@
 # Know when to use inheritance vs composition and prefer composition
 
-**Category:** OOP Design
+**Category:** OOP Design  
+**Standard:** Not version-specific  
 
 ---
 
@@ -54,6 +55,8 @@ This example shows the classic problem with inheritance: a `Duck` that flies *an
 #include <memory>
 #include <iostream>
 #include <string>
+#include <utility>
+#include <vector>
 
 // BAD: Deep inheritance for code reuse
 class Animal {

@@ -1,7 +1,7 @@
 # Implement non-blocking I/O multiplexing with epoll on Linux
 
-**Category:** Networking & I/O  
-**Item:** #555  
+**Category:** Networking and IO  
+**Standard:** Not version-specific  
 **Reference:** <https://man7.org/linux/man-pages/man7/epoll.7.html>  
 
 ---
@@ -36,6 +36,7 @@ epoll architecture:
 
 This is a complete, runnable echo server using edge-triggered epoll. It accepts new connections and echoes data back to each client. Pay close attention to the inner `for (;;)` loops - with edge-triggered mode, you *must* drain the file descriptor completely on each event, or you risk missing data. That is why both the accept loop and the read loop run until they get `EAGAIN`.
 
+<!-- compile: needs POSIX header `unistd.h` -->
 ```cpp
 // Linux-only example
 #include <iostream>
@@ -183,6 +184,7 @@ for (;;) {
 
 The reactor pattern is the design behind Asio, libevent, and libuv. The idea is simple: instead of a monolithic event loop with a giant switch statement, each file descriptor gets its own handler callback. When epoll says the FD is ready, you look up its handler and call it. New FDs can be added (or removed) dynamically, even from within handlers.
 
+<!-- compile: needs POSIX header `sys/epoll.h` -->
 ```cpp
 // A reactor dispatches events to registered handlers
 #include <iostream>

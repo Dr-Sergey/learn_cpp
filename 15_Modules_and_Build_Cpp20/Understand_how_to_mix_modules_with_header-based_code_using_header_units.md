@@ -1,7 +1,6 @@
 # Understand how to mix modules with header-based code using header units
 
-**Category:** Modules & Build (C++20)  
-**Item:** #123  
+**Category:** Modules and Build Cpp20  
 **Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/language/modules>  
 
@@ -132,6 +131,7 @@ One of the things that makes modules intimidating is the idea that you have to r
 
 #### Phase 1: No changes (baseline)
 
+<!-- compile: fragment: depends on a header defined elsewhere in the topic -->
 ```cpp
 // math_utils.h
 #pragma once
@@ -154,6 +154,7 @@ int main() {
 
 Your own project headers stay as `#include` - you're just getting the build speedup on the standard library headers:
 
+<!-- compile: fragment: depends on a header defined elsewhere in the topic -->
 ```cpp
 // math_utils.h (unchanged)
 #pragma once
@@ -180,6 +181,7 @@ Now you tackle your own code. Move `math_utils.h` to a `.cppm` module file. Use 
 // math_utils.cppm - now a module
 module;
 #include <cmath>  // C header in global module fragment
+#include <iostream>
 
 export module math_utils;
 

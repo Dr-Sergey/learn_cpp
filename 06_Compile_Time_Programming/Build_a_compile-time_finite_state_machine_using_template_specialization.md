@@ -1,7 +1,6 @@
 # Build a Compile-Time Finite State Machine Using Template Specialization
 
-**Category:** Compile-Time Programming  
-**Item:** #342  
+**Category:** Compile Time Programming  
 **Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/language/partial_specialization>  
 

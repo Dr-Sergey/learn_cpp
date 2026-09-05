@@ -1,7 +1,6 @@
 # Understand the Concepts Standard Library: `std::regular`, `std::semiregular`, `std::copyable`
 
-**Category:** Type System & Deduction  
-**Item:** #154  
+**Category:** Type System and Deduction  
 **Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/concepts>  
 
@@ -243,6 +242,9 @@ int main() {
 #include <concepts>
 #include <memory>
 #include <type_traits>
+#include <mutex>
+#include <thread>
+#include <utility>
 
 int main() {
     std::cout << std::boolalpha;
@@ -311,6 +313,7 @@ The concept constraint here does real work - it's not decoration. Without `==` y
 #include <vector>
 #include <string>
 #include <memory>
+#include <utility>
 
 // Algorithm constrained on std::regular:
 // "Remove consecutive duplicates" — needs == (equality) and copy

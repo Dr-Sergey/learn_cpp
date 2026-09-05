@@ -1,7 +1,6 @@
 # Use stdexec::then to chain sender transformations
 
-**Category:** std::execution & Senders/Receivers  
-**Item:** #702  
+**Category:** Std Execution and Senders Receivers  
 **Standard:** C++20  
 **Reference:** <https://github.com/NVIDIA/stdexec>  
 
@@ -37,6 +36,7 @@ No work until sync_wait/start triggers it.
 
 Here's the basics: you build the pipeline first, then drive it with `sync_wait`. Notice the explicit "no work done yet" message - it's not just commentary, it's verifiable by the order of printed output:
 
+<!-- compile: needs third-party library header `stdexec/execution.hpp` -->
 ```cpp
 #include <stdexec/execution.hpp>
 #include <iostream>
@@ -108,6 +108,7 @@ Laziness model:
 
 And here's the same idea expressed in runnable code, using a call counter to prove that no lambdas run at construction time:
 
+<!-- compile: needs third-party library header `stdexec/execution.hpp` -->
 ```cpp
 #include <stdexec/execution.hpp>
 #include <iostream>
@@ -144,6 +145,7 @@ The call count stays at zero until `sync_wait` is called. Senders are move-only 
 
 Here's the reason this trips people up: if a `then` callback throws, the exception does not propagate to the *next* `then`. Instead it jumps straight to the error channel, bypassing all remaining `then` nodes. The pipeline short-circuits. The downstream `then` lambdas simply never run.
 
+<!-- compile: needs third-party library header `stdexec/execution.hpp` -->
 ```cpp
 #include <stdexec/execution.hpp>
 #include <iostream>

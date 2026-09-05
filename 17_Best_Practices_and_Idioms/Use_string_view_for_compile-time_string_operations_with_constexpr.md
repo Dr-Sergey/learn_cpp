@@ -1,7 +1,6 @@
 # Use string_view for compile-time string operations with constexpr
 
-**Category:** Best Practices & Idioms  
-**Item:** #278  
+**Category:** Best Practices and Idioms  
 **Standard:** C++17  
 **Reference:** <https://en.cppreference.com/w/cpp/string/basic_string_view>  
 

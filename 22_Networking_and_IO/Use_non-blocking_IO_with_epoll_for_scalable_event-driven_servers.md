@@ -1,7 +1,7 @@
 # Use non-blocking I/O with epoll for scalable event-driven servers
 
-**Category:** Networking & I/O  
-**Item:** #639  
+**Category:** Networking and IO  
+**Standard:** Not version-specific  
 **Reference:** <https://man7.org/linux/man-pages/man7/epoll.7.html>  
 
 ---
@@ -50,6 +50,7 @@ The choice between level-triggered and edge-triggered mode is one of the most im
 
 There are two key things to set up correctly before the event loop starts: every socket must be set to non-blocking mode, and the listener must be registered with `EPOLLET`. Watch how `accept()` is called in a loop until `EAGAIN` - that drain-until-empty pattern is mandatory with edge-triggered mode:
 
+<!-- compile: needs POSIX header `sys/epoll.h` -->
 ```cpp
 // Linux epoll echo server skeleton
 #include <iostream>
@@ -137,6 +138,7 @@ The reason the accept loop must run until `EAGAIN` is that in edge-triggered mod
 
 This is the full read/write dispatch loop. Notice that the read handler also drains until `EAGAIN`, for the same reason as the accept loop. When write data becomes available, the code registers `EPOLLOUT` interest so it gets notified when the socket's send buffer has space:
 
+<!-- compile: needs POSIX header `sys/epoll.h` -->
 ```cpp
 #include <iostream>
 #include <cstring>

@@ -1,7 +1,7 @@
 # Wrap POSIX sockets in RAII for safe resource management
 
-**Category:** Networking & I/O  
-**Item:** #549  
+**Category:** Networking and IO  
+**Standard:** C++11  
 **Reference:** <https://man7.org/linux/man-pages/man2/socket.2.html>  
 
 ---
@@ -45,6 +45,7 @@ Here is a reference table for the most useful socket options you will set in pra
 
 This design is slightly more sophisticated than the basic version in #726. It uses a private tag type to distinguish the "adopt existing fd" constructor from the "create new socket" constructor, which avoids the ambiguity of having two `int`-taking constructors.
 
+<!-- compile: needs POSIX header `sys/socket.h` -->
 ```cpp
 #include <iostream>
 #include <utility>
@@ -129,6 +130,7 @@ The `from_fd` factory is useful when you receive a raw descriptor from a C API -
 
 The templated `set_option` and `get_option` methods give you a type-safe way to call `setsockopt`/`getsockopt`. Rather than sprinkling `setsockopt` calls all over your connection setup code, each common option gets a named method. Notice that the kernel often silently adjusts the value you set - `SO_RCVBUF` is doubled internally as you can see in the output comment.
 
+<!-- compile: needs POSIX header `sys/socket.h` -->
 ```cpp
 #include <iostream>
 #include <cstring>
@@ -213,6 +215,7 @@ int main() {
 
 EINTR is one of those POSIX details that bites you the first time you add a signal handler to a server. When a signal arrives while a thread is blocked in `recv` or `accept`, the kernel immediately returns from the syscall with `errno == EINTR`. Your code needs to detect this and retry, because the I/O did not happen - it was just interrupted. The examples below show the three variants you will encounter in practice.
 
+<!-- compile: needs POSIX header `sys/socket.h` -->
 ```cpp
 #include <iostream>
 #include <cstring>

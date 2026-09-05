@@ -1,7 +1,7 @@
 # Understand the cost model of virtual dispatch in tight loops
 
-**Category:** Performance & CPU Architecture  
-**Item:** #627  
+**Category:** Performance and CPU Architecture  
+**Standard:** Not version-specific  
 **Reference:** <https://en.cppreference.com/w/cpp/language/final>  
 
 ---

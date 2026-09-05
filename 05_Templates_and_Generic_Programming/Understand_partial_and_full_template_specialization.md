@@ -1,7 +1,7 @@
 # Understand Partial and Full Template Specialization
 
-**Category:** Templates & Generic Programming  
-**Item:** #44  
+**Category:** Templates and Generic Programming  
+**Standard:** Not version-specific  
 **Reference:** <https://en.cppreference.com/w/cpp/language/partial_specialization>  
 
 ---

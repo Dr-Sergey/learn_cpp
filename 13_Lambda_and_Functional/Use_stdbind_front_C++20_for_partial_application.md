@@ -1,7 +1,6 @@
 # Use std::bind_front (C++20) for partial application
 
-**Category:** Lambda & Functional  
-**Item:** #113  
+**Category:** Lambda and Functional  
 **Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/utility/functional/bind_front>  
 

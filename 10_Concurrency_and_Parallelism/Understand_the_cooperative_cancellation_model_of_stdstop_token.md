@@ -1,7 +1,6 @@
 # Understand the cooperative cancellation model of std::stop_token
 
-**Category:** Concurrency & Parallelism  
-**Item:** #790  
+**Category:** Concurrency and Parallelism  
 **Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/thread/stop_token>  
 

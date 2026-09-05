@@ -1,7 +1,7 @@
 # Write Deterministic Execution Paths for Real-Time Code
 
-**Category:** Low Latency & Real-Time C++  
-**Standard:** C++17 / C++20  
+**Category:** Low Latency and Real Time  
+**Standard:** C++17, C++20  
 **Reference:** [AUTOSAR C++14 Guidelines](https://www.autosar.org/), [MISRA C++:2023](https://misra.org.uk/)  
 
 ---
@@ -188,6 +188,7 @@ Compare this to an exception-based version: every `throw` site would potentially
 
 This is the minimal version of the prefaulting pattern: allocate, lock, write every page, then measure faults before and after the hot path. The hot-path loop should report zero faults because every page it touches was already physically mapped during setup:
 
+<!-- compile: needs POSIX header `sys/mman.h` -->
 ```cpp
 #include <cstdlib>
 #include <cstring>

@@ -1,6 +1,7 @@
 # Write property-based tests using RapidCheck for C++
 
-**Category:** Testing in Practice
+**Category:** Testing in Practice  
+**Standard:** Not version-specific  
 
 ---
 

@@ -1,7 +1,7 @@
 # Understand the fragile base class problem and how to mitigate it
 
-**Category:** Best Practices & Idioms  
-**Item:** #797  
+**Category:** Best Practices and Idioms  
+**Standard:** Not version-specific  
 **Reference:** <https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#Rh-copy>  
 
 ---

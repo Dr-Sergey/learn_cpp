@@ -1,7 +1,6 @@
 # Understand TLB pressure and huge pages for large working sets
 
-**Category:** Performance & CPU Architecture  
-**Item:** #636  
+**Category:** Performance and CPU Architecture  
 **Standard:** C++17  
 **Reference:** <https://www.kernel.org/doc/html/latest/admin-guide/mm/transhuge.html>  
 
@@ -101,6 +100,7 @@ Notice the step from 1 MB to 16 MB: latency jumps from 5 ns to 15 ns. That 3x in
 
 On Linux you can request huge pages for an existing allocation using `madvise`. The kernel will then promote the underlying 4 KB pages to 2 MB pages when the physical memory is available, transparently reducing the number of TLB entries you need.
 
+<!-- compile: needs POSIX header `sys/mman.h` -->
 ```cpp
 #include <iostream>
 #include <cstring>
@@ -173,6 +173,7 @@ The `std::memset` before the benchmark is important: it forces the kernel to act
 
 There are two distinct mechanisms for getting huge pages on Linux, and they have different trade-offs. Transparent Huge Pages (THP) are managed automatically by the kernel; explicit huge pages via `MAP_HUGETLB` require pre-reserved memory but give you a firm guarantee.
 
+<!-- compile: needs POSIX header `sys/mman.h` -->
 ```cpp
 #include <iostream>
 #include <sys/mman.h>

@@ -1,7 +1,6 @@
 # Know When `shared_ptr` Is Appropriate and Understand Its Overhead
 
-**Category:** Memory & Ownership  
-**Item:** #27  
+**Category:** Memory and Ownership  
 **Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/memory/shared_ptr>  
 

@@ -1,7 +1,7 @@
 # Understand reproducible builds and eliminate non-determinism
 
-**Category:** Build Systems & CI  
-**Item:** #566  
+**Category:** Build Systems and CI  
+**Standard:** Not version-specific  
 **Reference:** <https://reproducible-builds.org/>  
 
 ---

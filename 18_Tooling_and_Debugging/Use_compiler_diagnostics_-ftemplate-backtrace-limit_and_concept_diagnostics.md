@@ -1,7 +1,6 @@
 # Use compiler diagnostics: -ftemplate-backtrace-limit and concept diagnostics
 
-**Category:** Tooling & Debugging  
-**Item:** #799  
+**Category:** Tooling and Debugging  
 **Standard:** C++20  
 **Reference:** <https://gcc.gnu.org/onlinedocs/gcc/C_002b_002b-Dialect-Options.html>  
 

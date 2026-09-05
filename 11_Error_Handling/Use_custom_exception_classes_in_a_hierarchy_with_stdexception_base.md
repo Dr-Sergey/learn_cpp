@@ -1,7 +1,7 @@
 # Use custom exception classes in a hierarchy with std::exception base
 
 **Category:** Error Handling  
-**Item:** #378  
+**Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/error/exception>  
 
 ---

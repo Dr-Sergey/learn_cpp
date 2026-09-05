@@ -1,7 +1,7 @@
 # Use `std::type_index` for Runtime Type Keys in Maps
 
-**Category:** Type System & Deduction  
-**Item:** #262  
+**Category:** Type System and Deduction  
+**Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/types/type_index>  
 
 ---

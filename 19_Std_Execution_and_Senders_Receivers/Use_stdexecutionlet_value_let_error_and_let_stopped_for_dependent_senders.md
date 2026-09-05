@@ -1,7 +1,6 @@
 # Use std::execution::let_value, let_error, and let_stopped for dependent senders
 
-**Category:** std::execution & Senders/Receivers  
-**Item:** #524  
+**Category:** Std Execution and Senders Receivers  
 **Standard:** C++26  
 **Reference:** <https://en.cppreference.com/w/cpp/execution>  
 
@@ -33,6 +32,7 @@ Completion channels:
 
 The key thing `let_value` gives you that `then` cannot: the sender you return can be chosen at runtime based on the incoming value. Different branches, different async work, all expressed in one pipeline:
 
+<!-- compile: needs third-party library header `stdexec/execution.hpp` -->
 ```cpp
 #include <stdexec/execution.hpp>
 #include <iostream>
@@ -107,6 +107,7 @@ Laws:
 
 Here's the practical version - what goes wrong with `then` and why `let_value` fixes it:
 
+<!-- compile: needs third-party library header `stdexec/execution.hpp` -->
 ```cpp
 // Why "monadic"?
 // then(f):       Sender<A> -> (A -> B) -> Sender<B>           // functor map
@@ -142,6 +143,7 @@ The commented-out `then(double_async)` line doesn't compile for this reason: `do
 
 `let_error` fires only when the upstream signals an error. You can use it to build a retry combinator - each retry attempt is just another `let_error` layered on top of the previous one:
 
+<!-- compile: needs third-party library header `stdexec/execution.hpp` -->
 ```cpp
 #include <stdexec/execution.hpp>
 #include <iostream>

@@ -1,7 +1,7 @@
 # Design Structured Error Propagation Across Library Boundaries
 
 **Category:** Error Handling  
-**Standard:** C++11 / C++17 / C++23 (`std::expected`)  
+**Standard:** C++11, C++17, C++23 (`std::expected`)  
 **Reference:** [cppreference - std::expected](https://en.cppreference.com/w/cpp/utility/expected), [cppreference - std::error_code](https://en.cppreference.com/w/cpp/error/error_code)  
 
 ---

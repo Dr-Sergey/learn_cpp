@@ -1,6 +1,7 @@
 # Design module boundaries using C++20 modules or header-only libraries
 
-**Category:** Project Architecture
+**Category:** Project Architecture  
+**Standard:** C++20  
 
 ---
 

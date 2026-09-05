@@ -1,7 +1,7 @@
 # Know std::deque internals and when to prefer it over vector
 
-**Category:** Standard Library - Containers  
-**Item:** #62  
+**Category:** Standard Library Containers  
+**Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/container/deque>  
 
 ---

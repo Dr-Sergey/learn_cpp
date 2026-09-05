@@ -1,7 +1,6 @@
 # Understand inline variables (C++17) and their use in headers
 
 **Category:** Core Language Fundamentals  
-**Item:** #12  
 **Standard:** C++17  
 **Reference:** <https://github.com/AnthonyCalandra/modern-cpp-features/blob/master/CPP17.md#inline-variables>  
 
@@ -101,6 +100,7 @@ The problem with `const` having internal linkage:
 
 Both translation units print the same address because the linker kept exactly one copy:
 
+<!-- compile: fragment: depends on a header defined elsewhere in the topic -->
 ```cpp
 // ---- constants.h ----
 #pragma once

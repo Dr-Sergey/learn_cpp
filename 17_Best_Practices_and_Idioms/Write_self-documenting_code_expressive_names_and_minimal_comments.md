@@ -1,7 +1,7 @@
 # Write self-documenting code: expressive names and minimal comments
 
-**Category:** Best Practices & Idioms  
-**Item:** #135  
+**Category:** Best Practices and Idioms  
+**Standard:** Not version-specific  
 **Reference:** <https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#nl-naming-and-layout-rules>  
 
 ---

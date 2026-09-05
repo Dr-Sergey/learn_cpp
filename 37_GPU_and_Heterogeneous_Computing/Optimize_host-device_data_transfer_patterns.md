@@ -1,7 +1,7 @@
 # Optimize Host-Device Data Transfer Patterns
 
-**Category:** GPU & Heterogeneous Computing  
-**Standard:** C++17 / CUDA 12.x / SYCL 2020  
+**Category:** GPU and Heterogeneous Computing  
+**Standard:** C++17, C++20  
 **Reference:** https://docs.nvidia.com/cuda/cuda-c-best-practices-guide/  
 
 ---
@@ -46,6 +46,7 @@ Without overlap:  [H2D][Kernel][D2H][H2D][Kernel][D2H]...
 
 Let's put real numbers on the difference. This benchmark runs 20 iterations of a 256 MB transfer for each memory type and reports bandwidth in GB/s. The warm-up transfer before the timed loop ensures the CUDA context is initialized and the first-call overhead doesn't skew the results.
 
+<!-- compile: needs third-party library header `cuda_runtime.h` -->
 ```cpp
 #include <cuda_runtime.h>
 #include <cstdio>
@@ -126,6 +127,7 @@ Write-combined memory squeezes out a little extra H2D throughput by bypassing CP
 
 This is the core overlap pattern you'll use in any throughput-sensitive GPU pipeline. The key requirement that catches people out: async transfers only work with pinned memory. If you pass pageable memory to `cudaMemcpyAsync`, CUDA silently makes it synchronous, and your overlap disappears without any error or warning.
 
+<!-- compile: needs third-party library header `cuda_runtime.h` -->
 ```cpp
 #include <cuda_runtime.h>
 #include <vector>
@@ -218,6 +220,7 @@ The speedup you get depends on the ratio of transfer time to compute time for ea
 
 SYCL's Unified Shared Memory has three flavors: device memory (explicit copies required), host memory (device accesses it over PCIe on every touch), and shared memory (migrates on demand). This example compares all three transfer strategies on the same operation so you can see the practical impact of each choice.
 
+<!-- compile: needs third-party library header `sycl/sycl.hpp` -->
 ```cpp
 #include <sycl/sycl.hpp>
 #include <iostream>

@@ -1,7 +1,6 @@
 # Understand the splice operator [: :] for injecting reflections back into code
 
-**Category:** Reflection (C++26)  
-**Item:** #715  
+**Category:** Reflection Cpp26  
 **Standard:** C++26  
 **Reference:** <https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2024/p2996r5.html>  
 
@@ -29,6 +28,7 @@ Here is a reference for the different positions where you can use the splice:
 
 The most fundamental use of `[::]` is recovering a type from a reflection. You write `using T = [:r:]` and the compiler substitutes the actual type wherever `T` appears - including inside template arguments for containers.
 
+<!-- compile: needs `meta` (not in the CI standard library yet) -->
 ```cpp
 // C++26 with P2996 reflection
 #include <meta>
@@ -74,6 +74,7 @@ Notice the `using FirstField = [:std::meta::type_of(members[0]):]` line - you ca
 
 Member splicing is where things get interesting for generic programming. `obj.[:m:]` is literally the same as writing `obj.fieldname` - the compiler substitutes the actual member name at compile time. You can read through it, write through it, take a reference to it - anything you could do with a normal member access.
 
+<!-- compile: needs `meta` (not in the CI standard library yet) -->
 ```cpp
 #include <meta>
 #include <iostream>
@@ -143,6 +144,7 @@ The `set_field` function is worth pausing on. The `template for` loop expands at
 
 Here are two utilities - `transform_fields` and `struct_equal` - that show what becomes possible when you treat member reflections as first-class values you can store in arrays and index into.
 
+<!-- compile: needs `meta` (not in the CI standard library yet) -->
 ```cpp
 #include <meta>
 #include <iostream>

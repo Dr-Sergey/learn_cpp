@@ -1,7 +1,7 @@
 # Implement the Proxy pattern for lazy initialization and access control
 
-**Category:** Design Patterns — Modern Takes  
-**Item:** #678  
+**Category:** Design Patterns Modern Takes  
+**Standard:** Not version-specific  
 **Reference:** <https://en.wikipedia.org/wiki/Proxy_pattern>  
 
 ---

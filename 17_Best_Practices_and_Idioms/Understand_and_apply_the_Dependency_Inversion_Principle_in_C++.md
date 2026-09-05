@@ -1,7 +1,7 @@
 # Understand and apply the Dependency Inversion Principle in C++
 
-**Category:** Best Practices & Idioms  
-**Item:** #196  
+**Category:** Best Practices and Idioms  
+**Standard:** Not version-specific  
 **Reference:** <https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#Ri-abstract>  
 
 ---

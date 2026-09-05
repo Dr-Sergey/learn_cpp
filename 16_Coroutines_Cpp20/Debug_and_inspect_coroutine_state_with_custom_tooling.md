@@ -1,6 +1,6 @@
 # Debug and inspect coroutine state with custom tooling
 
-**Category:** Coroutines (C++20)  
+**Category:** Coroutines Cpp20  
 **Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/coroutine/coroutine_handle>  
 

@@ -1,7 +1,6 @@
 # Use std::initializer_list correctly in constructors and assignment
 
-**Category:** Standard Library — Utilities  
-**Item:** #299  
+**Category:** Standard Library Utilities  
 **Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/utility/initializer_list>  
 
@@ -199,6 +198,7 @@ The rule of thumb is simple: pass it, use it immediately, and let it go. Never s
 #include <initializer_list>
 #include <iostream>
 #include <string>
+#include <vector>
 
 // SAFE: backing array lives for the duration of the full expression
 void print(std::initializer_list<int> il) {

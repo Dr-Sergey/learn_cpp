@@ -1,7 +1,6 @@
 # Understand how to read complex C++ type declarations
 
 **Category:** Core Language Fundamentals  
-**Item:** #431  
 **Standard:** C++23  
 **Reference:** <https://en.cppreference.com/w/cpp/language/declarations>  
 

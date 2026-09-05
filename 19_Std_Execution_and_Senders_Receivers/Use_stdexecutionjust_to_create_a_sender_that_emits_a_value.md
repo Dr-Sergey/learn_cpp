@@ -1,7 +1,6 @@
 # Use std::execution::just to create a sender that emits a value
 
-**Category:** std::execution & Senders/Receivers  
-**Item:** #602  
+**Category:** Std Execution and Senders Receivers  
 **Standard:** C++26  
 **Reference:** <https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2023/p2300r7.html>  
 
@@ -37,6 +36,7 @@ just(42) internals:
 
 Most of the time you'll use `sync_wait` to drive a pipeline, but it's worth seeing the low-level `connect` + `start` API at least once. It shows exactly what `sync_wait` is doing for you under the hood:
 
+<!-- compile: needs third-party library header `stdexec/execution.hpp` -->
 ```cpp
 #include <stdexec/execution.hpp>
 #include <iostream>
@@ -87,6 +87,7 @@ The manual `connect` + `start` path shows that `set_value(42)` is called synchro
 
 In practice you'll almost never use `just` in isolation. Its purpose is to seed the pipeline with an initial value so that the `then` steps have something to work with:
 
+<!-- compile: needs third-party library header `stdexec/execution.hpp` -->
 ```cpp
 #include <stdexec/execution.hpp>
 #include <iostream>
@@ -132,6 +133,7 @@ The void `just()` at the end is a useful pattern when you want a pipeline that s
 
 Because `just` carries no scheduler dependency, it's the cleanest way to inject constants or configuration values into a pipeline. You can also use it inside `let_value` to create sub-senders, or pair it with `when_all` for simple fan-out:
 
+<!-- compile: needs third-party library header `stdexec/execution.hpp` -->
 ```cpp
 #include <stdexec/execution.hpp>
 #include <exec/static_thread_pool.hpp>

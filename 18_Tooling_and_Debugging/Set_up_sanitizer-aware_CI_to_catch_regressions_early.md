@@ -1,7 +1,7 @@
 # Set up sanitizer-aware CI to catch regressions early
 
-**Category:** Tooling & Debugging  
-**Item:** #513  
+**Category:** Tooling and Debugging  
+**Standard:** Not version-specific  
 **Reference:** <https://clang.llvm.org/docs/AddressSanitizer.html>  
 
 ---

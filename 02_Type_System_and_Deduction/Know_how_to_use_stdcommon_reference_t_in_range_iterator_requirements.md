@@ -1,7 +1,6 @@
 # Know how to use std::common_reference_t in range iterator requirements
 
-**Category:** Type System & Deduction  
-**Item:** #320  
+**Category:** Type System and Deduction  
 **Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/types/common_reference>  
 
@@ -131,6 +130,7 @@ Here's what the concept is actually checking, and why it matters for algorithms 
 #include <concepts>
 #include <iterator>
 #include <type_traits>
+#include <ranges>
 
 // The indirectly_readable concept needs this relationship:
 // common_reference_t<iter_reference_t<I>, iter_value_t<I>&> must exist

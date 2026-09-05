@@ -1,7 +1,7 @@
 # Set up static analysis in CI with clang-tidy and cppcheck
 
-**Category:** Build Systems & CI  
-**Item:** #668  
+**Category:** Build Systems and CI  
+**Standard:** Not version-specific  
 **Reference:** <https://clang.llvm.org/extra/clang-tidy/>  
 
 ---

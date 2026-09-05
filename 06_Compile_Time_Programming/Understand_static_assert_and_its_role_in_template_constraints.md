@@ -1,7 +1,7 @@
 # Understand `static_assert` and Its Role in Template Constraints
 
-**Category:** Compile-Time Programming  
-**Item:** #56  
+**Category:** Compile Time Programming  
+**Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/language/static_assert>  
 
 ---

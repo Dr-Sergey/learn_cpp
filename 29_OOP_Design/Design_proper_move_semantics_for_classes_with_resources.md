@@ -1,6 +1,7 @@
 # Design proper move semantics for classes with resources
 
-**Category:** OOP Design
+**Category:** OOP Design  
+**Standard:** C++11  
 
 ---
 

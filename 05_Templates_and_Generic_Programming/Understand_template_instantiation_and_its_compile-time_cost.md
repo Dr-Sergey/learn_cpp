@@ -1,7 +1,7 @@
 # Understand Template Instantiation and Its Compile-Time Cost
 
-**Category:** Templates & Generic Programming  
-**Item:** #52  
+**Category:** Templates and Generic Programming  
+**Standard:** Not version-specific  
 **Reference:** <https://en.cppreference.com/w/cpp/language/class_template>  
 
 ---

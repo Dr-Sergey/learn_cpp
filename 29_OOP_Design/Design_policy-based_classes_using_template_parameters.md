@@ -1,6 +1,7 @@
 # Design policy-based classes using template parameters
 
-**Category:** OOP Design
+**Category:** OOP Design  
+**Standard:** Not version-specific  
 
 ---
 

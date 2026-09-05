@@ -1,7 +1,7 @@
 # Use std::is_sorted and is_sorted_until for pre-condition checking
 
-**Category:** Standard Library — Algorithms  
-**Item:** #472  
+**Category:** Standard Library Algorithms  
+**Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/algorithm/is_sorted>  
 
 ---

@@ -1,7 +1,6 @@
 # Understand pack expansion in base class lists and using declarations
 
 **Category:** Core Language Fundamentals  
-**Item:** #598  
 **Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/language/pack_expansion>  
 

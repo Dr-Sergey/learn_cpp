@@ -1,7 +1,7 @@
 # Understand std::swap vs memberwise swap performance trade-offs
 
 **Category:** Move Semantics and Value Categories  
-**Standard:** C++11/17  
+**Standard:** C++11, C++17  
 **Reference:** <https://en.cppreference.com/w/cpp/algorithm/swap>  
 
 ---

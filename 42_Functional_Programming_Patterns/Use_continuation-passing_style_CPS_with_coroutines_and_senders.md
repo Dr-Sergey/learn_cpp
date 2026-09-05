@@ -1,7 +1,7 @@
 # Use continuation-passing style (CPS) with coroutines and senders
 
 **Category:** Functional Programming Patterns  
-**Standard:** C++20/26  
+**Standard:** C++20, C++26  
 **Reference:** <https://wg21.link/P2300>  
 
 ---

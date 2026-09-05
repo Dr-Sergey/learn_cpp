@@ -1,7 +1,7 @@
 # Understand inheriting constructors and their limitations
 
 **Category:** Core Language Fundamentals  
-**Item:** #429  
+**Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/language/using_declaration>  
 
 ---

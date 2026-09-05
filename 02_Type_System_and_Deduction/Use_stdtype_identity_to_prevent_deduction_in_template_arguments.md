@@ -1,7 +1,7 @@
 # Use `std::type_identity` to Prevent Deduction in Template Arguments
 
-**Category:** Type System & Deduction  
-**Item:** #182  
+**Category:** Type System and Deduction  
+**Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/types/type_identity>  
 
 ---

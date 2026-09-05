@@ -1,7 +1,6 @@
 # Use `std::make_integer_sequence` and `std::index_sequence` for Compile-Time Iteration
 
-**Category:** Compile-Time Programming  
-**Item:** #293  
+**Category:** Compile Time Programming  
 **Standard:** C++14 (integer_sequence in C++14, concept available since C++11 via manual impl)  
 **Reference:** <https://en.cppreference.com/w/cpp/utility/integer_sequence>  
 

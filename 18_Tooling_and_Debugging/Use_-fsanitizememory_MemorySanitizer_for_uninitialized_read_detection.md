@@ -1,7 +1,7 @@
 # Use -fsanitize=memory (MemorySanitizer) for uninitialized read detection
 
-**Category:** Tooling & Debugging  
-**Item:** #509  
+**Category:** Tooling and Debugging  
+**Standard:** Not version-specific  
 **Reference:** <https://clang.llvm.org/docs/MemorySanitizer.html>  
 
 ---

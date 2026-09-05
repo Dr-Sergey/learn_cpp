@@ -1,7 +1,6 @@
 # Write a POSIX TCP server with RAII socket wrappers
 
-**Category:** Networking & I/O  
-**Item:** #638  
+**Category:** Networking and IO  
 **Standard:** C++11  
 **Reference:** <https://man7.org/linux/man-pages/man7/socket.7.html>  
 
@@ -37,6 +36,7 @@ TCP server lifecycle:
 
 The custom deleter calls `close()` on the descriptor and then frees the heap-allocated int. The output shows move semantics working correctly - after moving, the original pointer is null and only the destination pointer owns the descriptor.
 
+<!-- compile: needs POSIX header `sys/socket.h` -->
 ```cpp
 #include <iostream>
 #include <memory>
@@ -90,6 +90,7 @@ The `Closing fd=3` message appears at scope exit, which demonstrates that the de
 
 Now here is the full working server. Each step of the TCP server lifecycle - create, bind, listen, accept, echo, close - is shown in order. Pay attention to how `wrap_fd` is used for both the server socket and each accepted client socket: every descriptor that enters the program immediately gets an RAII owner.
 
+<!-- compile: needs POSIX header `sys/socket.h` -->
 ```cpp
 #include <iostream>
 #include <cstring>
@@ -176,6 +177,7 @@ The inner send loop (`while (sent < n)`) is important and easy to overlook. `sen
 
 This Q&A isolates the EINTR retry patterns so you can see them cleanly. The key rule: if a syscall returns `-1` and `errno == EINTR`, it is safe to call it again. The I/O did not happen; a signal interrupted the wait. There is one important exception at the end of the listing - `close` on Linux.
 
+<!-- compile: needs POSIX header `sys/socket.h` -->
 ```cpp
 #include <iostream>
 #include <cstring>

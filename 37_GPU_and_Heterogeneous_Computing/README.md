@@ -6,19 +6,19 @@ C++ for GPU and accelerator programming: CUDA, SYCL/oneAPI, OpenCL, std::executi
 
 ## Contents
 
-- [Bridge stdexecution with GPU backends](Bridge_stdexecution_with_GPU_backends.md)
-- [Design GPU-friendly data structures for coalesced access](Design_GPU-friendly_data_structures_for_coalesced_access.md)
+- [Bridge std::execution with GPU Backends](Bridge_stdexecution_with_GPU_backends.md)
+- [Design GPU-Friendly Data Structures for Coalesced Access](Design_GPU-friendly_data_structures_for_coalesced_access.md)
 - [Implement CPU-GPU task graphs for heterogeneous pipelines](Implement_CPU-GPU_task_graphs_for_heterogeneous_pipelines.md)
-- [Integrate CUDA with modern C++ for GPU kernel development](Integrate_CUDA_with_modern_C++_for_GPU_kernel_development.md)
-- [Offload computation with OpenMP target directives](Offload_computation_with_OpenMP_target_directives.md)
-- [Optimize host-device data transfer patterns](Optimize_host-device_data_transfer_patterns.md)
+- [Integrate CUDA with Modern C++ for GPU Kernel Development](Integrate_CUDA_with_modern_C++_for_GPU_kernel_development.md)
+- [Offload Computation with OpenMP Target Directives](Offload_computation_with_OpenMP_target_directives.md)
+- [Optimize Host-Device Data Transfer Patterns](Optimize_host-device_data_transfer_patterns.md)
 - [Profile GPU kernels with NSight and ROCProfiler](Profile_GPU_kernels_with_NSight_and_ROCProfiler.md)
-- [Understand GPU memory hierarchy registers shared memory L1 L2 global](Understand_GPU_memory_hierarchy_registers_shared_memory_L1_L2_global.md)
-- [Use CUDA Cooperative Groups for flexible thread synchronization](Use_CUDA_Cooperative_Groups_for_flexible_thread_synchronization.md)
-- [Use OpenCL C++ bindings for vendor-neutral GPU programming](Use_OpenCL_C++_bindings_for_vendor-neutral_GPU_programming.md)
-- [Use SYCL and oneAPI for portable heterogeneous computing](Use_SYCL_and_oneAPI_for_portable_heterogeneous_computing.md)
-- [Use Vulkan Compute for portable GPU computing from Cpp](Use_Vulkan_Compute_for_portable_GPU_computing_from_Cpp.md)
-- [Use unified shared memory for simplified GPU programming](Use_unified_shared_memory_for_simplified_GPU_programming.md)
+- [Understand GPU memory hierarchy: registers, shared memory, L1, L2, global](Understand_GPU_memory_hierarchy_registers_shared_memory_L1_L2_global.md)
+- [Use CUDA Cooperative Groups for Flexible Thread Synchronization](Use_CUDA_Cooperative_Groups_for_flexible_thread_synchronization.md)
+- [Use OpenCL C++ Bindings for Vendor-Neutral GPU Programming](Use_OpenCL_C++_bindings_for_vendor-neutral_GPU_programming.md)
+- [Use SYCL and oneAPI for Portable Heterogeneous Computing](Use_SYCL_and_oneAPI_for_portable_heterogeneous_computing.md)
+- [Use Unified Shared Memory for Simplified GPU Programming](Use_unified_shared_memory_for_simplified_GPU_programming.md)
+- [Use Vulkan Compute for portable GPU computing from C++](Use_Vulkan_Compute_for_portable_GPU_computing_from_Cpp.md)
 
 ## Notes
 

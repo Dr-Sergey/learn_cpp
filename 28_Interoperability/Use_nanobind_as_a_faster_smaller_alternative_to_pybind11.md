@@ -1,7 +1,6 @@
 # Use nanobind as a faster, smaller alternative to pybind11
 
 **Category:** Interoperability  
-**Item:** #773  
 **Standard:** C++17  
 **Reference:** <https://nanobind.readthedocs.io>  
 

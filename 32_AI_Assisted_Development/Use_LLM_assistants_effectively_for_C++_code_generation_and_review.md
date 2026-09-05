@@ -1,6 +1,7 @@
 # Use LLM assistants effectively for C++ code generation and review
 
-**Category:** AI-Assisted C++ Development
+**Category:** AI Assisted Development  
+**Standard:** Not version-specific  
 
 ---
 

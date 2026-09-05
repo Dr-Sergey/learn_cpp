@@ -1,7 +1,7 @@
 # Use symbol visibility control to reduce shared library symbol table size
 
-**Category:** Tooling & Debugging  
-**Item:** #414  
+**Category:** Tooling and Debugging  
+**Standard:** Not version-specific  
 **Reference:** <https://gcc.gnu.org/wiki/Visibility>  
 
 ---

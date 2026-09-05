@@ -1,7 +1,6 @@
 # Avoid deadlocks with std::lock and std::scoped_lock (C++17)
 
-**Category:** Concurrency & Parallelism  
-**Item:** #94  
+**Category:** Concurrency and Parallelism  
 **Standard:** C++17  
 **Reference:** <https://en.cppreference.com/w/cpp/thread/scoped_lock>  
 

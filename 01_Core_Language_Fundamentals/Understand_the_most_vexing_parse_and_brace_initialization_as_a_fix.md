@@ -1,7 +1,7 @@
 # Understand the most vexing parse and brace initialization as a fix
 
 **Category:** Core Language Fundamentals  
-**Item:** #211  
+**Standard:** Not version-specific  
 **Reference:** <https://en.wikipedia.org/wiki/Most_vexing_parse>  
 
 ---

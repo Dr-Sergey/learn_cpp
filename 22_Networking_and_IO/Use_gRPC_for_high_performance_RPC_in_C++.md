@@ -1,7 +1,7 @@
 # Use gRPC for High-Performance RPC in C++
 
-**Category:** Networking & I/O  
-**Standard:** C++17/20  
+**Category:** Networking and IO  
+**Standard:** C++17, C++20  
 **Reference:** [gRPC C++ Docs](https://grpc.io/docs/languages/cpp/), [gRPC GitHub](https://github.com/grpc/grpc)  
 
 ---
@@ -148,6 +148,7 @@ void RunServer() {
 
 The most important habit to build here is always setting a deadline on `ClientContext` before making any RPC call. Without a deadline you are trusting the server to behave correctly forever - which in distributed systems it will not always do. After the call, inspect the status code carefully; each gRPC error code implies a different recovery strategy.
 
+<!-- compile: needs third-party library header `grpcpp/grpcpp.h` -->
 ```cpp
 // client.cpp - gRPC client with deadlines and error handling
 #include <grpcpp/grpcpp.h>

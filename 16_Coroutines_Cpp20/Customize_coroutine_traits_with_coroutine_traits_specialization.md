@@ -1,6 +1,6 @@
 # Customize Coroutine Traits with coroutine_traits Specialization
 
-**Category:** Coroutines (C++20)  
+**Category:** Coroutines Cpp20  
 **Standard:** C++20  
 **Reference:** [cppreference — std::coroutine_traits](https://en.cppreference.com/w/cpp/coroutine/coroutine_traits)  
 
@@ -122,6 +122,7 @@ The nice part about including the implicit `this` parameter in the traits lookup
 ```cpp
 #include <coroutine>
 #include <cstdio>
+#include <exception>
 
 struct Task {
     struct promise_type;  // default — used for free functions

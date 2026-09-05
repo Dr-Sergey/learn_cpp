@@ -1,6 +1,7 @@
 # Use the NVI pattern (Non-Virtual Interface) for controlled polymorphism
 
-**Category:** OOP Design
+**Category:** OOP Design  
+**Standard:** Not version-specific  
 
 ---
 

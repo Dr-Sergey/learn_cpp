@@ -1,7 +1,6 @@
 # Use dependency scanning for C++20 modules in CMake 3.28+
 
-**Category:** Build Systems & CI  
-**Item:** #747  
+**Category:** Build Systems and CI  
 **Standard:** C++20  
 **Reference:** <https://cmake.org/cmake/help/latest/prop_tgt/CXX_SCAN_FOR_MODULES.html>  
 

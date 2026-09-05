@@ -1,7 +1,7 @@
 # Profile before optimizing and use data-driven optimization
 
-**Category:** Best Practices & Idioms  
-**Item:** #137  
+**Category:** Best Practices and Idioms  
+**Standard:** Not version-specific  
 **Reference:** <https://en.cppreference.com/w/cpp/language/performance>  
 
 ---
@@ -51,6 +51,8 @@ This example uses `std::chrono` as a simple manual profiler. In real code you wo
 #include <iostream>
 #include <numeric>
 #include <vector>
+#include <algorithm>
+#include <utility>
 
 // Simulate a program with multiple functions
 void fast_function(std::vector<double>& data) {

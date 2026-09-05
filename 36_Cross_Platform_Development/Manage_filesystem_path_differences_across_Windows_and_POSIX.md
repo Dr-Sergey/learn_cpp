@@ -1,7 +1,7 @@
 # Manage Filesystem Path Differences Across Windows and POSIX
 
-**Category:** Cross-Platform Development  
-**Standard:** C++17 / C++20  
+**Category:** Cross Platform Development  
+**Standard:** C++17, C++20  
 **Reference:** https://en.cppreference.com/w/cpp/filesystem/path  
 
 ---

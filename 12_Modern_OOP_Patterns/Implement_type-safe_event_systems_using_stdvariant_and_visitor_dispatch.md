@@ -1,7 +1,6 @@
 # Implement type-safe event systems using std::variant and visitor dispatch
 
 **Category:** Modern OOP Patterns  
-**Item:** #386  
 **Standard:** C++17  
 **Reference:** <https://en.cppreference.com/w/cpp/utility/variant>  
 

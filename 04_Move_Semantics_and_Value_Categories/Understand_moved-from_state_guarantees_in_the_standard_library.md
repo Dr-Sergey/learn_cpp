@@ -1,6 +1,6 @@
 # Understand Moved-From State Guarantees in the Standard Library
 
-**Category:** Move Semantics & Value Categories  
+**Category:** Move Semantics and Value Categories  
 **Standard:** C++11 and later  
 **Reference:** <https://en.cppreference.com/w/cpp/utility/move>  
 

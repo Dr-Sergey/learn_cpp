@@ -1,7 +1,7 @@
 # Use Protocol Buffers and FlatBuffers for Efficient Network Serialization
 
-**Category:** Networking & I/O  
-**Standard:** C++17/20  
+**Category:** Networking and IO  
+**Standard:** C++17, C++20  
 **Reference:** [Protobuf C++](https://protobuf.dev/reference/cpp/), [FlatBuffers Guide](https://flatbuffers.dev/flatbuffers_guide_use_cpp.html)  
 
 ---

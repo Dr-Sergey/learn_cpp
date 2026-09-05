@@ -1,6 +1,7 @@
 # Implement the Singleton pattern correctly in modern C++ (Meyers Singleton)
 
-**Category:** OOP Design
+**Category:** OOP Design  
+**Standard:** C++11  
 
 ---
 

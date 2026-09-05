@@ -1,7 +1,6 @@
 # Understand lambda capture of *this vs this (C++17)
 
 **Category:** Core Language Fundamentals  
-**Item:** #233  
 **Standard:** C++17  
 **Reference:** <https://en.cppreference.com/w/cpp/language/lambda>  
 

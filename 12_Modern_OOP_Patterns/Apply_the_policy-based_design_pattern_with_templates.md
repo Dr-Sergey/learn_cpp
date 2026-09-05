@@ -1,7 +1,7 @@
 # Apply the policy-based design pattern with templates
 
 **Category:** Modern OOP Patterns  
-**Item:** #103  
+**Standard:** Not version-specific  
 **Reference:** <https://en.wikipedia.org/wiki/Policy-based_design>  
 
 ---

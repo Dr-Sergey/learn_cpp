@@ -1,6 +1,6 @@
 # Understand expansion statements for C++26
 
-**Category:** Compile-Time Programming  
+**Category:** Compile Time Programming  
 **Standard:** C++26  
 **Reference:** <https://wg21.link/P1306>  
 

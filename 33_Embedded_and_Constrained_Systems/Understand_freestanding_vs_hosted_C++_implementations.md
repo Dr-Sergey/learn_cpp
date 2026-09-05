@@ -1,6 +1,6 @@
 # Understand Freestanding vs Hosted C++ Implementations
 
-**Category:** Embedded & Constrained Systems  
+**Category:** Embedded and Constrained Systems  
 **Standard:** C++23 (P1642R11, P2338R4)  
 **Reference:** <https://en.cppreference.com/w/cpp/freestanding>  
 

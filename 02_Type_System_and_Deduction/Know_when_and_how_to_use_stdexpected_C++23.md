@@ -1,7 +1,6 @@
 # Know when and how to use std::expected (C++23)
 
-**Category:** Type System & Deduction  
-**Item:** #24  
+**Category:** Type System and Deduction  
 **Standard:** C++23  
 **Reference:** <https://en.cppreference.com/w/cpp/utility/expected>  
 

@@ -1,7 +1,6 @@
 # Use `std::integral_constant` and Compile-Time Value Wrappers
 
-**Category:** Compile-Time Programming  
-**Item:** #57  
+**Category:** Compile Time Programming  
 **Standard:** C++11 (enhanced in C++14/C++17)  
 **Reference:** <https://en.cppreference.com/w/cpp/types/integral_constant>  
 
@@ -181,6 +180,7 @@ The reason `type_at` has to be recursive is that C++ does not let you index into
 #include <iostream>
 #include <type_traits>
 #include <cstddef>
+#include <string>
 
 // === Type List ===
 template<typename... Ts>

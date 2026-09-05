@@ -1,7 +1,7 @@
 # Use -Wall, -Wextra, -Wpedantic and treat warnings as errors in CI
 
-**Category:** Tooling & Debugging  
-**Item:** #415  
+**Category:** Tooling and Debugging  
+**Standard:** Not version-specific  
 **Reference:** <https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html>  
 
 ---

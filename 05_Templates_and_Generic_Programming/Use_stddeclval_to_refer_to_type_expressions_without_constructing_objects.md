@@ -1,7 +1,7 @@
 # Use `std::declval` to Refer to Type Expressions Without Constructing Objects
 
-**Category:** Templates & Generic Programming  
-**Item:** #453  
+**Category:** Templates and Generic Programming  
+**Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/utility/declval>  
 
 ---

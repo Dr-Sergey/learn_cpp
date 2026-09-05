@@ -1,6 +1,6 @@
 # Use constexpr dynamic memory allocation with transient allocation (C++20)
 
-**Category:** Compile-Time Programming  
+**Category:** Compile Time Programming  
 **Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/language/constexpr>  
 

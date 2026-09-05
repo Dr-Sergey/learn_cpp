@@ -1,6 +1,7 @@
 # Design exception-safe classes with strong and basic guarantees
 
-**Category:** OOP Design
+**Category:** OOP Design  
+**Standard:** C++11  
 
 ---
 

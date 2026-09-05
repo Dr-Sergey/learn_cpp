@@ -1,7 +1,6 @@
 # Use the Empty Base Class Optimization (EBO) with [[no_unique_address]]
 
-**Category:** Best Practices & Idioms  
-**Item:** #405  
+**Category:** Best Practices and Idioms  
 **Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/language/attributes/no_unique_address>  
 

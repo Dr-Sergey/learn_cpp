@@ -1,7 +1,6 @@
 # Understand covariant return types and their limitations with smart pointers
 
 **Category:** Modern OOP Patterns  
-**Item:** #384  
 **Standard:** C++17  
 **Reference:** <https://en.cppreference.com/w/cpp/language/virtual>  
 

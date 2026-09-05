@@ -1,6 +1,7 @@
 # Test embedded C++ code on host with hardware abstraction layers
 
-**Category:** Testing in Practice
+**Category:** Testing in Practice  
+**Standard:** Not version-specific  
 
 ---
 

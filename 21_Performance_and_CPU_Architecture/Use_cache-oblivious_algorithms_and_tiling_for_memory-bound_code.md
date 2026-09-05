@@ -1,7 +1,7 @@
 # Use cache-oblivious algorithms and tiling for memory-bound code
 
-**Category:** Performance & CPU Architecture  
-**Item:** #717  
+**Category:** Performance and CPU Architecture  
+**Standard:** Not version-specific  
 **Reference:** <https://en.cppreference.com/w/cpp/language/performance>  
 
 ---

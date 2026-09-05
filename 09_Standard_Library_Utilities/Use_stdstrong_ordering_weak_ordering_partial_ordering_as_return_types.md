@@ -1,7 +1,6 @@
 # Use std::strong_ordering, weak_ordering, partial_ordering as <=> return types
 
-**Category:** Standard Library - Utilities  
-**Item:** #368  
+**Category:** Standard Library Utilities  
 **Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/utility/compare/strong_ordering>  
 

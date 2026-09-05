@@ -1,7 +1,7 @@
 # Use std::system_error and its integration with std::error_code
 
 **Category:** Error Handling  
-**Item:** #379  
+**Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/error/system_error>  
 
 ---

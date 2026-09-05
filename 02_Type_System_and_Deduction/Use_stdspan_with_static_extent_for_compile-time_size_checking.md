@@ -1,7 +1,6 @@
 # Use `std::span` with Static Extent for Compile-Time Size Checking
 
-**Category:** Type System & Deduction  
-**Item:** #155  
+**Category:** Type System and Deduction  
 **Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/container/span>  
 

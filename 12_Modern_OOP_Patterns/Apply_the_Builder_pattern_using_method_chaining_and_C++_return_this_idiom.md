@@ -1,8 +1,7 @@
 # Apply the Builder pattern using method chaining and C++ return *this idiom
 
 **Category:** Modern OOP Patterns  
-**Item:** #244  
-**Standard:** C++11 / C++20 / C++23  
+**Standard:** C++11, C++20, C++23  
 **Reference:** <https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#Rc-builder>  
 
 ---

@@ -1,7 +1,7 @@
 # Understand test doubles: fakes, stubs, spies, and mocks and when to use each
 
-**Category:** Testing & Verification  
-**Item:** #689  
+**Category:** Testing and Verification  
+**Standard:** Not version-specific  
 **Reference:** <https://martinfowler.com/bliki/TestDouble.html>  
 
 ---

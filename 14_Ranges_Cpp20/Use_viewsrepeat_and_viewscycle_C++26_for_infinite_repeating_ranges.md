@@ -1,8 +1,7 @@
 # Use views::repeat and views::cycle (C++26) for infinite repeating ranges
 
-**Category:** Ranges (C++20)  
-**Item:** #300  
-**Standard:** C++23 / C++26  
+**Category:** Ranges Cpp20  
+**Standard:** C++23, C++26  
 **Reference:** <https://en.cppreference.com/w/cpp/ranges/repeat_view>  
 
 ---

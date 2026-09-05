@@ -1,6 +1,7 @@
 # Design data serialization architecture with protobuf, flatbuffers, or msgpack
 
-**Category:** Project Architecture
+**Category:** Project Architecture  
+**Standard:** Not version-specific  
 
 ---
 

@@ -1,7 +1,6 @@
 # Understand constinit (C++20) to guarantee static initialization
 
 **Category:** Core Language Fundamentals  
-**Item:** #181  
 **Standard:** C++20  
 **Reference:** <https://en.cppreference.com/w/cpp/language/constinit>  
 

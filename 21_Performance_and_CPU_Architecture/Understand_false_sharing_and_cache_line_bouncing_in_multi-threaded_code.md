@@ -1,7 +1,6 @@
 # Understand false sharing and cache line bouncing in multi-threaded code
 
-**Category:** Performance & CPU Architecture  
-**Item:** #629  
+**Category:** Performance and CPU Architecture  
 **Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/thread/hardware_destructive_interference_size>  
 

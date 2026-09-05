@@ -1,7 +1,7 @@
 # Understand memory bandwidth limits and arithmetic intensity (roofline model)
 
-**Category:** Performance & CPU Architecture  
-**Item:** #634  
+**Category:** Performance and CPU Architecture  
+**Standard:** Not version-specific  
 **Reference:** <https://en.wikipedia.org/wiki/Roofline_model>  
 
 ---

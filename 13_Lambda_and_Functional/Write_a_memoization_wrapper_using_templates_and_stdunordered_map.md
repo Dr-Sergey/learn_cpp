@@ -1,7 +1,6 @@
 # Write a memoization wrapper using templates and std::unordered_map
 
-**Category:** Lambda & Functional  
-**Item:** #388  
+**Category:** Lambda and Functional  
 **Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/container/unordered_map>  
 

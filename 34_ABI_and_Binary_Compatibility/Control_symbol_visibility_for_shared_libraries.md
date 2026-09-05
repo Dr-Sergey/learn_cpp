@@ -1,6 +1,6 @@
 # Control Symbol Visibility for Shared Libraries
 
-**Category:** ABI & Binary Compatibility  
+**Category:** ABI and Binary Compatibility  
 **Standard:** C++11 and later (compiler-specific attributes)  
 **Reference:** https://gcc.gnu.org/wiki/Visibility  
 

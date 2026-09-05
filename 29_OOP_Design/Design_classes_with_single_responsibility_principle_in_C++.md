@@ -1,6 +1,7 @@
 # Design classes with single responsibility principle in C++
 
-**Category:** OOP Design
+**Category:** OOP Design  
+**Standard:** Not version-specific  
 
 ---
 

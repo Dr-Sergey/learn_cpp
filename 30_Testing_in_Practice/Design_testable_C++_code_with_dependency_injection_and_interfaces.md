@@ -1,6 +1,7 @@
 # Design testable C++ code with dependency injection and interfaces
 
-**Category:** Testing in Practice
+**Category:** Testing in Practice  
+**Standard:** Not version-specific  
 
 ---
 
@@ -255,6 +256,8 @@ Here is the full picture: production implementations, the composition root that 
 ```cpp
 #include <memory>
 #include <iostream>
+#include <string>
+#include <vector>
 
 // === Production implementations ===
 class SystemClock : public IClock {

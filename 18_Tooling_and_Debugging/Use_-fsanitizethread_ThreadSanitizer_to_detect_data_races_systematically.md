@@ -1,7 +1,6 @@
 # Use -fsanitize=thread (ThreadSanitizer) to detect data races systematically
 
-**Category:** Tooling & Debugging  
-**Item:** #423  
+**Category:** Tooling and Debugging  
 **Standard:** C++11  
 **Reference:** <https://clang.llvm.org/docs/ThreadSanitizer.html>  
 

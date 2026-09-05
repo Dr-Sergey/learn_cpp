@@ -1,7 +1,6 @@
 # Use reflection to generate comparison and hash operators automatically
 
-**Category:** Reflection (C++26)  
-**Item:** #537  
+**Category:** Reflection Cpp26  
 **Standard:** C++17  
 **Reference:** <https://en.cppreference.com/w/cpp/meta>  
 
@@ -27,6 +26,7 @@ Here is what this means for the boilerplate count:
 
 The `reflected_equal` function below walks every non-static data member of type `T` and compares the corresponding fields in `a` and `b`. The key ingredient is `obj.[:m:]` - that splice expression takes the compile-time member description `m` and turns it into a real member access at runtime.
 
+<!-- compile: needs `meta` (not in the CI standard library yet) -->
 ```cpp
 // C++26 with P2996 reflection
 #include <meta>
@@ -73,6 +73,7 @@ The `Color` struct shows the usual pattern for injecting a reflected operator: p
 
 Getting a type into an `unordered_set` or `unordered_map` requires both `operator==` and a hash function. Writing a correct `std::hash` specialization by hand - combining each field's hash without introducing bias - is tedious and error-prone. The `ReflectedHash` template below does it generically using the same member iteration pattern.
 
+<!-- compile: needs `meta` (not in the CI standard library yet) -->
 ```cpp
 #include <meta>
 #include <functional>
@@ -136,6 +137,7 @@ The `hash_combine` formula using `0x9e3779b9` is the golden ratio hash from Boos
 
 A common concern when using reflection is whether the generated code is as fast as hand-written code, and whether the compile time overhead is acceptable. This example compares both directly.
 
+<!-- compile: needs `meta` (not in the CI standard library yet) -->
 ```cpp
 #include <meta>
 #include <iostream>

@@ -1,7 +1,7 @@
 # Use perf annotate and flamegraphs for source-level hotspot analysis
 
-**Category:** Performance & CPU Architecture  
-**Item:** #635  
+**Category:** Performance and CPU Architecture  
+**Standard:** Not version-specific  
 **Reference:** <https://www.brendangregg.com/flamegraphs.html>  
 
 ---

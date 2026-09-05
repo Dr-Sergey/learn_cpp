@@ -1,7 +1,6 @@
 # Understand std::vector<bool>'s non-standard behavior
 
-**Category:** Standard Library — Containers  
-**Item:** #464  
+**Category:** Standard Library Containers  
 **Standard:** C++11  
 **Reference:** <https://en.cppreference.com/w/cpp/container/vector_bool>  
 

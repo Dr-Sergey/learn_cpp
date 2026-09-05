@@ -1,7 +1,7 @@
 # Use std::experimental::simd (C++ SIMD library) for portable vectorization
 
-**Category:** Performance & CPU Architecture  
-**Item:** #723  
+**Category:** Performance and CPU Architecture  
+**Standard:** Not version-specific  
 **Reference:** <https://en.cppreference.com/w/cpp/experimental/simd>  
 
 ---
@@ -39,6 +39,7 @@ The library is available now in GCC, with a standalone version for broader use, 
 
 There are two main width modes. `fixed_size_simd<float, 8>` always processes exactly 8 floats per iteration regardless of what hardware you're on. `native_simd<float>` adapts to whatever the hardware naturally supports - 4 lanes on SSE, 8 on AVX2, 16 on AVX-512. The following example shows both:
 
+<!-- compile: needs third-party library header `experimental/simd` -->
 ```cpp
 #include <experimental/simd>
 #include <iostream>
@@ -97,6 +98,7 @@ Notice the scalar tail loop after the main SIMD loop. This is always necessary b
 
 The mask type is how you express per-element conditionals without branches. Instead of an `if` statement that takes one path for all elements, a `simd_mask` stores a boolean result per lane and `stdx::where` applies a conditional assignment. The result compiles to a blend or select instruction with no branch at all.
 
+<!-- compile: needs third-party library header `experimental/simd` -->
 ```cpp
 #include <experimental/simd>
 #include <iostream>

@@ -1,7 +1,7 @@
 # Apply the Principle of Minimal Interface to reduce coupling
 
-**Category:** Best Practices & Idioms  
-**Item:** #271  
+**Category:** Best Practices and Idioms  
+**Standard:** Not version-specific  
 **Reference:** <https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#Rc-standalone>  
 
 ---
@@ -56,6 +56,8 @@ The before/after below shows how `CircleBloated` stuffs five functions into the 
 #include <cmath>
 #include <iostream>
 #include <string>
+#include <ostream>
+#include <numbers>
 
 // BEFORE: bloated interface
 class CircleBloated {
@@ -87,8 +89,8 @@ public:
 };
 
 // Free functions: can change independently of Circle's internals
-inline double area(const Circle& c)          { return M_PI * c.radius() * c.radius(); }
-inline double circumference(const Circle& c) { return 2 * M_PI * c.radius(); }
+inline double area(const Circle& c)          { return std::numbers::pi * c.radius() * c.radius(); }
+inline double circumference(const Circle& c) { return 2 * std::numbers::pi * c.radius(); }
 inline double diameter(const Circle& c)      { return 2 * c.radius(); }
 
 bool operator<(const Circle& a, const Circle& b) {
@@ -130,9 +132,10 @@ Now if you decide to store `radius_` as a `float` instead of a `double`, you onl
 4. **Genericity:** Free functions can be templatized to work with any type that has `radius()`:
 
 ```cpp
+#include <numbers>
 template<typename Shape>
 double area(const Shape& s) requires requires { s.radius(); } {
-    return M_PI * s.radius() * s.radius();
+    return std::numbers::pi * s.radius() * s.radius();
 }
 // Works for Circle, Sphere, or any type with radius()
 ```

@@ -1,7 +1,6 @@
 # Use std::move_only_function (C++23) for Non-Copyable Callable Wrappers
 
-**Category:** Move Semantics & Value Categories  
-**Item:** #331  
+**Category:** Move Semantics and Value Categories  
 **Standard:** C++23  
 **Reference:** <https://en.cppreference.com/w/cpp/utility/functional/move_only_function>  
 

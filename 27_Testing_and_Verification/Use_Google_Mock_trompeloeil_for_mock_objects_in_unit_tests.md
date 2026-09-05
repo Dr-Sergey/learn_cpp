@@ -1,7 +1,7 @@
 # Use Google Mock / trompeloeil for mock objects in unit tests
 
-**Category:** Testing & Verification  
-**Item:** #764  
+**Category:** Testing and Verification  
+**Standard:** Not version-specific  
 **Reference:** <https://github.com/rollbear/trompeloeil>  
 
 ---

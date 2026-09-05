@@ -1,7 +1,7 @@
 # Use debuggers: breakpoints, watchpoints, and post-mortem core dumps
 
-**Category:** Tooling & Debugging  
-**Item:** #150  
+**Category:** Tooling and Debugging  
+**Standard:** Not version-specific  
 **Reference:** <https://lldb.llvm.org/use/tutorial.html>  
 
 ---

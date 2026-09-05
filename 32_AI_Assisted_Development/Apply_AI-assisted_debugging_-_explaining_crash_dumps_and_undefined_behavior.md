@@ -1,6 +1,7 @@
 # Apply AI-assisted debugging - explaining crash dumps and undefined behavior
 
-**Category:** AI-Assisted C++ Development
+**Category:** AI Assisted Development  
+**Standard:** Not version-specific  
 
 ---
 

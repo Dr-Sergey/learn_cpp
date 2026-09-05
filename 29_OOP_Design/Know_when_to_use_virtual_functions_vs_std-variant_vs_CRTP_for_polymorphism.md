@@ -1,6 +1,7 @@
 # Know when to use virtual functions vs std::variant vs CRTP for polymorphism
 
-**Category:** OOP Design
+**Category:** OOP Design  
+**Standard:** C++17  
 
 ---
 
@@ -46,6 +47,8 @@ The best way to internalize the differences is to solve the same problem three w
 #include <memory>
 #include <iostream>
 #include <cmath>
+#include <type_traits>
+#include <numbers>
 
 // ---- APPROACH 1: Virtual functions ----
 namespace virt {
@@ -58,7 +61,7 @@ namespace virt {
         double r_;
     public:
         explicit Circle(double r) : r_(r) {}
-        double area() const override { return M_PI * r_ * r_; }
+        double area() const override { return std::numbers::pi * r_ * r_; }
     };
     class Rect : public Shape {
         double w_, h_;
@@ -83,7 +86,7 @@ namespace var {
         return std::visit([](const auto& shape) -> double {
             using T = std::decay_t<decltype(shape)>;
             if constexpr (std::is_same_v<T, Circle>)
-                return M_PI * shape.r * shape.r;
+                return std::numbers::pi * shape.r * shape.r;
             else
                 return shape.w * shape.h;
         }, s);
@@ -107,7 +110,7 @@ namespace crtp {
     class Circle : public Shape<Circle> {
         double r_;
         friend class Shape<Circle>;
-        double area_impl() const { return M_PI * r_ * r_; }
+        double area_impl() const { return std::numbers::pi * r_ * r_; }
     public:
         explicit Circle(double r) : r_(r) {}
     };
@@ -179,6 +182,7 @@ Sometimes you have a mostly-closed set of types but need an escape hatch for ext
 #include <memory>
 #include <vector>
 #include <iostream>
+#include <numbers>
 
 // Known types get fast variant dispatch
 struct Circle { double r; };
@@ -197,7 +201,7 @@ double area(const Shape& s) {
     return std::visit([](const auto& shape) -> double {
         using T = std::decay_t<decltype(shape)>;
         if constexpr (std::is_same_v<T, Circle>)
-            return M_PI * shape.r * shape.r;
+            return std::numbers::pi * shape.r * shape.r;
         else if constexpr (std::is_same_v<T, Rect>)
             return shape.w * shape.h;
         else

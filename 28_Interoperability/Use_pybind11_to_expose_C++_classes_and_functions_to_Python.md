@@ -1,7 +1,7 @@
 # Use pybind11 to expose C++ classes and functions to Python
 
 **Category:** Interoperability  
-**Item:** #591  
+**Standard:** Not version-specific  
 **Reference:** <https://pybind11.readthedocs.io/>  
 
 ---
@@ -46,6 +46,7 @@ There is one concept here that deserves extra attention before you look at the c
 #include <vector>
 #include <sstream>
 #include <cmath>
+#include <numbers>
 
 namespace py = pybind11;
 
@@ -67,7 +68,7 @@ public:
     Circle(double r) : Shape("Circle"), radius_(r) {
         if (r < 0) throw std::invalid_argument("Negative radius");
     }
-    double area() const override { return M_PI * radius_ * radius_; }
+    double area() const override { return std::numbers::pi * radius_ * radius_; }
     double radius() const { return radius_; }
     void set_radius(double r) { radius_ = r; }
 };

@@ -1,6 +1,7 @@
 # Validate AI-generated C++ code - common pitfalls and verification strategies
 
-**Category:** AI-Assisted C++ Development
+**Category:** AI Assisted Development  
+**Standard:** C++11  
 
 ---
 
