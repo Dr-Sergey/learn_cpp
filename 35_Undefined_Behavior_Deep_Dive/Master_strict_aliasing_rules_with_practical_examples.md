@@ -154,9 +154,9 @@ PacketHeader parse_safe(const uint8_t* buffer, std::size_t len) {
 
 // CORRECT alternative: placement new (C++17 with std::launder)
 // Only if you need a persistent view over the buffer
-PacketHeader* parse_placement(
-    alignas(PacketHeader) uint8_t* buffer, std::size_t len
-) {
+// (alignas cannot be applied to a function parameter: the CALLER must hand
+// in a buffer that is suitably aligned for PacketHeader.)
+PacketHeader* parse_placement(uint8_t* buffer, std::size_t len) {
     if (len < sizeof(PacketHeader)) return nullptr;
     // Copy bytes into aligned storage, then construct object
     auto* hdr = new (buffer) PacketHeader;

@@ -33,6 +33,7 @@ Sources are applied in order from lowest to highest priority, so later sources a
 
 The `Config` class below follows the layered override pattern precisely. You call `load_defaults()` first to establish safe fallbacks, then load files and environment variables on top. Each later call overwrites any key it finds. The type-safe getters (`get_int`, `get_bool`, `get_string`) parse values at the point of access, and `validate()` enforces business rules before the application starts doing any real work.
 
+<!-- compile: fragment: get_environment() is defined in a later listing -->
 ```cpp
 #include <string>
 #include <unordered_map>

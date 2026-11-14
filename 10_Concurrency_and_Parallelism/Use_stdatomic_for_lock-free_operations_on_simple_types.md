@@ -238,8 +238,9 @@ void reader() {
 }
 
 int main() {
-    // Run many times to trigger the reordering
-    for (int trial = 0; trial < 100'000; ++trial) {
+    // Run many times to give the reordering a chance to show up
+    // (each trial starts two threads and prints one line)
+    for (int trial = 0; trial < 1'000; ++trial) {
         x.store(0, std::memory_order_relaxed);
         y.store(0, std::memory_order_relaxed);
 

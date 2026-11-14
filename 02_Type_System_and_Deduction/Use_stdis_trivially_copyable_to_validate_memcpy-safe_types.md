@@ -291,13 +291,15 @@ HasCustomCopy:               false
 HasCustomAssign:             false
 
 === Breakdown of ResourceB ===
-trivially_copy_constructible: true
-trivially_move_constructible: true
+trivially_copy_constructible: false
+trivially_move_constructible: false
 trivially_copy_assignable:    true
 trivially_move_assignable:    true
 trivially_destructible:       false
 -> trivially_copyable:        false
 ```
+
+The two `_constructible` lines deserve a second look. `ResourceB`'s copy and move *constructors* are themselves trivial, yet the traits report `false`: `is_trivially_copy_constructible` asks whether the definition `T t(other);` is trivial as a whole, and that definition also destroys `t` - so a non-trivial destructor drags these traits down with it. The assignment traits involve no destruction and stay `true`.
 
 Even though `ResourceB`'s copy/move operations are all trivial, the non-trivial destructor alone is enough to make the entire type non-trivially-copyable. An empty `~T() {}` is still user-defined and thus non-trivial. Use `~T() = default;` to keep triviality.
 

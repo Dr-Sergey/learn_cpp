@@ -78,12 +78,39 @@ class EpochBasedReclamation {
 
     struct ThreadEntry {
         std::atomic<int> local_epoch{-1};   // -1 = inactive
+        // Everything below is touched ONLY by the owning thread, so it needs
+        // no synchronization. That is the whole point of per-thread lists.
         std::vector<std::function<void()>> retire_lists[EPOCH_COUNT];
+        int list_epoch[EPOCH_COUNT] = {0, 0, 0};  // epoch each list was filled in
     };
 
     std::atomic<int> global_epoch_{0};
     std::array<ThreadEntry, MAX_THREADS> threads_{};
     std::atomic<int> thread_count_{0};
+
+    // Free what this thread retired at least two epochs ago.
+    void reclaim_own(int tid, int current_epoch) {
+        ThreadEntry& me = threads_[tid];
+        for (int i = 0; i < EPOCH_COUNT; ++i) {
+            if (!me.retire_lists[i].empty() && me.list_epoch[i] <= current_epoch - 2) {
+                for (auto& fn : me.retire_lists[i]) fn();
+                me.retire_lists[i].clear();
+            }
+        }
+    }
+
+    // Move the global epoch forward if every active thread has caught up.
+    void try_advance() {
+        int e = global_epoch_.load(std::memory_order_acquire);
+        int n = thread_count_.load(std::memory_order_acquire);
+
+        for (int i = 0; i < n; ++i) {
+            int local = threads_[i].local_epoch.load(std::memory_order_acquire);
+            if (local != -1 && local != e)
+                return;  // thread i is still in an older epoch
+        }
+        global_epoch_.compare_exchange_strong(e, e + 1, std::memory_order_acq_rel);
+    }
 
 public:
     int register_thread() {
@@ -91,40 +118,31 @@ public:
     }
 
     void enter(int tid) {
-        int e = global_epoch_.load(std::memory_order_relaxed);
-        threads_[tid].local_epoch.store(e, std::memory_order_release);
-        std::atomic_thread_fence(std::memory_order_seq_cst);
+        int e = global_epoch_.load(std::memory_order_acquire);
+        threads_[tid].local_epoch.store(e, std::memory_order_seq_cst);
     }
 
     void leave(int tid) {
         threads_[tid].local_epoch.store(-1, std::memory_order_release);
     }
 
+    // Called by the thread that unlinked the node. The deleter is parked on
+    // THIS thread's list; no thread ever touches another thread's lists.
     void retire(int tid, std::function<void()> deleter) {
-        int e = global_epoch_.load(std::memory_order_relaxed);
-        threads_[tid].retire_lists[e % EPOCH_COUNT].push_back(std::move(deleter));
+        ThreadEntry& me = threads_[tid];
+        int e = global_epoch_.load(std::memory_order_acquire);
+        reclaim_own(tid, e);                     // the slot for e is now empty
+        me.retire_lists[e % EPOCH_COUNT].push_back(std::move(deleter));
+        me.list_epoch[e % EPOCH_COUNT] = e;
         try_advance();
     }
 
-    void try_advance() {
-        int e = global_epoch_.load(std::memory_order_relaxed);
-        int n = thread_count_.load(std::memory_order_relaxed);
-
-        for (int i = 0; i < n; ++i) {
-            int local = threads_[i].local_epoch.load(std::memory_order_acquire);
-            if (local != -1 && local != e)
-                return;  // thread i is still in an older epoch
-        }
-
-        if (global_epoch_.compare_exchange_strong(e, e + 1,
-                std::memory_order_acq_rel)) {
-            int reclaim_epoch = (e + 1) % EPOCH_COUNT;
-            for (int i = 0; i < n; ++i) {
-                auto& list = threads_[i].retire_lists[reclaim_epoch];
+    // Once all worker threads have finished, nothing can still hold a
+    // reference, so whatever is left can be freed.
+    ~EpochBasedReclamation() {
+        for (auto& t : threads_)
+            for (auto& list : t.retire_lists)
                 for (auto& fn : list) fn();
-                list.clear();
-            }
-        }
     }
 };
 
@@ -194,7 +212,7 @@ int main() {
 }
 ```
 
-**Key insight:** `enter()` and `leave()` bracket the critical section. Between them, the thread may hold raw pointers into the data structure. `retire()` defers deletion until two epoch advancements guarantee safety. The overhead is minimal - one atomic store on enter, one on leave.
+**Key insight:** `enter()` and `leave()` bracket the critical section. Between them, the thread may hold raw pointers into the data structure. `retire()` defers deletion until two epoch advancements guarantee safety. Note who frees what: each thread parks retired nodes on its *own* lists and is the only one that ever reads or clears them, so the lists need no locking; only the epoch counters are shared. The overhead is minimal - one atomic store on enter, one on leave.
 
 ---
 

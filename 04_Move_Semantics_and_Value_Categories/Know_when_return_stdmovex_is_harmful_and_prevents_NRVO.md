@@ -160,7 +160,8 @@ int main() {
 
     std::cout << "\nCase 2: Implicit move (multiple paths):\n";
     Widget w2 = case_implicit_move(true);
-    // Expected: "Construct" + "MOVE" - NRVO may not apply, but move is automatic
+    // Expected: two "Construct" lines (a and b), then one "MOVE" -
+    // NRVO does not apply here, but the move is automatic
 
     std::cout << "\n=== Decision Flow ===\n";
     std::cout << "  return local;\n";
@@ -198,8 +199,8 @@ Obj nrvo_ok() {
 
 // VIOLATED: Parameter - not a local variable
 Obj nrvo_fail_param(Obj o) {
-    return o;  // Can't NRVO a parameter (but implicit move in C++11)
-               // Note: C++23 clarifies parameters get implicit move too
+    return o;  // Can't NRVO a parameter, but by-value parameters have
+               // been implicitly moved on return since C++11
 }
 
 // VIOLATED: std::move turns it into xvalue
@@ -233,12 +234,14 @@ int main() {
     std::cout << "=== NRVO Conditions ===\n\n";
 
     std::cout << "NRVO conditions summary:\n";
-    std::cout << "  1. Return expression is name of non-volatile local object\n";
-    std::cout << "  2. Type of local matches function return type (or convertible via\n";
-    std::cout << "     move/copy ctor with same cv-qualification)\n";
-    std::cout << "  3. Object is not caught by exception handler\n";
-    std::cout << "  4. No intervening std::move()\n";
-    std::cout << "  5. Compiler can prove single return variable\n";
+    std::cout << "  1. Return expression is the name of a non-volatile local object\n";
+    std::cout << "  2. Its class type is the function's return type (ignoring cv-qualifiers);\n";
+    std::cout << "     a type that merely converts to the return type does not qualify\n";
+    std::cout << "  3. It is not a function parameter or a catch-clause parameter\n";
+    std::cout << "  4. No std::move() or other wrapper around the name\n";
+    std::cout << "  5. In practice: every return statement names the same variable\n";
+    std::cout << "  Even then NRVO is permitted, never required - only prvalue\n";
+    std::cout << "  elision is guaranteed.\n";
 
     std::cout << "\n--- Testing ---\n\n";
 
@@ -263,7 +266,7 @@ int main() {
 ## Notes
 
 - **Golden rule:** Write `return x;` for local variables - never `return std::move(x);`.
-- `return std::move(x)` is appropriate ONLY for non-local variables (members, global refs) where NRVO can't apply anyway.
-- C++11/14/17 progressively expanded implicit move: function parameters, catch-clause parameters.
-- C++23 further clarifies that all local variables and parameters eligible for NRVO get implicit move.
+- `return std::move(x)` is appropriate only where neither NRVO nor implicit move can apply: data members, objects reached through a reference or pointer, and (before C++20) rvalue-reference parameters.
+- Implicit move has widened over time. C++11 covered locals and by-value parameters; C++14 (CWG 1579) added returns that convert to a different return type, such as `unique_ptr<Derived>` to `unique_ptr<Base>`; C++20 (P1825) added rvalue-reference variables and `throw` of a parameter.
+- C++23 (P2266) simplified the rule: a move-eligible name in a `return` is simply an xvalue, with no fallback copy lookup.
 - Compilers warn about this: `-Wpessimizing-move` (GCC/Clang) flags `return std::move(local)`.

@@ -158,6 +158,7 @@ Any extra arguments you pass to `ranges::to<C>(args...)` are forwarded directly 
 ```cpp
 #include <ranges>
 #include <vector>
+#include <deque>
 #include <set>
 #include <memory>
 #include <iostream>
@@ -194,7 +195,6 @@ int main() {
     // The vector is allocated in one shot - no reallocation
 
     // Conversion chain: view -> deque -> reversed vector
-    #include <deque>
     auto deq = rv::iota(1, 6)
         | std::ranges::to<std::deque>();
     auto rev_vec = deq

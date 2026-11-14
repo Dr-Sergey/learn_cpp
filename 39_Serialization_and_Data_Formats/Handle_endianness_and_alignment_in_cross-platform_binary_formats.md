@@ -72,6 +72,7 @@ The symmetry between `to_network_order` and `from_network_order` is intentional 
 
 This is the other half of the cross-platform story. Your C++ compiler inserts invisible padding bytes between struct members to satisfy alignment requirements. The exact layout depends on the compiler, the target architecture, and the compilation options. If you cast a struct directly to bytes and send it over the wire, the receiving side may have a completely different layout.
 
+<!-- compile: fragment: uses to_network_order from Q1 -->
 ```cpp
 #include <cstdint>
 #include <iostream>

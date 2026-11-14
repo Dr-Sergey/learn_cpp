@@ -128,10 +128,16 @@ int main() {
 // Expected output:
 // Before iteration: filter=0 transform=0
 // 4 16
-// After iteration: filter=4 transform=2
+// After iteration: filter=6 transform=2
+//
+// (Why 6 and not 4? After handing out the second element, take still
+// advances the underlying iterator once, and the filter scans on - past 5
+// to 6 - before take notices that its count has run out. Lazy does not
+// always mean "minimal": keep expensive or side-effecting predicates out
+// of filters that sit under take.)
 ```
 
-Before the loop, both counters are zero - the pipeline exists but hasn't done anything. During iteration, `filter` is called 4 times (for elements 1, 2, 3, 4) and `transform` only 2 times (for elements 2 and 4), because `take(2)` stopped the pipeline after finding two matches. Elements 5 through 10 were never examined.
+Before the loop, both counters are zero - the pipeline exists but hasn't done anything. During iteration, `transform` runs only 2 times (for elements 2 and 4), because `take(2)` stopped the pipeline after two matches, and elements 7 through 10 were never examined. `filter` runs 6 times rather than the 4 you might expect: after the second element is delivered, `take` still advances the underlying iterator once more, so the filter scans 5 and 6 before the loop ends. That one step of overshoot is standard behaviour.
 
 ### Q3: Show a case where materializing a view into a vector with `ranges::to` (C++23) is necessary
 

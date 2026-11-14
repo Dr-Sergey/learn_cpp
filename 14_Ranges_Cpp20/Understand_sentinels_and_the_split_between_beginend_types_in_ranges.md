@@ -107,6 +107,7 @@ Here we're building a proper range type whose `begin()` and `end()` deliberately
 ```cpp
 #include <iostream>
 #include <ranges>
+#include <algorithm>
 #include <concepts>
 
 // Custom sentinel: stops at null terminator
@@ -178,6 +179,13 @@ struct NullSentinel {
     friend bool operator==(const char* p, NullSentinel) { return *p == '\0'; }
 };
 
+// A sentinel that carries state. (Defined at namespace scope: a class defined
+// inside a function is not allowed to define friend functions.)
+struct CountSentinel {
+    int remaining;
+    friend bool operator==(const int*, CountSentinel s) { return s.remaining <= 0; }
+};
+
 int main() {
     const char* long_str = "Find_the_X_in_this_string";
 
@@ -197,12 +205,7 @@ int main() {
     //   Old: strlen(1000) + find(10) = 1010 comparisons
     //   New: find(10) = 10 comparisons
 
-    // Counted sentinel example:
-    struct CountSentinel {
-        int remaining;
-        friend bool operator==(const int*, CountSentinel s) { return s.remaining <= 0; }
-    };
-
+    // Counted sentinel example (CountSentinel is defined above main):
     int arr[] = {10, 20, 30, 40, 50};
     std::cout << "First 3 elements: ";
     for (auto it = arr; it != CountSentinel{3}; ++it) {
@@ -221,8 +224,8 @@ int main() {
     std::cout << "\n";
 }
 // Expected output:
-//   Old: found at index 10
-//   New: found at index 10
+//   Old: found at index 9
+//   New: found at index 9
 //   First 3 elements: 10
 //   Counted view: 10 20 30
 ```

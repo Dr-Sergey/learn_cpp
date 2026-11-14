@@ -234,7 +234,10 @@ When you need to build a large `flat_set`, do not insert elements one by one. Fi
 #include <chrono>
 
 int main() {
-    constexpr int N = 1'000'000;
+    // 100 thousand, not a million: the quadratic version moves about
+    // N^2/2 elements, which is ~20 GB of memory traffic here and would be
+    // ~2 TB (several minutes) at N = 1'000'000.
+    constexpr int N = 100'000;
 
     // BAD: individual inserts -> O(n^2) total
     {
@@ -266,9 +269,9 @@ int main() {
 
     return 0;
 }
-// Typical output:
-// Individual inserts: ~2000+ ms (O(n^2))
-// Bulk sort:          ~80 ms (O(n log n))
+// Typical output (optimized build):
+// Individual inserts: ~500-2000 ms (O(n^2))
+// Bulk sort:          ~1-5 ms (O(n log n))
 ```
 
 ### Q3: Show that flat_set invalidates all iterators on any insert or erase (unlike std::set)

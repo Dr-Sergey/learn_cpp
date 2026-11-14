@@ -53,6 +53,7 @@ The object **must already be owned by at least one `shared_ptr`** before calling
 
 This is the bug you will encounter if you try the naive approach. Look carefully at the use counts - both `sp1` and `sp2` report a use count of 1, which means they have completely independent control blocks pointing at the same object:
 
+<!-- compile: norun: double-frees on purpose -->
 ```cpp
 #include <iostream>
 #include <memory>

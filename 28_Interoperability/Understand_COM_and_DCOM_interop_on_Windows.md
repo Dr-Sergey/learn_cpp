@@ -54,6 +54,7 @@ Here's the vocabulary you need to work with COM from C++:
 
 The most important rule in COM is: never forget to call `Release()`. In modern C++, you delegate that to `ComPtr`, which calls `AddRef` and `Release` automatically. You also need to call `CoInitializeEx` before any COM operation and `CoUninitialize` after you're done. Here's a complete example that opens a file picker dialog using the COM `IFileOpenDialog` interface:
 
+<!-- compile: needs the Windows SDK COM libraries (link with ole32.lib) -->
 ```cpp
 #include <windows.h>
 #include <wrl/client.h>  // Microsoft::WRL::ComPtr

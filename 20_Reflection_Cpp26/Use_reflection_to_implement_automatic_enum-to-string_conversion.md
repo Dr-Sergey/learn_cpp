@@ -1,7 +1,7 @@
 # Use reflection to implement automatic enum-to-string conversion
 
 **Category:** Reflection Cpp26  
-**Standard:** C++11  
+**Standard:** C++26  
 **Reference:** <https://en.cppreference.com/w/cpp/language/reflection>  
 
 ---
@@ -15,7 +15,7 @@ Here is the before/after at a glance:
 ```cpp
 Before reflection:         After reflection:
 
-switch(color) {            template for (auto e : enumerators_of(^E))
+switch(color) {            template for (auto e : enumerators_of(^^E))
   case Red:   return "Red";    if (value == [:e:])
   case Green: return "Green";      return identifier_of(e);
   case Blue:  return "Blue";
@@ -27,7 +27,7 @@ switch(color) {            template for (auto e : enumerators_of(^E))
 
 ## Self-Assessment
 
-### Q1: Iterate all enumerators with `enumerators_of(^MyEnum)`
+### Q1: Iterate all enumerators with `enumerators_of(^^MyEnum)`
 
 This example shows the basic reflection loop over an enum. `enumerators_of` returns the compile-time list, and the `template for` loop runs once per enumerator. Each `e` is a `std::meta::info` value - you call `identifier_of(e)` to get the name as a `string_view`, and `[:e:]` to splice it back into the actual enumerator value.
 
@@ -41,7 +41,8 @@ This example shows the basic reflection loop over an enum. `enumerators_of` retu
 enum class Fruit { Apple, Banana, Cherry, Date, Elderberry };
 
 int main() {
-    constexpr auto enumerators = std::meta::enumerators_of(^Fruit);
+    static constexpr auto enumerators = std::define_static_array(
+        std::meta::enumerators_of(^^Fruit));
 
     // Print all enumerator names:
     std::cout << "Fruit has " << enumerators.size() << " values:\n";
@@ -86,7 +87,7 @@ enum class Permission { Read = 1, Write = 2, Execute = 4, Admin = 8 };
 // ONE function for ALL enums:
 template <typename E>
 constexpr std::string_view to_string(E value) {
-    template for (constexpr auto e : std::meta::enumerators_of(^E)) {
+    template for (constexpr auto e : std::define_static_array(std::meta::enumerators_of(^^E))) {
         if (value == [:e:]) return std::meta::identifier_of(e);
     }
     return "<unknown>";
@@ -95,7 +96,7 @@ constexpr std::string_view to_string(E value) {
 // Reverse: string to enum:
 template <typename E>
 constexpr std::optional<E> parse_enum(std::string_view name) {
-    template for (constexpr auto e : std::meta::enumerators_of(^E)) {
+    template for (constexpr auto e : std::define_static_array(std::meta::enumerators_of(^^E))) {
         if (name == std::meta::identifier_of(e)) return [:e:];
     }
     return std::nullopt;
@@ -149,7 +150,7 @@ enum class Color { Red, Green, Blue };
 // ===== C++26 reflection =====
 template <typename E>
 constexpr std::string_view to_string(E value) {
-    template for (constexpr auto e : std::meta::enumerators_of(^E)) {
+    template for (constexpr auto e : std::define_static_array(std::meta::enumerators_of(^^E))) {
         if (value == [:e:]) return std::meta::identifier_of(e);
     }
     return "<unknown>";

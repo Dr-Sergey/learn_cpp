@@ -148,6 +148,7 @@ int main() {
 
 **Dangling reference example:**
 
+<!-- compile: skip: deliberately returns a reference to a local, which C++23 rejects -->
 ```cpp
 #include <iostream>
 
@@ -167,10 +168,13 @@ int main() {
 Compile with `-Wall -Wextra -Werror` to catch this. GCC/Clang emit:
 `warning: reference to local variable 'value' returned`
 
+Since C++23 you do not even need the warning. A returned local is now treated as an rvalue (P2266), and an rvalue cannot bind to `int&`, so this function is a hard compile error in C++23 mode. The bug class has not gone away, though: returning a reference to a local through a wrapper, a member, or a `const&` still compiles and still dangles.
+
 ### Q2: Write a function that accidentally returns a reference to a local variable and explain the undefined behavior
 
-The buggy and fixed versions do the same thing logically, but the return mechanism makes all the difference.
+The buggy and fixed versions do the same thing logically, but the return mechanism makes all the difference. (Build `bad_greet` as C++20 or earlier to see the undefined behavior; in C++23 mode the compiler rejects it outright.)
 
+<!-- compile: skip: deliberately returns a reference to a local, which C++23 rejects -->
 ```cpp
 #include <iostream>
 #include <string>

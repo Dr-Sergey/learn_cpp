@@ -1,7 +1,7 @@
 # Use reflection to generate comparison and hash operators automatically
 
 **Category:** Reflection Cpp26  
-**Standard:** C++17  
+**Standard:** C++26  
 **Reference:** <https://en.cppreference.com/w/cpp/meta>  
 
 ---
@@ -35,7 +35,8 @@ The `reflected_equal` function below walks every non-static data member of type 
 // Generic equality - works for ANY aggregate:
 template <typename T>
 bool reflected_equal(const T& a, const T& b) {
-    constexpr auto members = std::meta::nonstatic_data_members_of(^T);
+    static constexpr auto members = std::define_static_array(
+        std::meta::nonstatic_data_members_of(^^T, std::meta::access_context::current()));
     bool result = true;
     template for (constexpr auto m : members) {
         if (a.[:m:] != b.[:m:]) result = false;
@@ -90,7 +91,8 @@ inline std::size_t hash_combine(std::size_t seed, std::size_t h) {
 template <typename T>
 struct ReflectedHash {
     std::size_t operator()(const T& obj) const {
-        constexpr auto members = std::meta::nonstatic_data_members_of(^T);
+        static constexpr auto members = std::define_static_array(
+            std::meta::nonstatic_data_members_of(^^T, std::meta::access_context::current()));
         std::size_t seed = 0;
         template for (constexpr auto m : members) {
             using MType = [:std::meta::type_of(m):];
@@ -160,7 +162,8 @@ auto manual_compare(const Vec3& a, const Vec3& b) {
 template <typename T>
 bool refl_equal(const T& a, const T& b) {
     bool eq = true;
-    template for (constexpr auto m : std::meta::nonstatic_data_members_of(^T)) {
+    template for (constexpr auto m : std::define_static_array(
+            std::meta::nonstatic_data_members_of(^^T, std::meta::access_context::current()))) {
         if (a.[:m:] != b.[:m:]) eq = false;
     }
     return eq;
@@ -168,7 +171,8 @@ bool refl_equal(const T& a, const T& b) {
 
 template <typename T>
 auto refl_compare(const T& a, const T& b) {
-    template for (constexpr auto m : std::meta::nonstatic_data_members_of(^T)) {
+    template for (constexpr auto m : std::define_static_array(
+            std::meta::nonstatic_data_members_of(^^T, std::meta::access_context::current()))) {
         if (auto c = a.[:m:] <=> b.[:m:]; c != 0) return c;
     }
     return std::strong_ordering::equal;

@@ -122,6 +122,7 @@ The important point here is that the kernel treats the array of iovecs as a sing
 
 Here is a direct benchmark comparison between the traditional "copy everything into a temporary buffer" approach and the scatter-gather approach. The difference compounds over thousands of iterations because you're eliminating both the allocation overhead and the actual `memcpy` work:
 
+<!-- compile: needs POSIX header `sys/uio.h` -->
 ```cpp
 #include <iostream>
 #include <cstring>

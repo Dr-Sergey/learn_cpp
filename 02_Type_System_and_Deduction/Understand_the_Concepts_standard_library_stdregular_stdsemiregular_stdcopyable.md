@@ -351,6 +351,7 @@ struct NonCopyable {
     int x;
     NonCopyable(int v) : x(v) {}
     NonCopyable(NonCopyable&&) = default;
+    NonCopyable& operator=(NonCopyable&&) = default;  // std::movable needs move assignment too
     NonCopyable(const NonCopyable&) = delete;
     auto operator<=>(const NonCopyable&) const = default;
 };

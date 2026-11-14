@@ -14,11 +14,11 @@ The key APIs are worth understanding together, since they form a pipeline: refle
 
 | API | Purpose |
 | --- | --- |
-| `^MyEnum` | Reflect the enum type into a `meta::info` handle |
-| `enumerators_of(^E)` | Get a `vector<info>` of all enumerators |
+| `^^MyEnum` | Reflect the enum type into a `meta::info` handle |
+| `enumerators_of(^^E)` | Get a `vector<info>` of all enumerators |
 | `identifier_of(e)` | Get enumerator name as `string_view` |
 | `[:e:]` | Splice back to a value |
-| `value_of<E>(e)` | Get the underlying integer value |
+| `std::meta::extract<E>(e)` | Get the enumerator's value as an `E` from a reflection |
 
 To make the flow concrete, here is the pipeline in diagram form - you reflect a type into a handle, enumerate its enumerators, then convert each one either to its name string or back to the value:
 
@@ -27,9 +27,9 @@ Reflection flow:
 
   enum Color { Red, Green, Blue };
 
-  ^Color -> meta::info (reflection of Color)
+  ^^Color -> meta::info (reflection of Color)
     |
-  enumerators_of(^Color) -> [info(Red), info(Green), info(Blue)]
+  enumerators_of(^^Color) -> [info(Red), info(Green), info(Blue)]
     |
   identifier_of(info(Red)) -> "Red"
   [:info(Red):] -> Color::Red (value)
@@ -54,7 +54,8 @@ enum class Color { Red = 1, Green = 2, Blue = 4 };
 
 int main() {
     // Get all enumerators:
-    constexpr auto enumerators = std::meta::enumerators_of(^Color);
+    static constexpr auto enumerators = std::define_static_array(
+        std::meta::enumerators_of(^^Color));
 
     // Iterate at compile time (template for + constexpr):
     std::cout << "Color enumerators:\n";
@@ -92,7 +93,7 @@ enum class HttpStatus { OK = 200, NotFound = 404, ServerError = 500 };
 template <typename E>
 constexpr std::string_view enum_to_string(E value) {
     // Iterate enumerators at compile time:
-    template for (constexpr auto e : std::meta::enumerators_of(^E)) {
+    template for (constexpr auto e : std::define_static_array(std::meta::enumerators_of(^^E))) {
         if (value == [:e:]) {
             return std::meta::identifier_of(e);
         }
@@ -136,7 +137,7 @@ enum class LogLevel { Debug, Info, Warning, Error, Fatal };
 // Generic string_to_enum using reflection:
 template <typename E>
 constexpr std::optional<E> string_to_enum(std::string_view name) {
-    template for (constexpr auto e : std::meta::enumerators_of(^E)) {
+    template for (constexpr auto e : std::define_static_array(std::meta::enumerators_of(^^E))) {
         if (name == std::meta::identifier_of(e)) {
             return [:e:];
         }
@@ -147,7 +148,8 @@ constexpr std::optional<E> string_to_enum(std::string_view name) {
 // Or generate a sorted lookup table for O(log N) search:
 template <typename E>
 constexpr auto make_enum_lookup_table() {
-    constexpr auto enums = std::meta::enumerators_of(^E);
+    static constexpr auto enums = std::define_static_array(
+        std::meta::enumerators_of(^^E));
     std::array<std::pair<std::string_view, E>, enums.size()> table;
 
     std::size_t i = 0;

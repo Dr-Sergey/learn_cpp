@@ -237,7 +237,10 @@ int main() {
     std::vector<int> indices(N);
 
     // Random indices (simulates hash table lookups)
-    for (int i = 0; i < N; ++i) indices[i] = (i * 7919) % TABLE;
+    // Multiply in 64 bits: i * 7919 exceeds INT_MAX long before i reaches N,
+    // and signed overflow is undefined behavior (in practice: negative indices).
+    for (int i = 0; i < N; ++i)
+        indices[i] = static_cast<int>((static_cast<long long>(i) * 7919) % TABLE);
 
     auto bench = [&](auto fn, const char* label) {
         auto t0 = std::chrono::high_resolution_clock::now();

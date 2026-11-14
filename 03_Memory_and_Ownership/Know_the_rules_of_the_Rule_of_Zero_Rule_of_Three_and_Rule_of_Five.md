@@ -271,6 +271,7 @@ int main() {
 
 This is the classic example of why you cannot define only a destructor and ignore copy. The compiler-generated copy gives you a shallow copy - two objects pointing to the same memory - and when both go out of scope, the memory is freed twice.
 
+<!-- compile: norun: double-frees on purpose -->
 ```cpp
 #include <iostream>
 #include <cstring>

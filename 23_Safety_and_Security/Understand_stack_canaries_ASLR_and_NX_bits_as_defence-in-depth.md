@@ -197,7 +197,8 @@ void function_on_stack() {
 
     // Print addresses - differ each run with ASLR
     std::cout << "Run this multiple times to see ASLR effect:\n";
-    std::cout << "  main() code:     " << reinterpret_cast<void*>(&main) << "\n";
+    // (Taking the address of main itself is not allowed in C++, so use another function.)
+    std::cout << "  Code (function): " << reinterpret_cast<void*>(&function_on_stack) << "\n";
     std::cout << "  Stack variable:  " << &stack_local << "\n";
     std::cout << "  Heap allocation: " << heap_alloc << "\n";
 

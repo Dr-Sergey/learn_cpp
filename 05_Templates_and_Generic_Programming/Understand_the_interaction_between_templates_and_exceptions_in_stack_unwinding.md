@@ -165,6 +165,7 @@ Widget::~Widget() = default;   // ~unique_ptr<Impl>() instantiated HERE — Impl
 
 The comments in this example show what each compiler reports. The correct version demonstrates the fix - declare the destructor in the header, define it in the `.cpp` where `Engine` is complete, even if the definition is just `= default`:
 
+<!-- compile: fragment: the broken and the corrected version of the same class, shown together -->
 ```cpp
 // === This code demonstrates the error — DO NOT use this pattern ===
 

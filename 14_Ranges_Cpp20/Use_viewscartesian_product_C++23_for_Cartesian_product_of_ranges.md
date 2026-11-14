@@ -124,7 +124,11 @@ int main() {
     static_assert(std::ranges::random_access_range<decltype(product)>);
     static_assert(std::ranges::sized_range<decltype(product)>);
 
-    std::cout << "Total combinations: " << std::ranges::size(product) << '\n';
+    // The size type of a cartesian_product may be an implementation-defined
+    // integer wider than size_t (the sizes multiply), which iostreams cannot
+    // print - so convert it explicitly.
+    std::cout << "Total combinations: "
+              << static_cast<std::size_t>(std::ranges::size(product)) << '\n';
 
     // Random access: jump to element [7] directly (0-indexed)
     auto it = std::ranges::begin(product);

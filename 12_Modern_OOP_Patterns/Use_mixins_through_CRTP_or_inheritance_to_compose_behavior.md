@@ -50,6 +50,7 @@ The goal is to let a class define only `operator<` and get the rest for free. Th
 ```cpp
 #include <iostream>
 #include <string>
+#include <utility>
 #include <compare>
 
 // CRTP Comparable mixin: derive all relational ops from operator<
@@ -65,6 +66,10 @@ struct Comparable {
 struct Temperature : Comparable<Temperature> {
     double celsius;
 
+    // A constructor, because brace-initializing an aggregate that has a base
+    // class would need an extra leading {} for the base: Temperature{{}, 100.0}
+    explicit Temperature(double c) : celsius(c) {}
+
     // Only define this ONE operator -- mixin provides the rest!
     friend bool operator<(const Temperature& a, const Temperature& b) {
         return a.celsius < b.celsius;
@@ -74,6 +79,8 @@ struct Temperature : Comparable<Temperature> {
 struct Priority : Comparable<Priority> {
     int level;
     std::string name;
+
+    Priority(int l, std::string n) : level(l), name(std::move(n)) {}
 
     friend bool operator<(const Priority& a, const Priority& b) {
         return a.level < b.level;
@@ -153,6 +160,8 @@ struct Sensor : Printable<Sensor>,
                 Cloneable<Sensor> {
     std::string name;
     double value;
+
+    Sensor(std::string n, double v) : name(std::move(n)), value(v) {}
 
     std::string to_string() const {
         std::ostringstream oss;

@@ -116,9 +116,11 @@ This is the most elegant error handling pattern in modern C++ coroutines. The ke
 
 ```cpp
 #include <coroutine>
+#include <exception>
 #include <expected>
 #include <iostream>
 #include <string>
+#include <string_view>
 #include <utility>
 
 // Forward-declare the coroutine return type
@@ -132,10 +134,13 @@ struct ExpectedAwaiter {
 
     bool await_ready() noexcept { return exp.has_value(); }
 
-    // On error: store the error in the promise and destroy the coroutine
+    // On error: store the error in the promise and simply stay suspended.
+    // Control returns to whoever called or resumed the coroutine, and the
+    // rest of the body never runs. Do NOT destroy the frame here: the promise
+    // lives inside it, and the task object still needs to read the error out
+    // of it. ~ExpectedTask destroys the frame when the caller is done.
     void await_suspend(std::coroutine_handle<Promise> h) noexcept {
         h.promise().result = std::unexpected(std::move(exp.error()));
-        h.destroy();
     }
 
     T await_resume() { return std::move(*exp); }
@@ -218,6 +223,7 @@ int main() {
 
 The pattern here is a thin adapter function `try_call` that calls a potentially-throwing function and converts any exception into an `std::unexpected`. This lets you use the short-circuit `co_await` pattern even when you're calling legacy APIs that still throw. The boundary is explicit and localized:
 
+<!-- compile: fragment: reuses ExpectedTask and ExpectedAwaiter from Q2 -->
 ```cpp
 #include <coroutine>
 #include <expected>

@@ -211,8 +211,22 @@ This example makes the abstract concept concrete by checking the actual requirem
 #include <algorithm>
 #include <ranges>
 #include <concepts>
+#include <string>
 #include <type_traits>
+#include <typeinfo>
 #include <iterator>
+
+// typeid(T).name() silently drops references and const, which are exactly
+// what this example is about - so spell those parts out by hand.
+template<typename T>
+std::string type_name() {
+    using Bare = std::remove_cvref_t<T>;
+    std::string name = std::is_same_v<Bare, int> ? "int" : typeid(Bare).name();
+    if (std::is_const_v<std::remove_reference_t<T>>) name = "const " + name;
+    if (std::is_lvalue_reference_v<T>) name += "&";
+    else if (std::is_rvalue_reference_v<T>) name += "&&";
+    return name;
+}
 
 // The std::indirectly_readable concept requires:
 //   common_reference_with<iter_value_t<I>&, iter_reference_t<I>>
@@ -224,12 +238,12 @@ void check_iterator_common_ref() {
     using Val = std::iter_value_t<It>;
     using Ref = std::iter_reference_t<It>;
 
-    std::cout << "  value_type:     " << typeid(Val).name() << "\n";
-    std::cout << "  reference_type: " << typeid(Ref).name() << "\n";
+    std::cout << "  value_type:     " << type_name<Val>() << "\n";
+    std::cout << "  reference_type: " << type_name<Ref>() << "\n";
 
     // This is what ranges requires:
     using CR = std::common_reference_t<Val&, Ref>;
-    std::cout << "  common_ref:     " << typeid(CR).name() << "\n";
+    std::cout << "  common_ref:     " << type_name<CR>() << "\n";
 
     // Verify the concept
     static_assert(std::common_reference_with<Val&, Ref>,

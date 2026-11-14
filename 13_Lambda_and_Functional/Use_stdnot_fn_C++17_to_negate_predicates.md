@@ -187,13 +187,14 @@ int main() {
     std::cout << "out_of_range(5, 1, 10): " << out_of_range(5, 1, 10) << "\n";
     std::cout << "out_of_range(15, 1, 10): " << out_of_range(15, 1, 10) << "\n";
 }
-// Expected output:
+// Expected output (C++17 evaluates the operands of << left to right, so each
+// "result: " label is printed BEFORE the call that produces the value runs):
 //   Single arg (const):
-//     const overload: 5
-//     result: false
+//     result:   const overload: 5
+//   false
 //   Two args (non-const):
-//     non-const overload: 3, 7
-//     result: true
+//     result:   non-const overload: 3, 7
+//   true
 //   in_range(5, 1, 10): true
 //   out_of_range(5, 1, 10): false
 //   out_of_range(15, 1, 10): true

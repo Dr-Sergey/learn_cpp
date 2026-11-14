@@ -131,27 +131,25 @@ The pattern takes a moment to read, but the key is that `is_even_impl` receives 
 C++23's deducing-this feature offers another approach. It's most useful for self-recursion (a single lambda calling itself), but for mutual recursion a local struct is the cleanest solution:
 
 ```cpp
-// Approach 2: Deducing-this (C++23)
-// With explicit object parameter, a lambda can name itself:
+// Approach 2: Deducing-this (C++23) and a plain local struct
 #include <iostream>
 
 int main() {
-    auto is_even = [](this auto& self, unsigned n) -> bool {
-        if (n == 0) return true;
-        // For mutual recursion, still need reference to the other.
-        // Deducing-this is most useful for SELF-recursion.
-        // For mutual recursion, combine with a struct:
-        return false; // placeholder
+    // With an explicit object parameter, ONE lambda can name itself -
+    // ideal for self-recursion:
+    auto factorial = [](this auto&& self, unsigned n) -> unsigned long long {
+        return n <= 1 ? 1 : n * self(n - 1);
     };
+    std::cout << "factorial(10): " << factorial(10) << "\n";
 
-    // Best C++23 approach: struct with two deducing-this lambdas
+    // It does not let two lambdas name EACH OTHER. For mutual recursion the
+    // cleanest tool is a local struct: inside a class, member functions can
+    // call one another regardless of declaration order. These are ordinary
+    // member functions - a local class cannot contain member templates, so
+    // 'this auto&' parameters are not allowed here (and not needed).
     struct {
-        bool is_even(this auto& self, unsigned n) {
-            return n == 0 ? true : self.is_odd(n - 1);
-        }
-        bool is_odd(this auto& self, unsigned n) {
-            return n == 0 ? false : self.is_even(n - 1);
-        }
+        bool is_even(unsigned n) const { return n == 0 ? true  : is_odd(n - 1); }
+        bool is_odd(unsigned n)  const { return n == 0 ? false : is_even(n - 1); }
     } parity;
 
     std::cout << std::boolalpha;
@@ -159,8 +157,9 @@ int main() {
     std::cout << "parity.is_odd(6):  " << parity.is_odd(6) << "\n";
 }
 // Expected output:
+//   factorial(10): 3628800
 //   parity.is_even(6): true
-//   parity.is_odd(6): false
+//   parity.is_odd(6):  false
 ```
 
 ---

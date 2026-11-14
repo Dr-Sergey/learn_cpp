@@ -169,6 +169,10 @@ struct Off { static constexpr const char* name = "Off"; };
 struct Toggle {};
 struct Shutdown {};
 
+// The Q1 design: a primary template that is declared but never defined.
+template <typename State, typename Event>
+struct Transition;
+
 // === Transition with has_transition detection ===
 template <typename State, typename Event, typename = void>
 struct has_transition : std::false_type {};

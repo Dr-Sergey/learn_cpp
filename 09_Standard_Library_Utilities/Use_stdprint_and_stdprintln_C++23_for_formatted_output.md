@@ -323,7 +323,9 @@ int main() {
     Color palette[] = {{255,0,0}, {0,255,0}, {0,0,255}, {255,255,0}};
     std::println("{:<20} {}", "Default", "Hex");
     for (const auto& c : palette)
-        std::println("{:<20} {:hex}", c, c);
+        // Our formatter only understands "" and "hex", not width/alignment,
+        // so format to a string first and let the string formatter pad it.
+        std::println("{:<20} {:hex}", std::format("{}", c), c);
     // rgb(255, 0, 0)       #ff0000
     // rgb(0, 255, 0)       #00ff00
     // rgb(0, 0, 255)       #0000ff

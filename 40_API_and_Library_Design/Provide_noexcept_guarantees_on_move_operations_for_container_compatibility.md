@@ -23,6 +23,8 @@ Here's a concrete demonstration of how a missing `noexcept` forces copies when y
 
 struct Slow {
     std::string data;
+    explicit Slow(std::string d) : data(std::move(d)) {}
+    Slow(const Slow&) = default;
     // Move constructor NOT noexcept
     Slow(Slow&& other) : data(std::move(other.data)) {
         // Missing noexcept!
@@ -31,6 +33,8 @@ struct Slow {
 
 struct Fast {
     std::string data;
+    explicit Fast(std::string d) : data(std::move(d)) {}
+    Fast(const Fast&) = default;
     // Move constructor IS noexcept
     Fast(Fast&& other) noexcept : data(std::move(other.data)) {}
 };
@@ -53,7 +57,7 @@ int main() {
 }
 ```
 
-The only difference between `Slow` and `Fast` is the `noexcept` keyword on the move constructor. That one word determines whether vector reallocates by moving (cheap pointer swaps) or by copying (deep heap allocation clones). For types that hold anything heap-allocated, this is the difference between O(n) pointer operations and O(n) full copies.
+The only difference between `Slow` and `Fast` is the `noexcept` keyword on the move constructor. That one word determines whether vector reallocates by moving (cheap pointer swaps) or by copying (deep heap allocation clones). (The fallback to copying only exists when the type *has* a copy constructor, which is why both types declare one; a move-only type is moved either way, and simply loses the strong exception guarantee.) For types that hold anything heap-allocated, this is the difference between O(n) pointer operations and O(n) full copies.
 
 ### Conditional noexcept
 

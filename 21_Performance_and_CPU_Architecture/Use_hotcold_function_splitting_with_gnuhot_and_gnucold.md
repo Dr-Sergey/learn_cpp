@@ -49,6 +49,10 @@ The two attributes work together: `[[gnu::hot]]` on the main processing function
 #include <stdexcept>
 #include <chrono>
 
+// Declared before the hot path that calls it; defined further down.
+[[gnu::cold]] [[gnu::noinline]]
+void handle_negative(int idx, int val);
+
 // The fast path: [[gnu::hot]] tells the compiler:
 //  1. Place in .text.hot section
 //  2. Apply aggressive optimization (more inlining, unrolling)

@@ -219,10 +219,19 @@ struct contains<T, type_list<Head, Tail...>>
 template<typename T, typename List>
 struct index_of;
 
+// Found at the head: index 0. A separate specialization, not a ?: expression -
+// both arms of ?: would be instantiated, recursing past the end of the list.
+template<typename T, typename... Tail>
+struct index_of<T, type_list<T, Tail...>>
+    : std::integral_constant<std::size_t, 0> {};
+
+// Not at the head: 1 + index in the tail
 template<typename T, typename Head, typename... Tail>
 struct index_of<T, type_list<Head, Tail...>>
-    : std::integral_constant<std::size_t,
-          std::is_same_v<T, Head> ? 0 : 1 + index_of<T, type_list<Tail...>>::value> {};
+    : std::integral_constant<std::size_t, 1 + index_of<T, type_list<Tail...>>::value> {};
+
+// Deliberately no specialization for the empty list: asking for the index
+// of a type that is not in the list is a compile error.
 
 // Compile-time tests
 using my_types = type_list<int, double, char, std::string>;

@@ -140,6 +140,25 @@ struct Sensor {
     }
 };
 
+// A simple fixed-capacity container using these utilities
+struct SensorArray {
+    alignas(Sensor) unsigned char data[4 * sizeof(Sensor)];
+    size_t count = 0;
+
+    Sensor* at(size_t i) { return reinterpret_cast<Sensor*>(data) + i; }
+
+    template<typename... Args>
+    void emplace_back(Args&&... args) {
+        std::construct_at(at(count), std::forward<Args>(args)...);
+        ++count;
+    }
+
+    ~SensorArray() {
+        std::destroy_n(at(0), count);  // Clean up all live objects
+        std::cout << "  SensorArray destroyed (" << count << " sensors)\n";
+    }
+};
+
 int main() {
     constexpr size_t N = 4;
 
@@ -175,25 +194,6 @@ int main() {
     // These are exception-safe and work in constexpr too
 
     std::cout << "\n=== RAII wrapper using destroy_n ===\n";
-
-    // A simple fixed-capacity container using these utilities
-    struct SensorArray {
-        alignas(Sensor) unsigned char data[4 * sizeof(Sensor)];
-        size_t count = 0;
-
-        Sensor* at(size_t i) { return reinterpret_cast<Sensor*>(data) + i; }
-
-        template<typename... Args>
-        void emplace_back(Args&&... args) {
-            std::construct_at(at(count), std::forward<Args>(args)...);
-            ++count;
-        }
-
-        ~SensorArray() {
-            std::destroy_n(at(0), count);  // Clean up all live objects
-            std::cout << "  SensorArray destroyed (" << count << " sensors)\n";
-        }
-    };
 
     {
         SensorArray arr;

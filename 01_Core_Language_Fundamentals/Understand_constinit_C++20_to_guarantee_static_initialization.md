@@ -148,7 +148,7 @@ Here's all three side by side so the contrast is clear:
 
 // 1) const - promises immutability, but initialization MAY be at runtime
 const int a = 42;              // happens to be compile-time (integral constant)
-int runtime();
+int runtime() { static int calls = 0; return ++calls; }  // not a constant expression
 const int b = runtime();       // OK: const allows runtime initialization
 
 // 2) constexpr - MUST be initialized at compile time AND is const

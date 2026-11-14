@@ -158,7 +158,7 @@ The null check elimination example is the one that surprises people most. You wr
 
 You should run with sanitizers enabled in your development builds and CI. They catch UB at the point it occurs, with a precise error message and a line number - something the optimizer-mangled crash dump from a release build cannot give you.
 
-```cpp
+```text
 Compilation and usage:
 
 $ cat ub_example.cpp

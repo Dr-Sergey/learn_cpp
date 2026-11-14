@@ -199,6 +199,8 @@ keywords when you need a compile-time constant with a stable address:
 ```cpp
 #include <iostream>
 
+int compute_once() { return 0; }  // stands in for some runtime computation
+
 void demo_constexpr() {
     constexpr int x = 42;
     // x is a compile-time constant
@@ -254,6 +256,10 @@ constexpr int compute(int n) {
     return n * n + 1;
 }
 
+// C++20: consteval FORCES compile-time evaluation.
+// (Functions cannot be defined inside another function, so it lives here.)
+consteval int forced(int n) { return n * n; }
+
 int main() {
     // Compile-time evaluation (argument is constexpr):
     constexpr int a = compute(5);  // definitely compile-time
@@ -276,8 +282,7 @@ int main() {
     // Method 3: Use in a template argument
     // std::array<int, compute(n)> arr; // ERROR: n is not constant
 
-    // C++20 consteval example:
-    consteval int forced(int n) { return n * n; }
+    // C++20 consteval example (forced is defined above main):
     constexpr int d = forced(5);  // OK - 5 is constant
     // int e = forced(n);          // ERROR - n is not constant
     //                              // consteval NEVER falls back to runtime

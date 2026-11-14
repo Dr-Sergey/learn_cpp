@@ -82,6 +82,7 @@ try {
 
 The pattern here is straightforward: call the C function, check the return value, and if it failed, throw immediately while `errno` still holds the right value. Notice how `read()` saves `errno` before calling `close()` - that extra call would overwrite it:
 
+<!-- compile: needs POSIX header `unistd.h` -->
 ```cpp
 #include <iostream>
 #include <system_error>

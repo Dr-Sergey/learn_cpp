@@ -164,8 +164,8 @@ int main() {
     std::cout << "Thread1 would set head=B=" << t1_next
               << " (already popped!) -> CORRUPTION\n";
 
-    // Cleanup
-    delete C;
+    // Cleanup: the stack still owns A and C (popping frees both);
+    // B was popped earlier and never pushed back, so free it separately.
     while (auto* n = stack.pop()) delete n;
     delete popped_B;
 }

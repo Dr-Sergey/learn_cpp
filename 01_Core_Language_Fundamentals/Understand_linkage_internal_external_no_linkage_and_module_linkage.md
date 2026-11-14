@@ -82,6 +82,7 @@ Module linkage sits between external and internal: the name is shared across all
 
 The key thing to watch here is the addresses. Both files define `const int value = 42`, but because `const` gives internal linkage, each TU gets its own copy - the linker never merges them.
 
+<!-- compile: fragment: three source files shown in one listing -->
 ```cpp
 // ---- file_a.cpp ----
 #include <iostream>

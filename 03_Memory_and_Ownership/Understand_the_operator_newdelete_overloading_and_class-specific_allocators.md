@@ -176,16 +176,19 @@ The global override is shown commented out deliberately - uncommenting it would 
 // GLOBAL operator new: affects ALL allocations in the program
 // ============================================================
 // Uncomment to activate (affects everything including std::string, std::vector, etc.)
+// Note the printf: a GLOBAL operator new must not log through std::cout,
+// because iostreams allocate too (even during their own start-up) and the
+// allocator would re-enter itself. Needs <cstdio>.
 /*
 void* operator new(size_t size) {
-    std::cout << "[GLOBAL new] " << size << " bytes\n";
+    std::printf("[GLOBAL new] %zu bytes\n", size);
     void* p = std::malloc(size);
     if (!p) throw std::bad_alloc();
     return p;
 }
 
 void operator delete(void* p) noexcept {
-    std::cout << "[GLOBAL delete]\n";
+    std::printf("[GLOBAL delete]\n");
     std::free(p);
 }
 */

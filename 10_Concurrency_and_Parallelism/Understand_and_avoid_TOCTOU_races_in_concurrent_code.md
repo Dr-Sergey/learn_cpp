@@ -76,7 +76,7 @@ struct BuggyAccount {
 };
 
 int main() {
-    constexpr int TRIALS = 100'000;
+    constexpr int TRIALS = 10'000;
     int overdraft_count = 0;
 
     for (int trial = 0; trial < TRIALS; ++trial) {
@@ -104,8 +104,9 @@ int main() {
     std::cout << "Overdrafts in " << TRIALS << " trials: "
               << overdraft_count << "\n";
     // Output (typical):
-    // Overdrafts in 100000 trials: ~500-5000
-    // (varies by timing, but NOT zero - proves the bug)
+    // Overdrafts in 10000 trials: anywhere from a handful to a few hundred
+    // (varies by machine and load; any value above zero proves the bug,
+    //  and a run that happens to print 0 does not prove its absence)
 
     // The race: both threads load balance (1000), both see >= 600,
     // both subtract 600 -> final balance = -200.
@@ -148,7 +149,7 @@ struct SafeAccount {
 };
 
 int main() {
-    constexpr int TRIALS = 100'000;
+    constexpr int TRIALS = 10'000;
     int overdraft_count = 0;
 
     for (int trial = 0; trial < TRIALS; ++trial) {

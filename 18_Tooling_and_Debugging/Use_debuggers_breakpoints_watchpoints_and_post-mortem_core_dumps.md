@@ -157,6 +157,7 @@ The watchpoint catches every single write to `global_counter` in order. When the
 
 When a program crashes in production - or in a test environment without a debugger attached - the OS can write a core dump: a snapshot of the process's memory, registers, and call stack at the moment of the crash. You can load that snapshot into GDB after the fact and debug it as if you had been attached all along.
 
+<!-- compile: norun: dereferences null on purpose to produce a core dump -->
 ```cpp
 // compile: g++ -g -O0 -std=c++20 crash_demo.cpp -o crash_demo
 #include <iostream>

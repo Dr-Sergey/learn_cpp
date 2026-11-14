@@ -182,8 +182,8 @@ int main() {
     std::cout << "Type: " << sp->type() << ", Area: " << sp->area() << "\n";
 }
 // Expected output:
-//   Type: Circle, Area: 78.5398
-//   Type: Circle, Area: 78.5398
+//   Type: Circle, Area: 78.5397
+//   Type: Circle, Area: 78.5397
 //   Type: Circle, Area: 28.2743
 ```
 

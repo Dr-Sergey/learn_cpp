@@ -144,11 +144,11 @@ int main() {
     // --- Array types ---
     // decay: array -> pointer (like passing array by value)
     static_assert(std::is_same_v<std::decay_t<int[3]>, int*>);
-    static_assert(std::is_same_v<std::decay_t<int[3]&>, int*>);
+    static_assert(std::is_same_v<std::decay_t<int(&)[3]>, int*>);
     static_assert(std::is_same_v<std::decay_t<const char[6]>, const char*>);
 
     // remove_reference: only strips &, preserves array type
-    static_assert(std::is_same_v<std::remove_reference_t<int[3]&>, int[3]>);
+    // (a reference to an array is spelled int(&)[3]; "int[3]&" is not valid syntax)
     static_assert(std::is_same_v<std::remove_reference_t<int(&)[3]>, int[3]>);
 
     // --- Function types ---

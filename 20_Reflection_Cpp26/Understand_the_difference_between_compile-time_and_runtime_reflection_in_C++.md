@@ -15,7 +15,7 @@ C++ actually has two different reflection mechanisms, and they work at completel
 | When | Runtime | Compile time only |
 | Overhead | vtable pointer + type_info | Zero runtime cost |
 | Member enumeration | No | Yes (`members_of`) |
-| Type names | `typeid(x).name()` | `identifier_of(^T)` |
+| Type names | `typeid(x).name()` | `identifier_of(^^T)` |
 | Downcasting | `dynamic_cast<D*>(b)` | N/A (no runtime types) |
 | Requires | `-frtti`, polymorphic types | C++26 compiler |
 | Data stored | Runtime type tables in binary | Nothing in binary |
@@ -38,9 +38,10 @@ struct Point { int x, y; };
 
 int main() {
     // All reflection happens during compilation:
-    constexpr auto info = ^Point;
+    constexpr auto info = ^^Point;
     constexpr auto name = std::meta::identifier_of(info);
-    constexpr auto count = std::meta::nonstatic_data_members_of(info).size();
+    static constexpr auto count = std::define_static_array(
+        std::meta::nonstatic_data_members_of(info).size());
 
     // These are compile-time constants:
     static_assert(name == "Point");
@@ -98,8 +99,9 @@ struct Sensor { std::string id; double value; int unit; };
 template <typename T>
 void describe() {
     // ALL of this resolves at compile time:
-    constexpr auto members = std::meta::nonstatic_data_members_of(^T);
-    std::cout << std::meta::identifier_of(^T) << ":\n";
+    static constexpr auto members = std::define_static_array(
+        std::meta::nonstatic_data_members_of(^^T, std::meta::access_context::current()));
+    std::cout << std::meta::identifier_of(^^T) << ":\n";
     template for (constexpr auto m : members) {
         std::cout << "  " << std::meta::identifier_of(m)
                   << ": " << std::meta::display_string_of(std::meta::type_of(m))
@@ -147,7 +149,8 @@ auto make_handler_map() {
     std::unordered_map<std::string_view, std::function<void()>> handlers;
 
     // Iterate enumerators at compile time, populate map at runtime:
-    template for (constexpr auto e : std::meta::enumerators_of(^MsgType)) {
+    template for (constexpr auto e : std::define_static_array(
+            std::meta::enumerators_of(^^MsgType))) {
         constexpr auto name = std::meta::identifier_of(e);
         handlers[name] = [&]{
             std::cout << "Handling: " << name << '\n';
@@ -165,7 +168,8 @@ struct Config {
 
 void apply_from_map(Config& cfg,
                     const std::unordered_map<std::string, std::string>& kvmap) {
-    template for (constexpr auto m : std::meta::nonstatic_data_members_of(^Config)) {
+    template for (constexpr auto m : std::define_static_array(
+            std::meta::nonstatic_data_members_of(^^Config, std::meta::access_context::current()))) {
         constexpr auto name = std::meta::identifier_of(m);
         if (auto it = kvmap.find(std::string(name)); it != kvmap.end()) {
             using MType = [:std::meta::type_of(m):];

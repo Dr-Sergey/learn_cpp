@@ -147,6 +147,20 @@ public:
         std::cout << "  [COPY] O(n) - copied " << buffer_.size() << " elements\n";
     }
 
+    // Declaring a move constructor deletes the implicit copy assignment and
+    // suppresses the implicit move assignment, so spell both out.
+    ExpensiveData& operator=(ExpensiveData&& other) noexcept {
+        buffer_ = std::move(other.buffer_);
+        std::cout << "  [MOVE=] O(1) - stole " << buffer_.size() << " elements\n";
+        return *this;
+    }
+
+    ExpensiveData& operator=(const ExpensiveData& other) {
+        buffer_ = other.buffer_;
+        std::cout << "  [COPY=] O(n) - copied " << buffer_.size() << " elements\n";
+        return *this;
+    }
+
     size_t size() const { return buffer_.size(); }
 };
 
@@ -158,7 +172,7 @@ public:
     //        -> binds to const ExpensiveData& -> COPY, not move!
     void set_buggy(const ExpensiveData& d) {
         data_ = std::move(d);  // BUG! Silently copies
-        // std::move(d) -> const ExpensiveData&& -> binds to copy ctor
+        // std::move(d) -> const ExpensiveData&& -> binds to copy assignment
     }
 
     // FIXED version 1: Take by value and move
@@ -202,7 +216,7 @@ int main() {
 }
 ```
 
-The `set_buggy` case is the one to internalize. You write `std::move(d)` expecting a move, but because `d` is `const`, the result is `const ExpensiveData&&`, and the only constructor that accepts a const rvalue reference is the copy constructor. You pay O(n) cost every time.
+The `set_buggy` case is the one to internalize. You write `std::move(d)` expecting a move, but because `d` is `const`, the result is `const ExpensiveData&&`, and the only overload that can bind a const rvalue is the one taking `const ExpensiveData&` - the copy. You pay O(n) cost every time.
 
 ### Q3: Explain why using a moved-from object is not UB for standard types (but value is unspecified)
 

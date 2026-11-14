@@ -187,7 +187,10 @@ int main() {
         });
     }
 
-    // workers auto-join via jthread
+    // A jthread joins in its destructor - which would only run at the end of
+    // main, AFTER the print below. Destroy the threads now, so that every
+    // phase has finished before we read the data.
+    workers.clear();
     // After all phases:
     std::cout << "\nFinal: ";
     for (int x : data) std::cout << x << " ";
@@ -277,7 +280,7 @@ int main() {
                 b.arrive_and_wait(); // Phase 3
             });
         }
-        // threads auto-join
+        threads.clear();  // join now: jthreads otherwise join only at scope exit, after the print
 
         std::cout << "Barrier: " << phase << " phases completed\n";
     }

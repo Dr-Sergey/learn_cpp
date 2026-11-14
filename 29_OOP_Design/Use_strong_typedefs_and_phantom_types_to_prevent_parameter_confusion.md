@@ -180,11 +180,14 @@ class Connection {
     std::string host_;
     std::string token_;
 
-    // Private constructor: only transitions create new states
+    // Private constructor: only create() and the transition functions build one
     Connection(std::string host, std::string token)
         : host_(std::move(host)), token_(std::move(token)) {}
 
     template<typename> friend class Connection;  // Allow state transitions
+    friend Connection<Connected> connect(Connection<Disconnected> c);
+    friend Connection<Authenticated> authenticate(Connection<Connected> c,
+                                                  const std::string& token);
 
 public:
     // Initial state: only way to create
@@ -193,23 +196,17 @@ public:
     }
 };
 
-// State transitions: each returns a different phantom type
-template<>
-Connection<Connected> Connection<Disconnected>::connect() {
-    std::cout << "Connecting to " << host_ << "\n";
-    return Connection<Connected>(host_, "");
-}
-// ... but we need explicit specialization. Simpler approach:
-
-// Free functions enforce legal transitions
+// Free functions enforce legal transitions. Each one CONSUMES a connection in
+// one state and returns it in the next, so calling them out of order simply
+// has no matching overload.
 Connection<Connected> connect(Connection<Disconnected> c) {
-    std::cout << "Connected!\n";
-    return Connection<Connected>::create("host");  // Simplified
+    std::cout << "Connected to " << c.host_ << "!\n";
+    return Connection<Connected>(std::move(c.host_), "");
 }
 
 Connection<Authenticated> authenticate(Connection<Connected> c, const std::string& token) {
     std::cout << "Authenticated!\n";
-    return Connection<Authenticated>::create("host");
+    return Connection<Authenticated>(std::move(c.host_), token);
 }
 
 void send_data(const Connection<Authenticated>& conn, const std::string& data) {

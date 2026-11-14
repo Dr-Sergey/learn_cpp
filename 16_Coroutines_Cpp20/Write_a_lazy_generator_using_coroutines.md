@@ -260,6 +260,7 @@ public:
 
 Both produce identical output. The manual iterator stores its state as member variables and advances it in `operator++`. The coroutine generator stores its state implicitly in the coroutine frame and advances by resuming to the next `co_yield`. The coroutine version lets you write the algorithm as a loop - which is usually how you naturally think about it - rather than inverting it into an iterator state machine.
 
+<!-- compile: fragment: uses squares() and SquareRange from the two listings above -->
 ```cpp
 #include <iostream>
 

@@ -19,8 +19,10 @@ The table below shows what's available and what each option does for you. The ke
 | Comments | Always | No | No |
 | `assert()` | Always | Debug only | No |
 | `Expects()` (GSL) | With GSL | Debug only | No |
-| `[[pre: expr]]` | C++26 | Configurable | Yes |
+| `pre(expr)` | C++26 | Configurable (ignore / observe / enforce / quick-enforce) | No |
 | `[[assume(expr)]]` | C++23 | Never | Yes |
+
+Note the spelling: C++26 contracts are written `pre(expr)`, `post(r: expr)` and `contract_assert(expr)`. The attribute-like `[[pre: expr]]` form came from the C++20 design that was pulled before publication, and no compiler accepts it. C++26 contracts are also deliberately *not* optimizer hints: no evaluation semantic lets the compiler assume a predicate holds. If you want that, `[[assume]]` is the separate, explicit tool.
 
 ---
 

@@ -185,10 +185,11 @@ public:
 
     // Self-register with a signal
     void listen(SafeSignal<int>& signal) {
-        auto self = shared_from_this();
-        signal.connect(self, [self](int v) { self->on_event(v); });
-        // Note: we capture shared_ptr; the signal holds weak_ptr from it
-        // Actually, the signal holds a weak_ptr to `self` via the guard
+        // The signal stores only a weak_ptr made from this guard. The callback
+        // must NOT capture a shared_ptr to the observer: the signal would then
+        // own the observer and it could never die or disconnect. Capturing
+        // `this` is safe, because emit() locks the guard around every call.
+        signal.connect(shared_from_this(), [this](int v) { on_event(v); });
     }
 };
 

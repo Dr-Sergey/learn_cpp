@@ -177,7 +177,7 @@ int main() {
     std::cout << '\n';
 }
 // Expected output:
-// Alice(1) Bob(2) Charlie(3)
+// Bob(1) Charlie(2) Alice(3)
 // By length: fig apple banana elderberry
 ```
 
@@ -242,7 +242,7 @@ int main() {
 }
 // Expected output:
 // Products: Widget Gadget Gizmo Doohickey
-// Total inventory value: $3946
+// Total inventory value: $4446.2
 // By total value (desc):
 //   Gadget: $2499
 //   Doohickey: $998

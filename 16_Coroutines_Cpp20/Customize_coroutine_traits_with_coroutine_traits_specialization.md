@@ -125,12 +125,12 @@ The nice part about including the implicit `this` parameter in the traits lookup
 #include <exception>
 
 struct Task {
-    struct promise_type;  // default — used for free functions
-    using handle_type = std::coroutine_handle<promise_type>;
-
+    // The default promise, used for free functions
     struct promise_type {
         const char* tag = "free";
-        Task get_return_object() { return Task{handle_type::from_promise(*this)}; }
+        Task get_return_object() {
+            return Task{std::coroutine_handle<promise_type>::from_promise(*this), tag};
+        }
         std::suspend_always initial_suspend() { return {}; }
         std::suspend_always final_suspend() noexcept { return {}; }
         void return_void() {}
@@ -139,12 +139,15 @@ struct Task {
 
     void run() {
         if (handle_) {
-            std::printf("[%s] running\n", handle_.promise().tag);
+            std::printf("[%s] running\n", tag_);
             handle_.resume();
         }
     }
 
-    handle_type handle_;
+    // Type-erased handle: one Task type can front coroutines whose promise
+    // types differ, which is exactly what coroutine_traits makes possible.
+    std::coroutine_handle<> handle_;
+    const char* tag_ = "";
     ~Task() { if (handle_) handle_.destroy(); }
 };
 
@@ -152,7 +155,7 @@ struct Task {
 struct SchedulerPromise {
     const char* tag = "scheduler-member";
     Task get_return_object() {
-        return Task{std::coroutine_handle<SchedulerPromise>::from_promise(*this)};
+        return Task{std::coroutine_handle<SchedulerPromise>::from_promise(*this), tag};
     }
     std::suspend_always initial_suspend() { return {}; }
     std::suspend_always final_suspend() noexcept { return {}; }

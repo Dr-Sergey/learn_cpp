@@ -2,13 +2,13 @@
 
 **Category:** Reflection Cpp26  
 **Standard:** C++26  
-**Reference:** <https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2024/p2996r5.html>  
+**Reference:** <https://wg21.link/P2996>  
 
 ---
 
 ## Topic Overview
 
-The splice operator `[:r:]` takes a `std::meta::info` value and injects the entity it represents directly into code. It is the complement of the reflect operator `^`. If `^` takes you from code into the meta domain, `[::]` takes you back out from the meta domain into code - as a type, a value, or a member access depending on where you put it.
+The splice operator `[:r:]` takes a `std::meta::info` value and injects the entity it represents directly into code. It is the complement of the reflect operator `^^`. If `^^` takes you from code into the meta domain, `[::]` takes you back out from the meta domain into code - as a type, a value, or a member access depending on where you put it.
 
 Here is a reference for the different positions where you can use the splice:
 
@@ -38,9 +38,9 @@ The most fundamental use of `[::]` is recovering a type from a reflection. You w
 
 int main() {
     // Reflect a type:
-    constexpr auto int_r = ^int;
-    constexpr auto dbl_r = ^double;
-    constexpr auto str_r = ^std::string;
+    constexpr auto int_r = ^^int;
+    constexpr auto dbl_r = ^^double;
+    constexpr auto str_r = ^^std::string;
 
     // Splice into a type alias:
     using T1 = [:int_r:];      // T1 is int
@@ -56,7 +56,8 @@ int main() {
 
     // Splice member types:
     struct Point { int x; double y; };
-    constexpr auto members = std::meta::nonstatic_data_members_of(^Point);
+    static constexpr auto members = std::define_static_array(
+        std::meta::nonstatic_data_members_of(^^Point, std::meta::access_context::current()));
     using FirstField = [:std::meta::type_of(members[0]):];
     static_assert(std::is_same_v<FirstField, int>);
 
@@ -90,7 +91,8 @@ struct Player {
 // Generic field setter using splice:
 template <typename T>
 void set_field(T& obj, std::string_view field_name, auto value) {
-    template for (constexpr auto m : std::meta::nonstatic_data_members_of(^T)) {
+    template for (constexpr auto m : std::define_static_array(
+            std::meta::nonstatic_data_members_of(^^T, std::meta::access_context::current()))) {
         if (std::meta::identifier_of(m) == field_name) {
             using MType = [:std::meta::type_of(m):];
             if constexpr (std::is_convertible_v<decltype(value), MType>) {
@@ -104,7 +106,8 @@ void set_field(T& obj, std::string_view field_name, auto value) {
 // Generic field printer:
 template <typename T>
 void print_fields(const T& obj) {
-    template for (constexpr auto m : std::meta::nonstatic_data_members_of(^T)) {
+    template for (constexpr auto m : std::define_static_array(
+            std::meta::nonstatic_data_members_of(^^T, std::meta::access_context::current()))) {
         std::cout << std::meta::identifier_of(m) << " = ";
         using MType = [:std::meta::type_of(m):];
         if constexpr (std::is_same_v<MType, std::string>)
@@ -154,7 +157,8 @@ Here are two utilities - `transform_fields` and `struct_equal` - that show what 
 // Compile-time map: transform every field of a struct
 template <typename T, typename F>
 auto transform_fields(const T& obj, F&& func) {
-    constexpr auto members = std::meta::nonstatic_data_members_of(^T);
+    static constexpr auto members = std::define_static_array(
+        std::meta::nonstatic_data_members_of(^^T, std::meta::access_context::current()));
     return [&]<std::size_t... Is>(std::index_sequence<Is...>) {
         return std::make_tuple(func(obj.[:members[Is]:])...);
     }(std::make_index_sequence<members.size()>{});
@@ -163,7 +167,8 @@ auto transform_fields(const T& obj, F&& func) {
 // Compile-time struct equality (generic, no operator== needed):
 template <typename T>
 bool struct_equal(const T& a, const T& b) {
-    constexpr auto members = std::meta::nonstatic_data_members_of(^T);
+    static constexpr auto members = std::define_static_array(
+        std::meta::nonstatic_data_members_of(^^T, std::meta::access_context::current()));
     bool result = true;
     template for (constexpr auto m : members) {
         if (a.[:m:] != b.[:m:]) result = false;
@@ -203,4 +208,4 @@ The `struct_equal` function is especially satisfying: you get a correct field-by
 - Splice in type position: `using T = [:info:]` or `vector<[:info:]>`.
 - Splice in member position: `obj.[:member_info:]` for both read and write.
 - Splice in function position: `[:func_info:](args...)` calls the function.
-- `^` and `[::]` are inverses: `[:^T:]` yields `T`, `^[:info:]` yields back `info`.
+- `^^` and `[::]` are inverses: `[:^^T:]` yields `T`, `^^[:info:]` yields back `info`.

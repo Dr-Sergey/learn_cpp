@@ -229,6 +229,9 @@ Notice that the `Tracked` output shows the aligned overload being called - and t
 
 The size restriction is the main gotcha with `std::aligned_alloc`. The fix is simple: round `size` up to the next multiple of `alignment` before the call. The example below shows both the correct usage and a practical SIMD buffer allocation.
 
+One portability note before you paste it: the Microsoft C runtime does not provide `aligned_alloc` at all, because its `free` cannot release over-aligned blocks. This example builds on Linux and macOS; on Windows use `_aligned_malloc`/`_aligned_free`, or the portable `operator new(size, std::align_val_t{alignment})`.
+
+<!-- compile: needs std::aligned_alloc (not provided by the Microsoft C runtime) -->
 ```cpp
 #include <iostream>
 #include <cstdlib>
@@ -316,6 +319,6 @@ The MSVC row in the table is worth remembering: `_aligned_malloc` requires `_ali
 
 - **Prefer `new T` for over-aligned types in C++17** - it handles alignment automatically.
 - Use `std::aligned_alloc` when you need raw byte buffers with specific alignment (e.g., SIMD, DMA).
-- On Windows/MSVC, `std::aligned_alloc` may not be available - use `_aligned_malloc`/`_aligned_free` instead.
+- On Windows/MSVC, `std::aligned_alloc` is not available - use `_aligned_malloc`/`_aligned_free`, or aligned `operator new`, instead.
 - `alignas` applies to types and variables; `alignof` queries the alignment requirement.
 - Cache line alignment (`alignas(64)`) prevents false sharing in multithreaded code.

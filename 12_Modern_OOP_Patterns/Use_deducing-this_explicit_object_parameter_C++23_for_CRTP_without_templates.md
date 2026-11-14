@@ -82,15 +82,18 @@ struct Point : Printable {
 };
 
 int main() {
+    // These types are aggregates WITH a base class, so the first initializer
+    // belongs to the base subobject: the leading {} initializes the empty base.
+
     // CRTP style
-    NameCRTP n1{"Alice"};
+    NameCRTP n1{{}, "Alice"};
     n1.print();
 
     // Deducing-this style -- cleaner, no template parameter!
-    Name n2{"Bob"};
+    Name n2{{}, "Bob"};
     n2.print();
 
-    Point p{3, 4};
+    Point p{{}, 3, 4};
     p.print();
 }
 // Expected output:
@@ -233,7 +236,9 @@ struct HttpRequestBuilder : BuilderBase {
 
 int main() {
     // Method chaining across base AND derived -- all return HttpRequestBuilder&!
-    HttpRequestBuilder{}
+    // ('this auto& self' binds only to lvalues, so start from a named builder.)
+    HttpRequestBuilder builder;
+    builder
         .set_name("API Call")           // base method -- returns HttpRequestBuilder&
         .set_priority(5)                // base method -- returns HttpRequestBuilder&
         .set_url("https://api.example.com/users")  // derived method

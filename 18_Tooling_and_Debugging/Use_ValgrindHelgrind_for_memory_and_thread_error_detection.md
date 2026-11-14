@@ -79,6 +79,7 @@ The `--track-origins=yes` flag is the most useful addition because it tells you 
 
 A lock ordering violation is a potential deadlock waiting to happen. If thread 1 always acquires lock A then lock B, but thread 2 acquires B then A, there is a window where both threads can hold one lock and wait forever for the other. In testing you may never hit this window, but in production under load it can happen. Helgrind detects the inconsistent ordering even before a deadlock actually occurs.
 
+<!-- compile: norun: can deadlock on purpose, as input for the tool -->
 ```cpp
 // lock_order.cpp — compile: g++ -g -O0 -std=c++20 -pthread lock_order.cpp -o lock_order
 #include <mutex>

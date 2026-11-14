@@ -48,7 +48,7 @@ std::ostream& auto_print(std::ostream& os, const T& obj) {
     bool first = true;
 
     template for (constexpr auto member :
-                  std::meta::nonstatic_data_members_of(^^T)) {
+                  std::define_static_array(std::meta::nonstatic_data_members_of(^^T, std::meta::access_context::current()))) {
         if (!first) os << ", ";
         os << std::meta::identifier_of(member) << "="
            << obj.[:member:];
@@ -90,7 +90,7 @@ std::string to_debug_string(const T& obj) {
         bool first = true;
 
         template for (constexpr auto m :
-                      std::meta::nonstatic_data_members_of(^^T)) {
+                      std::define_static_array(std::meta::nonstatic_data_members_of(^^T, std::meta::access_context::current()))) {
             if (!first) result += ", ";
             result += std::meta::identifier_of(m);
             result += "=";
@@ -126,7 +126,7 @@ std::string deep_debug(const T& obj, int indent = 0) {
         std::string result = std::string(std::meta::display_string_of(^^T)) + " {\n";
 
         template for (constexpr auto m :
-                      std::meta::nonstatic_data_members_of(^^T)) {
+                      std::define_static_array(std::meta::nonstatic_data_members_of(^^T, std::meta::access_context::current()))) {
             result += pad + "  " + std::string(std::meta::identifier_of(m)) + " = ";
             result += deep_debug(obj.[:m:], indent + 1);
             result += "\n";
@@ -177,7 +177,7 @@ auto to_log_map(const T& obj) {
     std::vector<std::pair<std::string, std::string>> entries;
 
     template for (constexpr auto m :
-                  std::meta::nonstatic_data_members_of(^^T)) {
+                  std::define_static_array(std::meta::nonstatic_data_members_of(^^T, std::meta::access_context::current()))) {
         entries.emplace_back(
             std::string(std::meta::identifier_of(m)),
             std::format("{}", obj.[:m:])
@@ -207,7 +207,7 @@ std::string auto_to_string(const T& obj) {
         std::string result = "{";
         bool first = true;
         template for (constexpr auto m :
-                      std::meta::nonstatic_data_members_of(^^T)) {
+                      std::define_static_array(std::meta::nonstatic_data_members_of(^^T, std::meta::access_context::current()))) {
             if (!first) result += ", ";
             result += std::format("{}={}", std::meta::identifier_of(m), obj.[:m:]);
             first = false;
@@ -238,7 +238,7 @@ template<typename T>
 bool auto_equals(const T& a, const T& b) {
     bool equal = true;
     template for (constexpr auto m :
-                  std::meta::nonstatic_data_members_of(^^T)) {
+                  std::define_static_array(std::meta::nonstatic_data_members_of(^^T, std::meta::access_context::current()))) {
         equal = equal && (a.[:m:] == b.[:m:]);
     }
     return equal;
@@ -252,6 +252,6 @@ This walks every field and short-circuits by accumulating into `equal`. The resu
 ## Notes
 
 - Reflection-based debug printing eliminates hundreds of lines of boilerplate in real codebases.
-- The `template for` / expansion statement syntax may evolve - check the latest P2996 revision.
+- `template for` (expansion statements) is part of C++26 through P1306. Its range must be a constant expression, which is why the member list goes through `std::define_static_array` first.
 - For production logging, consider generating `std::format` specializations instead of `operator<<`.
 - Reflection-based printing integrates naturally with structured logging frameworks.

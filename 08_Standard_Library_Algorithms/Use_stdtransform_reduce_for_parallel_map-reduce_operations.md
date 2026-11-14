@@ -110,7 +110,7 @@ int main() {
     std::cout << "L2 norm        = " << l2    << "\n";
     // Output:
     // sum of squares = 55
-    // L2 norm        = 7.41620
+    // L2 norm        = 7.4162
 }
 ```
 

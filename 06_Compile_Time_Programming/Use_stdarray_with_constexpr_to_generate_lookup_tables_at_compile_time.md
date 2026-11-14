@@ -176,7 +176,7 @@ constexpr auto crc8_table = make_crc8_table();
 // === Verify specific entries at compile time ===
 static_assert(crc8_table[0] == 0x00,   "CRC8(0x00) should be 0x00");
 static_assert(crc8_table[1] == 0x07,   "CRC8(0x01) should be 0x07 (= polynomial)");
-static_assert(crc8_table[255] == 0xF4, "CRC8(0xFF) should be 0xF4");
+static_assert(crc8_table[255] == 0xF3, "CRC8(0xFF) should be 0xF3");
 
 // === Compile-time CRC8 of a string ===
 constexpr unsigned char crc8(const char* data, std::size_t len) {

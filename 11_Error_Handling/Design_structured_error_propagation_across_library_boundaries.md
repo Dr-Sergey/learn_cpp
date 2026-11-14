@@ -183,6 +183,7 @@ When you ship a library that other codebases link against, you can't change the 
 // versioned_errors.cpp — C++17
 // Compile: g++ -std=c++17 -O2 -Wall -Wextra -o versioned_errors versioned_errors.cpp
 #include <cstdint>
+#include <cstdio>
 #include <cstring>
 #include <iostream>
 
@@ -253,11 +254,13 @@ int main() {
     auto test = [](const char* resource) {
         char buf[256] = {};
         LibError err = lib_fetch_resource(resource, buf, sizeof(buf));
+        // Streaming a null const char* is undefined behavior, so name it
+        const char* label = resource ? resource : "(null)";
 
         if (!err) {
-            std::cout << resource << " -> " << buf << "\n";
+            std::cout << label << " -> " << buf << "\n";
         } else {
-            std::cout << resource << " -> ERROR " << err.code
+            std::cout << label << " -> ERROR " << err.code
                       << " (v" << err.version << "): "
                       << lib_error_message(err) << "\n";
 

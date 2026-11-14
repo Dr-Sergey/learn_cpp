@@ -1,7 +1,7 @@
 # Implement compile-time struct serialization using reflection
 
 **Category:** Reflection Cpp26  
-**Standard:** C++20  
+**Standard:** C++26  
 **Reference:** <https://en.cppreference.com/w/cpp/language/reflection>  
 
 ---
@@ -40,7 +40,8 @@ Here is the fundamental pattern: iterate the members, check each member's type a
 // Generic JSON serializer using reflection:
 template <typename T>
 std::string to_json(const T& obj) {
-    constexpr auto members = std::meta::nonstatic_data_members_of(^T);
+    static constexpr auto members = std::define_static_array(
+        std::meta::nonstatic_data_members_of(^^T, std::meta::access_context::current()));
     std::ostringstream oss;
     oss << "{";
     bool first = true;
@@ -112,13 +113,14 @@ struct LayoutInfo {
     };
 
     static constexpr auto fields = []{
-        constexpr auto members = std::meta::nonstatic_data_members_of(^T);
+        static constexpr auto members = std::define_static_array(
+            std::meta::nonstatic_data_members_of(^^T, std::meta::access_context::current()));
         std::array<Field, members.size()> result{};
         std::size_t i = 0;
         template for (constexpr auto m : members) {
             result[i++] = {
                 std::meta::identifier_of(m),
-                std::meta::offset_of(m),
+                static_cast<std::size_t>(std::meta::offset_of(m).bytes),
                 std::meta::size_of(std::meta::type_of(m))
             };
         }
@@ -206,7 +208,7 @@ struct Person {
 template <typename T>
 void print_all_fields(const T& obj) {
     template for (constexpr auto m :
-                  std::meta::nonstatic_data_members_of(^T)) {
+                  std::define_static_array(std::meta::nonstatic_data_members_of(^^T, std::meta::access_context::current()))) {
         std::cout << std::meta::identifier_of(m) << " = ";
         using MType = [:std::meta::type_of(m):];
         if constexpr (std::is_same_v<MType, std::string>)

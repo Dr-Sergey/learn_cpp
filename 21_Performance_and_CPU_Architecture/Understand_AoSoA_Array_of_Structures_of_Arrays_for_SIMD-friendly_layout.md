@@ -107,6 +107,7 @@ The 192-byte tile fits in three cache lines (64 bytes each). When you process a 
 
 Here the AoSoA tile size is set to `TILE_SIZE = 8` to match an AVX register, which holds exactly eight 32-bit floats. The `alignas(32)` ensures the tile base address is 32-byte aligned, which is required for the aligned load intrinsic `_mm256_load_ps`.
 
+<!-- compile: flags -mavx2 -mfma -->
 ```cpp
 #include <iostream>
 #include <vector>

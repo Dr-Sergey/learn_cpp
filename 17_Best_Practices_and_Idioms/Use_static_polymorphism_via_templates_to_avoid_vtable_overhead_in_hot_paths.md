@@ -156,7 +156,7 @@ int main() {
 }
 // Expected output:
 // Drawing circle r=5
-// Area: 78.5398
+// Area: 78.5397
 // Drawing square s=3
 // Area: 9
 ```

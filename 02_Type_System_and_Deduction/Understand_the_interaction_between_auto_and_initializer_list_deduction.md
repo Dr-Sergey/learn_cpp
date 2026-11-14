@@ -310,7 +310,9 @@ int main() {
 
     std::cout << "\n=== Quick sorted output ===\n";
     print_sorted({5, 3, 1, 4, 2});
-    print_sorted({"cherry", "apple", "banana"});
+    // <std::string> is spelled out on purpose: from string literals T would
+    // be deduced as const char*, and sorting those compares ADDRESSES, not text.
+    print_sorted<std::string>({"cherry", "apple", "banana"});
 
     // Use case 5: auto + initializer_list for quick lists
     std::cout << "\n=== auto + braces for quick computation ===\n";

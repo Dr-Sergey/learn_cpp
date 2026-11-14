@@ -37,7 +37,7 @@ With `emplace`, the constructor arguments travel through a forwarding chain dire
 | Operation | Constructs temporary? | Copies/moves? | Works with non-movable types? |
 | --- | --- | --- | --- |
 | `v.push_back(T(a,b))` | Yes | Move | No (if non-movable) |
-| `v.emplace_back(a,b)` | No | No | Yes |
+| `v.emplace_back(a,b)` | No | No | Not in `vector` (growing needs a move); yes in `list`, `deque` |
 | `m.insert({k,v})` | Yes (pair) | Move pair | No |
 | `m.emplace(k,v)` | Maybe* | Maybe* | Yes (with piecewise) |
 | `m.try_emplace(k,v_args...)` | No (value only if new) | No | Yes |
@@ -287,6 +287,7 @@ The honest answer is: for most everyday types, `emplace_back` and `push_back` co
 ```cpp
 #include <iostream>
 #include <vector>
+#include <list>
 #include <set>
 #include <map>
 #include <initializer_list>
@@ -331,10 +332,13 @@ int main() {
             Immovable(const Immovable&) = delete;
             Immovable(Immovable&&) = delete;
         };
-        std::vector<Immovable> vi;
-        vi.reserve(2);
-        // vi.push_back(Immovable{1});  // ERROR: deleted move ctor
-        vi.emplace_back(1);             // OK: constructs in-place, no move
+        // std::vector cannot hold such a type at all: reserve() and any
+        // emplace_back() that might reallocate must be able to move elements.
+        // Containers that never relocate their elements (list, forward_list,
+        // deque at the ends, map, set) can - but only through emplace:
+        std::list<Immovable> li;
+        // li.push_back(Immovable{1});  // ERROR: deleted move ctor
+        li.emplace_back(1);             // OK: constructs in-place, no move
 
         // 3. Expensive-to-move types:
         // Types with large internal buffers benefit from emplace
@@ -369,7 +373,7 @@ int main() {
 
     std::cout << "When emplace > insert (real benefit):\n";
     std::cout << "  - Multi-argument construction (pair, tuple, custom)\n";
-    std::cout << "  - Non-copyable/non-movable types\n";
+    std::cout << "  - Non-movable types in list/deque/map (vector needs movable)\n";
     std::cout << "  - Expensive-to-construct types\n";
     std::cout << "  - map: try_emplace avoids value creation if key exists\n\n";
 
@@ -390,7 +394,7 @@ The `vv.emplace_back(3)` line is the gotcha worth memorizing: you meant to inser
 - For **`std::string` from `const char*`**, both paths call the same `string(const char*)` constructor in the storage, so they're equivalent.
 - `emplace` provides real savings when:
   - Construction takes **multiple arguments** (avoids creating a temporary pair/tuple)
-  - The type is **non-copyable/non-movable** (emplace is the only option)
+  - The type is **non-copyable/non-movable** (emplace is the only option - and only in containers that never relocate elements, such as `list`, `deque` and `map`; `vector` requires movable elements)
   - The type is **expensive to move** (large buffer, deep copy)
 - `emplace` has pitfalls: it can call **unexpected constructors** (like `vector(size_t)` when you meant to insert a value), and it doesn't work with brace-init-lists.
 
@@ -398,7 +402,7 @@ The `vv.emplace_back(3)` line is the gotcha worth memorizing: you meant to inser
 
 ## Notes
 
-- **Rule of thumb:** Use `emplace_back` for multi-argument construction and non-movable types. Use `push_back` for clarity with simple values and initializer lists.
+- **Rule of thumb:** Use `emplace_back` for multi-argument construction and for non-movable types (in a container that can hold them - not `vector`). Use `push_back` for clarity with simple values and initializer lists.
 - **`try_emplace` (C++17)** is the gold standard for maps: it never constructs the value unless needed, and it clearly separates key from value arguments.
 - **`insert_or_assign` (C++17)** is the counterpart: it always overwrites, like `operator[]` but returns whether insertion happened.
 - **Performance measurement:** Always benchmark. In many cases, compilers optimize both paths to identical code with `-O2`.

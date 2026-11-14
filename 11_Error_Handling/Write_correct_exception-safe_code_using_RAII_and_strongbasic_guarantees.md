@@ -330,10 +330,11 @@ void bad_approach() {
 }
 
 // ALSO BAD: even "fixed" code can leak with temporaries
-void also_bad(Resource* a, Resource* b);
+void also_bad(Resource* a, Resource* b) { delete a; delete b; }
 void call_also_bad() {
-    // Pre-C++17: order of evaluation is unspecified!
-    // If create_resource("A") runs first, then create_resource("B") throws -> A leaks
+    // The two arguments are evaluated in an unspecified order (C++17 only
+    // guarantees they are not interleaved). Whichever runs first, if the
+    // other one throws, the first Resource has no owner yet -> it leaks.
     also_bad(create_resource("A", false),
              create_resource("B", true));
 }

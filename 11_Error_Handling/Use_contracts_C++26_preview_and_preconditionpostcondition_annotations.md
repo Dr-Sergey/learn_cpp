@@ -81,6 +81,7 @@ Here are several functions with contracts, followed by the `assert()`-based equi
 
 **Solution - C++26 Contracts Syntax:**
 
+<!-- compile: needs C++26 contracts (not supported by the CI compiler yet) -->
 ```cpp
 #include <iostream>
 #include <cmath>

@@ -110,7 +110,8 @@ double measure_latency(WaitFn wait_fn, const char* label) {
 
 int main() {
     measure_latency(busy_spin_wait, "Busy-spin + PAUSE");
-    measure_latency(hybrid_wait,    "Hybrid (1000 spins)");
+    // A lambda, because a default argument is lost when a function is passed by pointer
+    measure_latency([] { hybrid_wait(); }, "Hybrid (1000 spins)");
     measure_latency(atomic_wait,    "std::atomic::wait");
 }
 ```

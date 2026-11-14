@@ -28,6 +28,7 @@ The default limit is 10, which truncates the backtrace in complex cases. Setting
 
 Here is a common scenario: you try to sort a container whose element type does not satisfy `operator<`. The error comes from deep inside `<algorithm>`, and by default you only see a few levels of it. To understand how the compiler got there, you want the full chain.
 
+<!-- compile: skip: deliberately ill-formed to show the diagnostic -->
 ```cpp
 #include <vector>
 #include <algorithm>

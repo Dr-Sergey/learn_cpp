@@ -254,8 +254,11 @@ private:
 
     inline static PhoenixSingleton* instance_ = nullptr;
     inline static bool destroyed_ = false;
-    alignas(PhoenixSingleton) inline static char storage_[sizeof(PhoenixSingleton)]{};
+    static char storage_[];   // sized below: the class is still incomplete here
 };
+
+// sizeof and alignas need the complete type, so the buffer is defined here.
+alignas(PhoenixSingleton) inline char PhoenixSingleton::storage_[sizeof(PhoenixSingleton)]{};
 
 // === Solution 3: Nifty Counter (used by <iostream>) ===
 // Ensures construction before first use and destruction after last use
@@ -264,6 +267,10 @@ private:
 
 // === Preferred modern alternative: just don't use Singleton ===
 // Pass dependencies explicitly:
+struct Logger {
+    void log(const char* message) { std::cout << "[log] " << message << "\n"; }
+};
+
 class Application {
     Logger& logger_;  // Injected, not globally fetched
 public:

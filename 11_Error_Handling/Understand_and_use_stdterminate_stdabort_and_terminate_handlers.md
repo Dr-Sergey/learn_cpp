@@ -93,6 +93,7 @@ The moment you throw from a `noexcept` function, the compiler does not even atte
 
 **Solution - `noexcept` Violation:**
 
+<!-- compile: norun: ends in std::terminate on purpose -->
 ```cpp
 #include <iostream>
 #include <exception>
@@ -181,6 +182,7 @@ This is the pattern you actually want in production. A good terminate handler lo
 
 **Solution - Custom Terminate Handler with Diagnostics:**
 
+<!-- compile: norun: ends in std::terminate on purpose -->
 ```cpp
 #include <iostream>
 #include <exception>

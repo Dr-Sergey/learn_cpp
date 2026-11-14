@@ -114,7 +114,7 @@ int main() {
     std::cout << "Row-major (layout_right):\n";
     for (size_t i = 0; i < row_major.extent(0); ++i) {
         for (size_t j = 0; j < row_major.extent(1); ++j) {
-            std::cout << row_major(i, j) << "\t";
+            std::cout << row_major[i, j] << "\t";
         }
         std::cout << "\n";
     }
@@ -130,7 +130,7 @@ int main() {
     std::cout << "\nColumn-major (layout_left) - same underlying data:\n";
     for (size_t i = 0; i < col_major.extent(0); ++i) {
         for (size_t j = 0; j < col_major.extent(1); ++j) {
-            std::cout << col_major(i, j) << "\t";
+            std::cout << col_major[i, j] << "\t";
         }
         std::cout << "\n";
     }
@@ -142,8 +142,8 @@ int main() {
 
     // === Verify element access ===
     std::cout << "\nElement (1,2):\n";
-    std::cout << "  row_major(1,2) = " << row_major(1, 2) << "\n";  // 7 (1*4+2+1=7)
-    std::cout << "  col_major(1,2) = " << col_major(1, 2) << "\n";  // 8 (2*3+1+1=8)
+    std::cout << "  row_major[1,2] = " << row_major[1, 2] << "\n";  // 7 (1*4+2+1=7)
+    std::cout << "  col_major[1,2] = " << col_major[1, 2] << "\n";  // 8 (2*3+1+1=8)
     // Different values! Same buffer, different layout interpretation.
 
     // === Practical use: BLAS/Fortran interop ===
@@ -216,8 +216,9 @@ public:
     MatrixView(T* data, size_t rows, size_t cols, Layout layout)
         : data_(data), layout_(layout), rows_(rows), cols_(cols) {}
 
-    T& operator()(size_t i, size_t j) { return data_[layout_(i, j)]; }
-    const T& operator()(size_t i, size_t j) const { return data_[layout_(i, j)]; }
+    // C++23 multidimensional subscript, matching std::mdspan's m[i, j]
+    T& operator[](size_t i, size_t j) { return data_[layout_(i, j)]; }
+    const T& operator[](size_t i, size_t j) const { return data_[layout_(i, j)]; }
     size_t rows() const { return rows_; }
     size_t cols() const { return cols_; }
 };
@@ -325,7 +326,7 @@ int main() {
     std::cout << "\nSubmatrix (every other column):\n";
     for (size_t i = 0; i < 3; ++i) {
         for (size_t j = 0; j < 3; ++j)
-            std::cout << sub(i, j) << "\t";
+            std::cout << sub[i, j] << "\t";
         std::cout << "\n";
     }
     // Output:
@@ -361,7 +362,7 @@ int main() {
     std::cout << "Padded matrix (stride=8 for 4-wide rows):\n";
     for (size_t i = 0; i < 3; ++i) {
         for (size_t j = 0; j < 4; ++j)
-            std::cout << padded_mat(i, j) << "\t";
+            std::cout << padded_mat[i, j] << "\t";
         std::cout << "  [padding: ";
         for (int p = 4; p < 8; ++p)
             std::cout << padded_data[i * 8 + p] << " ";

@@ -122,15 +122,20 @@ int main() {
 ```cpp
 #include <iostream>
 #include <memory>
+#include <new>
+#include <cstdio>
 #include <cstdlib>
 #include <cstddef>
 
-// Track allocations by overriding global new
+// Track allocations by overriding global new.
+// The log line uses printf on purpose: std::cout allocates memory itself
+// (already during start-up), so streaming from inside operator new would
+// re-enter the allocator and crash.
 static int alloc_count = 0;
 
 void* operator new(size_t size) {
     ++alloc_count;
-    std::cout << "  [alloc #" << alloc_count << "] " << size << " bytes\n";
+    std::printf("  [alloc #%d] %zu bytes\n", alloc_count, size);
     void* p = std::malloc(size);
     if (!p) throw std::bad_alloc();
     return p;

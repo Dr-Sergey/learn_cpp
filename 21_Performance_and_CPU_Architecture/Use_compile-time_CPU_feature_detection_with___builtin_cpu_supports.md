@@ -29,6 +29,7 @@ The key insight is that `__builtin_cpu_supports` checks a CPU feature flag at ru
 
 The simplest dispatch pattern: write two implementations with different `target` attributes, then check `__builtin_cpu_supports` at call time to pick the right one. The overhead is one branch per call to `add_arrays`, not per element:
 
+<!-- compile: needs the `__builtin_cpu_supports` runtime support of GCC or Clang on Linux/macOS -->
 ```cpp
 #include <iostream>
 #include <vector>
@@ -84,6 +85,7 @@ Notice that each implementation is annotated with `__attribute__((target("avx2")
 
 If `add_arrays` is called very frequently (e.g., inside an inner loop), even a ~1ns branch per call adds up. `ifunc` eliminates that overhead by resolving the function pointer **once** at program load time through the dynamic linker, so subsequent calls go directly to the right implementation with no branching at all.
 
+<!-- compile: needs the `__builtin_cpu_supports` runtime support of GCC or Clang on Linux/macOS -->
 ```cpp
 #include <iostream>
 
@@ -133,6 +135,7 @@ The mechanism works because the dynamic linker, when it sets up the GOT (Global 
 
 `ifunc` requires you to write both the resolver and the multiple implementations manually. `target_clones` automates this: you write one function body, annotate it with the ISA variants you want, and the compiler generates the versions and the dispatch mechanism automatically.
 
+<!-- compile: needs the `__builtin_cpu_supports` runtime support of GCC or Clang on Linux/macOS -->
 ```cpp
 #include <iostream>
 #include <vector>

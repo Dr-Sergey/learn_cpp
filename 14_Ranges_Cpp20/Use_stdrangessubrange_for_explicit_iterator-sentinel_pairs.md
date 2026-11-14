@@ -84,8 +84,8 @@ int main() {
     std::cout << '\n';
 }
 // Expected output:
-// After partial sort: 9 3 1 2 5 8 7 6 4
-// Elements > 5 in subrange: 1
+// After partial sort: 9 3 1 2 5 7 8 6 4
+// Elements > 5 in subrange: 2
 // First 4: 9 3 1 2
 ```
 

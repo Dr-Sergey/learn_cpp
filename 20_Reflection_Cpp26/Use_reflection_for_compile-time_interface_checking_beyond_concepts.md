@@ -1,7 +1,7 @@
 # Use reflection for compile-time interface checking beyond concepts
 
 **Category:** Reflection Cpp26  
-**Standard:** C++20  
+**Standard:** C++26  
 **Reference:** <https://en.cppreference.com/w/cpp/language/reflection>  
 
 ---
@@ -41,7 +41,7 @@ The two helper functions below are the building blocks for structural checking. 
 consteval bool has_method(std::meta::info type,
                           std::string_view name,
                           std::meta::info return_type) {
-    for (auto m : std::meta::members_of(type)) {
+    for (auto m : std::meta::members_of(type, std::meta::access_context::current())) {
         if (std::meta::is_function(m) &&
             std::meta::identifier_of(m) == name &&
             std::meta::type_of(m) == return_type) {
@@ -54,7 +54,7 @@ consteval bool has_method(std::meta::info type,
 // Check if type has a specific data member:
 consteval bool has_field(std::meta::info type,
                          std::string_view name) {
-    for (auto m : std::meta::nonstatic_data_members_of(type)) {
+    for (auto m : std::meta::nonstatic_data_members_of(type, std::meta::access_context::current())) {
         if (std::meta::identifier_of(m) == name) return true;
     }
     return false;
@@ -72,15 +72,15 @@ struct NotSerializable {
 };
 
 // Compile-time structural checks:
-static_assert(has_field(^Serializable, "id"));
-static_assert(has_field(^Serializable, "data"));
-static_assert(!has_field(^NotSerializable, "data"));
+static_assert(has_field(^^Serializable, "id"));
+static_assert(has_field(^^Serializable, "data"));
+static_assert(!has_field(^^NotSerializable, "data"));
 
 int main() {
     std::cout << "Serializable has 'id': "
-              << has_field(^Serializable, "id") << '\n';
+              << has_field(^^Serializable, "id") << '\n';
     std::cout << "NotSerializable has 'data': "
-              << has_field(^NotSerializable, "data") << '\n';
+              << has_field(^^NotSerializable, "data") << '\n';
 }
 ```
 
@@ -103,7 +103,7 @@ One of the most practical wins from reflection over raw concepts is the quality 
 // With reflection: custom, descriptive error messages:
 consteval void validate_drawable(std::meta::info type) {
     bool found_draw = false;
-    for (auto m : std::meta::members_of(type)) {
+    for (auto m : std::meta::members_of(type, std::meta::access_context::current())) {
         if (std::meta::is_function(m) &&
             std::meta::identifier_of(m) == "draw") {
             found_draw = true;
@@ -121,7 +121,7 @@ consteval void validate_entity(std::meta::info type) {
     constexpr const char* required_fields[] = {"id", "name", "position"};
     for (auto field_name : required_fields) {
         bool found = false;
-        for (auto m : std::meta::nonstatic_data_members_of(type)) {
+        for (auto m : std::meta::nonstatic_data_members_of(type, std::meta::access_context::current())) {
             if (std::meta::identifier_of(m) == field_name) {
                 found = true;
                 break;
@@ -137,8 +137,8 @@ struct GoodWidget {
     void draw() const {}
 };
 
-// validate_drawable(^GoodWidget);   // OK
-// validate_drawable(^int);          // Clear compile error
+// validate_drawable(^^GoodWidget);   // OK
+// validate_drawable(^^int);          // Clear compile error
 
 int main() {
     std::cout << "Reflection gives custom compile-time diagnostics\n";
@@ -164,7 +164,7 @@ Here is a concrete use case that shows why the structural checking approach pays
 //   - Must have: int version() const
 
 consteval bool has_member_function(std::meta::info type, std::string_view name) {
-    for (auto m : std::meta::members_of(type)) {
+    for (auto m : std::meta::members_of(type, std::meta::access_context::current())) {
         if (std::meta::is_function(m) &&
             std::meta::identifier_of(m) == name) {
             return true;
@@ -193,13 +193,13 @@ struct BadPlugin {
     // Missing: shutdown, name, version
 };
 
-static_assert(satisfies_plugin_protocol(^AudioPlugin),
+static_assert(satisfies_plugin_protocol(^^AudioPlugin),
               "AudioPlugin must satisfy plugin protocol");
-// static_assert(satisfies_plugin_protocol(^BadPlugin));  // COMPILE ERROR!
+// static_assert(satisfies_plugin_protocol(^^BadPlugin));  // COMPILE ERROR!
 
 // Generic plugin loader:
 template <typename T>
-    requires (satisfies_plugin_protocol(^T))
+    requires (satisfies_plugin_protocol(^^T))
 void load_plugin(T& plugin) {
     plugin.init();
     std::cout << "Loaded: " << plugin.name()
@@ -223,5 +223,5 @@ Notice how `satisfies_plugin_protocol` is used both in a standalone `static_asse
 
 - Concepts check syntactic requirements; reflection checks structural details like member names, field types, and member counts.
 - Custom `static_assert` messages triggered from reflection give far clearer diagnostics than the template error walls you get from failed concept constraints.
-- Combine the two tools: use `requires (satisfies_protocol(^T))` to get concept-style gating with reflection-powered checking logic underneath.
+- Combine the two tools: use `requires (satisfies_protocol(^^T))` to get concept-style gating with reflection-powered checking logic underneath.
 - This pattern is particularly valuable for plugin systems, serialization frameworks, and ORMs where you need to enforce non-trivial structural contracts across many types.

@@ -11,7 +11,7 @@
 You've probably seen `[[nodiscard]]` on functions, but putting it on a **type** is more powerful: every function that returns that type automatically inherits the warning. You don't have to remember to annotate each function individually - you annotate the type once, and the compiler enforces checking everywhere that type is returned.
 
 ```cpp
-[[nodiscard]] struct Error { int code; };
+struct [[nodiscard]] Error { int code; };   // note the position: AFTER 'struct'
 
 Error do_work();    // automatically [[nodiscard]]!
 Error validate();   // automatically [[nodiscard]]!
@@ -19,6 +19,8 @@ Error validate();   // automatically [[nodiscard]]!
 ```
 
 The nice part is that this scales: add one new function that returns `Error`, and the checking requirement comes along for free without any extra annotation on the function itself.
+
+Mind where the attribute goes. On a class it sits between the class-key and the name: `struct [[nodiscard]] Error`. Written in front, as `[[nodiscard]] struct Error { ... };`, it does not apply to the type at all - compilers ignore it with a warning or reject it.
 
 ---
 
@@ -36,8 +38,7 @@ Here's a practical use of the pattern. The `Result<T,E>` type carries either a s
 #include <utility>
 
 template<typename T, typename E>
-[[nodiscard("Error result must be checked")]]
-struct Result {
+struct [[nodiscard("Error result must be checked")]] Result {
     std::variant<T, E> value;
 
     bool is_ok() const { return std::holds_alternative<T>(value); }
@@ -90,16 +91,14 @@ The plain `[[nodiscard]]` attribute generates a generic warning that just names 
 #include <iostream>
 
 // Without message:
-[[nodiscard]]
-struct ErrorCode {
+struct [[nodiscard]] ErrorCode {
     int code;
 };
 // Warning: "ignoring return value of type 'ErrorCode'"
 // Not very helpful. WHY must I check it?
 
 // With message (C++20):
-[[nodiscard("Ignoring error codes leads to silent failures")]]
-struct StatusCode {
+struct [[nodiscard("Ignoring error codes leads to silent failures")]] StatusCode {
     int code;
     bool is_ok() const { return code == 0; }
 };
@@ -111,8 +110,7 @@ StatusCode connect(const char* host) {
     return StatusCode{0};
 }
 
-[[nodiscard("Memory leak if allocation result is discarded")]]
-struct Buffer {
+struct [[nodiscard("Memory leak if allocation result is discarded")]] Buffer {
     int* data;
     size_t size;
 };
@@ -147,8 +145,7 @@ Sometimes you genuinely want to call a function and discard the result - for exa
 ```cpp
 #include <iostream>
 
-[[nodiscard("Check the error code")]]
-struct Status {
+struct [[nodiscard("Check the error code")]] Status {
     int code;
 };
 
@@ -184,5 +181,6 @@ The `(void)` cast is the idiomatic choice. It's brief, universally understood, a
 
 - `[[nodiscard]]` on types is available since C++17; the `("reason")` form since C++20.
 - Apply to: error types, RAII guards, allocation results, lock types - anything where silently discarding the return value is almost always a bug.
-- The standard library uses it: `std::expected`, `std::error_code`, `std::unique_lock`.
+- Standard library implementations use it widely: on functions such as `std::async`, `empty()` and `operator new`, and in several implementations on RAII lock types so that an unnamed, immediately destroyed guard is flagged.
+- Placement matters: `struct [[nodiscard]] Name`, not `[[nodiscard]] struct Name`.
 - `[[nodiscard]]` on constructors (C++20) warns if a temporary is created and immediately discarded.

@@ -124,12 +124,16 @@ int main() {
         // Output: Converted: 987654321
     }
 
-    // Contrast with std::to_string which DOES allocate:
+    // Contrast with std::to_string, which returns a std::string:
     before = alloc_count;
-    std::string s = std::to_string(987654321); // heap alloc for std::string
+    std::string s = std::to_string(987654321);
     after = alloc_count;
     std::cout << "Allocations during to_string: " << (after - before) << "\n";
-    // Output: Allocations during to_string: 1 (or more)
+    // Output: Allocations during to_string: 0
+    // Zero HERE, because nine digits fit in the string's small buffer. The
+    // moment the text outgrows that buffer (15 characters on libstdc++ and
+    // MSVC, 22 on libc++) the same call allocates - and nothing at the call
+    // site tells you which case you are in. to_chars never allocates.
 
     // WHY allocation-free matters:
     // - Real-time systems: no unpredictable malloc latency

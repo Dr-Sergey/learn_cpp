@@ -202,6 +202,7 @@ RAII is the right answer to the "always join" requirement. The code below shows 
 #include <iostream>
 #include <thread>
 #include <stdexcept>
+#include <utility>
 
 // RAII wrapper: guarantees join on destruction
 class ThreadGuard {
@@ -231,7 +232,8 @@ public:
     }
 
     ~ScopedThread() {
-        t_.join();  // always joinable - checked in constructor
+        // Joinable unless this object was moved from
+        if (t_.joinable()) t_.join();
     }
 
     ScopedThread(ScopedThread&&) = default;
@@ -246,12 +248,17 @@ void do_work(int id) {
 
 int main() {
     // Example 1: ThreadGuard (non-owning)
-    {
+    try {
         std::thread t(do_work, 1);
         ThreadGuard guard(t);
         // Even if an exception is thrown here, guard joins t
         throw std::runtime_error("test");  // guard still joins!
-    }   // guard destructor joins t
+    } catch (const std::exception& e) {
+        // By the time we get here, unwinding has run guard's destructor.
+        // (The catch matters: if NOTHING caught the exception, the program
+        // would terminate, possibly without unwinding the stack at all.)
+        std::cout << "Caught: " << e.what() << " (thread already joined)\n";
+    }
 
     // Example 2: ScopedThread (owning)
     {
@@ -269,6 +276,7 @@ int main() {
 }
 // Expected output:
 //   Thread 1 working
+//   Caught: test (thread already joined)
 //   Thread 2 working
 //   Thread 3 working
 //   All threads joined safely

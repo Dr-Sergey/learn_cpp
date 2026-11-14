@@ -12,15 +12,17 @@ C++26 static reflection can reflect many entities, but not everything. The rough
 
 | Reflectable | Not Reflectable |
 | --- | --- |
-| Types (`^int`, `^MyClass`) | Local variables inside function bodies |
-| Namespaces (`^std`) | Statement blocks / control flow |
-| Enums and enumerators | Preprocessor macros (`#define`) |
-| Non-static data members | Concepts (partially) |
-| Static data members | Function bodies / implementations |
-| Member functions | Expression results |
-| Function declarations | Template parameter packs directly |
-| Template specializations | Unnamed/anonymous types |
-| Base classes | Attributes (partially) |
+| Types (`^^int`, `^^MyClass`) | Statement blocks / control flow |
+| Namespaces (`^^std`) | Preprocessor macros (`#define`) |
+| Enums and enumerators | Function bodies / implementations |
+| Data members, static and non-static | Arbitrary expressions (`^^(1 + 2)`); a constant *value* can be reflected with `std::meta::reflect_constant` |
+| Member functions, functions and their parameters | Template parameter packs directly |
+| Variables, including local ones | A local variable from inside a lambda that would have to capture it |
+| Templates, their specializations, and concepts | Standard attributes such as `[[nodiscard]]` |
+| Base classes | |
+| Annotations (`[[=value]]`) | |
+
+Unnamed types sit in between: you can reflect one through `decltype`, but it has no identifier, so `identifier_of` is an error for it - test with `has_identifier` first.
 
 ---
 
@@ -28,7 +30,7 @@ C++26 static reflection can reflect many entities, but not everything. The rough
 
 ### Q1: What CAN be reflected in C++26
 
-This example covers the full range of entities you can successfully pass to `^`. It is worth running through all of them at least once mentally so you know where the language draws the lines.
+This example covers the full range of entities you can successfully pass to `^^`. It is worth running through all of them at least once mentally so you know where the language draws the lines.
 
 <!-- compile: needs `meta` (not in the CI standard library yet) -->
 ```cpp
@@ -51,44 +53,47 @@ void free_function(int x) {}
 
 int main() {
     // 1. Types (built-in and user-defined):
-    constexpr auto t1 = ^int;           // OK
-    constexpr auto t2 = ^Widget;        // OK
-    constexpr auto t3 = ^std::string;   // OK
+    constexpr auto t1 = ^^int;           // OK
+    constexpr auto t2 = ^^Widget;        // OK
+    constexpr auto t3 = ^^std::string;   // OK
 
     // 2. Namespaces:
-    constexpr auto ns = ^std;           // OK
-    constexpr auto ns2 = ^mylib;        // OK
+    constexpr auto ns = ^^std;           // OK
+    constexpr auto ns2 = ^^mylib;        // OK
 
     // 3. Enums and enumerators:
-    constexpr auto e = ^Color;          // OK
-    constexpr auto ev = ^Color::Red;    // OK (individual enumerator)
+    constexpr auto e = ^^Color;          // OK
+    constexpr auto ev = ^^Color::Red;    // OK (individual enumerator)
 
     // 4. Data members:
-    constexpr auto members = std::meta::nonstatic_data_members_of(^Widget);
+    static constexpr auto members = std::define_static_array(
+        std::meta::nonstatic_data_members_of(^^Widget, std::meta::access_context::current()));
     static_assert(members.size() == 2);  // id, name
 
     // 5. Member functions:
-    constexpr auto all = std::meta::members_of(^Widget);
+    static constexpr auto all = std::define_static_array(
+        std::meta::members_of(^^Widget, std::meta::access_context::current()));
     // Includes: id, name, count (static), reset (function)
 
     // 6. Base classes:
     struct Base {};
     struct Derived : Base { int x; };
-    constexpr auto bases = std::meta::bases_of(^Derived);
+    static constexpr auto bases = std::define_static_array(
+        std::meta::bases_of(^^Derived, std::meta::access_context::current()));
     static_assert(bases.size() == 1);
 
     // 7. Functions:
-    constexpr auto f = ^free_function;  // OK
+    constexpr auto f = ^^free_function;  // OK
 
     std::cout << "All reflections succeeded\n";
 }
 ```
 
-Everything at a named, declared scope works. Individual enumerators like `^Color::Red` are reflectable too, which is what lets you iterate through an enum's values by name - a feature that C++ programmers have wanted for decades.
+Everything at a named, declared scope works. Individual enumerators like `^^Color::Red` are reflectable too, which is what lets you iterate through an enum's values by name - a feature that C++ programmers have wanted for decades.
 
 ### Q2: What CANNOT be reflected
 
-Here you see the boundaries. The most important ones to internalize are: macros are not C++ entities (they are text - the compiler never even sees them), local variables are not reflectable, and expression results are not named entities.
+Here you see the boundaries. The most important ones to internalize are: macros are not C++ entities (they are text - the compiler never even sees them), statements and function bodies have no reflection, and an expression is not an entity (though its constant value can be turned into a reflection).
 
 <!-- compile: needs `meta` (not in the CI standard library yet) -->
 ```cpp
@@ -100,34 +105,37 @@ Here you see the boundaries. The most important ones to internalize are: macros 
 int main() {
     int local_var = 10;
 
-    // 1. Local variables: CANNOT reflect
-    // constexpr auto r = ^local_var;  // ERROR: local variables not reflectable
+    // 1. Local variables: CAN be reflected...
+    constexpr auto r = ^^local_var;     // OK
+    // ...but not from inside a lambda that would have to capture them:
+    // auto f = [] { return ^^local_var; };  // ERROR
 
     // 2. Preprocessor macros: CANNOT reflect
-    // constexpr auto m = ^MY_MACRO;   // ERROR: macros are not C++ entities
+    // constexpr auto m = ^^MY_MACRO;   // ERROR: macros are not C++ entities
     //    Macros are text substitution - they don't exist in the type system
 
     // 3. Statement bodies / control flow: CANNOT reflect
-    // constexpr auto s = ^(if (true) {});  // ERROR: not an entity
+    // constexpr auto s = ^^(if (true) {});  // ERROR: not an entity
 
     // 4. Expression results: CANNOT reflect
-    // constexpr auto e = ^(1 + 2);    // ERROR: expression, not named entity
+    // constexpr auto e = ^^(1 + 2);    // ERROR: expression, not named entity
+    constexpr auto three = std::meta::reflect_constant(1 + 2);  // OK: reflects the VALUE 3
 
     // 5. Lambda types directly: limited
     auto lambda = [](int x) { return x * 2; };
-    // constexpr auto l = ^lambda;     // ERROR: local variable
-    // But you CAN reflect the lambda's type through decltype:
-    // constexpr auto lt = ^decltype(lambda);  // OK in some contexts
+    constexpr auto l = ^^lambda;        // OK: reflects the variable 'lambda'
+    constexpr auto lt = ^^decltype(lambda);  // OK: reflects its closure type
 
     // 6. Unnamed types: limited
     // struct { int x; } anon;          // anonymous struct
-    // ^decltype(anon) may work but identifier_of returns ""
+    // ^^decltype(anon) works, but the type has no identifier:
+    // has_identifier(...) is false and identifier_of(...) is an error
 
     // Workaround for macros: use constexpr variables instead:
     constexpr int my_value = 42;  // This IS reflectable at namespace scope
 
     std::cout << "Reflection has clear boundaries\n";
-    std::cout << "Key rule: only named, declared entities are reflectable\n";
+    std::cout << "Key rule: entities are reflectable; statements, macros and raw expressions are not\n";
 }
 ```
 
@@ -169,7 +177,8 @@ int main() {
 
     // === Static Reflection (compile-time) ===
     // Works with ANY type, no virtual needed:
-    constexpr auto members = std::meta::nonstatic_data_members_of(^Plain);
+    static constexpr auto members = std::define_static_array(
+        std::meta::nonstatic_data_members_of(^^Plain, std::meta::access_context::current()));
     template for (constexpr auto m : members) {
         std::cout << std::meta::identifier_of(m) << ": "
                   << std::meta::display_string_of(std::meta::type_of(m)) << '\n';

@@ -226,6 +226,9 @@ template<typename ValidationPolicy>
 class TemplateValidator {
     ValidationPolicy policy_;
 public:
+    TemplateValidator() = default;
+    explicit TemplateValidator(ValidationPolicy policy) : policy_(std::move(policy)) {}
+
     bool validate(const std::string& input) {
         return policy_(input);  // Inlined - compiler sees exact function body
     }

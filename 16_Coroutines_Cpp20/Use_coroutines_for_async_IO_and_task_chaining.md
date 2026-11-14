@@ -46,6 +46,7 @@ task<A> step1()    --> co_await --> task<B> step2(A) --> co_await --> task<C> st
 The key piece here is `AsyncFileRead`. It is an awaitable whose `await_suspend` spins up a background thread to do the actual file read, and then resumes the coroutine handle when the work is done. From the coroutine's perspective, `co_await async_read(...)` looks like a synchronous call - it simply produces the file contents as a `std::string`.
 
 ```cpp
+#include <atomic>
 #include <coroutine>
 #include <fstream>
 #include <iostream>
@@ -63,19 +64,40 @@ struct Task {
     struct promise_type {
         std::optional<T> value;
         std::exception_ptr exception;
+        std::atomic<bool> done{false};   // set when the body has finished
+
         Task get_return_object() {
             return {std::coroutine_handle<promise_type>::from_promise(*this)};
         }
         std::suspend_always initial_suspend() noexcept { return {}; }
-        std::suspend_always final_suspend() noexcept { return {}; }
+
+        // On completion: publish "done" and wake whoever is waiting in get().
+        // The body may finish on ANOTHER thread (the one that resumed it after
+        // the I/O), so a plain bool would be a data race.
+        auto final_suspend() noexcept {
+            struct Publish {
+                bool await_ready() noexcept { return false; }
+                void await_suspend(std::coroutine_handle<promise_type> h) noexcept {
+                    h.promise().done.store(true, std::memory_order_release);
+                    h.promise().done.notify_one();
+                }
+                void await_resume() noexcept {}
+            };
+            return Publish{};
+        }
         void return_value(T v) { value = std::move(v); }
         void unhandled_exception() { exception = std::current_exception(); }
     };
     std::coroutine_handle<promise_type> handle;
+    Task(std::coroutine_handle<promise_type> h) : handle(h) {}
     ~Task() { if (handle) handle.destroy(); }
     Task(Task&& o) noexcept : handle(std::exchange(o.handle, {})) {}
     T get() {
         handle.resume();
+        // resume() returns as soon as the coroutine SUSPENDS - here, at the
+        // co_await, long before the background thread has produced a value.
+        // Block until the body has really finished.
+        handle.promise().done.wait(false, std::memory_order_acquire);
         if (handle.promise().exception)
             std::rethrow_exception(handle.promise().exception);
         return std::move(*handle.promise().value);
@@ -135,7 +157,9 @@ int main() {
 // Read 19 bytes
 ```
 
-Notice how `read_and_process` reads exactly like synchronous code - there is no callback, no future polling, no explicit thread join. The coroutine suspends at `co_await async_read(...)`, the background thread does its work, then the coroutine wakes up and continues on the next line.
+Notice how `read_and_process` reads exactly like synchronous code - there is no callback, no future polling, no explicit thread join. The coroutine suspends at `co_await async_read(...)`, the background thread does its work, then the coroutine wakes up and continues on the next line - on the background thread.
+
+That last detail is why `get()` has to wait on the `done` flag. `handle.resume()` returns to `main` the moment the coroutine first suspends, so without the wait `main` would read the result while the I/O thread is still producing it. Every real task type needs some such completion signal; libraries hide it behind `sync_wait`.
 
 ### Q2: Chain two coroutines so that the result of one feeds into the next using `co_await`
 
@@ -164,6 +188,7 @@ struct Task {
         void unhandled_exception() { std::terminate(); }
     };
     std::coroutine_handle<promise_type> handle;
+    Task(std::coroutine_handle<promise_type> h) : handle(h) {}
     ~Task() { if (handle) handle.destroy(); }
     Task(Task&& o) noexcept : handle(std::exchange(o.handle, {})) {}
 

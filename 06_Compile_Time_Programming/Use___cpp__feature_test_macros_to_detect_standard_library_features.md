@@ -306,6 +306,7 @@ This is the practical payoff: you can write a header that checks for `std::expec
 
 And here's what usage looks like - identical regardless of which path the header took:
 
+<!-- compile: fragment: depends on a header defined elsewhere in the topic -->
 ```cpp
 // === main.cpp - uses the polyfill header ===
 #include <iostream>

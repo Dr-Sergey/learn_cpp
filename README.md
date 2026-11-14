@@ -23,13 +23,21 @@ Start anywhere. Jump to a category that matches your current project or study go
 
 Looking for one specific thing? [**INDEX.md**](INDEX.md) lists all 1166 topics on a single page — search it with find-in-page.
 
-The self-contained code examples are compile-checked with Clang against C++23. Where a snippet is
+Every self-contained code example compiles with Clang in C++23 mode, and each one with a `main` is
+also built and run, with its output checked against the output the text claims. Where a snippet is
 not meant to build on its own — a fragment, a deliberate error, or a feature no shipping compiler
 has yet — the line above it carries an HTML comment saying so, visible only in the raw Markdown:
 
 ```markdown
 <!-- compile: fragment: not a standalone translation unit -->
+<!-- compile: norun: deadlocks on purpose -->
+<!-- compile: flags -mavx2 -mfma -->
 ```
+
+`norun` marks a program that is correct C++ but should not be executed casually (it crashes, deadlocks
+or calls `std::terminate` to demonstrate something). `flags` lists the compiler options the example
+needs, such as a SIMD target. Printed output that depends on your platform, timing or standard library
+is labelled "typical" in the text.
 
 ## Categories
 

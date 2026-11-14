@@ -120,6 +120,7 @@ The pipeline version of `process_csv` is essentially documentation: you can read
 
 When every function has a single responsibility, you can test each one in complete isolation. A failure in `test_parse_csv` tells you exactly which code to look at - you don't need to reason about sorting or formatting:
 
+<!-- compile: fragment: tests the functions defined in Q1 -->
 ```cpp
 #include <cassert>
 #include <iostream>

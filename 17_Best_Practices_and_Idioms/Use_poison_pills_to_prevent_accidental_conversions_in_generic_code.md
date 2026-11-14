@@ -53,6 +53,12 @@ public:
     SafeString(const std::string& s) : data_(s) {}
     SafeString(std::string&& s) : data_(std::move(s)) {}
 
+    // Needed because of the pills below. A literal such as "hello" is an
+    // array of char; turning it into bool takes only standard conversions,
+    // which outrank the user-defined conversion to std::string - so without
+    // this overload SafeString("hello") would select the DELETED bool pill.
+    SafeString(const char* s) : data_(s) {}
+
     // Prevent implicit conversion from numbers
     SafeString(int) = delete;
     SafeString(double) = delete;
@@ -69,7 +75,7 @@ int main() {
     // UserId bad2(true);              // ERROR: deleted
     // UserId bad3('A');               // ERROR: deleted
 
-    SafeString s("hello");              // OK: const char* -> string -> SafeString
+    SafeString s("hello");              // OK: exact match for the const char* overload
     // SafeString bad4(42);             // ERROR: deleted
     // SafeString bad5(nullptr);        // ERROR: deleted
 

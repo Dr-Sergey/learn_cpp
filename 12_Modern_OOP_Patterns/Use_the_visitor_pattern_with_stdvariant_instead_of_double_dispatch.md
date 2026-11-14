@@ -97,7 +97,7 @@ int main() {
         std::cout << describe(s) << " -> area = " << area(s) << "\n";
 }
 // Expected output:
-//   Circle(r=5.000000) -> area = 78.5398
+//   Circle(r=5.000000) -> area = 78.5397
 //   Rect(3.000000x4.000000) -> area = 12
 //   Triangle(b=6.000000) -> area = 9
 ```

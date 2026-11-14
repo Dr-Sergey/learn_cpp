@@ -1,20 +1,20 @@
-# Understand static reflection with the ^ operator and std::meta
+# Understand static reflection with the ^^ operator and std::meta
 
 **Category:** Reflection Cpp26  
 **Standard:** C++26  
-**Reference:** <https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2024/p2996r5.html>  
+**Reference:** <https://wg21.link/P2996>  
 
 ---
 
 ## Topic Overview
 
-C++26 introduces **static reflection** via the `^` (reflect) operator and the `std::meta` namespace. The key idea is simple: `^T` produces a value of type `std::meta::info` that represents the entity `T` at compile time. You can then pass that value to query functions in `std::meta` to ask questions about the entity - its name, its members, its type - all during compilation with zero runtime cost.
+C++26 introduces **static reflection** via the `^^` (reflect) operator and the `std::meta` namespace. The key idea is simple: `^^T` produces a value of type `std::meta::info` that represents the entity `T` at compile time. You can then pass that value to query functions in `std::meta` to ask questions about the entity - its name, its members, its type - all during compilation with zero runtime cost.
 
 Here is a quick reference for the key pieces:
 
 | Concept | Description |
 | --- | --- |
-| `^entity` | Reflect operator - turns any entity into a `meta::info` value |
+| `^^entity` | Reflect operator - turns any entity into a `meta::info` value |
 | `std::meta::info` | Opaque compile-time type representing a reflected entity |
 | `identifier_of(info)` | Get the source name as `string_view` |
 | `type_of(info)` | Get the type of a reflected member |
@@ -26,7 +26,7 @@ If you want a mental picture of the pipeline, here it is:
 ```cpp
 // Reflection pipeline:
 //
-//   Source code entity  ---^entity--->  std::meta::info
+//   Source code entity  ---^^entity--->  std::meta::info
 //                                          |
 //                                     query APIs
 //                                     (name, type,
@@ -35,15 +35,15 @@ If you want a mental picture of the pipeline, here it is:
 //   Generated code      --[:info:]-------->
 ```
 
-The `^` operator takes you from code to a meta-value, and the splice operator `[::]` takes you back from a meta-value to code. Everything in between is compile-time querying.
+The `^^` operator takes you from code to a meta-value, and the splice operator `[::]` takes you back from a meta-value to code. Everything in between is compile-time querying.
 
 ---
 
 ## Self-Assessment
 
-### Q1: Use `^T` to obtain a reflection and query its name
+### Q1: Use `^^T` to obtain a reflection and query its name
 
-This example shows the most fundamental use: reflect several different kinds of entities and print their names. Notice that `^` works on types, built-ins, namespaces, and enums equally.
+This example shows the most fundamental use: reflect several different kinds of entities and print their names. Notice that `^^` works on types, built-ins, namespaces, and enums equally.
 
 <!-- compile: needs `meta` (not in the CI standard library yet) -->
 ```cpp
@@ -60,25 +60,25 @@ struct Widget {
 
 int main() {
     // Reflect a type:
-    constexpr std::meta::info widget_refl = ^Widget;
+    constexpr std::meta::info widget_refl = ^^Widget;
 
     // Query the name:
     constexpr std::string_view type_name = std::meta::identifier_of(widget_refl);
     std::cout << "Type: " << type_name << '\n';  // Type: Widget
 
     // Reflect built-in types:
-    constexpr auto int_refl = ^int;
+    constexpr auto int_refl = ^^int;
     std::cout << "Built-in: " << std::meta::display_string_of(int_refl) << '\n';
     // Built-in: int
 
     // Reflect a namespace:
-    constexpr auto std_refl = ^std;
+    constexpr auto std_refl = ^^std;
     std::cout << "Namespace: " << std::meta::identifier_of(std_refl) << '\n';
     // Namespace: std
 
     // Reflect an enum:
     enum Color { Red, Green, Blue };
-    constexpr auto color_refl = ^Color;
+    constexpr auto color_refl = ^^Color;
     std::cout << "Enum: " << std::meta::identifier_of(color_refl) << '\n';
     // Enum: Color
 }
@@ -103,9 +103,10 @@ struct Config {
 
 template <typename T>
 void print_members() {
-    constexpr auto members = std::meta::nonstatic_data_members_of(^T);
+    static constexpr auto members = std::define_static_array(
+        std::meta::nonstatic_data_members_of(^^T, std::meta::access_context::current()));
 
-    std::cout << std::meta::identifier_of(^T) << " has "
+    std::cout << std::meta::identifier_of(^^T) << " has "
               << members.size() << " members:\n";
 
     template for (constexpr auto m : members) {
@@ -150,7 +151,7 @@ This example nails down the most important conceptual point: `std::meta::info` i
 
 // 1. You can pass reflections to consteval functions:
 consteval bool has_member_named(std::meta::info type, std::string_view name) {
-    for (auto m : std::meta::nonstatic_data_members_of(type)) {
+    for (auto m : std::meta::nonstatic_data_members_of(type, std::meta::access_context::current())) {
         if (std::meta::identifier_of(m) == name) return true;
     }
     return false;
@@ -159,12 +160,13 @@ consteval bool has_member_named(std::meta::info type, std::string_view name) {
 struct Player { std::string name; int hp; int level; };
 
 // 2. Use in static_assert (purely compile-time):
-static_assert(has_member_named(^Player, "hp"));
-static_assert(!has_member_named(^Player, "mana"));
+static_assert(has_member_named(^^Player, "hp"));
+static_assert(!has_member_named(^^Player, "mana"));
 
 // 3. Use in constexpr variables:
-constexpr auto player_refl = ^Player;
-constexpr auto member_count = std::meta::nonstatic_data_members_of(player_refl).size();
+constexpr auto player_refl = ^^Player;
+static constexpr auto member_count = std::define_static_array(
+    std::meta::nonstatic_data_members_of(player_refl, std::meta::access_context::current()).size());
 static_assert(member_count == 3);
 
 // 4. You CANNOT store meta::info at runtime:
@@ -173,12 +175,12 @@ static_assert(member_count == 3);
 
 // 5. consteval function - MUST be evaluated at compile time:
 consteval std::size_t count_fields(std::meta::info t) {
-    return std::meta::nonstatic_data_members_of(t).size();
+    return std::meta::nonstatic_data_members_of(t, std::meta::access_context::current()).size();
 }
 
 int main() {
     // Compile-time constant derived from reflection:
-    constexpr auto n = count_fields(^Player);
+    constexpr auto n = count_fields(^^Player);
     std::cout << "Player has " << n << " fields\n";  // 3
 
     // The reflection itself has zero runtime footprint.
@@ -193,8 +195,8 @@ The `static_assert` calls and the `consteval` functions all run at compile time.
 
 ## Notes
 
-- `^` can reflect: types, namespaces, enums, variables, functions, templates.
+- `^^` can reflect: types, namespaces, enums, variables, functions, templates.
 - `std::meta::info` is an opaque, literal type - only meaningful at compile time.
 - All `std::meta::` query functions are `consteval`.
 - Reflections have zero runtime cost - they exist only during compilation.
-- P2996R5 is the latest revision of the static reflection proposal.
+- Static reflection was adopted into C++26 through P2996 (final revision R13). The reflection operator is spelled `^^`; drafts before mid-2024 used a single `^^`, which is what older articles and talks show.

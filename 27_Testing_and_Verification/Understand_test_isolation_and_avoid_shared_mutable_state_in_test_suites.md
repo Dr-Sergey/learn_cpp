@@ -49,10 +49,16 @@ If you already have shared state in your codebase, the table below maps each typ
 This example demonstrates the classic failure mode: two tests that each modify a global, where the second test's assertions assume a clean starting state. Run them in order A then B and B fails; run B then A and both pass. The output comment at the end shows exactly what you'd see.
 
 ```cpp
-#include <cassert>
 #include <iostream>
+#include <stdexcept>
 #include <string>
 #include <vector>
+
+// A minimal test assertion that THROWS, the way a test framework's does, so
+// the runner can report the failure and carry on. (assert() would not do:
+// it calls abort(), which no try/catch can intercept.)
+#define CHECK(cond) \
+    do { if (!(cond)) throw std::runtime_error("CHECK failed: " #cond); } while (0)
 
 // THE PROBLEM: shared mutable global
 
@@ -68,8 +74,8 @@ void handle_request(const std::string& path) {
 // Test A: expects clean state
 void test_first_request() {
     handle_request("/home");
-    assert(global_request_count == 1);    // passes if run first
-    assert(global_log.size() == 1);       // FAILS if run after test B!
+    CHECK(global_request_count == 1);    // passes if run first
+    CHECK(global_log.size() == 1);       // FAILS if run after test B!
     std::cout << "test_first_request passed\n";
 }
 
@@ -77,7 +83,7 @@ void test_first_request() {
 void test_multiple_requests() {
     handle_request("/api/v1");
     handle_request("/api/v2");
-    assert(global_request_count == 2);    // FAILS if run after test A!
+    CHECK(global_request_count == 2);    // FAILS if run after test A!
     // Expected 2, but global_request_count is 3 (1 from A + 2 from B)
     std::cout << "test_multiple_requests passed\n";
 }
@@ -87,9 +93,9 @@ int main() {
     test_first_request();
 
     try {
-        test_multiple_requests();  // assertion fails: count is 3, not 2
-    } catch (...) {
-        std::cout << "test_multiple_requests FAILED\n";
+        test_multiple_requests();  // check fails: count is 3, not 2
+    } catch (const std::exception& e) {
+        std::cout << "test_multiple_requests FAILED (" << e.what() << ")\n";
         std::cout << "  global_request_count = " << global_request_count << "\n";
         std::cout << "  global_log.size() = " << global_log.size() << "\n";
     }
@@ -98,7 +104,9 @@ int main() {
 }
 // Output:
 // test_first_request passed
-// test_multiple_requests FAILED (assertion: 3 != 2)
+// test_multiple_requests FAILED (CHECK failed: global_request_count == 2)
+//   global_request_count = 3
+//   global_log.size() = 3
 ```
 
 The reason this trips people up is that each test looks correct in isolation. Test A checks that one request was handled. Test B checks that two requests were handled. Both are perfectly reasonable assertions - the problem is the implicit assumption that each test starts from zero.

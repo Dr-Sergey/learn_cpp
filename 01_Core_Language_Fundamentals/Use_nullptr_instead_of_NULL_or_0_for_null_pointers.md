@@ -228,7 +228,9 @@ int main() {
 
     // With nullptr - everything works:
     call_with_ptr(&value);   // T = int*, works perfectly
-    call_with_ptr(nullptr);  // T = std::nullptr_t, nullptr != nullptr is false, OK
+    // call_with_ptr(nullptr);
+    // T = std::nullptr_t: "ptr != nullptr" compiles, but "*ptr" does not.
+    // nullptr_t converts to any pointer type; it is not itself a pointer.
     pass_to_api(&value);     // T = int*, works perfectly
     pass_to_api(nullptr);    // T = std::nullptr_t, converts to int*, OK
 }

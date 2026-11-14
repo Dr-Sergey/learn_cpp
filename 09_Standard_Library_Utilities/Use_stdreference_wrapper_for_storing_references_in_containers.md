@@ -191,16 +191,14 @@ int main() {
     // IMPOSSIBLE — compile errors:
     // std::vector<int&> v1;                    // ERROR: forming pointer to reference
     // std::map<int, int&> m1;                  // ERROR: reference as mapped type
-    // std::pair<int, int&> p1;                 // ERROR (in some contexts)
-    // std::array<int&, 3> arr;                 // ERROR
+    // std::pair<int, int&> p1;                 // ERROR here: the reference member is uninitialized
+    // std::array<int&, 3> arr;                 // ERROR: array of references
 
-    // WHY? Container elements must be:
-    // 1. Default-constructible (for resize, map[key], etc.)
-    //    -> References MUST be initialized; there's no default
-    // 2. Copy-assignable (for push_back, insert, etc.)
-    //    -> Assigning to a reference changes the REFERENT, not the reference
-    // 3. Destructible
-    //    -> References have no destructor
+    // WHY? A reference is not an object. It has no storage you can point at,
+    // you cannot form a pointer to it or an array of it, and it can never be
+    // reseated: assigning to it changes the REFERENT, not the reference.
+    // Containers allocate arrays of objects and move/assign them around,
+    // so their element type has to be an object type.
 
     // WORKS — reference_wrapper IS an object:
     std::vector<std::reference_wrapper<int>> v = {a, b, c};
@@ -219,8 +217,10 @@ int main() {
     r = b;  // this assigns b's VALUE to a, does NOT rebind r!
     std::cout << "a = " << a << "\n"; // a = 20 (a changed, r still refers to a)
 
-    // Map lookup modifying original:
-    m["b"].get() = 42;
+    // Map lookup modifying original. Use at(), not operator[]: m["b"] must be
+    // able to default-construct a missing value, and reference_wrapper has no
+    // default constructor (there is no such thing as an unbound reference).
+    m.at("b").get() = 42;
     std::cout << "b = " << b << "\n"; // b = 42
 }
 ```

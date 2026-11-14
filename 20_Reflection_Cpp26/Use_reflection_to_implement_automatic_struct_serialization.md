@@ -1,8 +1,8 @@
 # Use reflection to implement automatic struct serialization
 
 **Category:** Reflection Cpp26  
-**Standard:** C++11  
-**Reference:** <https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2024/p2996r5.html>  
+**Standard:** C++26  
+**Reference:** <https://wg21.link/P2996>  
 
 ---
 
@@ -38,9 +38,10 @@ The `serialize` function below uses `nonstatic_data_members_of` to walk every fi
 
 template <typename T>
 std::string serialize(const T& obj) {
-    constexpr auto members = std::meta::nonstatic_data_members_of(^T);
+    static constexpr auto members = std::define_static_array(
+        std::meta::nonstatic_data_members_of(^^T, std::meta::access_context::current()));
     std::ostringstream oss;
-    oss << std::meta::identifier_of(^T) << "{";
+    oss << std::meta::identifier_of(^^T) << "{";
     bool first = true;
 
     template for (constexpr auto m : members) {
@@ -79,7 +80,7 @@ int main() {
 }
 ```
 
-Notice that `std::meta::identifier_of(^T)` at the top of the output loop gives you the struct's own name - so the output says `Config{...}` rather than just `{...}`. That is reflection on the type itself, not just its members.
+Notice that `std::meta::identifier_of(^^T)` at the top of the output loop gives you the struct's own name - so the output says `Config{...}` rather than just `{...}`. That is reflection on the type itself, not just its members.
 
 ### Q2: Adding a new field automatically updates serialization
 
@@ -94,7 +95,8 @@ This is the key proof of the "zero maintenance" claim. `UserV2` adds two fields 
 
 template <typename T>
 std::string serialize(const T& obj) {
-    constexpr auto members = std::meta::nonstatic_data_members_of(^T);
+    static constexpr auto members = std::define_static_array(
+        std::meta::nonstatic_data_members_of(^^T, std::meta::access_context::current()));
     std::ostringstream oss;
     oss << "{";
     bool first = true;
@@ -193,7 +195,7 @@ struct Person {
 template <typename T>
 void print_serialized(const T& obj) {
     template for (constexpr auto m :
-                  std::meta::nonstatic_data_members_of(^T)) {
+                  std::define_static_array(std::meta::nonstatic_data_members_of(^^T, std::meta::access_context::current()))) {
         std::cout << std::meta::identifier_of(m) << ": ";
         using MType = [:std::meta::type_of(m):];
         if constexpr (std::is_same_v<MType, std::string>)

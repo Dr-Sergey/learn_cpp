@@ -93,6 +93,7 @@ The interesting wrinkle with structured bindings is that the binding mode - by v
 #include <tuple>
 #include <cstddef>
 #include <type_traits>
+#include <utility>
 
 class Point {
     double x_, y_;
@@ -119,6 +120,16 @@ template<size_t I>
 const double& get(const Point& p) {
     if constexpr (I == 0) return p.x();
     else return p.y();
+}
+
+// Rvalue get. A by-value binding (auto [x, y] = p;) makes a hidden copy and
+// then calls get<I> on that copy AS AN RVALUE. Without this overload the call
+// would fall back to the const version and the non-const bindings would not
+// compile.
+template<size_t I>
+double&& get(Point&& p) {
+    if constexpr (I == 0) return std::move(p.x());
+    else return std::move(p.y());
 }
 
 int main() {

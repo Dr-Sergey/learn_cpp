@@ -309,6 +309,7 @@ The `query_interface` pattern is COM-inspired and solves the "can't add virtuals
 This pattern is used by Vulkan, Win32 API, and DirectX. The idea is to put a `struct_size` field first. Old callers set it to the size they know about; new library code checks the size before touching any field to determine which version of the struct it received. No version enum, no separate version parameter - the struct carries its own version as its size.
 
 ```cpp
+#include <cstddef>   // offsetof
 #include <cstdint>
 #include <cstring>
 #include <cstdio>

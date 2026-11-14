@@ -13,9 +13,9 @@ Compile-time reflection is one of the most transformative additions in C++26. It
 - [Generate switch dispatch tables from enum reflections](Generate_switch_dispatch_tables_from_enum_reflections.md)
 - [Implement compile-time ORM and query generation via reflection](Implement_compile-time_ORM_and_query_generation_via_reflection.md)
 - [Implement compile-time struct serialization using reflection](Implement_compile-time_struct_serialization_using_reflection.md)
-- [Understand static reflection with the ^ operator and std::meta](Understand_static_reflection_with_the_operator_and_stdmeta.md)
-- [Understand the C++26 static reflection model with the ^ operator](Understand_the_C++26_static_reflection_model_with_the_operator.md)
-- [Understand the C++26 static reflection model with the ^ splice operator](Understand_the_C++26_static_reflection_model_with_the_splice_operator.md)
+- [Understand static reflection with the ^^ operator and std::meta](Understand_static_reflection_with_the_operator_and_stdmeta.md)
+- [Understand the C++26 static reflection model with the ^^ and splice operators](Understand_the_C++26_static_reflection_model_with_the_splice_operator.md)
+- [Understand the C++26 static reflection model with the ^^ operator](Understand_the_C++26_static_reflection_model_with_the_operator.md)
 - [Understand the difference between compile-time and runtime reflection in C++](Understand_the_difference_between_compile-time_and_runtime_reflection_in_C++.md)
 - [Understand the limits of C++26 reflection: what is and is not reflectable](Understand_the_limits_of_C++26_reflection_what_is_and_is_not_reflectable.md)
 - [Understand the splice operator [: :] for injecting reflections back into code](Understand_the_splice_operator_for_injecting_reflections_back_into_code.md)
@@ -27,7 +27,7 @@ Compile-time reflection is one of the most transformative additions in C++26. It
 - [Use reflection to implement automatic enum-to-string conversion](Use_reflection_to_implement_automatic_enum-to-string_conversion.md)
 - [Use reflection to implement automatic JSON serialization](Use_reflection_to_implement_automatic_JSON_serialization.md)
 - [Use reflection to implement automatic struct serialization](Use_reflection_to_implement_automatic_struct_serialization.md)
-- [Use std::meta::define_class to synthesize new types at compile time](Use_stdmetadefine_class_to_synthesize_new_types_at_compile_time.md)
+- [Use std::meta::define_aggregate to synthesize new types at compile time](Use_stdmetadefine_class_to_synthesize_new_types_at_compile_time.md)
 
 ## Notes
 
@@ -38,6 +38,6 @@ Compile-time reflection is one of the most transformative additions in C++26. It
 - `std::meta::members_of` enumerates class members at compile time, giving you the struct's own field list to iterate.
 - `template for` loops iterate over reflected members, replacing old-style recursive template metaprogramming with straightforward iteration.
 - All reflection happens within `consteval` functions - introspection is a compile-time-only activity with zero runtime overhead.
-- Annotations (proposed alongside P2996) may allow attaching metadata to declarations for reflection consumption in a future standard.
+- Annotations (`[[=value]]`, adopted for C++26 through P3394) attach compile-time values to declarations, which reflection reads back with `std::meta::annotations_of`.
 - Reflection makes macros, X-macros, and external code generation tools largely obsolete for structural introspection tasks.
 - The `std::meta` namespace provides the building blocks - `identifier_of`, `type_of`, `offset_of`, `size_of`, `enumerators_of`, and more.

@@ -291,10 +291,10 @@ int main() {
     std::cout << "External: " << case_external(base_sp) << "\n";
 }
 // Expected output:
-//   Devirtualized: 78.5398
-//   Virtual: 78.5398
-//   Local unique_ptr: 78.5398
-//   External: 78.5398
+//   Devirtualized: 78.5397
+//   Virtual: 78.5397
+//   Local unique_ptr: 78.5397
+//   External: 78.5397
 ```
 
 **When compilers can devirtualize:**

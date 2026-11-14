@@ -81,6 +81,7 @@ Notice that `t1` passes `(m1, m2)` and `t2` passes `(m2, m1)` - opposite orders.
 
 This example deliberately creates a deadlock so you can see exactly what goes wrong. In practice, adding a small `sleep_for` makes the race nearly deterministic - in real code the timing is unpredictable, which is what makes deadlocks so hard to track down.
 
+<!-- compile: norun: deadlocks on purpose -->
 ```cpp
 #include <mutex>
 #include <thread>

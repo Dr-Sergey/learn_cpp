@@ -262,7 +262,8 @@ int main() {
               << static_cast<int>(float_exponent(val)) << "\n";
 
     // NaN detection at compile time
-    constexpr float nan = 0.0f / 0.0f;
+    // (0.0f / 0.0f is not allowed in a constant expression - ask the library)
+    constexpr float nan = std::numeric_limits<float>::quiet_NaN();
     constexpr auto nan_bits = float_bits(nan);
     constexpr bool is_nan = (nan_bits & 0x7F800000) == 0x7F800000
                          && (nan_bits & 0x007FFFFF) != 0;

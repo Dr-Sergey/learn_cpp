@@ -48,6 +48,7 @@ Note: take_while + drop_while = entire range (non-overlapping split)
 `take_while` is particularly useful when you have data that signals its own end with a special value - like HTTP headers terminated by an empty line, or a C-style null-terminated pattern encoded in a container.
 
 ```cpp
+#include <algorithm>
 #include <iostream>
 #include <ranges>
 #include <string>
@@ -72,14 +73,15 @@ int main() {
     for (const auto& h : headers)
         std::cout << "  " << h << '\n';
 
-    // Numeric example: take sorted prefix
+    // Numeric example: take sorted prefix.
+    // "Is this element >= the previous one?" needs memory of the previous
+    // element, and take_while is the wrong tool for that: its predicate must
+    // be callable as const and give the same answer every time it is asked
+    // (a 'mutable' lambda does not even compile). Let the algorithm that
+    // already tracks neighbours find the boundary, then take that many.
     std::vector<int> data = {1, 3, 5, 7, 2, 4, 6};
-    auto sorted_prefix = data | std::views::take_while(
-        [prev = 0](int x) mutable {
-            bool ascending = (x >= prev);
-            prev = x;
-            return ascending;
-        });
+    auto sorted_end = std::ranges::is_sorted_until(data);
+    auto sorted_prefix = data | std::views::take(sorted_end - data.begin());
 
     std::cout << "Sorted prefix: ";
     for (int x : sorted_prefix)

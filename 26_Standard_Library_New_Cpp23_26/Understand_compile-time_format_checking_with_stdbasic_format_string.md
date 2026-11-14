@@ -114,6 +114,9 @@ This is where `std::format_string` really shines. By accepting it as a parameter
 #include <source_location>
 #include <chrono>
 #include <string_view>
+#include <type_traits>
+#include <concepts>
+#include <cstdlib>
 #include <utility>
 
 // Custom log function with compile-time format checking
@@ -135,16 +138,31 @@ void log(LogLevel level,
     std::println("{} {}", prefix, msg);
 }
 
-// Format-checked assertion with source location
+// Format-checked assertion with source location.
+// A defaulted source_location cannot simply follow 'Args&&... args': a
+// parameter pack is only deduced when it comes last. The standard trick is
+// to capture the location in the constructor of the format-string parameter,
+// which is evaluated at the call site.
+template <typename... Args>
+struct located_format {
+    std::format_string<Args...> fmt;
+    std::source_location loc;
+
+    template <typename T>
+        requires std::constructible_from<std::format_string<Args...>, const T&>
+    consteval located_format(const T& s,
+                             std::source_location l = std::source_location::current())
+        : fmt(s), loc(l) {}
+};
+
 template <typename... Args>
 void check(bool condition,
-           std::format_string<Args...> fmt,
-           Args&&... args,
-           std::source_location loc = std::source_location::current()) {
+           located_format<std::type_identity_t<Args>...> fmt,
+           Args&&... args) {
     if (!condition) {
-        auto msg = std::format(fmt, std::forward<Args>(args)...);
+        auto msg = std::format(fmt.fmt, std::forward<Args>(args)...);
         std::println(stderr, "ASSERTION FAILED at {}:{}: {}",
-                     loc.file_name(), loc.line(), msg);
+                     fmt.loc.file_name(), fmt.loc.line(), msg);
         std::abort();
     }
 }
@@ -191,6 +209,7 @@ Sometimes the format string is not known until runtime - it comes from a user, a
 #include <iostream>
 #include <stdexcept>
 #include <string_view>
+#include <tuple>
 #include <utility>
 
 // Runtime format strings with std::vformat
@@ -215,7 +234,7 @@ void log_dynamic(std::string_view fmt_str, int value, double rate) {
 // Compile-time vs runtime decision pattern
 template <typename... Args>
 struct LogMessage {
-    std::string_view text;
+    std::string text;   // owns the formatted text (a string_view here would dangle)
 
     // Compile-time checked
     static LogMessage from_literal(std::format_string<Args...> fmt,
@@ -238,9 +257,13 @@ public:
     template <typename... Args>
     static bool is_valid(std::string_view fmt) noexcept {
         try {
-            // Try to format with dummy values
-            auto args = std::make_format_args(Args{}...);
-            std::vformat(fmt, args);
+            // Try to format with dummy values. make_format_args only accepts
+            // lvalues (the argument store holds references), so the dummies
+            // need to be named objects that outlive the call.
+            std::tuple<Args...> dummies{};
+            std::apply([&](auto&... a) {
+                (void)std::vformat(fmt, std::make_format_args(a...));
+            }, dummies);
             return true;
         } catch (const std::format_error&) {
             return false;
@@ -254,7 +277,7 @@ int main() {
     log_dynamic(user_fmt, 42, 3.14159);  // "Value: 42, Rate: 3.14"
 
     // Invalid runtime format - caught as exception
-    log_dynamic("Bad: {:d}", 42, 3.14);  // d on double -> format_error
+    log_dynamic("Bad: {} {:d}", 42, 3.14);  // d on double -> format_error
 
     // Validate before use
     std::println("Valid: {}",

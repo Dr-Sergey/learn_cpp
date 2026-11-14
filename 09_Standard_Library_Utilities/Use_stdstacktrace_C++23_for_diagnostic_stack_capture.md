@@ -199,6 +199,7 @@ int main() {
 
 **Answer:**
 
+<!-- compile: norun: crashes on purpose to show the signal-handler trace -->
 ```cpp
 #include <stacktrace>
 #include <iostream>

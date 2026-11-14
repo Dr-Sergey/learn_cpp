@@ -97,7 +97,7 @@ int main() {
 
     std::cout << "string::substr 1M times:      " << ms1 << " us\n";
     std::cout << "string_view::substr 1M times:  " << ms2 << " us\n";
-    std::cout << "Speedup: ~" << ms1 / std::max(ms2, 1L) << "x\n";
+    std::cout << "Speedup: ~" << ms1 / std::max<long long>(ms2, 1) << "x\n";
 
     // Typical output:
     // string::substr 1M times:      45000 us

@@ -67,7 +67,9 @@ The reference type of the concat view is the **common reference** of all input r
 
 Here is the basic usage - three separate vectors, one seamless view over all of them.
 
+<!-- compile: needs C++26 library support for `std::views::concat` (not in the CI standard library yet) -->
 ```cpp
+#include <algorithm>
 #include <iostream>
 #include <ranges>
 #include <vector>
@@ -110,6 +112,7 @@ Because all three inputs are `vector<int>` (random-access and sized), the concat
 
 This example makes the non-owning, zero-copy nature concrete. Writing through the view modifies the original container - the view is just a lens, not a copy.
 
+<!-- compile: needs C++26 library support for `std::views::concat` (not in the CI standard library yet) -->
 ```cpp
 #include <iostream>
 #include <ranges>
@@ -165,6 +168,7 @@ The write-through behaviour (`*it = "HELLO"` changing `a[0]`) is the clearest pr
 
 The reason this matters in practice is that algorithms like `std::ranges::sort` need random-access, and if you mix a `vector` with a `list` you'll lose that capability. Let's see it happen:
 
+<!-- compile: needs C++26 library support for `std::views::concat` (not in the CI standard library yet) -->
 ```cpp
 #include <concepts>
 #include <iostream>

@@ -8,7 +8,7 @@
 
 ## Topic Overview
 
-C++26 static reflection (`^` operator and `std::meta` namespace) enables automatic serialization by enumerating struct members at compile time - no macros, no code generation, no boilerplate.
+C++26 static reflection (`^^` operator and `std::meta` namespace) enables automatic serialization by enumerating struct members at compile time - no macros, no code generation, no boilerplate.
 
 The big deal here is that before reflection arrived, every serializable type required either a macro full of hidden gotchas, a code generator you had to run before building, or hand-written boilerplate that silently went stale whenever you renamed a field. Reflection solves all three problems at once by letting the compiler itself tell you what members a type has.
 
@@ -30,7 +30,7 @@ The problem is obvious once your codebase grows: that list of fields is a second
 
 ### C++26 Reflection Approach
 
-With reflection, you write the serializer once and it works for every type automatically. The `template for` loop iterates over members at compile time - the compiler unrolls it into exactly the right code for each type. The `^T` operator produces a compile-time representation of the type `T`, and `obj.[:member:]` is the splice syntax that accesses the actual member at runtime:
+With reflection, you write the serializer once and it works for every type automatically. The `template for` loop iterates over members at compile time - the compiler unrolls it into exactly the right code for each type. The `^^T` operator produces a compile-time representation of the type `T`, and `obj.[:member:]` is the splice syntax that accesses the actual member at runtime:
 
 <!-- compile: needs `meta` (not in the CI standard library yet) -->
 ```cpp
@@ -47,7 +47,8 @@ std::string to_json(const T& obj) {
     bool first = true;
 
     // Iterate over all non-static data members at compile time
-    template for (constexpr auto member : std::meta::members_of(^T)) {
+    template for (constexpr auto member : std::define_static_array(
+            std::meta::members_of(^^T, std::meta::access_context::current()))) {
         if constexpr (std::meta::is_nonstatic_data_member(member)) {
             if (!first) oss << ",";
             first = false;
@@ -97,13 +98,14 @@ One of the best things about compile-time reflection is that you can also valida
 // Reflection enables compile-time checks on serializable types
 template<typename T>
 consteval bool is_serializable() {
-    for (constexpr auto member : std::meta::members_of(^T)) {
-        if constexpr (std::meta::is_nonstatic_data_member(member)) {
-            using MemberType = typename[:std::meta::type_of(member):];
-            if constexpr (!std::is_arithmetic_v<MemberType> &&
-                          !std::is_same_v<MemberType, std::string>) {
-                return false;  // Unsupported member type
-            }
+    // Inside a consteval function reflections are ordinary values: a plain
+    // loop and plain ifs are enough, no splicing or 'if constexpr' needed.
+    for (std::meta::info member :
+         std::meta::nonstatic_data_members_of(^^T, std::meta::access_context::current())) {
+        std::meta::info type = std::meta::dealias(std::meta::type_of(member));
+        if (!std::meta::is_arithmetic_type(type) &&
+            type != std::meta::dealias(^^std::string)) {
+            return false;  // Unsupported member type
         }
     }
     return true;
@@ -127,7 +129,8 @@ The deserializer mirrors the serializer: iterate members at compile time, look u
 template<typename T>
 T from_json(const json_object& j) {
     T obj{};
-    template for (constexpr auto member : std::meta::members_of(^T)) {
+    template for (constexpr auto member : std::define_static_array(
+            std::meta::members_of(^^T, std::meta::access_context::current()))) {
         if constexpr (std::meta::is_nonstatic_data_member(member)) {
             constexpr auto name = std::meta::identifier_of(member);
             using MemberType = typename[:std::meta::type_of(member):];
@@ -149,8 +152,9 @@ You can also use reflection to produce a human-readable schema dump - useful for
 ```cpp
 template<typename T>
 void print_schema() {
-    std::cout << "Schema for " << std::meta::identifier_of(^T) << ":\n";
-    template for (constexpr auto member : std::meta::members_of(^T)) {
+    std::cout << "Schema for " << std::meta::identifier_of(^^T) << ":\n";
+    template for (constexpr auto member : std::define_static_array(
+            std::meta::members_of(^^T, std::meta::access_context::current()))) {
         if constexpr (std::meta::is_nonstatic_data_member(member)) {
             std::cout << "  " << std::meta::identifier_of(member)
                       << " : " << std::meta::identifier_of(std::meta::type_of(member))

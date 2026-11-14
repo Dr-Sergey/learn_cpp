@@ -31,7 +31,7 @@ views::enumerate      v        v        v        v
             auto [idx, val] = ...   <- structured binding
 ```
 
-`enumerate` is lazy - it produces elements on demand and composes with other views in a pipeline. The returned elements are tuple-like with `.index()` and `.value()` accessors, or can be destructured via structured bindings.
+`enumerate` is lazy - it produces elements on demand and composes with other views in a pipeline. The returned elements are plain tuples of `(index, reference-to-element)`: destructure them with structured bindings, or reach in with `std::get<0>` and `std::get<1>`. (There are no `.index()`/`.value()` members.)
 
 ---
 
@@ -115,7 +115,7 @@ int main() {
             return val > 20;
         })
         | rv::transform([](auto pair) {
-            return pair.index();   // .index() accessor
+            return std::get<0>(pair);   // the index is the tuple's first element
         })
         | std::ranges::to<std::vector>();
 
@@ -171,6 +171,7 @@ Understanding what category of range `enumerate` produces matters for knowing wh
 #include <ranges>
 #include <vector>
 #include <list>
+#include <numeric>
 #include <print>
 #include <forward_list>
 #include <type_traits>
@@ -257,7 +258,7 @@ The "zero overhead" claim is worth believing here: the resulting assembly for an
 
 - `std::views::enumerate` is in `<ranges>` (C++23). Produces `(index, reference)` pairs.
 - The index type is `range_difference_t<R>` - signed, typically `ptrdiff_t`. No unsigned comparison warnings.
-- Elements are returned as a tuple-like type supporting `.index()`, `.value()`, and structured bindings `auto [i, v]`.
+- Elements are returned as a `std::tuple<difference_type, reference>` - use structured bindings `auto [i, v]` or `std::get`.
 - The value in the pair is a **reference** to the original element - mutations propagate to the source range.
 - The resulting view preserves the range category of the source (random-access, bidirectional, etc.).
 - Zero overhead: just an incrementing counter alongside iteration. No extra allocation.

@@ -136,8 +136,8 @@ void sum_serial(const float* data, int n, float& result) {
 
 // HURTS: over-unrolling causes icache pressure
 void sum_overunrolled(const float* data, int n, float& result) {
-    #pragma GCC unroll 64  // Way too much!
     float s = 0;
+    #pragma GCC unroll 64  // Way too much! (the pragma must sit directly above the loop)
     for (int i = 0; i < n; ++i) s += data[i];
     result = s;
     // 64x unrolled: loop body doesn't fit in L1 icache (32KB)

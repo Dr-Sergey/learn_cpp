@@ -238,6 +238,7 @@ AsyncGenerator<int> timed_sequence(int count,
 
 This is the pattern you'd use to consume a database cursor, a paginated REST API, or a Kafka topic. The generator handles all the batching and refetching logic internally. The consumer just sees a flat stream of items and uses `co_await gen.next()` for each one - completely unaware of how the data is batched:
 
+<!-- compile: fragment: uses AsyncGenerator<T> from Q1 -->
 ```cpp
 #include <coroutine>
 #include <cstdio>

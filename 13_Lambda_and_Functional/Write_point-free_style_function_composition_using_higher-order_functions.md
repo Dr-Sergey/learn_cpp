@@ -109,7 +109,7 @@ auto pipeline(F f) { return f; }
 template <typename F, typename... Fs>
 auto pipeline(F f, Fs... rest) {
     return [f, ...rest_fns = rest](auto&&... args) -> decltype(auto) {
-        return pipeline(rest...)(f(std::forward<decltype(args)>(args)...));
+        return pipeline(rest_fns...)(f(std::forward<decltype(args)>(args)...));
     };
 }
 

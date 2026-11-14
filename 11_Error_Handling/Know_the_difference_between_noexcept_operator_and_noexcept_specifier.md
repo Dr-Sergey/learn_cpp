@@ -63,16 +63,16 @@ void swap_impl(T& a, T& b)
 // --- Demo types -------------------------------------------------------
 struct Safe {
     int value{};
-    Safe() = default;
+    Safe(int v = 0) : value(v) {}
     Safe(Safe&&) noexcept            = default;
     Safe& operator=(Safe&&) noexcept = default;
 };
 
 struct Risky {
     int value{};
-    Risky() = default;
-    Risky(Risky&&) noexcept(false)            { /* may throw */ }
-    Risky& operator=(Risky&&) noexcept(false) { return *this; }
+    Risky(int v = 0) : value(v) {}
+    Risky(Risky&& o) noexcept(false) : value(o.value) { /* may throw */ }
+    Risky& operator=(Risky&& o) noexcept(false) { value = o.value; return *this; }
 };
 
 int main() {
@@ -181,7 +181,7 @@ void optimized_transfer(std::vector<T>& dst, std::vector<T>& src)
 
 struct Widget {
     int id{};
-    Widget() = default;
+    Widget(int i = 0) : id(i) {}
     Widget(const Widget&) = default;
     Widget(Widget&&) noexcept = default;
     Widget& operator=(Widget&&) noexcept = default;
@@ -190,10 +190,10 @@ struct Widget {
 
 struct FragileWidget {
     int id{};
-    FragileWidget() = default;
+    FragileWidget(int i = 0) : id(i) {}
     FragileWidget(const FragileWidget&) = default;
-    FragileWidget(FragileWidget&&) noexcept(false) {}
-    FragileWidget& operator=(FragileWidget&&) noexcept(false) { return *this; }
+    FragileWidget(FragileWidget&& o) noexcept(false) : id(o.id) {}
+    FragileWidget& operator=(FragileWidget&& o) noexcept(false) { id = o.id; return *this; }
     FragileWidget& operator=(const FragileWidget&) = default;
 };
 

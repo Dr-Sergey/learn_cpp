@@ -78,6 +78,7 @@ Every include path, every `-D` flag, every `-std` flag - clangd sees exactly wha
 
 This is where clangd really earns its place. Template errors in C++ are notoriously verbose and hard to read when they come from the command line. clangd shows them inline in your editor at the exact call site, with a readable explanation of why the constraint failed.
 
+<!-- compile: skip: the second call is the deliberate error that clangd reports -->
 ```cpp
 // clangd shows this error INLINE in the editor:
 #include <concepts>

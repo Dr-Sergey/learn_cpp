@@ -163,6 +163,7 @@ C libraries that use error codes (SQLite, zlib, libcurl, etc.) follow a consiste
 
 The reason to use `std::system_error` and `std::error_category` rather than just throwing `std::runtime_error` is that callers can inspect the error code programmatically - `e.code().value()` gives back the original C error code, which can be useful for logging or for deciding whether to retry.
 
+<!-- compile: fragment: wraps an illustrative C library (db_*) whose implementation is not part of the listing -->
 ```cpp
 #include <cstdio>
 #include <cstring>

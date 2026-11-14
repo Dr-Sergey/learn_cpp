@@ -64,6 +64,13 @@ struct Task {
         void return_void() noexcept {}
         void unhandled_exception() { std::terminate(); }
     };
+
+    // Lets one coroutine co_await another. These tasks start eagerly and never
+    // suspend at the end, so by the time the caller awaits one it has already
+    // run to completion: there is nothing to wait for.
+    bool await_ready() const noexcept { return true; }
+    void await_suspend(std::coroutine_handle<>) const noexcept {}
+    void await_resume() const noexcept {}
 };
 
 // An awaitable

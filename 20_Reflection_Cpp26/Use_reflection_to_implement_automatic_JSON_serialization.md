@@ -1,7 +1,7 @@
 # Use reflection to implement automatic JSON serialization
 
 **Category:** Reflection Cpp26  
-**Standard:** C++11  
+**Standard:** C++26  
 **Reference:** <https://en.cppreference.com/w/cpp/meta>  
 
 ---
@@ -50,7 +50,8 @@ constexpr bool is_reflectable_struct =
 
 template <typename T>
 std::string to_json(const T& obj) {
-    constexpr auto members = std::meta::nonstatic_data_members_of(^T);
+    static constexpr auto members = std::define_static_array(
+        std::meta::nonstatic_data_members_of(^^T, std::meta::access_context::current()));
     std::ostringstream oss;
     oss << "{";
     bool first = true;
@@ -114,7 +115,7 @@ std::string to_json_value(const T& val) {
         return val ? "true" : "false";
     } else if constexpr (std::is_arithmetic_v<T>) {
         return std::to_string(val);
-    } else if constexpr (requires { std::meta::nonstatic_data_members_of(^T); }) {
+    } else if constexpr (requires { std::meta::nonstatic_data_members_of(^^T, std::meta::access_context::current()); }) {
         return to_json(val);  // nested struct: recurse
     } else {
         return "null";
@@ -123,7 +124,8 @@ std::string to_json_value(const T& val) {
 
 template <typename T>
 std::string to_json(const T& obj) {
-    constexpr auto members = std::meta::nonstatic_data_members_of(^T);
+    static constexpr auto members = std::define_static_array(
+        std::meta::nonstatic_data_members_of(^^T, std::meta::access_context::current()));
     std::ostringstream oss;
     oss << "{";
     bool first = true;
@@ -157,7 +159,7 @@ int main() {
 }
 ```
 
-The `requires { std::meta::nonstatic_data_members_of(^T); }` check in `to_json_value` is what decides whether to recurse - if the type has reflectable members, recurse into it; otherwise fall back to `"null"`. That single check handles arbitrarily deep struct nesting without any per-type registration.
+The `requires { std::meta::nonstatic_data_members_of(^^T, ctx); }` check in `to_json_value` is what decides whether to recurse - if the type has reflectable members, recurse into it; otherwise fall back to `"null"`. That single check handles arbitrarily deep struct nesting without any per-type registration.
 
 ### Q3: Reflection eliminates manual `REFLECT_FIELD` macros
 
@@ -198,7 +200,8 @@ struct Person {
 
 template <typename T>
 void serialize(const T& obj, std::ostream& os) {
-    constexpr auto members = std::meta::nonstatic_data_members_of(^T);
+    static constexpr auto members = std::define_static_array(
+        std::meta::nonstatic_data_members_of(^^T, std::meta::access_context::current()));
     os << "{";
     bool first = true;
     template for (constexpr auto m : members) {

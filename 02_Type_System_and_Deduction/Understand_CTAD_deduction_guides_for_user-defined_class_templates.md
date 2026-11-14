@@ -237,13 +237,14 @@ h3.value = 3.14
 
 ### Q2: Show a case where CTAD picks the wrong type and a deduction guide is required to fix it
 
-Without a guide, `Name{"Alice"}` deduces `Name<const char*>` - storing a raw pointer to a string literal. That's a subtle ownership hazard. The guides redirect both `const char*` and `string_view` to `Name<std::string>` so the string is always owned:
+Without a guide, `Name{"Alice"}` deduces `Name<char[6]>` - an array member that cannot even be initialized from the argument - and `Name{std::string_view{...}}` deduces `Name<std::string_view>`, a non-owning view that silently dangles when the source string dies. The guides redirect both `const char*` and `string_view` to `Name<std::string>` so the string is always owned:
 
 ```cpp
 #include <iostream>
 #include <string>
 #include <string_view>
 #include <type_traits>
+#include <concepts>
 #include <cstddef>
 
 // A "Name" wrapper: we always want to store std::string internally
@@ -251,11 +252,18 @@ template<typename T>
 struct Name {
     T data;
     Name(const T& d) : data(d) {}
+
+    // A guide only chooses the type - a constructor still has to accept the
+    // argument. std::string is only *explicitly* constructible from
+    // string_view, so Name<std::string> needs a constructor that does it.
+    template<std::same_as<std::string_view> SV>
+        requires std::same_as<T, std::string>
+    Name(SV sv) : data(sv) {}
 };
 
 // WITHOUT a deduction guide:
-// Name n1{"Alice"};           // Deduces Name<const char*> - NOT what we want!
-// Name n2{std::string_view{"Bob"}};  // Deduces Name<string_view> - also wrong
+// Name n1{"Alice"};           // Deduces Name<char[6]> - does not compile
+// Name n2{std::string_view{"Bob"}};  // Deduces Name<string_view> - non-owning
 
 // FIX: deduction guides that coerce to std::string
 Name(const char*) -> Name<std::string>;
@@ -271,8 +279,8 @@ struct Span {
     Span(T (&arr)[N]) : ptr(arr), len(N) {}
 };
 
-// Without guide, CTAD fails because T appears in non-deduced context (array ref)
-// With guide, we explicitly map array references:
+// The constructor template already lets CTAD deduce T from an array; the
+// explicit guide states the array-to-Span<T> mapping where readers can see it:
 template<typename T, std::size_t N>
 Span(T (&)[N]) -> Span<T>;
 
@@ -394,7 +402,7 @@ int main() {
 
 ```text
 Inner: 42
-Outer: 1, 2.0
+Outer: 1, 2
 ```
 
 **Key rules for aggregate CTAD:**

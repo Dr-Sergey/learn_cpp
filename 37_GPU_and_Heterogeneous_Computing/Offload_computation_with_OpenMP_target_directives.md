@@ -241,6 +241,7 @@ The `collapse(2)` on the 2D stencil is important - without it, only the outer lo
 
 `nowait` lets a `#pragma omp target` region return immediately, allowing the CPU thread to keep working while the GPU computes. The `depend` clause then enforces ordering between async operations - H2D must finish before the compute starts, and compute must finish before D2H can read the results. The combination gives you a software pipeline where multiple chunks overlap in flight:
 
+<!-- compile: needs OpenMP (-fopenmp and an OpenMP runtime) -->
 ```cpp
 #include <omp.h>
 #include <cstdio>

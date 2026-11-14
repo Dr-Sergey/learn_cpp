@@ -156,6 +156,7 @@ The trade-off comes down to payload size versus decoupling. Self-describing form
 
 A schema fingerprint is a hash of the set of `(field_id, type)` pairs. The idea is that if two sides have the same fingerprint, they are speaking the same schema version. If fingerprints differ, the reader can decide whether to attempt a compatible read or reject the message outright. Here is a simple implementation using a combine-style hash:
 
+<!-- compile: fragment: uses WireType from the previous listing -->
 ```cpp
 #include <cstdint>
 #include <iostream>

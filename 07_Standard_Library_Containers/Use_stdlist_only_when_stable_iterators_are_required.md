@@ -118,14 +118,14 @@ int main() {
     {
         auto start = std::chrono::steady_clock::now();
         volatile int val = 0;
-        for (int i = 0; i < 10000; ++i) {
+        for (int i = 0; i < 100; ++i) {   // only 100: each call walks 500,000 nodes
             auto it = lst.begin();
             std::advance(it, N / 2);  // O(n) walk!
             val = *it;
         }
         auto end = std::chrono::steady_clock::now();
         auto ms = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
-        std::cout << "list advance(N/2) x 10K: " << ms << " ms\n";
+        std::cout << "list advance(N/2) x 100: " << ms << " ms\n";
     }
 
     // === Memory comparison ===
@@ -144,7 +144,7 @@ int main() {
 // list sum (10 iters):   ~120 ms  (8x slower!)
 //
 // vector[N/2] x 10K: ~1 us
-// list advance(N/2) x 10K: ~5000 ms
+// list advance(N/2) x 100: ~100-500 ms   (100x FEWER calls, yet vastly slower)
 //
 // Memory:
 //   vector: 3 MB

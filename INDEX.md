@@ -513,7 +513,7 @@ Every one of the 1166 topics in one list, grouped by category. Use your browser'
 - [Use views::flat_map (transform + join) to flatmap ranges without intermediates](14_Ranges_Cpp20/Use_viewsflat_map_transform_+_join_to_flatmap_ranges_without_intermediates.md)
 - [Use views::iota, views::repeat, and other generating views](14_Ranges_Cpp20/Use_viewsiota_viewsrepeat_and_other_generating_views.md)
 - [Use views::join and views::join_with for flattening nested ranges](14_Ranges_Cpp20/Use_viewsjoin_and_viewsjoin_with_for_flattening_nested_ranges.md)
-- [Use views::repeat and views::cycle (C++26) for infinite repeating ranges](14_Ranges_Cpp20/Use_viewsrepeat_and_viewscycle_C++26_for_infinite_repeating_ranges.md)
+- [Use views::repeat (C++23) and build a cycle view for infinite repeating ranges](14_Ranges_Cpp20/Use_viewsrepeat_and_viewscycle_C++26_for_infinite_repeating_ranges.md)
 - [Use views::reverse for lazy bidirectional reversal](14_Ranges_Cpp20/Use_viewsreverse_for_lazy_bidirectional_reversal.md)
 - [Use views::split for tokenizing ranges lazily](14_Ranges_Cpp20/Use_viewssplit_for_tokenizing_ranges_lazily.md)
 - [Use views::split to tokenize a range by a delimiter without allocation](14_Ranges_Cpp20/Use_viewssplit_to_tokenize_a_range_by_a_delimiter_without_allocation.md)
@@ -721,9 +721,9 @@ Every one of the 1166 topics in one list, grouped by category. Use your browser'
 - [Generate switch dispatch tables from enum reflections](20_Reflection_Cpp26/Generate_switch_dispatch_tables_from_enum_reflections.md)
 - [Implement compile-time ORM and query generation via reflection](20_Reflection_Cpp26/Implement_compile-time_ORM_and_query_generation_via_reflection.md)
 - [Implement compile-time struct serialization using reflection](20_Reflection_Cpp26/Implement_compile-time_struct_serialization_using_reflection.md)
-- [Understand static reflection with the ^ operator and std::meta](20_Reflection_Cpp26/Understand_static_reflection_with_the_operator_and_stdmeta.md)
-- [Understand the C++26 static reflection model with the ^ operator](20_Reflection_Cpp26/Understand_the_C++26_static_reflection_model_with_the_operator.md)
-- [Understand the C++26 static reflection model with the ^ splice operator](20_Reflection_Cpp26/Understand_the_C++26_static_reflection_model_with_the_splice_operator.md)
+- [Understand static reflection with the ^^ operator and std::meta](20_Reflection_Cpp26/Understand_static_reflection_with_the_operator_and_stdmeta.md)
+- [Understand the C++26 static reflection model with the ^^ and splice operators](20_Reflection_Cpp26/Understand_the_C++26_static_reflection_model_with_the_splice_operator.md)
+- [Understand the C++26 static reflection model with the ^^ operator](20_Reflection_Cpp26/Understand_the_C++26_static_reflection_model_with_the_operator.md)
 - [Understand the difference between compile-time and runtime reflection in C++](20_Reflection_Cpp26/Understand_the_difference_between_compile-time_and_runtime_reflection_in_C++.md)
 - [Understand the limits of C++26 reflection: what is and is not reflectable](20_Reflection_Cpp26/Understand_the_limits_of_C++26_reflection_what_is_and_is_not_reflectable.md)
 - [Understand the splice operator [: :] for injecting reflections back into code](20_Reflection_Cpp26/Understand_the_splice_operator_for_injecting_reflections_back_into_code.md)
@@ -735,7 +735,7 @@ Every one of the 1166 topics in one list, grouped by category. Use your browser'
 - [Use reflection to implement automatic enum-to-string conversion](20_Reflection_Cpp26/Use_reflection_to_implement_automatic_enum-to-string_conversion.md)
 - [Use reflection to implement automatic JSON serialization](20_Reflection_Cpp26/Use_reflection_to_implement_automatic_JSON_serialization.md)
 - [Use reflection to implement automatic struct serialization](20_Reflection_Cpp26/Use_reflection_to_implement_automatic_struct_serialization.md)
-- [Use std::meta::define_class to synthesize new types at compile time](20_Reflection_Cpp26/Use_stdmetadefine_class_to_synthesize_new_types_at_compile_time.md)
+- [Use std::meta::define_aggregate to synthesize new types at compile time](20_Reflection_Cpp26/Use_stdmetadefine_class_to_synthesize_new_types_at_compile_time.md)
 
 ## Performance & CPU Architecture
 

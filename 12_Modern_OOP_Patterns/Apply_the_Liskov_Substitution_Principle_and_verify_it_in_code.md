@@ -121,6 +121,7 @@ This is the canonical LSP example. It feels like a Square "is-a" Rectangle geome
 
 **Solution - The Classic Rectangle/Square Problem:**
 
+<!-- compile: norun: the final assert fails on purpose -->
 ```cpp
 #include <iostream>
 #include <memory>
@@ -166,9 +167,9 @@ int main() {
     test_rectangle(rect);  // OK: 5 * 3 = 15
 
     Square sq(4);
-    try {
-        test_rectangle(sq);  // FAILS: set_height(3) -> 3*3 = 9, not 15
-    } catch (...) {}
+    test_rectangle(sq);  // FAILS: set_height(3) -> 3*3 = 9, not 15
+    // The assert aborts the program here. (An assertion is not an exception:
+    // wrapping the call in try/catch would not stop it.)
 }
 // Expected output:
 //   Expected: 15, Got: 15
@@ -328,7 +329,7 @@ int main() {
     std::cout << "All concept checks passed.\n";
 }
 // Expected output:
-//   Circle: area = 78.5398
+//   Circle: area = 78.5397
 //     Drawing circle (r=5)
 //   Triangle: area = 20
 //     Drawing triangle

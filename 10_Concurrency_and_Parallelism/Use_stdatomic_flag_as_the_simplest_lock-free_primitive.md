@@ -189,7 +189,7 @@ int main() {
     std::cout << "sizeof(atomic<bool>): " << sizeof(std::atomic<bool>) << "\n";
 
     // Output:
-    // atomic_flag is always lock-free: 1
+    // atomic_flag is always lock-free: true
     // atomic<bool> is lock-free: 1
     // atomic<bool> is_always_lock_free: 1   (on x86/ARM)
     //

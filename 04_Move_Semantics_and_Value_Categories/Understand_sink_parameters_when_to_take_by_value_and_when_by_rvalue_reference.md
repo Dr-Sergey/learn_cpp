@@ -244,7 +244,7 @@ int main() {
     std::cout << "Lvalue path (" << N << " calls):\n";
     std::cout << "  const-ref:  " << cref_ms << " µs (1 copy)\n";
     std::cout << "  by-value:   " << byval_ms << " µs (2 copies!)\n";
-    std::cout << "  Ratio: ~" << (byval_ms > 0 ? byval_ms / std::max(cref_ms, 1L) : 0) << "x\n";
+    std::cout << "  Ratio: ~" << (byval_ms > 0 ? byval_ms / std::max<long long>(cref_ms, 1) : 0) << "x\n";
 
     std::cout << "\n=== Conclusion ===\n";
     std::cout << "  For trivially-copyable types (move == copy):\n";

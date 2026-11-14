@@ -61,6 +61,7 @@ std::terminate_handler current = std::get_terminate();
 
 The most valuable thing a terminate handler can do is tell you what exception was in flight when the program died. `std::current_exception()` gives you access to it even from inside the handler. Note the unconditional `std::abort()` at the end - the handler must never return:
 
+<!-- compile: norun: ends in std::terminate on purpose -->
 ```cpp
 #include <iostream>
 #include <exception>
@@ -227,6 +228,7 @@ C++17+:
 
 The reason you cannot escape `terminate` by throwing is that the handler itself is declared `noexcept`. Any attempt to throw from it immediately triggers `std::abort()` - there is no recovery path. The same applies if the handler simply returns without calling `abort` or `_Exit`:
 
+<!-- compile: norun: ends in std::terminate on purpose -->
 ```cpp
 #include <iostream>
 #include <exception>

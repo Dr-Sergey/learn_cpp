@@ -141,6 +141,7 @@ The size table makes the case vividly: `iostream` alone costs 120 KB on ARM M4. 
 
 Both architectures need the same sequence: copy `.data`, zero `.bss`, call static constructors, then enter main. The architecture-specific part is just the halt instruction at the end.
 
+<!-- compile: needs a bare-metal target and linker script -->
 ```cpp
 #include <cstdint>
 #include <cstddef>

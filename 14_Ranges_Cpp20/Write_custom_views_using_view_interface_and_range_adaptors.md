@@ -69,7 +69,7 @@ class every_nth_view : public std::ranges::view_interface<every_nth_view<R>> {
     class iterator {
         std::ranges::iterator_t<R> current_;
         std::ranges::sentinel_t<R> end_;
-        std::size_t step_;
+        std::size_t step_ = 1;
 
     public:
         using value_type = std::ranges::range_value_t<R>;
@@ -79,8 +79,9 @@ class every_nth_view : public std::ranges::view_interface<every_nth_view<R>> {
         iterator(std::ranges::iterator_t<R> pos, std::ranges::sentinel_t<R> end, std::size_t step)
             : current_(pos), end_(end), step_(step) {}
 
-        const auto& operator*() const { return *current_; }
-        auto& operator*() { return *current_; }
+        // One const operator*: an iterator must dereference to the same type
+        // whether or not the iterator object itself is const.
+        decltype(auto) operator*() const { return *current_; }
 
         iterator& operator++() {
             for (std::size_t i = 0; i < step_ && current_ != end_; ++i)
@@ -178,7 +179,7 @@ int main() {
 // front(): 10
 // back():  50
 // [2]:     30
-// data():  1
+// data():  true
 // View is non-empty
 // Empty view: empty=true bool=false
 ```

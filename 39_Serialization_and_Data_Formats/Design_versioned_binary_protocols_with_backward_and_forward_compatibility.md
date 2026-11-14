@@ -282,7 +282,7 @@ void demonstrate_tag_reuse_danger() {
     std::cout << "Misread as uint32 (age): " << misinterpreted << "\n";
     // Output:
     //   Temperature (float): 98.6
-    //   Misread as uint32 (age): 1120379084  <- nonsense!
+    //   Misread as uint32 (age): 1120219955  <- nonsense!
 }
 
 // CORRECT approach: deprecated tags are reserved forever
@@ -295,7 +295,7 @@ int main() {
 }
 ```
 
-The number `1120379084` is just the bit pattern of `98.6f` reinterpreted as a 32-bit integer. There is no error, no exception - just a plausible-looking but completely wrong number stored in a field called "age". This kind of corruption can persist in databases for months before anyone notices.
+The number `1120219955` is just the bit pattern of `98.6f` reinterpreted as a 32-bit integer. There is no error, no exception - just a plausible-looking but completely wrong number stored in a field called "age". This kind of corruption can persist in databases for months before anyone notices.
 
 ### Q3: Implement a simple schema fingerprint for version detection
 

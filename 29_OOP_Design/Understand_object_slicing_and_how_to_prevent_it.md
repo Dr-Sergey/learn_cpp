@@ -88,25 +88,28 @@ The vector example is especially important. A `vector<Animal>` stores `Animal` o
 
 ### Q2: Show compile-time prevention of slicing
 
-The best fix for slicing is to make it a compile error rather than a runtime surprise. You can do this by deleting the copy operations in the base class. Once you do that, the compiler will reject any code that tries to copy a `Shape` by value - which is exactly what you want.
+The best fix for slicing is to make it a compile error rather than a runtime surprise. You can do this by taking the copy operations of the base class away from outside code - `protected` if derived classes still need them for `clone()`, `= delete` if nothing should ever copy. Once you do that, the compiler will reject any code that tries to copy a `Shape` by value - which is exactly what you want.
 
 ```cpp
 #include <memory>
 #include <iostream>
 
-// Strategy 1: Delete copy operations in base class
+// Strategy 1: Hide the copy operations of the base class
 class Shape {
 public:
     virtual ~Shape() = default;
     virtual double area() const = 0;
-
-    // Prevent slicing at compile time
-    Shape(const Shape&) = delete;
-    Shape& operator=(const Shape&) = delete;
+    virtual std::unique_ptr<Shape> clone() const = 0;
 
 protected:
     Shape() = default;  // Only derived classes can construct
-    Shape(Shape&&) = default;
+
+    // Prevent slicing at compile time: outside code cannot copy a Shape.
+    // Protected rather than deleted, so that a derived class can still copy
+    // its base part inside clone(). (Deleting them here would silently
+    // delete every derived class's copy constructor too.)
+    Shape(const Shape&) = default;
+    Shape& operator=(const Shape&) = default;
 };
 
 class Circle : public Shape {
@@ -116,8 +119,9 @@ public:
     double area() const override { return 3.14159 * r_ * r_; }
 
     // Clone for when you DO need a copy
-    std::unique_ptr<Shape> clone() const {
-        return std::make_unique<Circle>(*this);
+    std::unique_ptr<Shape> clone() const override {
+        // Plain new: std::make_unique could not reach the private copy constructor
+        return std::unique_ptr<Shape>(new Circle(*this));
     }
 private:
     Circle(const Circle&) = default;  // Only clone() can copy
@@ -141,7 +145,10 @@ public:
 
 int main() {
     Circle c(5.0);
-    // Shape s = c;  // COMPILE ERROR: copy deleted!
+    // Shape s = c;   // COMPILE ERROR: Shape's copy constructor is not accessible
+    // Circle c2 = c; // COMPILE ERROR: Circle's copy constructor is private
+    auto copy = c.clone();  // the one sanctioned way to copy
+    std::cout << copy->area() << "\n";
 
     // Must use pointers
     std::unique_ptr<Shape> p = std::make_unique<Circle>(5.0);
@@ -150,7 +157,7 @@ int main() {
 }
 ```
 
-The three strategies here form a useful hierarchy. An abstract base class prevents direct instantiation, which already blocks one common form of accidental slicing. Deleting copy operations is the most direct protection. A protected constructor is a softer version - it prevents external code from constructing the base directly, but does not fully close the door on slicing through assignment.
+The three strategies here form a useful hierarchy. An abstract base class prevents direct instantiation, which already blocks one common form of accidental slicing. Making the copy operations inaccessible is the most direct protection. A protected constructor is a softer version - it prevents external code from constructing the base directly, but does not fully close the door on slicing through assignment.
 
 ### Q3: Implement a clone pattern to safely copy polymorphic objects
 

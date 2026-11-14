@@ -25,6 +25,7 @@ If you come from a Linux background, you are probably used to Valgrind for memor
 
 Dr. Memory works by instrumenting your binary at runtime and watching every memory access. When it sees a write that falls outside a valid allocation, it reports the exact address, the size of the allocation, and the source location from your debug info. Here is a small program with two deliberate bugs:
 
+<!-- compile: norun: corrupts the heap on purpose, as input for the tool -->
 ```cpp
 // heap_overwrite.cpp - compile with debug info:
 // cl /Zi /Od heap_overwrite.cpp  (MSVC)
@@ -78,6 +79,7 @@ The `20-byte malloc` line is worth understanding: the tool tells you the origina
 
 WinDbg is Microsoft's native debugger and is the standard tool for post-mortem analysis of crash dumps. When a program crashes in production and you cannot reproduce it interactively, a dump file is often your only evidence. Here is the minimal setup: a program that crashes, and the WinDbg workflow to diagnose it.
 
+<!-- compile: norun: memory error on purpose, as input for the tool -->
 ```cpp
 // crash_example.cpp
 #include <iostream>

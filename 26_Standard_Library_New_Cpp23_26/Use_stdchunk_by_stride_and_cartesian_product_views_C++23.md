@@ -120,6 +120,7 @@ The column extraction example at the end is a nice demonstration of how views co
 `zip` lets you walk multiple ranges in parallel, which replaces the classic `for (int i = 0; i < n; ++i)` index trick. `zip_transform` fuses the zip with a function, avoiding intermediate tuple allocations. `cartesian_product` gives you every combination - think nested loops without the nesting:
 
 ```cpp
+#include <algorithm>
 #include <ranges>
 #include <vector>
 #include <string>

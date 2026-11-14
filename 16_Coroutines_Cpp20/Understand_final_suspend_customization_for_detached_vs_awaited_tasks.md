@@ -194,6 +194,8 @@ struct ContinuationTask {
     ContinuationTask(ContinuationTask&& o) noexcept
         : handle_(std::exchange(o.handle_, nullptr)) {}
 
+    friend void sync_run(ContinuationTask t);  // the runner below drives the handle directly
+
 private:
     handle_type handle_;
 };

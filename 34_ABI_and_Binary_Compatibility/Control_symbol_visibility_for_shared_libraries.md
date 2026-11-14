@@ -208,6 +208,7 @@ Notice that `@@` marks the default version (used by newly compiled code) while `
 
 Visibility mistakes rarely cause linker errors - they cause subtle runtime failures like `dynamic_cast` returning null, or two DSOs silently using different copies of the same class. Here are the three most common traps and their fixes:
 
+<!-- compile: fragment: uses the MYLIB_API and MYLIB_HIDDEN macros defined in Q1 -->
 ```cpp
 #include <cstdio>
 #include <typeinfo>

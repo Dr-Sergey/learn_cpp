@@ -249,7 +249,7 @@ Classifying: "Hello, World! 123"
   '2' -> digit
   '3' -> digit
 
-Counts: digits=3 upper=2 lower=7 space=2 punct=2 other=0
+Counts: digits=3 upper=2 lower=8 space=2 punct=2 other=0
 ```
 
 ### Q3: Compare the binary output of a `constexpr` table vs a `switch` statement for the same lookup

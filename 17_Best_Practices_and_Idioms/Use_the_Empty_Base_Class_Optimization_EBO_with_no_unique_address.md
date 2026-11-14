@@ -67,12 +67,16 @@ int main() {
     };
     std::cout << "TwoSame:    " << sizeof(TwoSame) << '\n';     // 2
 }
-// Expected output:
+// Expected output (GCC/Clang on Linux and macOS - the Itanium C++ ABI):
 // Empty:      1
 // WithoutEBO: 8
 // WithEBO:    4
 // MultiBase:  4
 // TwoSame:    2
+//
+// With the Microsoft ABI (MSVC, clang-cl) the last two differ: only one empty
+// base is optimized away unless the class is declared __declspec(empty_bases),
+// so MultiBase is 8 there.
 ```
 
 Notice `TwoSame` at 2 bytes - when you have two subobjects of the *same* empty type, they must still have distinct addresses, so neither can be fully compressed away.
@@ -190,7 +194,7 @@ The `unique_ptr<int>` at 8 bytes versus `unique_ptr<int, CustomDeleter>` at 16 b
 
 ## Notes
 
-- `[[no_unique_address]]` is a C++20 attribute. MSVC uses `[[msvc::no_unique_address]]`.
+- `[[no_unique_address]]` is a C++20 attribute. With the Microsoft ABI it is accepted but has no effect; the working spelling there is `[[msvc::no_unique_address]]`, and multiple empty bases need `__declspec(empty_bases)`. Sizes shown in this topic are for the Itanium ABI (GCC/Clang on Linux and macOS).
 - It only works when the member type is empty (no data members).
 - The standard library uses EBO extensively: `unique_ptr`, allocators, comparators.
 - Two `[[no_unique_address]]` members of the **same type** cannot share address (they need distinct identities).

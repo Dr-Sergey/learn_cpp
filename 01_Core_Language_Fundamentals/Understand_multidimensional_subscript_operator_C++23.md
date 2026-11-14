@@ -194,10 +194,12 @@ int main() {
     mat[1, 2] = 5.5;
     mat[2, 3] = 9.9;
 
-    // Verify
-    assert(mat[0, 0] == 1.0);
-    assert(mat[1, 2] == 5.5);
-    assert(mat[2, 3] == 9.9);
+    // Verify. The extra parentheses matter: assert is a macro, and before
+    // C++26 the comma inside mat[0, 0] would be read as separating two
+    // macro arguments.
+    assert((mat[0, 0] == 1.0));
+    assert((mat[1, 2] == 5.5));
+    assert((mat[2, 3] == 9.9));
 
     // mdspan provides extent information
     std::cout << "Rows: " << mat.extent(0) << "\n";  // 3

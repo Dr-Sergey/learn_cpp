@@ -195,13 +195,16 @@ int main() {
     std::cout << "Iterator at end: " << (iter == nums.end()) << "\n";  // true
 
     // === Practical: finding min and max in a single pass ===
-    auto minmax = std::ranges::fold_left_first(nums,
+    // The accumulator is a pair, so this has to be fold_left with an explicit
+    // initial value. fold_left_first cannot do it: it seeds the accumulator
+    // with the first ELEMENT, so its accumulator type is the element type.
+    auto minmax = std::ranges::fold_left(nums,
+        std::pair{nums.front(), nums.front()},
         [](std::pair<int,int> acc, int x) -> std::pair<int,int> {
             return {std::min(acc.first, x), std::max(acc.second, x)};
         });
-    // Note: fold_left_first deduces from first element,
-    // so we need the first op call to produce a pair
-    // Better approach for minmax: use ranges::minmax directly
+    std::cout << "Min: " << minmax.first << ", Max: " << minmax.second << "\n";  // 1, 9
+    // (For exactly this job std::ranges::minmax is the direct tool.)
 
     // === fold_left_first for string joining ===
     std::vector<std::string> words = {"one", "two", "three"};

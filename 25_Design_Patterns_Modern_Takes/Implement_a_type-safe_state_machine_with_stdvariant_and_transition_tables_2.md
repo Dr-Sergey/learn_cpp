@@ -164,21 +164,21 @@ class AuthMachine {
     void on_exit(const LoggingIn&)   { std::cout << "  [exit] Cancelling verification\n"; }
     void on_exit(const LoggedIn& s)  { std::cout << "  [exit] Cleaning up session " << s.session_id << "\n"; }
 
+    // The transition table: one overload per valid (state, event) pair.
+    // Overload resolution picks the row; the template is the "no transition"
+    // default and is chosen only when no exact row exists.
+    static AuthState transition(const LoggedOut&, const std::string& user) { return LoggingIn{user}; }
+    static AuthState transition(const LoggingIn& s, int session)           { return LoggedIn{s.username, session}; }
+    static AuthState transition(const LoggedIn&, std::monostate)            { return LoggedOut{}; }
+
+    template<typename S, typename E>
+    static AuthState transition(const S& current, const E&) { return current; }
+
 public:
     template<typename E>
     void process(const E& event) {
         auto new_state = std::visit([&](const auto& current) -> AuthState {
-            using S = std::decay_t<decltype(current)>;
-
-            if constexpr (std::is_same_v<S, LoggedOut> && std::is_same_v<E, std::string>) {
-                return LoggingIn{event};
-            } else if constexpr (std::is_same_v<S, LoggingIn> && std::is_same_v<E, int>) {
-                return LoggedIn{current.username, event};
-            } else if constexpr (std::is_same_v<S, LoggedIn> && std::is_same_v<E, std::monostate>) {
-                return LoggedOut{};
-            } else {
-                return current;  // No valid transition
-            }
+            return transition(current, event);
         }, state_);
 
         // Fire exit/enter if state actually changed
@@ -237,12 +237,14 @@ std::string describe(const DocState& s) {
 }
 
 // Best practice: static_assert for completeness
-template<typename Variant, typename... Handlers>
-constexpr bool all_alternatives_handled = (
-    std::is_invocable_v<overloaded<Handlers...>,
-        std::variant_alternative_t<0, Variant>> && ...
-);
-// Use this to validate at compile time that your visitor is complete
+template<typename Visitor, typename Variant>
+constexpr bool all_alternatives_handled = false;
+
+template<typename Visitor, typename... Alts>
+constexpr bool all_alternatives_handled<Visitor, std::variant<Alts...>> =
+    (std::is_invocable_v<Visitor, const Alts&> && ...);
+// Use this to validate at compile time that your visitor is complete:
+//   static_assert(all_alternatives_handled<decltype(my_visitor), DocState>);
 
 int main() {
     DocState s = Review{};

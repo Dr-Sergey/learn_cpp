@@ -124,6 +124,7 @@ volatile int x = 0, y = 0;
 
 Now the legitimate use. On bare metal, a hardware register's bits change because the *device* changed them, not because your code did - so the compiler absolutely must re-read it each time:
 
+<!-- compile: norun: bare-metal register code; main waits for Ctrl-C -->
 ```cpp
 #include <cstdint>
 

@@ -274,7 +274,9 @@ void promise_based_retry() {
         });
         worker.detach(); // detach so we can abandon on timeout
 
-        auto status = fut.wait_for(250ms);
+        // Attempt n takes 100*n + 50 ms, so the budget must exceed 350 ms
+        // for the third attempt to be able to succeed.
+        auto status = fut.wait_for(500ms);
 
         if (status == std::future_status::ready) {
             try {

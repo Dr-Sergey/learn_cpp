@@ -199,7 +199,7 @@ int main() {
     std::cout << "f3(10): " << f3(10) << "\n";
 
     // Conversion to function pointer
-    int (*fp)(int, int) = cmp;  // stateless -> function pointer
+    bool (*fp)(int, int) = cmp;  // stateless -> function pointer (same signature: returns bool)
     std::cout << "fp(5, 3): " << fp(5, 3) << "\n";   // true (5 > 3)
 
     // Also via unary +

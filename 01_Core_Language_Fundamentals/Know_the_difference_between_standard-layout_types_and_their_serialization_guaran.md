@@ -27,7 +27,7 @@ A class or struct earns "standard-layout" only if **every one** of these is true
 4. **All non-static members and base classes** are themselves standard-layout.
 5. **No two base subobjects of the same type** (no non-virtual diamond).
 6. **All non-static data members are declared in one class** of the hierarchy - either only the most-derived class, or only one base.
-7. It has no base classes carrying data, *or* it has no data of its own - the data lives at a single level.
+7. **No base class has the same type as the first non-static data member** - otherwise two subobjects of one type would need the same address.
 
 ### Standard-Layout vs. Trivially Copyable vs. POD
 
@@ -99,11 +99,11 @@ struct WithRef {
 };
 static_assert(!std::is_standard_layout_v<WithRef>);
 
-// Standard-layout: NO - non-standard-layout member
-struct HasString {
-    std::string name;  // std::string is NOT standard-layout
+// Standard-layout: NO - a member whose own type is not standard-layout
+struct HasVirtualMember {
+    WithVirtual inner;  // WithVirtual is not standard-layout, so neither is this
 };
-static_assert(!std::is_standard_layout_v<HasString>);
+static_assert(!std::is_standard_layout_v<HasVirtualMember>);
 
 // Standard-layout: NO - data in both base and derived
 struct Base { int x; };
@@ -122,7 +122,7 @@ int main() {
     std::cout << "MixedAccess: " << std::is_standard_layout_v<MixedAccess> << "\n"; // false
     std::cout << "WithVirtual: " << std::is_standard_layout_v<WithVirtual> << "\n"; // false
     std::cout << "WithRef:     " << std::is_standard_layout_v<WithRef> << "\n";     // false
-    std::cout << "HasString:   " << std::is_standard_layout_v<HasString> << "\n";   // false
+    std::cout << "HasVirtualMember: " << std::is_standard_layout_v<HasVirtualMember> << "\n"; // false
     std::cout << "Derived:     " << std::is_standard_layout_v<Derived> << "\n";     // false
     std::cout << "DerivedOk:   " << std::is_standard_layout_v<DerivedOk> << "\n";   // true
     return 0;
@@ -141,7 +141,9 @@ Notice `Rect` is still standard-layout even though it has a method - it's *virtu
 
 ```cpp
 #include <cstddef>
+#include <cstdint>
 #include <iostream>
+#include <type_traits>
 
 struct Packet {  // Standard-layout
     uint32_t header;
@@ -167,7 +169,7 @@ int main() {
 }
 ```
 
-For *non*-standard-layout types, `offsetof()` is undefined behavior - the compiler is free to insert a vtable pointer before the first member, reorder things, or pad differently, and your offset would be meaningless.
+For *non*-standard-layout types, `offsetof()` was undefined behavior until C++17 and is only *conditionally supported* since: a compiler may accept it, warn, or reject it. The layout is the implementation's business - it is free to put a vtable pointer before the first member or arrange base subobjects as it likes - so portable code cannot rely on those offsets.
 
 ### Q3: Show a struct that breaks standard-layout by adding a virtual function
 
@@ -176,6 +178,8 @@ Adding a single `virtual` function is the most dramatic way to break the propert
 ```cpp
 #include <type_traits>
 #include <cstddef>
+#include <cstdint>
+#include <cstring>
 #include <iostream>
 
 // Standard-layout version:
@@ -203,17 +207,20 @@ int main() {
     // The virtual function causes:
     // 1. A vtable pointer (typically 8 bytes on 64-bit) is inserted BEFORE the first member
     // 2. sizeof increases by at least pointer size + potential padding
-    // 3. offsetof() becomes undefined behavior
+    // 3. offsetof() is no longer guaranteed to work (conditionally supported)
     // 4. You can't memcpy/serialize the object safely
     // 5. C interoperability is broken
 
-    // Safe serialization of standard-layout type:
+    // Byte-wise serialization needs BOTH properties:
+    //   trivially copyable -> memcpy is allowed at all
+    //   standard-layout    -> the bytes are arranged the way the other side expects
+    static_assert(std::is_trivially_copyable_v<SensorDataSL>);
     SensorDataSL data{23.5f, 65.0f, 1000};
     unsigned char buffer[sizeof(SensorDataSL)];
-    std::memcpy(buffer, &data, sizeof(data));  // Safe - standard-layout
+    std::memcpy(buffer, &data, sizeof(data));
 
     SensorDataSL restored;
-    std::memcpy(&restored, buffer, sizeof(restored));  // Safe - trivially copyable too
+    std::memcpy(&restored, buffer, sizeof(restored));
     std::cout << "Restored temp: " << restored.temperature << "\n";  // 23.5
 
     return 0;
@@ -224,42 +231,47 @@ int main() {
 
 - `sizeof` grows (the vtable pointer is now part of the object).
 - Members shift, so their offsets are no longer predictable.
-- `offsetof()` becomes UB.
+- `offsetof()` is no longer guaranteed (conditionally supported since C++17, undefined before).
 - `memcpy` serialization is unsafe - you'd be copying an internal vtable pointer that means nothing on the other end.
 - C interoperability breaks.
 - You can no longer cast pointer-to-first-member back to pointer-to-object.
 
-### Common Pitfall: std::string Breaks Standard-Layout
+### Common Pitfall: Standard-Layout Does Not Mean Serializable
 
-The trap that catches almost everyone: a struct that's "obviously simple" but contains a `std::string`. The string carries internal pointers and is *not* standard-layout, which poisons the whole struct:
+The trap that catches almost everyone: a struct that's "obviously simple" but contains a `std::string`. Checking `is_standard_layout` will not save you here. On libstdc++, libc++ and the MSVC library `std::string` *is* standard-layout (the standard does not promise either way), so the struct passes the check - and is still impossible to serialize as bytes, because the string owns heap memory and is not trivially copyable:
 
 ```cpp
+#include <string>
 #include <type_traits>
 
 struct Config {
     int version;
-    std::string name;     // std::string is NOT standard-layout!
+    std::string name;     // owns a heap buffer: NOT trivially copyable
     double threshold;
 };
-static_assert(!std::is_standard_layout_v<Config>);
+static_assert(!std::is_trivially_copyable_v<Config>);  // memcpy would copy a pointer, not the text
+// std::is_standard_layout_v<Config> is typically TRUE - and tells you nothing useful here
 
 // Fix: use char arrays for C-compatible structs
 struct ConfigC {
     int version;
-    char name[64];        // Fixed-size char array IS standard-layout
+    char name[64];        // Fixed-size char array: the bytes live in the struct
     double threshold;
 };
 static_assert(std::is_standard_layout_v<ConfigC>);
+static_assert(std::is_trivially_copyable_v<ConfigC>);
 ```
 
-If you need a C-compatible, serializable struct, swap the `std::string` for a fixed-size `char` array. You lose convenience but regain a predictable layout.
+If you need a C-compatible, serializable struct, swap the `std::string` for a fixed-size `char` array, and assert **both** traits. You lose convenience but regain a layout you can hand to C and bytes you are allowed to copy.
 
 ---
 
 ## Notes
 
-- Standard-layout types can be safely handed to/from C code and hardware, and serialized via `memcpy`.
+- Standard-layout types have a C-compatible arrangement of members, so they can be handed to/from C code and hardware.
+- Copying the bytes with `memcpy` additionally requires the type to be trivially copyable - check both traits before serializing.
 - Virtual functions, reference members, and mixed access control each break standard-layout.
 - Use `std::is_standard_layout_v<T>` to check at compile time.
-- `offsetof()` is only well-defined for standard-layout types.
+- `offsetof()` is only guaranteed for standard-layout types; for others it is conditionally supported.
+- `std::string` is standard-layout on the major implementations, yet never trivially copyable - layout alone says nothing about ownership.
 - POD = trivial + standard-layout (the term was deprecated in C++20, but the idea is still a useful mental model).

@@ -148,7 +148,7 @@ int main() {
     std::cout << std::visit(describe, v2) << "\n";
 }
 // Expected output:
-//   Circle:    78.5398
+//   Circle:    78.5397
 //   Rectangle: 12
 //   Triangle:  9
 //   Variant:   25

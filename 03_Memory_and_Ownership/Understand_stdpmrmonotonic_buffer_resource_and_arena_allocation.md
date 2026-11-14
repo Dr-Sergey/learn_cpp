@@ -89,7 +89,12 @@ void parse_tokens_arena(const std::vector<std::string>& raw) {
     result.reserve(raw.size());
 
     for (const auto& s : raw) {
-        result.emplace_back("[" + s + "]", &arena);
+        // Do NOT pass &arena here: a pmr container hands its own allocator to
+        // each element automatically (uses-allocator construction), and
+        // supplying it a second time does not compile.
+        std::pmr::string& token = result.emplace_back("[");
+        token += s;
+        token += "]";
     }
 
     std::cout << "Tokens parsed: " << result.size() << "\n";
@@ -188,7 +193,8 @@ int main() {
         std::pmr::vector<std::pmr::string> v(&arena);
         v.reserve(TOKENS);
         for (int i = 0; i < TOKENS; ++i) {
-            v.emplace_back("token_" + std::to_string(i), &arena);
+            // The vector passes its allocator on to each element by itself
+            v.emplace_back("token_" + std::to_string(i));
         }
         // All memory freed at once when arena goes out of scope
     }, N);

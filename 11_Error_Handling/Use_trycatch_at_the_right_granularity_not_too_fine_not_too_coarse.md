@@ -79,9 +79,17 @@ struct Config {
     std::string db_name;
 };
 
-Config parse_config(const std::string& text);        // may throw parse_error
-void connect_db(const std::string& host, int port);  // may throw connection_error
-std::vector<std::string> query(const std::string& q); // may throw query_error
+// Stand-ins for the real work. Each one may throw in a real program.
+Config parse_config(const std::string& text) {        // may throw parse_error
+    if (text.empty()) throw std::runtime_error("empty config");
+    return {"localhost", 5432, "app"};
+}
+void connect_db(const std::string& host, int port) {  // may throw connection_error
+    if (host.empty() || port <= 0) throw std::runtime_error("cannot connect");
+}
+std::vector<std::string> query(const std::string& q) { // may throw query_error
+    return {"result of: " + q};
+}
 
 // BAD: TOO FINE - wrapping every expression individually
 void too_fine(const std::string& path) {

@@ -308,10 +308,12 @@ int main() {
     };
 
     auto start = std::chrono::high_resolution_clock::now();
-    volatile IPv4 rt_results[8];  // volatile to prevent optimization
+    IPv4 rt_results[8];
+    volatile unsigned checksum = 0;  // an observable effect, so the loop is not optimized away
     for (int iter = 0; iter < 10000; ++iter) {
         for (int i = 0; i < 8; ++i) {
             rt_results[i] = parse_ip_rt(ip_strings[i]);
+            checksum = checksum + rt_results[i].octets[3];
         }
     }
     auto end = std::chrono::high_resolution_clock::now();

@@ -107,9 +107,9 @@ int main() {
     double c = -1.0;
 
     // Mathematically: a + b + c = 1e-16
-    // With FP reordering: (b + c) + a might lose b entirely
-    double result1 = (a + b) + c;  // preserves b: 1e-16
-    double result2 = a + (b + c);  // b + c = -1.0 (b lost!), then + a = 0.0
+    // In floating point the grouping decides whether b survives:
+    double result1 = (a + b) + c;  // 1.0 + 1e-16 rounds back to 1.0 (b lost!), then - 1.0 = 0
+    double result2 = a + (b + c);  // -1.0 + 1e-16 IS representable, then + 1.0 = ~1.1e-16
 
     std::cout << std::setprecision(20);
     std::cout << "(a + b) + c = " << result1 << '\n';
@@ -117,9 +117,12 @@ int main() {
     std::cout << "Difference:   " << std::abs(result1 - result2) << '\n';
 }
 // Expected output:
-// (a + b) + c = 1e-16
-// a + (b + c) = 0
-// Difference:   1e-16
+// (a + b) + c = 0
+// a + (b + c) = 1.1102230246251565404e-16
+// Difference:   1.1102230246251565404e-16
+//
+// Same three numbers, two different answers - which is exactly why the
+// compiler is not allowed to regroup floating-point additions on its own.
 //
 // NOTE: -O3 alone does NOT reorder FP by default.
 // The DANGEROUS flag is -ffast-math (or -Ofast):

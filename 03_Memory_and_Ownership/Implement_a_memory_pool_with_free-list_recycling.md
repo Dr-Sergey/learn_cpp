@@ -202,6 +202,7 @@ Notice the last line: `w4 reused slot: yes`. The freed slot from w2 was immediat
 Here we run a microbenchmark comparing the pool against `new`/`delete` for 100,000 operations. We also check the slot spacing to confirm there is no fragmentation.
 
 ```cpp
+#include <algorithm>
 #include <iostream>
 #include <chrono>
 #include <vector>
@@ -211,7 +212,10 @@ Here we run a microbenchmark comparing the pool against `new`/`delete` for 100,0
 // Simple pool for benchmarking
 template<typename T, size_t N>
 class FastPool {
-    alignas(alignof(T)) std::byte storage_[N * sizeof(T)];
+    // A free slot stores the "next" pointer inside itself, so every slot must
+    // be big enough and aligned enough for a pointer as well as for a T.
+    static_assert(sizeof(T) >= sizeof(void*), "slot too small for the free-list link");
+    alignas(std::max(alignof(T), alignof(void*))) std::byte storage_[N * sizeof(T)];
     void* free_head_ = nullptr;
 public:
     FastPool() {
@@ -242,8 +246,10 @@ int main() {
     constexpr size_t COUNT = 100'000;
     constexpr size_t POOL_SIZE = COUNT;
 
-    // Benchmark pool allocation
-    FastPool<Small, POOL_SIZE> pool;
+    // Benchmark pool allocation.
+    // static: the pool is 1.6 MB, which is more than a thread's whole stack
+    // on some platforms (Windows defaults to 1 MB).
+    static FastPool<Small, POOL_SIZE> pool;
     std::vector<void*> ptrs(COUNT);
 
     auto t1 = std::chrono::high_resolution_clock::now();
@@ -276,8 +282,10 @@ int main() {
     void* first = pool.alloc();
     void* second = pool.alloc();
     ptrdiff_t gap = static_cast<std::byte*>(second) - static_cast<std::byte*>(first);
+    if (gap < 0) gap = -gap;  // the free list is LIFO, so neighbours may come out in descending order
     std::cout << "\nSlot spacing: " << gap << " bytes (== sizeof(Small)="
-              << sizeof(Small) << "? " << (gap == sizeof(Small) ? "YES" : "varies") << ")\n";
+              << sizeof(Small) << "? "
+              << (gap == static_cast<ptrdiff_t>(sizeof(Small)) ? "YES" : "varies") << ")\n";
     pool.dealloc(second);
     pool.dealloc(first);
 

@@ -177,6 +177,7 @@ int main() {
 
 Now you tackle your own code. Move `math_utils.h` to a `.cppm` module file. Use the global module fragment for any C headers it needs:
 
+<!-- compile: fragment: two files of a multi-file module example shown together -->
 ```cpp
 // math_utils.cppm - now a module
 module;

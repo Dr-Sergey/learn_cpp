@@ -152,6 +152,7 @@ int main() {
 
 The polyfill pattern gives you a single include that automatically falls back to a bundled implementation when the standard one is unavailable. `__has_include` checks whether the header exists, and the feature-test macro `__cpp_lib_span` confirms that the implementation is complete. If either check fails, the bundled `polyfill::span` is compiled instead, and the `compat::span` alias points to whichever version is active:
 
+<!-- compile: fragment: main is behind a feature test that the CI standard library does not satisfy -->
 ```cpp
 // portable_span.hpp - Use std::span if available, otherwise provide a polyfill
 #pragma once

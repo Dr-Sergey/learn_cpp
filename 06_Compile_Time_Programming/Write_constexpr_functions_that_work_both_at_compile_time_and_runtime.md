@@ -323,7 +323,10 @@ constexpr auto unique_sorted() {
 // All computed at compile time
 constexpr auto ascending = sorted_array();
 constexpr auto descending = reversed_array();
-constexpr auto [unique_arr, unique_count] = unique_sorted();
+// (constexpr structured bindings only arrive in C++26, so unpack by hand)
+constexpr auto unique_result = unique_sorted();
+constexpr auto& unique_arr = unique_result.first;
+constexpr std::size_t unique_count = unique_result.second;
 
 // Compile-time verification
 static_assert(ascending[0] == 1);
@@ -349,7 +352,9 @@ constexpr auto partition_evens() {
     return std::pair{arr, even_count};
 }
 
-constexpr auto [partitioned, even_count] = partition_evens();
+constexpr auto partition_result = partition_evens();
+constexpr auto& partitioned = partition_result.first;
+constexpr std::size_t even_count = partition_result.second;
 static_assert(even_count == 5);
 
 int main() {

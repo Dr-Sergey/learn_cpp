@@ -266,15 +266,20 @@ decltype(auto) logged_call(const char* name, F&& f, Args&&... args) {
 int main() {
     Container c;
 
+    // &Container::at names two overloads, so a template parameter cannot be
+    // deduced from it directly. Pick each overload through a typed pointer.
+    int&       (Container::*mutable_at)(std::size_t)       = &Container::at;
+    const int& (Container::*const_at)(std::size_t) const   = &Container::at;
+
     // Forward mutable reference
-    decltype(auto) ref = forward_call(c, &Container::at, 1);
+    decltype(auto) ref = forward_call(c, mutable_at, 1);
     static_assert(std::is_same_v<decltype(ref), int&>);
     ref = 99;
     std::cout << "c.data[1] after modification: " << c.data[1] << "\n";  // 99
 
     // Forward const reference
     const Container& cc = c;
-    decltype(auto) cref = forward_call(cc, &Container::at, 0);
+    decltype(auto) cref = forward_call(cc, const_at, 0);
     static_assert(std::is_same_v<decltype(cref), const int&>);
     std::cout << "cref = " << cref << "\n";
 

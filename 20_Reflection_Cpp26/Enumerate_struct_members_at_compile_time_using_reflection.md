@@ -8,15 +8,15 @@
 
 ## Topic Overview
 
-C++26 reflection lets you iterate over all data members of a struct at compile time using `std::meta::nonstatic_data_members_of(^S)`. This is a big deal because it means you can write generic functions - serializers, converters, printers - that work for any struct without you manually listing the fields or using macros.
+C++26 reflection lets you iterate over all data members of a struct at compile time using `std::meta::nonstatic_data_members_of(^^S, ctx)`. This is a big deal because it means you can write generic functions - serializers, converters, printers - that work for any struct without you manually listing the fields or using macros.
 
 Here is a quick reference to the APIs you will use most often when working with struct members:
 
 | API | Purpose |
 | --- | --- |
-| `^MyStruct` | Reflect the struct type into a `meta::info` handle |
-| `nonstatic_data_members_of(^S)` | Get all non-static data members |
-| `members_of(^S)` | Get ALL members (including static, functions) |
+| `^^MyStruct` | Reflect the struct type into a `meta::info` handle |
+| `nonstatic_data_members_of(^^S, ctx)` | Get all non-static data members |
+| `members_of(^^S, ctx)` | Get ALL members (including static, functions) |
 | `identifier_of(m)` | Get member name as a string |
 | `type_of(m)` | Get member type as `meta::info` |
 | `obj.[:m:]` | Access the member on a concrete object via splice |
@@ -45,7 +45,8 @@ struct Point {
 };
 
 int main() {
-    constexpr auto members = std::meta::nonstatic_data_members_of(^Point);
+    static constexpr auto members = std::define_static_array(
+        std::meta::nonstatic_data_members_of(^^Point, std::meta::access_context::current()));
 
     std::cout << "Point has " << members.size() << " members:\n";
     template for (constexpr auto m : members) {
@@ -93,7 +94,8 @@ struct Person {
 // Generic to_tuple for ANY aggregate:
 template <typename T>
 auto to_tuple(const T& obj) {
-    constexpr auto members = std::meta::nonstatic_data_members_of(^T);
+    static constexpr auto members = std::define_static_array(
+        std::meta::nonstatic_data_members_of(^^T, std::meta::access_context::current()));
 
     // Build the tuple by splicing each member access:
     return [&]<std::size_t... Is>(std::index_sequence<Is...>) {
@@ -142,7 +144,7 @@ struct Complex {
 // Generic field counter:
 template <typename T>
 constexpr std::size_t field_count() {
-    return std::meta::nonstatic_data_members_of(^T).size();
+    return std::meta::nonstatic_data_members_of(^^T, std::meta::access_context::current()).size();
 }
 
 static_assert(field_count<Empty>() == 0);

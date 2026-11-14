@@ -118,6 +118,7 @@ struct Generator {
         void unhandled_exception() { std::terminate(); }
     };
     std::coroutine_handle<promise_type> handle;
+    Generator(std::coroutine_handle<promise_type> h) : handle(h) {}
     ~Generator() { if (handle) handle.destroy(); }
     Generator(Generator&& o) noexcept : handle(std::exchange(o.handle, {})) {}
     Generator& operator=(Generator&&) = delete;

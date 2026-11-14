@@ -309,10 +309,12 @@ int main() {
 
     // === Benchmark: runtime parsing ===
     auto start = std::chrono::high_resolution_clock::now();
-    volatile Date sink;
+    Date sink{};
+    volatile int checksum = 0;  // an observable effect, so the loops are not optimized away
     for (int iter = 0; iter < ITERATIONS; ++iter) {
         for (const auto& s : date_strings) {
             sink = rt_parse(s);
+            checksum = checksum + sink.day;
         }
     }
     auto end = std::chrono::high_resolution_clock::now();
@@ -323,6 +325,7 @@ int main() {
     for (int iter = 0; iter < ITERATIONS; ++iter) {
         for (const auto& d : config_dates) {
             sink = d;
+            checksum = checksum + sink.day;
         }
     }
     auto end2 = std::chrono::high_resolution_clock::now();

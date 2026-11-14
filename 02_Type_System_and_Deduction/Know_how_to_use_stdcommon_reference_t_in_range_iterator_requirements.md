@@ -131,6 +131,7 @@ Here's what the concept is actually checking, and why it matters for algorithms 
 #include <iterator>
 #include <type_traits>
 #include <ranges>
+#include <algorithm>
 
 // The indirectly_readable concept needs this relationship:
 // common_reference_t<iter_reference_t<I>, iter_value_t<I>&> must exist

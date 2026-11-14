@@ -1,7 +1,7 @@
-# Use views::repeat and views::cycle (C++26) for infinite repeating ranges
+# Use views::repeat (C++23) and build a cycle view for infinite repeating ranges
 
 **Category:** Ranges Cpp20  
-**Standard:** C++23, C++26  
+**Standard:** C++23  
 **Reference:** <https://en.cppreference.com/w/cpp/ranges/repeat_view>  
 
 ---
@@ -12,7 +12,7 @@
 
 `views::repeat(value)` creates an **infinite** range that yields the same value forever. `views::repeat(value, n)` creates a **bounded** range of `n` copies.
 
-```cpp
+```text
 views::repeat(42)     ->  42, 42, 42, 42, ...  (infinite)
 views::repeat(42, 3)  ->  42, 42, 42           (bounded)
 ```
@@ -23,13 +23,19 @@ Properties:
 - Stores a **single copy** of the value; dereference yields a `const` reference.
 - Models `view` (O(1) copy).
 
-### views::cycle (C++26, P2839)
+### Cycling a whole range (not in the standard yet)
 
-`views::cycle(range)` repeats a **finite range** infinitely. This is the key distinction from `repeat`: `repeat` repeats a single value, `cycle` repeats an entire sequence.
+The natural companion to `repeat` is a view that repeats a **finite range** infinitely: `repeat` repeats a single value, a cycle view repeats an entire sequence.
+
+```text
+Source: [A, B, C]
+cycle  ->  A, B, C, A, B, C, A, B, C, ...  (infinite)
+```
+
+Despite what many write-ups say, **`std::views::cycle` is not part of C++23 or C++26**. range-v3 has had `ranges::views::cycle` for years, and a standard version is proposed for a later revision (P3806), but nothing shipped. Until then you compose it from two views that C++23 does have - repeat the whole range forever, then flatten the result:
 
 ```cpp
-Source: [A, B, C]
-views::cycle ->  A, B, C, A, B, C, A, B, C, ...  (infinite)
+auto cycle = std::views::repeat(std::views::all(range)) | std::views::join;
 ```
 
 ### Comparison
@@ -38,7 +44,8 @@ views::cycle ->  A, B, C, A, B, C, A, B, C, ...  (infinite)
 | --- | --- | --- | --- |
 | `repeat(val)` | Single value | val, val, val, ... | C++23 |
 | `repeat(val, n)` | Single value + count | val x n | C++23 |
-| `cycle(range)` | Any range | range elements repeated | C++26 |
+| `repeat(all(range)) \| join` | Any forward range | range elements repeated | C++23 (composed) |
+| `views::cycle(range)` | Any forward range | range elements repeated | Not standard (range-v3; proposed) |
 
 ### Safety with Infinite Ranges
 
@@ -106,9 +113,9 @@ The random-access property means `r[50]` is O(1) - there is only one stored valu
 - The view stores **one copy** of the value. `r[50]` returns a reference to that single stored `7`.
 - Bounded `repeat` is random-access and sized - `size()` returns the count, and `operator[]` is O(1).
 
-### Q2: Show how `views::cycle` turns a finite range into an infinite cycling one
+### Q2: Show how to turn a finite range into an infinite cycling one
 
-`cycle` is the view you reach for when you have a short pattern - a color palette, a set of flags, a repeating sequence - and you need to pair it with a longer list. Think of it as a record player that starts over at the beginning instead of stopping.
+A cycle is the view you reach for when you have a short pattern - a color palette, a set of flags, a repeating sequence - and you need to pair it with a longer list. Think of it as a record player that starts over at the beginning instead of stopping. The standard library does not provide it directly, so the example defines a three-line helper from `repeat` and `join`.
 
 ```cpp
 #include <array>
@@ -116,11 +123,19 @@ The random-access property means `r[50]` is O(1) - there is only one stored valu
 #include <ranges>
 #include <string_view>
 
+// The standard library has no cycle view yet, but two C++23 views compose
+// into one: repeat the whole range forever, then flatten.
+// views::all(range) makes the repeated thing a cheap reference to the range
+// rather than a copy of it - so the range must outlive the view.
+inline constexpr auto cycle = [](std::ranges::forward_range auto& range) {
+    return std::views::repeat(std::views::all(range)) | std::views::join;
+};
+
 int main() {
     std::array<std::string_view, 3> colors = {"red", "green", "blue"};
 
     // Cycle indefinitely, take 10
-    auto cycling = std::views::cycle(colors) | std::views::take(10);
+    auto cycling = cycle(colors) | std::views::take(10);
 
     std::cout << "Cycling colors: ";
     for (auto c : cycling)
@@ -130,7 +145,7 @@ int main() {
 
     // Cycle integers
     std::array<int, 4> pattern = {1, 2, 3, 4};
-    auto repeating = std::views::cycle(pattern) | std::views::take(12);
+    auto repeating = cycle(pattern) | std::views::take(12);
 
     std::cout << "Pattern x3: ";
     for (int x : repeating)
@@ -140,11 +155,14 @@ int main() {
 
     // Cycle with enumerate to get indices
     std::cout << "Indexed: ";
-    int i = 0;
-    for (auto c : std::views::cycle(colors) | std::views::take(7)) {
-        std::cout << '[' << i++ << ']' << c << ' ';
+    for (auto [i, c] : cycle(colors) | std::views::take(7) | std::views::enumerate) {
+        std::cout << '[' << i << ']' << c << ' ';
     }
     std::cout << '\n';
+
+    // The price of building it from join: forward only, no random access
+    static_assert(std::ranges::forward_range<decltype(cycle(colors))>);
+    static_assert(!std::ranges::random_access_range<decltype(cycle(colors))>);
 }
 // Expected output:
 // Cycling colors: red green blue red green blue red green blue red
@@ -152,16 +170,17 @@ int main() {
 // Indexed: [0]red [1]green [2]blue [3]red [4]green [5]blue [6]red
 ```
 
-Notice that the source range must be a `forward_range` - `cycle` needs to restart from the beginning each time it reaches the end, which requires being able to re-iterate the range from `begin()`.
+Notice that the source range must be a `forward_range` - a cycle needs to restart from the beginning each time it reaches the end, which requires being able to re-iterate the range from `begin()`.
 
-- `views::cycle(colors)` creates an infinite range that repeats `{"red", "green", "blue"}` forever.
+- `repeat(all(colors))` is an infinite range whose every element is (a reference to) the whole `colors` array; `join` flattens it into `red, green, blue, red, ...`.
 - `take(10)` truncates it to 10 elements.
-- Unlike `repeat` (which repeats a single value), `cycle` repeats the entire **sequence** of elements.
-- The source range must be a `forward_range` (so it can be re-iterated from the beginning).
+- Unlike `repeat` on its own (which repeats a single value), the composition repeats the entire **sequence** of elements.
+- `views::all` makes the view refer to the source instead of copying it, so the source must outlive the view. Drop `views::all` to store a copy.
+- The result is only a forward range. If you need random access into a cycle, index with a modulus instead: `views::iota(0uz) | views::transform([&](std::size_t i) { return source[i % source.size()]; })`.
 
-### Q3: Use `views::cycle` with `views::zip` to pair a short palette with a long list of items
+### Q3: Pair a short cycling palette with a long list of items using `views::zip`
 
-This is one of the most practical uses of `cycle`: you have a short list of something (colors, priorities, labels) and a longer list to decorate. The `zip` naturally terminates when the shorter `items` range is exhausted - the infinite `cycle` is never a problem here because `zip` stops as soon as one input runs out.
+This is one of the most practical uses of a cycle: you have a short list of something (colors, priorities, labels) and a longer list to decorate. The `zip` naturally terminates when the shorter `items` range is exhausted - the infinite cycle is never a problem here because `zip` stops as soon as one input runs out.
 
 ```cpp
 #include <array>
@@ -170,6 +189,11 @@ This is one of the most practical uses of `cycle`: you have a short list of some
 #include <string>
 #include <string_view>
 #include <vector>
+
+// cycle built from repeat + join, as in Q2
+inline constexpr auto cycle = [](std::ranges::forward_range auto& range) {
+    return std::views::repeat(std::views::all(range)) | std::views::join;
+};
 
 int main() {
     // Short palette of colors
@@ -182,10 +206,7 @@ int main() {
     };
 
     // Zip items with cycling colors
-    auto colored_items = std::views::zip(
-        items,
-        std::views::cycle(palette)
-    );
+    auto colored_items = std::views::zip(items, cycle(palette));
 
     std::cout << "Colored items:\n";
     for (auto [item, color] : colored_items) {
@@ -219,9 +240,9 @@ int main() {
 //   Grape -> gray
 ```
 
-The `repeat` comparison at the bottom makes the difference between the two views visceral: `cycle` rotates through a sequence, `repeat` pins every element to the same constant. Both are infinite, and both are safely bounded here by the finite `items` vector that `zip` uses as a length limit.
+The `repeat` comparison at the bottom makes the difference between the two visceral: the cycle rotates through a sequence, `repeat` pins every element to the same constant. Both are infinite, and both are safely bounded here by the finite `items` vector that `zip` uses as a length limit.
 
-- `views::zip(items, cycle(palette))` pairs each item with the next color from the cycling palette.
+- `views::zip(items, cycle(palette))` pairs each item with the next color from the cycling palette (`cycle` being the helper defined at the top).
 - `zip` stops when the **shortest** range is exhausted - since `items` is finite (7 elements) and `cycle(palette)` is infinite, `zip` produces exactly 7 pairs.
 - The 3-color palette wraps around: items 4-6 get colors `red, green, blue` again.
 - `views::repeat` comparison: if you want the **same** value for every item (not cycling), use `repeat`.
@@ -230,8 +251,8 @@ The `repeat` comparison at the bottom makes the difference between the two views
 
 ## Notes
 
-- `views::repeat` is C++23; `views::cycle` is C++26 (P2839R1).
-- Pre-C++26 workaround for `cycle`: use a custom view or simulate with `views::iota(0) | views::transform([&](int i) { return source[i % source.size()]; })`.
-- `repeat` stores one value; `cycle` stores (or references) a range. Both produce infinite ranges by default.
-- Infinite ranges model `input_range` at minimum. Bounded `repeat` is `random_access_range` + `sized_range`.
+- `views::repeat` is C++23. There is no `std::views::cycle` in C++23 or C++26; it exists in range-v3 and is proposed for a future standard (P3806).
+- Standard ways to cycle today: `views::repeat(views::all(source)) | views::join` (forward range), or `views::iota(0uz) | views::transform([&](std::size_t i) { return source[i % source.size()]; })` when you need random access.
+- `repeat` stores one value; a cycle built from it stores (or references) a range. Both produce infinite ranges by default.
+- `repeat` is a `random_access_range` whether bounded or not; the bounded form is also a `sized_range`. The `repeat | join` cycle is a `forward_range`.
 - Always pair infinite ranges with `take`, `take_while`, or `zip` (with a finite range) to bound iteration.

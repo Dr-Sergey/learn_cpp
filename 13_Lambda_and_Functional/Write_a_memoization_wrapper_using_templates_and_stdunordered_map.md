@@ -86,12 +86,13 @@ int main() {
     std::cout << "Fourth call (3,4): " << expensive(3, 4) << "\n";
     std::cout << "Total computations: " << call_count << "\n";
 }
-// Expected output:
-//     Computing 3 + 4
-//   First call (3,4): 7
+// Expected output (since C++17 the operands of << are evaluated left to
+// right, so each label is printed before the call it introduces runs):
+//   First call (3,4):   Computing 3 + 4
+//   7
 //   Second call (3,4): 7
-//     Computing 5 + 6
-//   Third call (5,6): 11
+//   Third call (5,6):   Computing 5 + 6
+//   11
 //   Fourth call (3,4): 7
 //   Total computations: 2
 ```

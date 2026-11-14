@@ -257,6 +257,7 @@ A `binary_semaphore` initialized to 0 is a natural "not ready yet" gate. The con
 #include <semaphore>
 #include <thread>
 #include <vector>
+#include <deque>
 #include <iostream>
 #include <chrono>
 
@@ -280,8 +281,11 @@ void one_to_one() {
 // === Pattern 2: One producer, N consumers (start gate) ===
 void start_gate() {
     constexpr int N = 5;
-    // Each worker gets its own semaphore for the start signal
-    std::vector<std::binary_semaphore> gates;
+    // Each worker gets its own semaphore for the start signal.
+    // A semaphore can be neither copied nor moved, so std::vector cannot hold
+    // one (it must be able to relocate elements when it grows). std::deque
+    // never relocates on emplace_back, so it can.
+    std::deque<std::binary_semaphore> gates;
     for (int i = 0; i < N; ++i)
         gates.emplace_back(0); // all start at 0
 

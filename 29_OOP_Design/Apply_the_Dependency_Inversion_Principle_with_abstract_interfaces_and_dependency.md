@@ -294,6 +294,7 @@ The **composition root** is the single place in the codebase that knows about co
 
 **Answer:**
 
+<!-- compile: fragment: composition-root sketch; the interfaces and factory functions are not defined here -->
 ```cpp
 #include <memory>
 #include <string>

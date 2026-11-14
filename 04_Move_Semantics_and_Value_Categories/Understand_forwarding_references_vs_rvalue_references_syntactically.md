@@ -141,7 +141,8 @@ int main() {
 
     // This fails -- template ctor is a BETTER match than copy ctor!
     std::cout << "\n2. Copying non-const Person:\n";
-    Person p2(p1);  // BUG! Calls template ctor with T = Person&
+    // Person p2(p1);  // Does NOT compile: selects the template with T = Person&
+    std::cout << "  (rejected by the compiler - uncomment the line above to see it)\n";
     // The template ctor deduces T = Person& -> exact match
     // Copy ctor requires const Person& -> requires const conversion
     // Template wins -> tries to construct string from Person -> ERROR or wrong behavior!

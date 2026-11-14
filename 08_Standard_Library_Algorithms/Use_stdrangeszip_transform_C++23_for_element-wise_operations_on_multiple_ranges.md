@@ -55,6 +55,7 @@ The second version is shorter, easier to read, and passes the elements directly 
 Here we try `zip_transform` with the standard `std::plus` functor, then with `std::multiplies`, then with a custom lambda - and finally materialize the result and compute a dot product on top of it.
 
 ```cpp
+#include <algorithm>   // std::ranges::fold_left lives here, not in <numeric>
 #include <iostream>
 #include <vector>
 #include <ranges>
@@ -152,7 +153,7 @@ int main() {
             return h + "=" + v;
         }, headers, values);
 
-    for (auto& s : pairs) std::cout << s << " ";
+    for (const auto& s : pairs) std::cout << s << " ";  // elements are temporaries: bind by const&
     std::cout << "\n";
     // Name=Alice Age=30  - safely stops, no crash on missing City
 
@@ -167,6 +168,7 @@ The "missing City" example makes this practical: if your data has ragged rows yo
 Three-range `zip_transform` is where the advantage over manual indexing really shows. A loop over three indices gives you no safety and no composability; this gives you both.
 
 ```cpp
+#include <algorithm>   // std::ranges::fold_left
 #include <iostream>
 #include <vector>
 #include <ranges>

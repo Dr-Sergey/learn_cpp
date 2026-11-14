@@ -219,7 +219,7 @@ int main() {
     // --- Shift operations ---
     std::cout << "\nShifts:\n";
     std::cout << "Left  <<4: " << (from_int << 4) << "\n";
-    // Output: Left  <<4: 0101111111100000
+    // Output: Left  <<4: 1010111111100000
     std::cout << "Right >>4: " << (from_int >> 4) << "\n";
     // Output: Right >>4: 0000110010101111
 

@@ -204,7 +204,7 @@ int main() {
 //   transform called for "Hello"
 //   transform called for "World"
 //
-// Produced 7 chars.
+// Produced 8 chars.
 // transform_calls = 2
 ```
 

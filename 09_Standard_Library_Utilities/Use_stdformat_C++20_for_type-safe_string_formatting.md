@@ -244,7 +244,7 @@ int main() {
     // --- formatted_size: query output size without writing ---
     auto needed = std::formatted_size("The answer is {}", 42);
     std::cout << "needed: " << needed << " chars\n";
-    // Output: needed: 17 chars
+    // Output: needed: 16 chars
 
     // --- Building a log line efficiently ---
     std::vector<char> log_buf;

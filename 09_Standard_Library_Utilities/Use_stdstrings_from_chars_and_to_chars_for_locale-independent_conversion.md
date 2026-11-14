@@ -88,7 +88,8 @@ int main() {
 
     if (ec == std::errc{}) {
         std::cout << "Parsed: " << value << "\n"; // 42
-        std::cout << "Remaining: " << std::string_view(ptr, input.end()) << "\n"; // " hello"
+        std::cout << "Remaining: "
+                  << std::string_view(ptr, input.data() + input.size()) << "\n"; // " hello"
     }
 
     // === from_chars: parse double ===

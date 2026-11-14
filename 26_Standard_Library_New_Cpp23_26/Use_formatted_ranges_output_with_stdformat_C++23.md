@@ -10,7 +10,7 @@
 
 C++23 extends `std::format` and `std::print` to natively support formatting of ranges and containers. Before C++23, printing a `std::vector`, `std::map`, or `std::set` required manual loops or custom `operator<<` overloads. Now, any range that models `std::ranges::input_range` can be formatted directly - and the output is immediately readable with sensible defaults.
 
-The default range formatting uses square brackets with comma separation for sequences and curly braces for sets/maps. Strings and character ranges use special representations. The `?s` format spec enables debug-escaped string output.
+The default range formatting uses square brackets with comma separation for sequences and curly braces for sets/maps. Strings and character ranges use special representations. The `?` format spec enables debug-escaped output for a string or a character, and the range type `?s` does the same for a range of characters.
 
 | Container | Default format output | With format spec |
 | --- | --- | --- |
@@ -19,7 +19,7 @@ The default range formatting uses square brackets with comma separation for sequ
 | `map<string,int>` | `{"a": 1, "b": 2}` | N/A |
 | `pair<int,int>` | `(1, 2)` | N/A |
 | `tuple<int,string,double>` | `(1, "hello", 3.14)` | N/A |
-| `string("hello")` | `hello` | `?s` -> `"hello"` |
+| `string("hello")` | `hello` | `?` -> `"hello"` |
 | `vector<string>` | `["a", "b"]` | Debug strings by default |
 
 The format specifiers for ranges follow this pattern:
@@ -86,7 +86,7 @@ int main() {
     // String debug formatting
     std::vector<std::string> words = {"hello", "world"};
     std::println("{}", words);            // ["hello", "world"]
-    std::println("{:?s}", "tab\there");   // "tab\there" (escaped)
+    std::println("{:?}", "tab\there");    // "tab\there" (escaped)
 }
 ```
 
@@ -125,7 +125,7 @@ int main() {
 
     // Hex dump of bytes
     std::vector<uint8_t> bytes = {0xDE, 0xAD, 0xBE, 0xEF};
-    std::println("{:n::02X}", bytes);     // DE, AD, BE, EF
+    std::println("{:n:02X}", bytes);      // DE, AD, BE, EF  (n = no brackets, then ':' + element spec)
 
     // Formatting a range of strings with padding
     std::vector<std::string> names = {"Al", "Bob", "Charlie"};
@@ -181,7 +181,10 @@ struct std::formatter<Matrix<T>> {
         return element_fmt.parse(ctx);
     }
 
-    auto format(const Matrix<T>& m, std::format_context& ctx) const {
+    // A template over the context type: range formatting may use a context
+    // other than std::format_context, and the library checks for that.
+    template <typename FormatContext>
+    auto format(const Matrix<T>& m, FormatContext& ctx) const {
         auto out = ctx.out();
         if (pretty) {
             out = std::format_to(out, "Matrix {}x{}:\n", m.rows(), m.cols());
@@ -189,6 +192,7 @@ struct std::formatter<Matrix<T>> {
                 out = std::format_to(out, "  |");
                 for (const auto& val : row) {
                     out = std::format_to(out, " ");
+                    ctx.advance_to(out);   // keep the context in step with our iterator
                     out = element_fmt.format(val, ctx);
                 }
                 out = std::format_to(out, " |\n");
@@ -205,7 +209,8 @@ enum class Color { Red, Green, Blue };
 
 template <>
 struct std::formatter<Color> : std::formatter<std::string_view> {
-    auto format(Color c, std::format_context& ctx) const {
+    template <typename FormatContext>
+    auto format(Color c, FormatContext& ctx) const {
         std::string_view name;
         switch (c) {
             case Color::Red:   name = "Red";   break;
@@ -249,7 +254,7 @@ The `Color` formatter example is especially worth studying. Inheriting from `std
 - Default brackets: `[]` for sequences, `{}` for associative containers, `()` for pairs/tuples.
 - Use `:n` to suppress brackets, `::spec` to apply a format spec to each element.
 - Strings inside ranges are automatically quoted and escaped in the debug representation.
-- The `?` type specifier enables debug output: `?s` for escaped strings, `?` for chars.
+- The `?` type specifier enables debug (escaped, quoted) output for strings and chars; as a range type, `?s` formats a range of characters as one escaped string.
 - Custom types can be made formattable by specializing `std::formatter` - range formatting then works automatically with containers of those types.
 - Nested ranges format recursively: `vector<vector<int>>` prints as `[[1, 2], [3, 4]]`.
 - Feature-test macro: `__cpp_lib_format_ranges >= 202207L`.

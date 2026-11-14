@@ -66,7 +66,7 @@ int main() {
     std::cout << "Temperature std dev: " << temp_std_dev << '\n';
 }
 // Expected output:
-// Temperature std dev: 0.787274
+// Temperature std dev: 0.806474
 ```
 
 `standard_deviation`, `measurements`, `mean`, `deviation`, `variance` - you can read the good version like a textbook definition of standard deviation. The bad version makes you reverse-engineer the algorithm from its cryptic variable names.
@@ -208,8 +208,8 @@ int main() {
     std::cout << format_report(report) << '\n';
 }
 // Expected output:
-// Revenue: $3247
-// Best seller: Widget A
+// Revenue: $3246.5
+// Best seller: Gadget B
 // Items sold: 350
 ```
 

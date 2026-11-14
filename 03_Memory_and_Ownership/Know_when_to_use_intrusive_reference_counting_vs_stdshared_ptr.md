@@ -294,6 +294,7 @@ Notice that creating `p4` from a raw pointer safely incremented the count. That 
 
 The C API interop case is the most compelling. Here is why `shared_ptr` fails in that scenario and `intrusive_ptr` succeeds:
 
+<!-- compile: fragment: uses RefCounted and intrusive_ptr from Q2 -->
 ```cpp
 #include <iostream>
 #include <memory>

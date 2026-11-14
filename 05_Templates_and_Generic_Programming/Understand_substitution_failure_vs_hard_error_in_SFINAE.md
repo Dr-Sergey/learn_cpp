@@ -131,9 +131,15 @@ Using `decltype` in the trailing return type is the most common way to make a ch
 
 // === decltype in IMMEDIATE context -> SFINAE-friendly ===
 
+// SFINAE only REMOVES candidates; it does not rank the survivors. When the
+// "has .size()" overload stays viable it would tie with an unconstrained
+// fallback and the call would be ambiguous. The extra int/long parameter
+// breaks the tie: passing 0 prefers int (exact match) over long (conversion),
+// so the fallback is chosen only when the preferred overload is gone.
+
 // Trailing return type with decltype - in immediate context
 template <typename T>
-auto get_size(const T& c) -> decltype(c.size()) {
+auto get_size_impl(const T& c, int) -> decltype(c.size()) {
     // If T has no .size(), decltype(c.size()) is invalid
     // This is in IMMEDIATE context -> SFINAE (overload removed)
     return c.size();
@@ -141,15 +147,18 @@ auto get_size(const T& c) -> decltype(c.size()) {
 
 // Fallback
 template <typename T>
-int get_size(const T&) {
+int get_size_impl(const T&, long) {
     return -1;  // No size available
 }
 
-// === sizeof in immediate context -> also SFINAE-friendly ===
-
-// Check if T has a .data() member via decltype in enable_if
 template <typename T>
-auto has_data_check(const T& c)
+auto get_size(const T& c) { return get_size_impl(c, 0); }
+
+// === A second expression in decltype -> also SFINAE-friendly ===
+
+// Check if T has a .data() member via decltype
+template <typename T>
+auto has_data_check_impl(const T& c, int)
     -> decltype(c.data(), bool{})  // Comma operator: check c.data(), return bool
 {
     std::cout << "  has .data(): pointer = " << static_cast<const void*>(c.data()) << "\n";
@@ -157,23 +166,29 @@ auto has_data_check(const T& c)
 }
 
 template <typename T>
-bool has_data_check(const T&) {
+bool has_data_check_impl(const T&, long) {
     std::cout << "  no .data()\n";
     return false;
 }
 
+template <typename T>
+bool has_data_check(const T& c) { return has_data_check_impl(c, 0); }
+
 // === Multiple expressions in decltype (all must be valid) ===
 template <typename T>
-auto full_container_check(const T& c)
+auto full_container_check_impl(const T& c, int)
     -> decltype(c.size(), c.begin(), c.end(), c.empty(), std::string{})
 {
     return "full container interface";
 }
 
 template <typename T>
-std::string full_container_check(const T&) {
+std::string full_container_check_impl(const T&, long) {
     return "not a full container";
 }
+
+template <typename T>
+std::string full_container_check(const T& c) { return full_container_check_impl(c, 0); }
 
 int main() {
     std::cout << "=== decltype SFINAE (immediate context) ===\n\n";
@@ -199,7 +214,9 @@ int main() {
 }
 ```
 
-The comma-operator trick in `decltype(c.data(), bool{})` is worth noting: the comma operator evaluates both operands, so the `decltype` checks that `c.data()` is valid and then yields the type of `bool{}` as the actual return type.
+The comma-operator trick in `decltype(c.data(), bool{})` is worth noting: every operand has to be a valid expression, so the `decltype` checks that `c.data()` is well-formed and then yields the type of the last operand, `bool{}`, as the actual return type. Nothing is evaluated - `decltype` is an unevaluated context.
+
+The `int`/`long` tag is the other half of the idiom. Without it both overloads are viable for a `std::vector`, neither is more specialized, and the call is ambiguous.
 
 ### Q3: Explain the immediate context rule and why it matters for SFINAE robustness
 

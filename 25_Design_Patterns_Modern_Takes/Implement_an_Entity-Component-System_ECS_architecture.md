@@ -286,9 +286,9 @@ int main() {
 **Output:**
 
 ```text
-Frame 0: ball at (0.0833, 99.9973)
-Frame 1: ball at (0.1667, 99.9891)
-Frame 2: ball at (0.25, 99.9755)
+Frame 0: ball at (0.0833333, 99.9973)
+Frame 1: ball at (0.166667, 99.9918)
+Frame 2: ball at (0.25, 99.9837)
 ```
 
 ---

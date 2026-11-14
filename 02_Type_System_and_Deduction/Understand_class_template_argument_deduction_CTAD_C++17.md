@@ -226,9 +226,13 @@ class Holder {
     T value_;
 public:
     Holder(const T& v) : value_(v) {}
+
+    const T& get() const { return value_; }
 };
 
-// Without guide: Holder h("text") -> Holder<const char*> (array decays to pointer)
+// Without guide: Holder h("text") -> Holder<char[5]>. A reference parameter
+// does not decay the array, and an array member cannot be copy-initialized,
+// so the program does not even compile.
 // With guide:
 Holder(const char*) -> Holder<std::string>;
 

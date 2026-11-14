@@ -253,6 +253,7 @@ For most production code, virtual interfaces are fine - the vtable overhead is n
 
 Here is the full picture: production implementations, the composition root that wires them together, and a reminder of how the same business logic class is used in tests with mocks.
 
+<!-- compile: fragment: uses the interfaces defined in the earlier listings -->
 ```cpp
 #include <memory>
 #include <iostream>

@@ -59,6 +59,7 @@ Program End
 
 The `ComInitializer` struct below is the standard RAII approach. When it goes out of scope, the destructor automatically calls `CoUninitialize` if initialization succeeded - so you can never forget it. After that, notice how `ComPtr<IShellItem>` handles the `Release` call automatically when the function returns.
 
+<!-- compile: needs the Windows SDK COM libraries (link with ole32.lib) -->
 ```cpp
 #include <windows.h>
 #include <wrl/client.h>

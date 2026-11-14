@@ -180,6 +180,8 @@ The reason this is a code smell is subtle: if you catch an `out_of_range` and co
 #include <string>
 #include <cassert>
 
+void process(int value) { (void)value; }  // stand-in for real work
+
 // BAD: Catching logic_error to "handle" a bug
 void bad_design(const std::vector<int>& data) {
     try {
@@ -296,7 +298,9 @@ public:
     bool is_client_error() const noexcept { return status_code_ >= 400 && status_code_ < 500; }
     bool is_server_error() const noexcept { return status_code_ >= 500; }
     bool is_retryable() const noexcept {
-        return status_code_ == 429 || status_code_ == 503 || status_code_ == 502;
+        // Request Timeout, Too Many Requests, Bad Gateway, Service Unavailable, Gateway Timeout
+        return status_code_ == 408 || status_code_ == 429 ||
+               status_code_ == 502 || status_code_ == 503 || status_code_ == 504;
     }
 };
 

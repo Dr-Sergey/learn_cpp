@@ -143,8 +143,11 @@ This is the more powerful version of the trick. Instead of using a global arena,
 
 ```cpp
 #include <coroutine>
+#include <cstddef>
 #include <cstdio>
+#include <exception>
 #include <memory_resource>
+#include <new>
 #include <utility>
 
 template <typename T>
@@ -152,7 +155,12 @@ class Task {
 public:
     struct promise_type {
         T value{};
-        std::pmr::memory_resource* mr = nullptr;
+
+        // Each block is laid out as  [ memory_resource* | coroutine frame ].
+        // The header is one max-alignment unit, so the frame behind it stays
+        // correctly aligned.
+        static constexpr std::size_t header = alignof(std::max_align_t);
+        static_assert(header >= sizeof(std::pmr::memory_resource*));
 
         // Overload 1: receives coroutine parameters
         // The compiler forwards ALL coroutine args after size_t
@@ -160,18 +168,19 @@ public:
                                    std::pmr::memory_resource* resource,
                                    auto&&... /* remaining args */) {
             std::printf("  pmr alloc: %zu bytes\n", size);
-            return resource->allocate(size, alignof(std::max_align_t));
+            void* block = resource->allocate(size + header, alignof(std::max_align_t));
+            ::new (block) std::pmr::memory_resource*(resource);  // remember the owner
+            return static_cast<std::byte*>(block) + header;
         }
 
-        // Matching delete must accept the same extra params
-        // But standard only requires (void*, size_t) — resource is lost.
-        // Solution: stash resource pointer at a known offset.
+        // operator delete is only ever given (void*, size_t): the resource
+        // argument is gone by then. A block must go back to the resource it
+        // came from, so read the pointer we stashed in front of the frame.
         static void operator delete(void* ptr, std::size_t size) {
-            // In production: retrieve resource from a header before the frame
-            std::printf("  pmr dealloc: %zu bytes (fallback)\n", size);
-            // For demonstration, use default delete
-            std::pmr::get_default_resource()->deallocate(ptr, size,
-                                                          alignof(std::max_align_t));
+            void* block = static_cast<std::byte*>(ptr) - header;
+            auto* resource = *static_cast<std::pmr::memory_resource**>(block);
+            std::printf("  pmr dealloc: %zu bytes\n", size);
+            resource->deallocate(block, size + header, alignof(std::max_align_t));
         }
 
         Task get_return_object() {

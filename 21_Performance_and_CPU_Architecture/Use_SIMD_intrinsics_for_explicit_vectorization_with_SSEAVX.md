@@ -36,11 +36,13 @@ The latency is the same - the CPU still needs 4 cycles to produce the result. Bu
 
 A dot product is the classic SIMD example because it has a simple memory access pattern (sequential), pure arithmetic work, and a well-understood scalar baseline. Here both versions compute the same result; the benchmark shows you the actual speedup on your hardware.
 
+<!-- compile: flags -mavx2 -mfma -->
 ```cpp
 #include <iostream>
 #include <vector>
 #include <chrono>
 #include <immintrin.h>
+#include <new>
 #include <cstdlib>
 
 // Scalar dot product
@@ -79,8 +81,8 @@ float dot_avx2(const float* a, const float* b, int n) {
 
 int main() {
     constexpr int N = 10'000'000;
-    float* a = static_cast<float*>(std::aligned_alloc(32, N * sizeof(float)));
-    float* b = static_cast<float*>(std::aligned_alloc(32, N * sizeof(float)));
+    float* a = static_cast<float*>(::operator new(N * sizeof(float), std::align_val_t{32}));
+    float* b = static_cast<float*>(::operator new(N * sizeof(float), std::align_val_t{32}));
     for (int i = 0; i < N; ++i) { a[i] = 1.0f; b[i] = 2.0f; }
 
     auto bench = [&](auto fn, const char* label) {
@@ -97,7 +99,7 @@ int main() {
     // Scalar: ~800ms, AVX2: ~120ms (6-7x speedup)
     // Not full 8x due to memory bandwidth limit
 
-    std::free(a); std::free(b);
+    ::operator delete(a, std::align_val_t{32}); ::operator delete(b, std::align_val_t{32});
 }
 // Compile: g++ -O2 -mavx2 -mfma -o dot dot.cpp
 ```
@@ -108,6 +110,7 @@ The speedup is close to but not quite 8x. The reason is memory bandwidth: at 10 
 
 The intrinsic naming convention looks intimidating at first but it follows a consistent pattern. Once you know the pattern, you can look at any intrinsic name and know exactly what it does without consulting the manual.
 
+<!-- compile: flags -mavx2 -mfma -->
 ```cpp
 #include <iostream>
 #include <immintrin.h>
@@ -159,6 +162,7 @@ One trap worth highlighting: `_mm256_set_ps` takes its arguments in **reverse la
 
 AVX2 processes 8 floats per iteration. Real arrays almost never have lengths that are exact multiples of 8. There are three standard ways to handle the remainder, each with its own tradeoffs.
 
+<!-- compile: flags -mavx2 -mfma -->
 ```cpp
 #include <iostream>
 #include <immintrin.h>

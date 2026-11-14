@@ -334,6 +334,7 @@ The reason the identity check uses `static_cast<IPersistable*>(this)` for `IID_I
 
 The apartment model is one of the more counterintuitive parts of COM. The key insight is that COM objects are not just code - they carry a threading contract. An STA object promises "I will only be called on the thread that created me." An MTA object promises "I am fully thread-safe." COM enforces these contracts automatically by inserting proxy/stub pairs between apartments that marshal calls through a hidden message loop.
 
+<!-- compile: needs the Windows SDK COM libraries (link with ole32.lib) -->
 ```cpp
 #ifdef _WIN32
 #include <windows.h>

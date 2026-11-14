@@ -54,6 +54,7 @@ The key insight is that `join` is **never** random-access, because the inner ran
 This is the most common use case. A 2D structure becomes a 1D stream of elements, lazily, with no intermediate flat vector allocated.
 
 ```cpp
+#include <algorithm>
 #include <iostream>
 #include <ranges>
 #include <vector>
@@ -185,6 +186,7 @@ Even if every inner range had the same known size, the standard does not provide
 
 ```cpp
 #include <concepts>
+#include <forward_list>
 #include <iostream>
 #include <ranges>
 #include <vector>
@@ -204,18 +206,26 @@ int main() {
     std::cout << "vector<vector<int>> | join = bidirectional (not random_access)\n";
 
     // With forward-only inner ranges, join is forward
+    std::vector<std::forward_list<int>> vf = {{1, 2}, {3}};
+    auto joined_fwd = vf | std::views::join;
+    static_assert(std::ranges::forward_range<decltype(joined_fwd)>);
+    static_assert(!std::ranges::bidirectional_range<decltype(joined_fwd)>);
+    std::cout << "vector<forward_list<int>> | join = forward only\n";
+
+    // When the outer range hands out TEMPORARY inner ranges, join is input-only
     auto split_result = std::string_view("a,b,c") | std::views::split(',');
     auto flat = split_result | std::views::join;
-    static_assert(std::ranges::forward_range<decltype(flat)>);
-    static_assert(!std::ranges::bidirectional_range<decltype(flat)>);
-    std::cout << "split | join = forward only\n";
+    static_assert(std::ranges::input_range<decltype(flat)>);
+    static_assert(!std::ranges::forward_range<decltype(flat)>);
+    std::cout << "split | join = input only (single pass)\n";
 }
 // Expected output:
 // vector<vector<int>> | join = bidirectional (not random_access)
-// split | join = forward only
+// vector<forward_list<int>> | join = forward only
+// split | join = input only (single pass)
 ```
 
-The `split | join` result being only forward (not bidirectional) is because `split_view`'s inner ranges are themselves only forward.
+The `split | join` case is the surprising one. Each element `split_view` produces is a freshly made subrange - a temporary, not a reference to something stored. `join_view` has to keep that temporary alive inside itself while it walks it, so two iterators can no longer traverse independently, and the result drops all the way to a single-pass input range.
 
 **Category downgrade summary:**
 

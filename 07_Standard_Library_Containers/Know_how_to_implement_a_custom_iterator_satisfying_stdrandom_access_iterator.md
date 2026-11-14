@@ -320,7 +320,10 @@ static_assert(std::input_iterator<MyIterator>);
 static_assert(std::forward_iterator<MyIterator>);
 static_assert(std::bidirectional_iterator<MyIterator>);
 static_assert(std::random_access_iterator<MyIterator>);
-static_assert(std::contiguous_iterator<MyIterator>);  // Also contiguous (wraps raw pointer)
+// NOT contiguous, even though it wraps a raw pointer. Contiguity cannot be
+// detected from the operations alone; an iterator has to opt in by declaring
+// iterator_concept = std::contiguous_iterator_tag.
+static_assert(!std::contiguous_iterator<MyIterator>);
 
 // Verify associated types
 static_assert(std::same_as<std::iter_value_t<MyIterator>, int>);

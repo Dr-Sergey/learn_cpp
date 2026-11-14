@@ -51,12 +51,12 @@ public:
 
 // Extend with efficient swap WITHOUT changing ThirdPartyWidget
 void swap(ThirdPartyWidget& a, ThirdPartyWidget& b) noexcept {
-    // Use the class's public interface to swap
-    ThirdPartyWidget tmp(0);
-    std::memcpy(tmp.data(), a.data(), sizeof(double) * 100);
-    std::memcpy(a.data(), b.data(), sizeof(double) * 100);
-    std::memcpy(b.data(), tmp.data(), sizeof(double) * 100);
     std::cout << "Custom swap called for widgets " << a.id() << " and " << b.id() << '\n';
+    // A swap must exchange the COMPLETE state of both objects (id included),
+    // and it can only use what the class makes public - here, copying.
+    ThirdPartyWidget tmp = a;
+    a = b;
+    b = tmp;
 }
 
 // ADL finds our swap:

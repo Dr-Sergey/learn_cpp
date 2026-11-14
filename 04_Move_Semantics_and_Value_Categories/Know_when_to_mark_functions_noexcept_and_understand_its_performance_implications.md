@@ -209,23 +209,25 @@ The implication for struct `E` is important: even though `A`'s move is fine, add
 
 ### Q3: Show that calling a `noexcept` function that throws invokes `std::terminate`
 
-This is one of those "trust but verify" situations. The `noexcept` contract is enforced at runtime - if you break it, the program terminates immediately without any unwinding.
+This is one of those "trust but verify" situations. The `noexcept` contract is enforced at runtime - if an exception tries to escape, `std::terminate` is called and no enclosing `catch` ever sees it. Whether any of the stack is unwound first is implementation-defined, so do not count on destructors running.
 
+<!-- compile: norun: ends in std::terminate on purpose -->
 ```cpp
 #include <iostream>
 #include <exception>
+#include <stdexcept>
 #include <cstdlib>
 
 // Custom terminate handler to prove it's called
 void my_terminate() {
     std::cout << "  *** std::terminate called! ***\n";
-    std::cout << "  No stack unwinding occurred.\n";
-    std::cout << "  No catch blocks were checked.\n";
-    std::abort();  // Must terminate the program
+    std::cout << "  No catch block was entered.\n";
+    std::cout << std::flush;  // std::abort() does not flush stream buffers
+    std::abort();             // A terminate handler must not return
 }
 
-// A noexcept function that THROWS - this is undefined-ish behavior
-// The standard says: std::terminate is called
+// A noexcept function that THROWS. This is not undefined behavior:
+// the standard says std::terminate is called.
 void dangerous() noexcept {
     std::cout << "  In dangerous() - about to throw...\n";
     throw std::runtime_error("oops");
@@ -261,12 +263,12 @@ int main() {
 //   Inside try block, calling dangerous()...
 //   In dangerous() - about to throw...
 //   *** std::terminate called! ***
-//   No stack unwinding occurred.
-//   No catch blocks were checked.
+//   No catch block was entered.
 //   (program aborted)
 //
 // KEY: The exception does NOT propagate to any catch block.
-// std::terminate is called before unwinding begins.
+// Whether the stack is partly unwound before std::terminate runs is
+// implementation-defined, so destructors of locals may or may not run.
 ```
 
 This is why you must not mark functions `noexcept` speculatively. If there is any code path that could throw, the `noexcept` promise is a lie waiting to terminate your program.

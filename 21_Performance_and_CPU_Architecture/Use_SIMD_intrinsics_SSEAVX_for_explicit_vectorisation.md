@@ -38,9 +38,11 @@ Modern (Haswell+): unaligned is nearly free (0-1 cycle penalty)
 
 Using a single accumulator for a dot product leaves performance on the table. FMA has a latency of 4 cycles, meaning the CPU has to wait 4 cycles before the result of one FMA is ready to feed into the next one. With four independent accumulators, you can keep four FMAs in flight at once, hiding that latency and fully utilizing both FMA execution ports.
 
+<!-- compile: flags -mavx2 -mfma -->
 ```cpp
 #include <iostream>
 #include <immintrin.h>
+#include <new>
 #include <chrono>
 #include <cstdlib>
 
@@ -79,8 +81,8 @@ float dot_4acc(const float* a, const float* b, int n) {
 
 int main() {
     constexpr int N = 10'000'000;
-    float* a = static_cast<float*>(std::aligned_alloc(32, N * sizeof(float)));
-    float* b = static_cast<float*>(std::aligned_alloc(32, N * sizeof(float)));
+    float* a = static_cast<float*>(::operator new(N * sizeof(float), std::align_val_t{32}));
+    float* b = static_cast<float*>(::operator new(N * sizeof(float), std::align_val_t{32}));
     for (int i = 0; i < N; ++i) { a[i] = 0.1f; b[i] = 0.2f; }
 
     auto t0 = std::chrono::high_resolution_clock::now();
@@ -90,7 +92,7 @@ int main() {
     auto ms = std::chrono::duration_cast<std::chrono::milliseconds>(t1 - t0);
     std::cout << "4-acc AVX2: " << ms.count() << " ms\n";  // ~100ms
     std::cout << "Result: " << r << '\n';  // ~200000
-    std::free(a); std::free(b);
+    ::operator delete(a, std::align_val_t{32}); ::operator delete(b, std::align_val_t{32});
 }
 ```
 
@@ -100,9 +102,11 @@ After the main loop, the four accumulators are merged with a tree of adds, then 
 
 This example lets you measure the difference empirically on your own machine. The reason to still prefer aligned allocations is not mainly the load speed - it's correctness: `_mm256_load_ps` will crash at runtime on a misaligned pointer, so if you're using aligned loads you can catch alignment bugs immediately rather than silently getting slightly wrong behavior.
 
+<!-- compile: flags -mavx2 -mfma -->
 ```cpp
 #include <iostream>
 #include <immintrin.h>
+#include <new>
 #include <chrono>
 #include <cstdlib>
 #include <vector>
@@ -128,9 +132,9 @@ void add_unaligned(float* __restrict c, const float* __restrict a,
 int main() {
     constexpr int N = 1024 * 1024 * 8;  // 32 MB
     // 32-byte aligned allocation
-    float* a = static_cast<float*>(std::aligned_alloc(32, N * sizeof(float)));
-    float* b = static_cast<float*>(std::aligned_alloc(32, N * sizeof(float)));
-    float* c = static_cast<float*>(std::aligned_alloc(32, N * sizeof(float)));
+    float* a = static_cast<float*>(::operator new(N * sizeof(float), std::align_val_t{32}));
+    float* b = static_cast<float*>(::operator new(N * sizeof(float), std::align_val_t{32}));
+    float* c = static_cast<float*>(::operator new(N * sizeof(float), std::align_val_t{32}));
 
     auto bench = [&](auto fn, const char* label) {
         auto t0 = std::chrono::high_resolution_clock::now();
@@ -150,7 +154,7 @@ int main() {
     //   - Page splits (address crosses 4KB boundary) -> ~100 cycle penalty
     //   - AVX-512: aligned access avoids micro-op split
 
-    std::free(a); std::free(b); std::free(c);
+    ::operator delete(a, std::align_val_t{32}); ::operator delete(b, std::align_val_t{32}); ::operator delete(c, std::align_val_t{32});
 }
 ```
 
@@ -243,6 +247,6 @@ The scalar fallback lets you develop and test on any machine, then compile with 
 
 - For production portable SIMD: use Highway library or `std::experimental::simd` instead of raw `#ifdef`.
 - Multiple accumulators (4+) are essential to saturate FMA throughput (latency hiding).
-- `std::aligned_alloc(32, size)` for AVX2, `std::aligned_alloc(64, size)` for AVX-512.
+- Allocate with 32-byte alignment for AVX2 and 64-byte for AVX-512: aligned `operator new` is portable, `std::aligned_alloc` is unavailable on Windows.
 - `_mm256_stream_ps` for write-only buffers (non-temporal, bypasses cache).
 - Check CPU support at runtime with `__builtin_cpu_supports("avx2")` (see #725).

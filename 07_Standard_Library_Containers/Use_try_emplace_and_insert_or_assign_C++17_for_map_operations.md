@@ -288,9 +288,10 @@ int main() {
 
     std::cout << "=== First access (cache miss) ===\n";
     std::cout << "get(5) = " << cache.get_lazy(5) << "\n";
-    // Output:
-    // [COMPUTING] result for key 5...
-    // get(5) = result_25
+    // Output (the label is streamed before get_lazy runs - C++17 evaluates
+    // the operands of << left to right):
+    // get(5) =   [COMPUTING] result for key 5...
+    // result_25
 
     std::cout << "\n=== Second access (cache hit) ===\n";
     std::cout << "get(5) = " << cache.get_lazy(5) << "\n";
@@ -301,8 +302,8 @@ int main() {
     std::cout << "\n=== New key (cache miss) ===\n";
     std::cout << "get(3) = " << cache.get_lazy(3) << "\n";
     // Output:
-    // [COMPUTING] result for key 3...
-    // get(3) = result_9
+    // get(3) =   [COMPUTING] result for key 3...
+    // result_9
 
     std::cout << "\nCache size: " << cache.size() << "\n";  // 2
 

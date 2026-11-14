@@ -266,10 +266,11 @@ void benchmark_size(int N) {
     std::map<int, int> m;
     FlatMap<int, int> fm;
     fm.reserve(N);
-    for (int k : keys) {
-        m[k] = k;
-        fm.sorted_insert(k, k);
-    }
+    for (int k : keys) m[k] = k;
+    // Fill the flat map in ascending key order so that every insert appends
+    // at the end. Inserting in random order would shift half the array each
+    // time - O(N^2) work that takes minutes at the larger sizes below.
+    for (int k = 0; k < N; ++k) fm.sorted_insert(k, k);
 
     constexpr int REPS = 10;
     int lookups = std::max(100'000, N * 10);

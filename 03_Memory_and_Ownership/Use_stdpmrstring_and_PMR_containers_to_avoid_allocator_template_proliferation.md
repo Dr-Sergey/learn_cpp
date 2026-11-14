@@ -181,7 +181,9 @@ std::pmr::vector<std::pmr::string> build_data(
 {
     std::pmr::vector<std::pmr::string> result(alloc);
     for (int i = 0; i < n; ++i) {
-        result.emplace_back("item_" + std::to_string(i), alloc);
+        // No allocator argument: the pmr vector supplies its own allocator to
+        // every element it constructs (uses-allocator construction)
+        result.emplace_back("item_" + std::to_string(i));
     }
     return result;
 }

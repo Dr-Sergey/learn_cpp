@@ -24,12 +24,12 @@ Here is how you use reflection to generate a `CREATE TABLE` SQL statement direct
 template<typename T>
 consteval std::string generate_create_table() {
     std::string sql = "CREATE TABLE ";
-    sql += std::meta::identifier_of(^T);
+    sql += std::meta::identifier_of(^^T);
     sql += " (";
 
     bool first = true;
     template for (constexpr auto m :
-                  std::meta::nonstatic_data_members_of(^T)) {
+                  std::define_static_array(std::meta::nonstatic_data_members_of(^^T, std::meta::access_context::current()))) {
         if (!first) sql += ", ";
         sql += std::meta::identifier_of(m);
         sql += " ";
@@ -72,13 +72,13 @@ For runtime values you need a runtime function, but the field enumeration still 
 template<typename T>
 std::string generate_insert(const T& obj) {
     std::string sql = "INSERT INTO ";
-    sql += std::meta::identifier_of(^T);
+    sql += std::meta::identifier_of(^^T);
     sql += " (";
 
     // Column names
     bool first = true;
     template for (constexpr auto m :
-                  std::meta::nonstatic_data_members_of(^T)) {
+                  std::define_static_array(std::meta::nonstatic_data_members_of(^^T, std::meta::access_context::current()))) {
         if (!first) sql += ", ";
         sql += std::meta::identifier_of(m);
         first = false;
@@ -89,7 +89,7 @@ std::string generate_insert(const T& obj) {
     // Values
     first = true;
     template for (constexpr auto m :
-                  std::meta::nonstatic_data_members_of(^T)) {
+                  std::define_static_array(std::meta::nonstatic_data_members_of(^^T, std::meta::access_context::current()))) {
         if (!first) sql += ", ";
         sql += to_sql_value(obj.[:m:]);
         first = false;
@@ -133,7 +133,7 @@ struct query_builder {
     std::string build() const {
         std::string sql = std::format("SELECT {} FROM {}",
             select_clause_,
-            std::meta::identifier_of(^T));
+            std::meta::identifier_of(^^T));
         if (!where_clause_.empty())
             sql += " WHERE " + where_clause_;
         return sql + ";";
@@ -142,12 +142,12 @@ struct query_builder {
 
 // Usage:
 auto q = query_builder<User>{}
-    .where_eq<^User::age>(30)
+    .where_eq<^^User::age>(30)
     .build();
 // "SELECT * FROM User WHERE age = 30;"
 ```
 
-The `typename [:std::meta::type_of(MemberPtr):]` in the parameter type is doing a lot of work: it reflects the member pointer to get the member's type, then splices that type back as the parameter type. So `.where_eq<^User::age>(30)` works, but `.where_eq<^User::name>(30)` would be a compile error because `name` is a `std::string`, not an `int`.
+The `typename [:std::meta::type_of(MemberPtr):]` in the parameter type is doing a lot of work: it reflects the member pointer to get the member's type, then splices that type back as the parameter type. So `.where_eq<^^User::age>(30)` works, but `.where_eq<^^User::name>(30)` would be a compile error because `name` is a `std::string`, not an `int`.
 
 ### Mapping Query Results Back to Structs
 
@@ -159,7 +159,7 @@ T row_to_struct(const sql::Row& row) {
     T obj;
     int col = 0;
     template for (constexpr auto m :
-                  std::meta::nonstatic_data_members_of(^T)) {
+                  std::define_static_array(std::meta::nonstatic_data_members_of(^^T, std::meta::access_context::current()))) {
         using MemberType = typename [:std::meta::type_of(m):];
         obj.[:m:] = row.get<MemberType>(col++);
     }
@@ -204,10 +204,10 @@ In production, always use **parameterized queries** - generate the SQL structure
 ```cpp
 template<typename T>
 auto generate_parameterized_insert() {
-    std::string sql = "INSERT INTO " + std::string(std::meta::identifier_of(^T)) + " (";
+    std::string sql = "INSERT INTO " + std::string(std::meta::identifier_of(^^T)) + " (";
     // ... column names ...
     sql += ") VALUES (";
-    int n = std::meta::nonstatic_data_members_of(^T).size();
+    int n = std::meta::nonstatic_data_members_of(^^T, std::meta::access_context::current()).size();
     for (int i = 0; i < n; ++i) {
         if (i > 0) sql += ", ";
         sql += "?";  // parameterized placeholder

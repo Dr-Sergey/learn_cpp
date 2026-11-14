@@ -95,8 +95,10 @@ int main() {
     std::cout << "Relative:    " << rel << "\n";
 
     // Demonstrate preferred_separator
+    // preferred_separator is a path::value_type: char on POSIX but wchar_t on
+    // Windows, which std::cout refuses to print - so narrow it explicitly.
     std::cout << "Preferred separator: '"
-              << fs::path::preferred_separator << "'\n";
+              << static_cast<char>(fs::path::preferred_separator) << "'\n";
     return 0;
 }
 ```

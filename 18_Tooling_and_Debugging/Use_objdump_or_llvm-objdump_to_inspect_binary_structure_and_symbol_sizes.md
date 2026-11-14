@@ -110,9 +110,13 @@ Templates are one of the most powerful features in C++, but they come with a cos
 
 // Each unique type creates a new instantiation:
 template<typename T>
-void process(T& container) {
-    for (auto& x : container)
-        x = {};
+std::size_t process(const T& container) {
+    std::size_t n = 0;
+    for (const auto& x : container) {
+        (void)x;
+        ++n;
+    }
+    return n;
 }
 
 int main() {

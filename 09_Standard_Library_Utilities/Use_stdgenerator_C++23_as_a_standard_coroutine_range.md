@@ -235,6 +235,8 @@ This is one of those things that trips people up when they first meet coroutines
 
 The code below shows the concrete consequence: iterating partway through a generator advances its internal state, and you cannot go back.
 
+It also shows a detail that surprises people: a named generator cannot be piped into an adaptor directly. `gen | std::views::take(3)` does not compile, because a pipeline must either copy its source view (a generator is move-only) or take ownership of it (which needs an rvalue). Either hand it over with `std::move(gen)`, or lend it with `std::ranges::ref_view(gen)` as below.
+
 ```cpp
 #include <generator>
 #include <iostream>
@@ -247,8 +249,9 @@ std::generator<int> counting() {
 int main() {
     auto gen = counting();
 
-    // First iteration: consumes some values
-    for (int val : gen | std::views::take(3)) {
+    // First iteration: consumes some values.
+    // ref_view lends the generator to the pipeline without moving it.
+    for (int val : std::ranges::ref_view(gen) | std::views::take(3)) {
         std::cout << val << " ";
     }
     std::cout << "\n";
@@ -262,7 +265,7 @@ int main() {
 
     // Solution: create a new generator
     auto gen2 = counting();
-    for (int val : gen2 | std::views::take(3)) {
+    for (int val : std::move(gen2) | std::views::take(3)) {  // or give it away entirely
         std::cout << val << " ";
     }
     std::cout << "\n";

@@ -1,14 +1,14 @@
 # Use reflection for enum-to-string conversion without macros
 
 **Category:** Reflection Cpp26  
-**Standard:** C++17  
-**Reference:** <https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2024/p2996r5.html>  
+**Standard:** C++26  
+**Reference:** <https://wg21.link/P2996>  
 
 ---
 
 ## Topic Overview
 
-Before C++26, getting the string name of an enum value meant either writing a switch statement by hand, reaching for a macro trick, or depending on a library like `magic_enum`. All three options have real drawbacks. C++26 reflection changes this completely: `enumerators_of(^E)` gives you every enumerator of the enum at compile time, and `identifier_of` turns each one into its source-code name as a `string_view`. A single generic function covers every enum you will ever write, with no macros and no external dependencies.
+Before C++26, getting the string name of an enum value meant either writing a switch statement by hand, reaching for a macro trick, or depending on a library like `magic_enum`. All three options have real drawbacks. C++26 reflection changes this completely: `enumerators_of(^^E)` gives you every enumerator of the enum at compile time, and `identifier_of` turns each one into its source-code name as a `string_view`. A single generic function covers every enum you will ever write, with no macros and no external dependencies.
 
 Here is how the approaches compare:
 
@@ -39,7 +39,8 @@ This is the foundation everything else builds on. `enumerators_of` hands you a c
 enum class Weekday { Mon, Tue, Wed, Thu, Fri, Sat, Sun };
 
 int main() {
-    constexpr auto enumerators = std::meta::enumerators_of(^Weekday);
+    static constexpr auto enumerators = std::define_static_array(
+        std::meta::enumerators_of(^^Weekday));
     static_assert(enumerators.size() == 7);
 
     std::cout << "Weekday enumerators:\n";
@@ -60,7 +61,8 @@ int main() {
 
     // Works with sparse enums too:
     enum class HttpCode { OK = 200, NotFound = 404, Error = 500 };
-    template for (constexpr auto e : std::meta::enumerators_of(^HttpCode)) {
+    template for (constexpr auto e : std::define_static_array(
+            std::meta::enumerators_of(^^HttpCode))) {
         std::cout << std::meta::identifier_of(e) << " = "
                   << static_cast<int>([:e:]) << '\n';
     }
@@ -85,7 +87,7 @@ enum class Priority { Low = 1, Medium = 5, High = 10, Critical = 100 };
 // Generic enum_to_string - works for ANY enum:
 template <typename E>
 constexpr std::string_view to_string(E value) {
-    template for (constexpr auto e : std::meta::enumerators_of(^E)) {
+    template for (constexpr auto e : std::define_static_array(std::meta::enumerators_of(^^E))) {
         if (value == [:e:]) {
             return std::meta::identifier_of(e);
         }
@@ -101,7 +103,7 @@ static_assert(to_string(Priority::Critical) == "Critical");
 // Also: from_string:
 template <typename E>
 constexpr std::optional<E> from_string(std::string_view name) {
-    template for (constexpr auto e : std::meta::enumerators_of(^E)) {
+    template for (constexpr auto e : std::define_static_array(std::meta::enumerators_of(^^E))) {
         if (name == std::meta::identifier_of(e)) return [:e:];
     }
     return std::nullopt;
@@ -147,7 +149,7 @@ enum class Color { Red, Green, Blue, Alpha };
 // ===== C++26 reflection approach =====
 template <typename E>
 constexpr std::string_view to_string(E value) {
-    template for (constexpr auto e : std::meta::enumerators_of(^E)) {
+    template for (constexpr auto e : std::define_static_array(std::meta::enumerators_of(^^E))) {
         if (value == [:e:]) return std::meta::identifier_of(e);
     }
     return "<unknown>";

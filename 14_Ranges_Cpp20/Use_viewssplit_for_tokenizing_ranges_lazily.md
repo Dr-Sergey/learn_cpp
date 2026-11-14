@@ -182,7 +182,7 @@ int main() {
 // ",a,b" split by ',': [][a][b] (3 parts)
 // "a,b," split by ',': [a][b][] (3 parts)
 // "," split by ',': [][] (2 parts)
-// "" split by ',': [] (1 parts)
+// "" split by ',':  (0 parts)
 // ",," split by ',': [][][] (3 parts)
 // "abc" split by ',': [abc] (1 parts)
 ```
@@ -191,7 +191,7 @@ The key observations are:
 
 - **Delimiter at start** produces an **empty first token**: `",a,b"` -> `["", "a", "b"]`.
 - **Delimiter at end** produces an **empty last token**: `"a,b,"` -> `["a", "b", ""]`.
-- **Empty string** produces **one empty token** (the whole empty range).
+- **Empty string** produces **no tokens at all** - an empty input range gives an empty range of parts. (This differs from Python's `"".split(",")`, which returns one empty string.)
 - **Consecutive delimiters** produce **empty tokens** between them: `",,"` -> `["", "", ""]`.
 - This matches the behavior of Python's `str.split(',')` (not `str.split()` which collapses whitespace).
 

@@ -41,10 +41,12 @@ The table below summarizes the trade-offs. The most important thing to notice is
 
 Here you can see three variants side by side: the normal fill, the SSE non-temporal fill, and the AVX2 version. The key pattern is always the same: use the streaming store intrinsic in the main loop, handle the leftover elements with a scalar loop, then call `_mm_sfence()`.
 
+<!-- compile: flags -mavx2 -->
 ```cpp
 #include <iostream>
 #include <chrono>
 #include <immintrin.h>  // SSE/AVX intrinsics
+#include <new>
 #include <cstring>
 #include <cstdlib>
 
@@ -86,7 +88,8 @@ void nt_fill_avx2(int* data, int val, size_t count) {
 int main() {
     constexpr size_t N = 256 * 1024 * 1024 / sizeof(int); // 256 MB
     // Must be 32-byte aligned for AVX2 streaming stores
-    int* data = static_cast<int*>(std::aligned_alloc(32, N * sizeof(int)));
+    // Aligned operator new is portable; std::aligned_alloc does not exist on Windows.
+    int* data = static_cast<int*>(::operator new(N * sizeof(int), std::align_val_t{32}));
 
     auto bench = [&](auto fn, const char* label) {
         auto t0 = std::chrono::high_resolution_clock::now();
@@ -105,7 +108,7 @@ int main() {
     //   NT SSE4: ~130ms (20 GB/s)
     //   NT AVX2: ~125ms (21 GB/s)
 
-    std::free(data);
+    ::operator delete(data, std::align_val_t{32});
 }
 ```
 
@@ -120,6 +123,7 @@ This example illustrates an often-overlooked benefit of non-temporal stores: kee
 #include <vector>
 #include <chrono>
 #include <immintrin.h>
+#include <new>
 
 // Scenario: process hot data in a loop, then write results to output buffer.
 // If output buffer pollutes cache, hot data gets evicted!
@@ -152,7 +156,7 @@ int main() {
     constexpr int N = 100'000'000;
     std::vector<float> hot(1024, 1.5f);
     float* output = static_cast<float*>(
-        std::aligned_alloc(16, N * sizeof(float)));
+        ::operator new(N * sizeof(float), std::align_val_t{16}));
 
     auto bench = [&](auto fn, const char* label) {
         auto t0 = std::chrono::high_resolution_clock::now();
@@ -167,7 +171,7 @@ int main() {
     // Temporal:     ~300ms (hot data evicted, constant L1->L2 traffic)
     // Non-temporal:  ~180ms (hot data stays in L1, output goes to RAM)
 
-    std::free(output);
+    ::operator delete(output, std::align_val_t{16});
 }
 ```
 
@@ -177,10 +181,12 @@ The hot array here is only 4 KB - it easily fits in L1. But every temporal write
 
 A video frame clear is an ideal use case for non-temporal stores: it's write-only, the buffer is much larger than the cache, and you never read it back immediately. At 60 FPS you're clearing 500 MB/s, so the saved bandwidth adds up quickly.
 
+<!-- compile: flags -mavx2 -->
 ```cpp
 #include <iostream>
 #include <chrono>
 #include <immintrin.h>
+#include <new>
 #include <cstdlib>
 #include <cstring>
 
@@ -192,8 +198,10 @@ struct Frame {
     static constexpr size_t SIZE = W * H * BPP;  // ~8.3 MB
     uint8_t* data;
 
-    Frame() : data(static_cast<uint8_t*>(std::aligned_alloc(32, SIZE))) {}
-    ~Frame() { std::free(data); }
+    Frame() : data(static_cast<uint8_t*>(::operator new(SIZE, std::align_val_t{32}))) {}
+    ~Frame() { ::operator delete(data, std::align_val_t{32}); }
+    Frame(const Frame&) = delete;
+    Frame& operator=(const Frame&) = delete;
 };
 
 void clear_temporal(Frame& f, uint8_t color) {
@@ -244,7 +252,7 @@ The `perf stat` command at the bottom is the key verification step. The LLC-stor
 ## Notes
 
 - **Always use `_mm_sfence()`** after non-temporal stores before reading the data.
-- Non-temporal stores require 16/32-byte aligned addresses (`aligned_alloc`).
+- Non-temporal stores require 16/32-byte aligned addresses: use aligned `operator new` (portable), `std::aligned_alloc` (not on Windows), or `_aligned_malloc` (Windows only).
 - Only use for write-only buffers larger than L3 cache (or when avoiding cache pollution matters).
 - `memset` in glibc often uses NT stores automatically for large buffers (>= 256KB).
 - Clang's `-fno-builtin-memset` + manual NT loop gives more control.

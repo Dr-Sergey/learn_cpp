@@ -149,7 +149,11 @@ std::size_t count_codepoints(std::string_view utf8) {
 } // namespace unicode
 
 int main() {
-    std::string utf8_str = u8"Hello, 世界! 🌍";
+    // An ordinary literal, not u8"...": since C++20 a u8 literal is an array
+    // of char8_t and no longer converts to std::string. This is UTF-8 as long
+    // as the compiler's execution charset is (the default on GCC/Clang; pass
+    // /utf-8 to MSVC).
+    std::string utf8_str = "Hello, 世界! 🌍";
     std::cout << "UTF-8 bytes: " << utf8_str.size() << "\n";
     std::cout << "Code points: " << unicode::count_codepoints(utf8_str) << "\n";
 
@@ -235,7 +239,10 @@ void print_utf8(std::u8string_view text) {
 int main() {
     // C++20 char8_t literals
     constexpr auto greeting = u8"Héllo, wörld! 🎉";
-    static_assert(std::is_same_v<decltype(greeting), const char8_t(&)[22]>);
+    // 'auto' decays the array to a pointer; the literal itself is an array of
+    // char8_t: 20 UTF-8 code units plus the terminator.
+    static_assert(std::is_same_v<decltype(greeting), const char8_t* const>);
+    static_assert(std::is_same_v<decltype(u8"Héllo, wörld! 🎉"), const char8_t(&)[21]>);
 
     // Cannot pass to legacy APIs directly:
     // std::cout << greeting;           // ERROR in C++20
@@ -388,7 +395,8 @@ std::size_t count_visible_chars(std::string_view utf8) {
 } // namespace text
 
 int main() {
-    std::string s = u8"Ïñtérñàtiônàlizàtiôn";
+    // Ordinary literal (UTF-8 execution charset assumed); u8"..." would be char8_t[]
+    std::string s = "Ïñtérñàtiônàlizàtiôn";
 
     std::cout << "Valid UTF-8: " << std::boolalpha << text::is_valid_utf8(s) << "\n";
     std::cout << "Byte length: " << s.size() << "\n";

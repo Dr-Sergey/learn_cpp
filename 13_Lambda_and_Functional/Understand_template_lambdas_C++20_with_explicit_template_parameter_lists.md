@@ -170,21 +170,25 @@ Before C++14 generic lambdas and C++20 template lambdas, if you needed a templat
 #include <array>
 #include <string>
 
-int main() {
-    // BEFORE (C++11/14): local struct for complex generic logic
-    struct TypePrinter {
-        template <typename T>
-        void operator()(const std::vector<T>& v) const {
-            std::cout << "Vector of " << typeid(T).name()
-                      << ", size=" << v.size();
-            if constexpr (std::is_arithmetic_v<T>) {
-                T total{};
-                for (auto x : v) total += x;
-                std::cout << ", sum=" << total;
-            }
-            std::cout << "\n";
+// BEFORE (pre-C++20): a hand-written function object for complex generic logic.
+// It has to be declared out here, far from its only use: a local class
+// (one defined inside a function) is not allowed to have member templates.
+struct TypePrinter {
+    template <typename T>
+    void operator()(const std::vector<T>& v) const {
+        std::cout << "Vector of " << typeid(T).name()
+                  << ", size=" << v.size();
+        if constexpr (std::is_arithmetic_v<T>) {
+            T total{};
+            for (auto x : v) total += x;
+            std::cout << ", sum=" << total;
         }
-    };
+        std::cout << "\n";
+    }
+};
+
+int main() {
+    // BEFORE: use the function object defined above
 
     TypePrinter printer;
     printer(std::vector<int>{1, 2, 3});

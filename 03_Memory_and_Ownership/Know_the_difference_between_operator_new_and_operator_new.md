@@ -136,6 +136,7 @@ Replacing the global `operator new` is a blunt instrument - it captures every al
 
 ```cpp
 #include <iostream>
+#include <cstdio>
 #include <cstdlib>
 #include <cstddef>
 #include <new>
@@ -145,12 +146,16 @@ static size_t g_total_allocated = 0;
 static size_t g_num_allocations = 0;
 static size_t g_num_deallocations = 0;
 
-// Replace global operator new
+// Replace global operator new.
+// IMPORTANT: log with printf, never with std::cout. The iostream library
+// itself calls operator new - including while std::cout is still being
+// constructed at program start-up - so streaming from inside the allocator
+// re-enters it and typically crashes before main() begins.
 void* operator new(std::size_t size) {
     g_total_allocated += size;
     ++g_num_allocations;
-    std::cout << "[global new] " << size << " bytes (total: "
-              << g_total_allocated << " bytes, #" << g_num_allocations << ")\n";
+    std::printf("[global new] %zu bytes (total: %zu bytes, #%zu)\n",
+                size, g_total_allocated, g_num_allocations);
     void* p = std::malloc(size);
     if (!p) throw std::bad_alloc();
     return p;
@@ -159,13 +164,13 @@ void* operator new(std::size_t size) {
 // Replace global operator delete
 void operator delete(void* p) noexcept {
     ++g_num_deallocations;
-    std::cout << "[global delete] #" << g_num_deallocations << "\n";
+    std::printf("[global delete] #%zu\n", g_num_deallocations);
     std::free(p);
 }
 
 void operator delete(void* p, std::size_t size) noexcept {
     ++g_num_deallocations;
-    std::cout << "[global delete] " << size << " bytes, #" << g_num_deallocations << "\n";
+    std::printf("[global delete] %zu bytes, #%zu\n", size, g_num_deallocations);
     std::free(p);
 }
 
@@ -216,7 +221,9 @@ int main() {
   Num deallocations:3
 ```
 
-**Caution:** Replacing global `operator new` affects ALL allocations in the program, including standard library internals. Use with care in production.
+The exact numbers depend on your standard library. A replaced global `operator new` also sees the library's own allocations, so on some implementations (the MSVC library, for example) the counters start above 1 because iostream set-up allocated before `main`, and extra `[global new]` lines appear when a stream formats a number.
+
+**Caution:** Replacing global `operator new` affects ALL allocations in the program, including standard library internals. Use with care in production - and never call anything from inside it that may allocate through `operator new` itself, `std::cout` included.
 
 ### Q3: Demonstrate that overriding `operator new` in a derived class does NOT affect other classes
 

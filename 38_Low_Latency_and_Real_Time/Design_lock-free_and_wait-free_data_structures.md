@@ -55,13 +55,23 @@ class LockFreeStack {
         explicit Node(T val) : data(std::move(val)), next(nullptr) {}
     };
 
-    // Tagged pointer: pack a counter into the upper 16 bits
-    // (assumes 48-bit virtual addresses on x86-64)
-    struct TaggedPtr {
-        Node* ptr;
-        uint16_t tag;
+    // Tagged pointer: pack a 16-bit counter into the upper bits of ONE 64-bit
+    // word (assumes 48-bit user-space addresses, as on x86-64 and AArch64).
+    // A {pointer, counter} struct would be 16 bytes, and std::atomic of a
+    // 16-byte type is not lock-free on most toolchains - one word always is.
+    class TaggedPtr {
+        std::uintptr_t bits_ = 0;
+        static constexpr std::uintptr_t kPtrMask = (std::uintptr_t{1} << 48) - 1;
+    public:
+        TaggedPtr() = default;
+        TaggedPtr(Node* p, std::uint16_t tag)
+            : bits_((reinterpret_cast<std::uintptr_t>(p) & kPtrMask) |
+                    (static_cast<std::uintptr_t>(tag) << 48)) {}
+        Node* ptr() const { return reinterpret_cast<Node*>(bits_ & kPtrMask); }
+        std::uint16_t tag() const { return static_cast<std::uint16_t>(bits_ >> 48); }
     };
 
+    static_assert(sizeof(std::uintptr_t) == 8, "this packing needs a 64-bit platform");
     static_assert(std::atomic<TaggedPtr>::is_always_lock_free,
                   "TaggedPtr must be lock-free for ABA protection");
 
@@ -73,8 +83,8 @@ public:
         TaggedPtr old_head = head_.load(std::memory_order_relaxed);
         TaggedPtr new_head;
         do {
-            new_node->next = old_head.ptr;
-            new_head = TaggedPtr{new_node, static_cast<uint16_t>(old_head.tag + 1)};
+            new_node->next = old_head.ptr();
+            new_head = TaggedPtr{new_node, static_cast<uint16_t>(old_head.tag() + 1)};
         } while (!head_.compare_exchange_weak(old_head, new_head,
                     std::memory_order_release, std::memory_order_relaxed));
     }
@@ -83,13 +93,13 @@ public:
         TaggedPtr old_head = head_.load(std::memory_order_acquire);
         TaggedPtr new_head;
         do {
-            if (!old_head.ptr) return std::nullopt;
-            new_head = TaggedPtr{old_head.ptr->next,
-                                 static_cast<uint16_t>(old_head.tag + 1)};
+            if (!old_head.ptr()) return std::nullopt;
+            new_head = TaggedPtr{old_head.ptr()->next,
+                                 static_cast<uint16_t>(old_head.tag() + 1)};
         } while (!head_.compare_exchange_weak(old_head, new_head,
                     std::memory_order_acq_rel, std::memory_order_acquire));
-        T val = std::move(old_head.ptr->data);
-        delete old_head.ptr;  // simplified; production needs deferred reclamation
+        T val = std::move(old_head.ptr()->data);
+        delete old_head.ptr();  // simplified; production needs deferred reclamation
         return val;
     }
 

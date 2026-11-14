@@ -102,9 +102,10 @@ namespace drf {
 }
 
 int main() {
-    // Run the DRF version many times to confirm the invariant
+    // Run the DRF version many times to confirm the invariant.
+    // (Each iteration starts two threads, so keep the count moderate.)
     int both_zero = 0;
-    constexpr int ITERS = 1'000'000;
+    constexpr int ITERS = 100'000;
 
     for (int i = 0; i < ITERS; ++i) {
         drf::x = 0;
@@ -123,7 +124,7 @@ int main() {
 
     std::cout << "DRF version: r1==0 && r2==0 occurred "
               << both_zero << " / " << ITERS << " times\n";
-    // Expected: 0 / 1000000
+    // Expected: 0 / 100000
     return 0;
 }
 ```
@@ -213,7 +214,7 @@ void thread_b() {
 
 int main() {
     int both_zero = 0;
-    constexpr int ITERS = 1'000'000;
+    constexpr int ITERS = 100'000;
 
     for (int i = 0; i < ITERS; ++i) {
         x.store(0, std::memory_order_relaxed);
@@ -232,7 +233,10 @@ int main() {
 
     std::cout << "Relaxed atomics: r1==0 && r2==0 occurred "
               << both_zero << " / " << ITERS << " times\n";
-    // On x86: likely 0 (TSO hides this). On ARM/POWER: likely > 0.
+    // Possible on every mainstream CPU, x86 included: store-then-load is the
+    // one reordering x86's TSO model does allow (each store can still sit in
+    // its core's store buffer while the other thread loads). Starting fresh
+    // threads every iteration makes the window hard to hit, so 0 is common.
     // This is NOT a data race (atomics are never races), but it IS
     // a non-sequentially-consistent outcome. DRF-SC does not apply
     // to the ordering of atomic operations themselves under relaxed.

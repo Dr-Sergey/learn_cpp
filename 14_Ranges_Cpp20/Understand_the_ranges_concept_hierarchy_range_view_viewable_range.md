@@ -189,10 +189,8 @@ struct IntRange {
     int start_val;
     int end_val;
 
-    // begin() and end() are ALL that's needed for std::ranges::range
-    int* begin() { return nullptr; }  // won't work - need proper iterators
-
-    // Let's use a proper iterator:
+    // begin() and end() are ALL that's needed for std::ranges::range -
+    // provided they return a real iterator and a matching sentinel:
     struct Iterator {
         int current;
 

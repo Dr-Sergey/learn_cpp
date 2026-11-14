@@ -1,7 +1,7 @@
 # Enumerate struct members at compile time using std::meta::members_of
 
 **Category:** Reflection Cpp26  
-**Standard:** C++23  
+**Standard:** C++26  
 **Reference:** <https://en.cppreference.com/w/cpp/language/reflection>  
 
 ---
@@ -14,8 +14,8 @@ These are the queries you will reach for most often when writing generic struct 
 
 | Query | Returns |
 | --- | --- |
-| `members_of(^S)` | All members (data, static, functions) |
-| `nonstatic_data_members_of(^S)` | Only instance data members |
+| `members_of(^^S, ctx)` | All members (data, static, functions) |
+| `nonstatic_data_members_of(^^S, ctx)` | Only instance data members |
 | `identifier_of(m)` | Member name as `string_view` |
 | `type_of(m)` | Member type as `meta::info` |
 | `display_string_of(info)` | Human-readable type name (implementation-defined format) |
@@ -42,7 +42,8 @@ struct Config {
 };
 
 int main() {
-    constexpr auto members = std::meta::nonstatic_data_members_of(^Config);
+    static constexpr auto members = std::define_static_array(
+        std::meta::nonstatic_data_members_of(^^Config, std::meta::access_context::current()));
 
     std::cout << "Config has " << members.size() << " fields:\n";
     template for (constexpr auto m : members) {
@@ -98,14 +99,15 @@ struct Particle {
 
 template <typename T>
 void describe_struct() {
-    constexpr auto members = std::meta::nonstatic_data_members_of(^T);
-    constexpr std::string_view type_name = std::meta::identifier_of(^T);
+    static constexpr auto members = std::define_static_array(
+        std::meta::nonstatic_data_members_of(^^T, std::meta::access_context::current()));
+    constexpr std::string_view type_name = std::meta::identifier_of(^^T);
 
     std::cout << "struct " << type_name << " {\n";
     template for (constexpr auto m : members) {
         constexpr auto name = std::meta::identifier_of(m);
         constexpr auto type = std::meta::display_string_of(std::meta::type_of(m));
-        constexpr auto offset = std::meta::offset_of(m);
+        constexpr auto offset = std::meta::offset_of(m).bytes;  // offset_of returns {bytes, bits}
         constexpr auto size = std::meta::size_of(std::meta::type_of(m));
 
         std::cout << "    " << type << " " << name
@@ -133,7 +135,7 @@ Notice that all four queries - `identifier_of`, `display_string_of`, `offset_of`
 
 ### Q3: Generic `to_string()` for any aggregate
 
-Putting it all together: a fully generic `to_string` that handles any struct you throw at it. The function uses `identifier_of(^T)` to get the type's own name for the prefix, then iterates members with the same `if constexpr` type-dispatch pattern from Q1.
+Putting it all together: a fully generic `to_string` that handles any struct you throw at it. The function uses `identifier_of(^^T)` to get the type's own name for the prefix, then iterates members with the same `if constexpr` type-dispatch pattern from Q1.
 
 <!-- compile: needs `meta` (not in the CI standard library yet) -->
 ```cpp
@@ -144,10 +146,11 @@ Putting it all together: a fully generic `to_string` that handles any struct you
 
 template <typename T>
 std::string generic_to_string(const T& obj) {
-    constexpr auto members = std::meta::nonstatic_data_members_of(^T);
+    static constexpr auto members = std::define_static_array(
+        std::meta::nonstatic_data_members_of(^^T, std::meta::access_context::current()));
     std::ostringstream oss;
 
-    oss << std::meta::identifier_of(^T) << "{";
+    oss << std::meta::identifier_of(^^T) << "{";
     bool first = true;
     template for (constexpr auto m : members) {
         if (!first) oss << ", ";
@@ -194,7 +197,9 @@ The key thing to appreciate here is that `generic_to_string` works for both `Emp
 ## Notes
 
 - `nonstatic_data_members_of` is the right choice for data-only iteration - prefer it over `members_of` unless you specifically need static members or member functions too.
-- `identifier_of(^T)` returns the type's own name as a string - useful for generating output prefixes or diagnostic messages.
+- `identifier_of(^^T)` returns the type's own name as a string - useful for generating output prefixes or diagnostic messages.
 - `display_string_of` gives a human-readable type name, but the format is implementation-defined and may not be stable across compilers.
-- `offset_of` and `size_of` enable precise layout introspection without `offsetof` macros or platform-specific tricks.
-- Reflection works with inheritance - `bases_of(^Derived)` gives you the base classes so you can walk the full hierarchy if needed.
+- `offset_of` and `size_of` enable precise layout introspection without `offsetof` macros or platform-specific tricks. `offset_of` returns a `member_offset` with `.bytes` and `.bits`, so it can describe bit-fields too.
+- Every query that looks *inside* a class (`members_of`, `nonstatic_data_members_of`, `bases_of`) takes an access context as its second argument. `std::meta::access_context::current()` sees what ordinary code at that point could name; `unchecked()` sees private members too.
+- A `std::vector<std::meta::info>` cannot be stored in a `constexpr` variable or iterated by `template for` directly. `std::define_static_array` copies it into static storage and returns a `std::span`, which can.
+- Reflection works with inheritance - `bases_of(^^Derived, ctx)` gives you the base classes so you can walk the full hierarchy if needed.

@@ -128,6 +128,7 @@ The One Definition Rule says that if a type or function is defined in multiple t
 
 Here is a classic example of an ODR violation that silently compiles and links without LTO:
 
+<!-- compile: fragment: two source files with a deliberate ODR violation, shown together -->
 ```cpp
 // === a.cpp ===
 struct Config {

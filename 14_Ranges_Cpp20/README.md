@@ -21,7 +21,7 @@ Range-based views, adaptors, projections, and the ranges library for composable 
 - [Use views::flat_map (transform + join) to flatmap ranges without intermediates](Use_viewsflat_map_transform_+_join_to_flatmap_ranges_without_intermediates.md)
 - [Use views::iota, views::repeat, and other generating views](Use_viewsiota_viewsrepeat_and_other_generating_views.md)
 - [Use views::join and views::join_with for flattening nested ranges](Use_viewsjoin_and_viewsjoin_with_for_flattening_nested_ranges.md)
-- [Use views::repeat and views::cycle (C++26) for infinite repeating ranges](Use_viewsrepeat_and_viewscycle_C++26_for_infinite_repeating_ranges.md)
+- [Use views::repeat (C++23) and build a cycle view for infinite repeating ranges](Use_viewsrepeat_and_viewscycle_C++26_for_infinite_repeating_ranges.md)
 - [Use views::reverse for lazy bidirectional reversal](Use_viewsreverse_for_lazy_bidirectional_reversal.md)
 - [Use views::split for tokenizing ranges lazily](Use_viewssplit_for_tokenizing_ranges_lazily.md)
 - [Use views::split to tokenize a range by a delimiter without allocation](Use_viewssplit_to_tokenize_a_range_by_a_delimiter_without_allocation.md)

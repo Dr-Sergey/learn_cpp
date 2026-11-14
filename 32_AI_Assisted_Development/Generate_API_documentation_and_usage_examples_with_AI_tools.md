@@ -171,6 +171,7 @@ with code examples. Cover:
 
 Here is what AI-generated usage documentation looks like in practice for an HTTP client library:
 
+<!-- compile: fragment: sample generated documentation for an illustrative http library -->
 ```cpp
 #include <chrono>
 #include <iostream>

@@ -284,7 +284,7 @@ static_assert(index_of(91) == 9);
 static_assert(index_of(23) == 5);
 static_assert(index_of(99) == -1);
 
-static_assert(count_in_range(10, 50) == 3);   // 12, 16, 23
+static_assert(count_in_range(10, 50) == 4);   // 12, 16, 23, 38
 static_assert(count_in_range(0, 100) == 10);  // all elements
 
 // === More complex: constexpr sorted array generation + search ===
@@ -319,7 +319,7 @@ int main() {
     std::cout << "contains(10): " << contains(10) << "\n";    // 0
     std::cout << "index_of(23): " << index_of(23) << "\n";    // 5
     std::cout << "index_of(99): " << index_of(99) << "\n";    // -1
-    std::cout << "count_in_range(10,50): " << count_in_range(10, 50) << "\n";  // 3
+    std::cout << "count_in_range(10,50): " << count_in_range(10, 50) << "\n";  // 4
 
     std::cout << "\n=== Perfect Square Check ===\n";
     for (int i = 0; i <= 25; ++i) {
@@ -340,7 +340,7 @@ contains(5):  1
 contains(10): 0
 index_of(23): 5
 index_of(99): -1
-count_in_range(10,50): 3
+count_in_range(10,50): 4
 
 === Perfect Square Check ===
 0 is a perfect square

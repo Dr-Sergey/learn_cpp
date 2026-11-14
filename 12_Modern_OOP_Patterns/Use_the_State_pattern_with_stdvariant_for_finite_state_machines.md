@@ -122,7 +122,8 @@ void print_state(const TcpState& state) {
         else if constexpr (std::is_same_v<T, SynReceived>)
             std::cout << "  State: SynReceived (" << s.client_ip << ")\n";
         else if constexpr (std::is_same_v<T, Established>)
-            std::cout << "  State: Established (" << s.client_ip << ")\n";
+            std::cout << "  State: Established (" << s.client_ip
+                      << ", port " << s.port << ")\n";
     }, state);
 }
 
@@ -295,9 +296,9 @@ struct DoorTransition {
 
 // SAFE version with explicit catch-all for remaining:
 struct SafeDoorTransition {
-    DoorState operator()(Closed, EvOpen)  { return Open{}; }
-    DoorState operator()(Open, EvClose)   { return Closed{}; }
-    DoorState operator()(auto, EvJam)     { return Jammed{}; }
+    DoorState operator()(Closed, EvOpen)  { std::cout << "Opening door.\n"; return Open{}; }
+    DoorState operator()(Open, EvClose)   { std::cout << "Closing door.\n"; return Closed{}; }
+    DoorState operator()(auto, EvJam)     { std::cout << "Door jammed!\n";  return Jammed{}; }
     // Everything else -> stay in current state
     DoorState operator()(auto s, auto) {
         std::cout << "No valid transition.\n";

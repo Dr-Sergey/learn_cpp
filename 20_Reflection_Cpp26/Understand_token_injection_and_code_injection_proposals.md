@@ -1,7 +1,7 @@
 # Understand token injection and code injection proposals
 
 **Category:** Reflection Cpp26  
-**Standard:** C++26  
+**Standard:** Not in C++26 (proposal P3294, for a later standard)  
 **Reference:** <https://wg21.link/P2996> <https://wg21.link/P3294>  
 
 ---
@@ -13,6 +13,8 @@
 C++26 static reflection (P2996) enables **introspection** - querying properties of types, members, and enumerators at compile time. But the complementary feature is **code injection** - the ability to generate new code based on reflection results. Think of introspection as reading the structure of your program, and injection as writing back into it based on what you read.
 
 ### Token Injection (P3294)
+
+**Status first:** none of the injection syntax in this topic is in C++26. What C++26 standardized is introspection (`^^`, `std::meta`), splicing (`[: :]`), `consteval { }` blocks, and one narrow generation facility, `std::meta::define_aggregate`. General code injection is still a proposal (P3294) aimed at a later standard, so treat every listing below as a design sketch that no released compiler accepts.
 
 The **token injection** proposal allows injecting tokens (new declarations, statements, expressions) into the program based on compile-time computations. The syntax is still evolving, but the idea is that a `consteval` function can compute what code should exist and then `queue_injection` it to be emitted into the right scope.
 
@@ -26,7 +28,7 @@ struct Point {
 
 // Generate operator== automatically using reflection + injection
 consteval void generate_equality(std::meta::info type) {
-    auto members = std::meta::nonstatic_data_members_of(type);
+    auto members = std::meta::nonstatic_data_members_of(type, std::meta::access_context::current());
     // Inject: friend bool operator==(const T& a, const T& b) {
     //     return a.x == b.x && a.y == b.y && a.z == b.z;
     // }
@@ -85,7 +87,7 @@ Here is a more complete example showing the injection pattern applied to a real 
 
 template<typename T>
 consteval void inject_to_json() {
-    auto members = std::meta::nonstatic_data_members_of(^^T);
+    auto members = std::meta::nonstatic_data_members_of(^^T, std::meta::access_context::current());
 
     queue_injection(^^{
         friend std::string to_json(const T& obj) {
@@ -151,7 +153,7 @@ struct Player {
 
     // Inject getters for all members
     consteval {
-        for (auto m : std::meta::nonstatic_data_members_of(^^Player)) {
+        for (auto m : std::meta::nonstatic_data_members_of(^^Player, std::meta::access_context::current())) {
             queue_injection(make_getter(m));
         }
     }
@@ -180,7 +182,8 @@ String-based generation (like macros) has none of these properties. A macro expa
 
 ## Notes
 
-- Token injection proposals are still evolving - syntax may change before C++26 is finalized.
+- Token injection is **not** in C++26. The proposal (P3294) is still evolving and its syntax may change before it is standardized.
+- What C++26 does give you for generating code: `define_aggregate` for new aggregate types, `substitute` for instantiating templates from reflections, and expansion statements (`template for`).
 - The `queue_injection()` function adds code to be injected at the end of the current evaluation context.
 - Injection works in `consteval` blocks inside class definitions.
 - This is the most powerful compile-time code generation feature C++ has ever had.

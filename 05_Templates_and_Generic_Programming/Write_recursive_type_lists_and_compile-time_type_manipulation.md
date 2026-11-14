@@ -238,11 +238,15 @@ using transform_t = typename transform_simple<List, F>::type;
 // === Custom metafunctions ===
 template <typename T>
 struct make_unsigned_if_integral {
-    using type = std::conditional_t<
+    // std::conditional_t<cond, std::make_unsigned_t<T>, T> would not work:
+    // both branches are instantiated before one is chosen, and
+    // std::make_unsigned<double> is ill-formed. So select a METAFUNCTION
+    // first and ask only the chosen one for its ::type.
+    using type = typename std::conditional_t<
         std::is_integral_v<T>,
-        std::make_unsigned_t<T>,
-        T
-    >;
+        std::make_unsigned<T>,
+        std::type_identity<T>
+    >::type;
 };
 
 template <typename T>

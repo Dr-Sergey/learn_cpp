@@ -51,7 +51,8 @@ using handler_t = int(*)(int, int);
 // Generate dispatch table at compile time:
 template <typename E, handler_t... Handlers>
 constexpr auto make_dispatch_table() {
-    constexpr auto enums = std::meta::enumerators_of(^E);
+    static constexpr auto enums = std::define_static_array(
+        std::meta::enumerators_of(^^E));
     constexpr auto N = enums.size();
 
     // Array indexed by the underlying enum value:
@@ -103,7 +104,7 @@ template <typename E, typename F>
 auto reflected_switch(E value, F&& handler) {
     // template for expands to a chain of if/else at compile time,
     // which the compiler optimizes to a jump table:
-    template for (constexpr auto e : std::meta::enumerators_of(^E)) {
+    template for (constexpr auto e : std::define_static_array(std::meta::enumerators_of(^^E))) {
         if (value == [:e:]) {
             return handler.template operator()<[:e:]>();
         }
@@ -159,7 +160,8 @@ const char* color_name_switch(Color c) {
 
 // Reflection-generated dispatch table:
 constexpr auto color_names = []{
-    constexpr auto enums = std::meta::enumerators_of(^Color);
+    static constexpr auto enums = std::define_static_array(
+        std::meta::enumerators_of(^^Color));
     std::array<const char*, enums.size()> names{};
     template for (constexpr auto e : enums) {
         // identifier_of returns string_view; .data() for const char*

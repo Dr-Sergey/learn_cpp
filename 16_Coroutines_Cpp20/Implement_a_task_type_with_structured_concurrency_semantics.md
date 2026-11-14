@@ -208,6 +208,7 @@ The cancellation rules are worth memorising because violating them is undefined 
 
 This example shows the structured pattern in action: the parent creates three child tasks and awaits each one before returning. If the parent is cancelled or throws an exception before awaiting all children, the `~Task()` destructors fire in reverse order and destroy the unawaited children cleanly:
 
+<!-- compile: fragment: uses Task<T> from Q1 -->
 ```cpp
 // Using Task<T> from Q1
 #include <iostream>

@@ -256,6 +256,11 @@ struct SimpleTuple<Head, Tail...> {
     constexpr SimpleTuple(Head h, Tail... t) : value(h), rest(t...) {}
 };
 
+// CTAD only looks at constructors of the PRIMARY template, which has none,
+// so the constructor in the partial specialization needs a deduction guide.
+template <typename... Ts>
+SimpleTuple(Ts...) -> SimpleTuple<Ts...>;
+
 // === C++26 get<N> using pack indexing ===
 template <std::size_t N, typename... Ts>
 constexpr auto& get(SimpleTuple<Ts...>& t) {
